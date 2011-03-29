@@ -1,3 +1,2 @@
-page.alert('ok')
-page.call "export_word","<%= render 'word' %>"
+page.call "export_word","word_content"
 

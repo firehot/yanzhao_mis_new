@@ -496,18 +496,25 @@ com.yanzhao.MaterialSelector.prototype = {
 //将calendar_select翻译为汉语
 document.observe("dom:loaded", util.translat_calendar);
 //导出到word
-var export_word = function(content) {
+var export_word = function(el_id) {
 	try {
+                var el = document.getElementById(el_id);
+		var sel = document.body.createTextRange();
+		sel.moveToElementText(el);
+		sel.select();
+		sel.execCommand("Copy");
 
-		window.clipboardData.setData("Text", table_content);
 		var word = new ActiveXObject("Word.Application");
 		var doc = word.Documents.Add("", 0, 1);
-		wordApp.Paste();
+		word.Application.Visible = false;
+		var range = doc.Range(0, 1);
+		range.Paste();
 
-		word.Application.visible = true;
+		word.Application.Visible = true;
 	}
 	catch(e) {
-		window.alert("导出失败,请确认您已安装excel软件,并调整了IE的安全设置.");
+          alert(e.message);
+		window.alert("导出失败,请确认您已安装word软件,并调整了IE的安全设置.");
 	}
 };
 
