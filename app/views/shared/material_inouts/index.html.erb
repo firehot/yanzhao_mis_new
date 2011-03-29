@@ -44,7 +44,7 @@
 
             <td class="last">
               <%= link_to "查看/打印",bill %> 
-              <%= link_to "删除", bill, :method => :delete, :confirm => "您确定要删除该信息吗？" if bill.state.eq? 'DR' %>
+              <!--%= link_to "删除", bill, :method => :delete, :confirm => "您确定要删除该信息吗？" if bill.state == 'DR' %-->
             </td>
           </tr>          
         <% end -%>
