@@ -1,12 +1,12 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => 'caption' %>
-  </div>          
-  <div class="content">          
+  </div>
+  <div class="content">
     <h2 class="title">单据列表</h2>
     <div class="inner">
       <table class="table">
-        <tr>             
+        <tr>
           <th>单据日期</th>
           <th>仓库</th>
           <th>部门</th>
@@ -43,10 +43,10 @@
             </td>
 
             <td class="last">
-              <%= link_to "查看/打印",bill %> 
-              <%= link_to "删除", bill, :method => :delete, :confirm => "您确定要删除该信息吗？" if bill.state.eq? 'DR' %>
+              <%= link_to "查看/打印",bill %>
+              <%= link_to "删除", bill, :method => :delete, :confirm => "您确定要删除该信息吗？" if bill.state.eql? 'DR' %>
             </td>
-          </tr>          
+          </tr>
         <% end -%>
       </table>
       <div class="actions-bar wat-cf">
