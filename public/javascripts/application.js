@@ -242,7 +242,7 @@ util.bookmarkit = function(url) {
 		break;
 	}
 };
-//设为首页  
+//设为首页
 util.setHome = function(obj, url) {
 	obj.style.behavior = 'url(#default#homepage)';
 	obj.setHomePage(url);
@@ -316,7 +316,7 @@ com.yanzhao.UserSelector.prototype = {
 	//更新选择显示
 	update_select_display: function(users) {
 		users.each(function(the_user) {
-			//    disp +="<div class='radius-box float-left user_wrap'>"+the_user.user_name + "</div>"; 
+			//    disp +="<div class='radius-box float-left user_wrap'>"+the_user.user_name + "</div>";
 			var user_div = this.create_user_display(the_user);
 			//判断用户是否已存在
 			if ($('selected_' + the_user.id)) return;
@@ -513,7 +513,6 @@ var export_word = function(el_id) {
 		word.Application.Visible = true;
 	}
 	catch(e) {
-          alert(e.message);
 		window.alert("导出失败,请确认您已安装word软件,并调整了IE的安全设置.");
 	}
 };
