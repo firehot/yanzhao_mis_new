@@ -6,7 +6,7 @@ module ApplicationHelper
   end
   #当前用户可选择的机构
   def current_orgs_for_select
-    ret = [[current_user.org.name,current_user.org.id]]
+    ret = [current_user.org.name,current_user.org.id]
     ret = Org.all(:conditions => {:is_active => true},:order => "type,name").collect { |org| [org.name, org.id] } if current_user.is_admin
     ret
   end
@@ -35,29 +35,21 @@ module ApplicationHelper
   def departments_for_select
     Department.all(:conditions => {:is_active => true},:order => "name ASC").collect { |org| [org.name, org.id] }
   end
-
   #分公司选择
   def sub_companies_for_select
-    ret = SubCompany.all(:conditions => {:is_active => true},:order => "name ASC").collect { |org| [org.name, org.id] }
+    ret = [[current_user.org.name,current_user.org.id]]
+    if current_user.is_admin?
+      ret = SubCompany.all(:conditions => {:is_active => true},:order => "name ASC").collect { |org| [org.name, org.id] }
+    end
     ret
   end
   #科室选择
   def current_departments_for_select
-    ret = [[current_user.org.name,current_user.org.id]]
-    if current_user.is_admin?
-      ret = Department.all(:conditions => {:is_active => true},:order => "name ASC").collect { |org| [org.name, org.id] }
-    end
-    ret
+    ret = Department.all(:conditions => {:is_active => true},:order => "name ASC").collect { |org| [org.name, org.id] }
   end
   #分公司选择
   def current_sub_companies_for_select
-
-    ret = [[current_user.org.name,current_user.org.id]]
-
-    if current_user.is_admin?
-      SubCompany.all(:conditions => {:is_active => true},:order => "name ASC").collect { |org| [org.name, org.id] }
-    end
-    ret
+    SubCompany.all(:conditions => {:is_active => true},:order => "name ASC").collect { |org| [org.name, org.id] }
   end
 
   def users_for_select
@@ -71,7 +63,7 @@ module ApplicationHelper
   def state_display(const_class,state_code)
     the_state = const_class.aasm_states.detect {|state| state.name.to_s == state_code}
     the_state.options[:desc] if !the_state.blank?
-  end
+  end  
   #vip 级别选择
   def vip_levels_for_select
     VipConfig.levels.collect {|key,value| [value,key]}
@@ -110,21 +102,21 @@ module ApplicationHelper
   end
   #以下参考http://asciicasts.com/episodes/197-nested-model-form-part-2
   #nested Form 中的删除按钮
-  def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to_function(name, "com.yanzhao.nestedFormHelper.remove_fields(this)")
-  end
+  def link_to_remove_fields(name, f)  
+    f.hidden_field(:_destroy) + link_to_function(name, "com.yanzhao.nestedFormHelper.remove_fields(this)")  
+  end  
   #nested form 中的添加按钮
-  def link_to_add_fields(name, f, association,content_wrap="",ini_attr ={})
-    new_object = f.object.class.reflect_on_association(association).klass.new(ini_attr)
-    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render(association.to_s.singularize + "_fields", :f => builder)
-    end
+  def link_to_add_fields(name, f, association,content_wrap="",ini_attr ={})  
+    new_object = f.object.class.reflect_on_association(association).klass.new(ini_attr)  
+    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|  
+      render(association.to_s.singularize + "_fields", :f => builder)  
+    end  
 
-    link_to_function(name, h("com.yanzhao.nestedFormHelper.add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\",\"#{content_wrap}\")"))
-  end
+    link_to_function(name, h("com.yanzhao.nestedFormHelper.add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\",\"#{content_wrap}\")"))  
+  end  
   #月份选择,提供前后2年的月份选择
   def months_for_select
-    ret = []
+    ret = [] 
     (-12..12).collect do |mth|
       time = mth.month.from_now
       ret = ret + [ [time.strftime("%Y%m"),time.strftime("%Y年%m月")]]
@@ -133,7 +125,7 @@ module ApplicationHelper
   end
   #月份选择,提供自上月开始的月份选择
   def months_ago_for_select
-    ret = []
+    ret = [] 
     (-12..-1).collect do |mth|
       time = mth.month.from_now
       ret = ret + [ [time.strftime("%Y%m"),time.strftime("%Y年%m月")]]
@@ -162,7 +154,7 @@ module ApplicationHelper
           chineseNum=''
           chinesePos=''
           nzero+=1
-        else
+        else 
           if(nzero!=0)
             chineseNum=chineseNumArr[0]+chineseNumArr[posValue]
             chinesePos=chinesePosArr[pos+i]
@@ -193,7 +185,7 @@ module ApplicationHelper
               nzero+=1
             end
           end
-        end
+        end 
       end
       if(i==(length-11) || i==(length-3))
         chinesePos=chinesePosArr[pos+i]
@@ -203,9 +195,9 @@ module ApplicationHelper
         strChinese=strChinese+'整'
       end
       i+=1
-    end
+    end 
     strChinese ='负' + strChinese if num < 0
-    strChinese
+    strChinese 
   end
   #根据起始和结束日期得到日期月份列表
   def months_range(start_dt,end_dt)
@@ -272,7 +264,7 @@ module ApplicationHelper
   #测试信息读取状态
   def check_message_state(msg)
     #发送者是自己的一律不设置未读标志(因为自己肯定知道内容了)
-    #return "" if msg.user == current_user
+    #return "" if msg.user == current_user 
     msg.message_visitors.all(:conditions => {:state => 'draft',:user_id => current_user.id}).blank? ? '' : 'unread'
     #待审核信息
   end
@@ -281,7 +273,7 @@ module ApplicationHelper
     cur_page = 1 if cur_page.blank?
     rows_per_page = 20 if rows_per_page.blank?
     cur_page = cur_page.to_i if cur_page.kind_of?(String)
-    rows_per_page = cur_page.to_i if rows_per_page.kind_of?(String)
-    index+1 + rows_per_page*(cur_page - 1)
+    rows_per_page = cur_page.to_i if rows_per_page.kind_of?(String) 
+    index+1 + rows_per_page*(cur_page - 1) 
   end
 end

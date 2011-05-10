@@ -1,2 +1,3 @@
-page.call "export_word","word_content"
+page.alert('ok')
+page.call "export_word","<%= render 'word' %>"
 
