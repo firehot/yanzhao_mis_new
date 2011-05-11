@@ -60,7 +60,7 @@ class Bill < ActiveRecord::Base
   }
   #以下定义导出时需要用到的属性
   def from_org_name
-    from_org.name
+    from_org.try(:name)
   end
   def to_org_name
     to_org.name
