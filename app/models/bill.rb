@@ -63,7 +63,7 @@ class Bill < ActiveRecord::Base
     from_org.try(:name)
   end
   def to_org_name
-    to_org.name
+    to_org.try(:name)
   end
   def pay_type_des
     Bill.pay_types[pay_type]
