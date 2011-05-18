@@ -1,8 +1,14 @@
 <table style='border-collapse : collapse;border : thin solid #000;'>
   <tr>
-    <td colspan='3' style='text-align :center;border-collapse : collapse;border : thin solid #000;font-size : 14px;'><%=Client.first.name%></td>
+    <td width='100' colspan='3' style='text-align :center;border-collapse : collapse;border : thin solid #000;font-size : 14px;'><%=Client.first.name%></td>
+  </tr>
+  <tr>
     <td colspan='3' style='text-align :center;border-collapse : collapse;border : thin solid #000;font-size : 14px;font-weight : bold;'>内部罚款决定书</td>
   </tr>
+  <tr>
+    <td colspan='3' style='text-align :center;border-collapse : collapse;border : thin solid #000;font-size : 14px;font-weight : bold;'><%=@punishment.title%></td>
+  </tr>
+
   <tr>
     <td style='border-collapse : collapse;border : thin solid #000'>被罚对象:</td>
     <td colspan='2' style='border-collapse : collapse;border : thin solid #000;'><%=@punishment.org.name%></td>

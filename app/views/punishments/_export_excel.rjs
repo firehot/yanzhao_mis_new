@@ -1,2 +1,2 @@
-page.call "export_excel","<%= render 'excel' %>"
+page.call "export_excel","#{render 'excel'}"
 

@@ -517,20 +517,25 @@ var export_word = function(el_id) {
 	}
 };
 //导出数据到excel, ie only
-var export_excel = function(table_content, func_set_style) {
+var set_style = function(ws) {
+	ws.Columns.ColumnWidth = 30;
+	ws.Columns('A:A').ColumnWidth = 20;
+};
+var export_excel = function(table_content) {
 	try {
 		window.clipboardData.setData("Text", table_content);
 		ExApp = new ActiveXObject("Excel.Application");
 		var ExWBk = ExApp.Workbooks.add();
-		var ExWSh = ExcelWBk.ActiveSheet;
+		var ExWSh = ExWBk.ActiveSheet;
 		ExApp.DisplayAlerts = false;
-		if (func_set_style) func_set_style(ExWSh);
+		set_style(ExWSh);
 		ExApp.visible = true;
+		ExWSh.Paste();
 	}
 	catch(e) {
+		window.alert(e.message);
 		window.alert("导出失败,请确认您已安装excel软件,并调整了了IE的安全设置.");
 		return false;
 	}
-	ExWSh.Paste();
 };
 
