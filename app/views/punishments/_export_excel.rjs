@@ -1,0 +1,2 @@
+page.call "export_excel","<%= render 'excel' %>"
+

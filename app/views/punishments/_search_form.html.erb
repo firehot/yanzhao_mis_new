@@ -1,24 +1,17 @@
 <% form_for @search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
   <fieldset class='inlineLabels'>
+
+    <%if !current_user.is_admin%>
+      <%=f.hidden_field :org_id_is,:value => current_user.org.id %>
+    <%end%>
     <div class='ctrlHolder'>
       <%=f.label :title_like,"标题"%>
       <%=f.text_field :title_like,:class => "textInput"%>
     </div>
     <div class='ctrlHolder'>
-      <%=f.label :target_like,"人员姓名"%>
-      <%=f.text_field :target_like,:class => "textInput"%>
+      <%=f.label :target_org_id_is,"分理处/分公司"%>
+      <%=f.select :target_org_id_is,sub_companies_for_select %>
     </div>
-
-    <%if current_user.is_admin%>
-      <div class='ctrlHolder'>
-        <%=f.label :target_org_id_is,"分理处/分公司"%>
-        <%=f.select :target_org_id_is,sub_companies_for_select %>
-      </div>
-    <%else%>
-      <%=f.hidden_field :target_org_id_is,:value => current_user.org.id %>
-    <%end%>
-
-
     <div class='ctrlHolder'>
       <%=f.label :punish_date_gte,"处罚时间"%>
       <%=f.calendar_date_select :punish_date_gte,:class => "shortText",:value => Date.today%>

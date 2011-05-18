@@ -1,6 +1,4 @@
 class PunishmentsController < BaseController
-  # GET /violations/new
-  # GET /violations/new.xml
   def new
     if params[:violation_id].blank?
       @punishment = Punishment.new
@@ -11,6 +9,12 @@ class PunishmentsController < BaseController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @violation }
+    end
+  end
+  def show
+    @punishment = Punishment.find(params[:id])
+    respond_to do |format|
+      format.js {render :partial => "export_excel"}
     end
   end
 end

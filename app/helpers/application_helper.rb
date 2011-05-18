@@ -6,7 +6,7 @@ module ApplicationHelper
   end
   #当前用户可选择的机构
   def current_orgs_for_select
-    ret = [current_user.org.name,current_user.org.id]
+    ret = [[current_user.org.name,current_user.org.id]]
     ret = Org.all(:conditions => {:is_active => true},:order => "type,name").collect { |org| [org.name, org.id] } if current_user.is_admin
     ret
   end

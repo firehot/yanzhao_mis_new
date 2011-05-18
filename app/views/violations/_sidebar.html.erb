@@ -9,12 +9,15 @@
     <% end %>
   </ul>
 </div>
-<div class="block">
-  <h3>查询违规记录</h3>
-  <div class="content">
-    <%=render "violations/search_form"%>
+
+<% if check_power('new_violation') %>
+  <div class="block">
+    <h3>查询违规记录</h3>
+    <div class="content">
+      <%=render "violations/search_form"%>
+    </div>
   </div>
-</div>
+<%end%>
 
 <div class="block">
   <h3>查询处罚记录</h3>

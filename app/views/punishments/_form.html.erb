@@ -11,10 +11,17 @@
       <%= f.label :title, "标题" %>
       <%= f.text_field :title, :size => "30",:maxlength => "30",:class => 'textInput title' %>
     </div>
+    <!--
     <div class="ctrlHolder">
       <%= f.label :target, "人员" %>
       <%= f.text_area :target,:style => "height : 50px;"%>
     </div>
+    -->
+    <div class="ctrlHolder">
+      <%= f.label :org_id, "录入机构" %>
+      <%=f.select :org_id,current_orgs_for_select%>
+    </div>
+
 
     <% if f.object.violation.present?%>
       <div class="ctrlHolder">
@@ -29,8 +36,13 @@
 
     <div class="ctrlHolder">
       <%= f.label :content, "处罚内容(最长3000个汉字)" %>
-      <%= f.tinymce :content %>
+      <%= f.text_area :content %>
     </div>
+    <div class="ctrlHolder">
+      <%= f.label :punishment_fee, "处罚金额" %>
+      <%= f.text_field :punishment_fee %>
+    </div>
+
     <div class="ctrlHolder">
       <%= f.label :handled, "经手人" %>
       <%= f.text_field :handled, :size => "30",:maxlength => "30",:class => 'shortText' %>

@@ -35,11 +35,11 @@ SelectHelper.Selector.prototype = {
 			//判断json对象的属性名称,在提款票据中为carrying_bill
 			//在提货票据中是inout_bill
 			/*
-                                if(typeof(bill.carrying_bill) != 'undefined')
-                                  this.cached.set(bill.carrying_bill.id,false);
-                                else
-                                  this.cached.set(bill.inout_bill.id,false);
-                                  */
+                     if(typeof(bill.carrying_bill) != 'undefined')
+                     this.cached.set(bill.carrying_bill.id,false);
+                     else
+                     this.cached.set(bill.inout_bill.id,false);
+                     */
 
 			this.cached.set(bill.id, false);
 		},
@@ -52,11 +52,11 @@ SelectHelper.Selector.prototype = {
 
 		var bill;
 		/*
-                      if(typeof(select_object[0].carrying_bill) != 'undefined')
-                        bill= select_object[0].carrying_bill;
-                      else
-                        bill= select_object[0].inout_bill;
-                        */
+                  if(typeof(select_object[0].carrying_bill) != 'undefined')
+                  bill= select_object[0].carrying_bill;
+                  else
+                  bill= select_object[0].inout_bill;
+                  */
 		bill = select_object[0];
 		var is_select = select_object[1] == "true" ? true: false;
 
@@ -498,7 +498,7 @@ document.observe("dom:loaded", util.translat_calendar);
 //导出到word
 var export_word = function(el_id) {
 	try {
-                var el = document.getElementById(el_id);
+		var el = document.getElementById(el_id);
 		var sel = document.body.createTextRange();
 		sel.moveToElementText(el);
 		sel.select();
@@ -515,5 +515,22 @@ var export_word = function(el_id) {
 	catch(e) {
 		window.alert("导出失败,请确认您已安装word软件,并调整了IE的安全设置.");
 	}
+};
+//导出数据到excel, ie only
+var export_excel = function(table_content, func_set_style) {
+	try {
+		window.clipboardData.setData("Text", table_content);
+		ExApp = new ActiveXObject("Excel.Application");
+		var ExWBk = ExApp.Workbooks.add();
+		var ExWSh = ExcelWBk.ActiveSheet;
+		ExApp.DisplayAlerts = false;
+		if (func_set_style) func_set_style(ExWSh);
+		ExApp.visible = true;
+	}
+	catch(e) {
+		window.alert("导出失败,请确认您已安装excel软件,并调整了了IE的安全设置.");
+		return false;
+	}
+	ExWSh.Paste();
 };
 

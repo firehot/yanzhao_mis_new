@@ -35,6 +35,7 @@ cn:
       vip_info: VIP信息
       settlement: 结算表
       warehouse: 仓库信息
+      punishment: 处罚信息
     attributes:
       bill:
         bill_no: "票据号"
