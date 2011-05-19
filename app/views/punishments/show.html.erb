@@ -7,23 +7,24 @@
       <h2 class='text-center'><%= @punishment.title%></h2>
       <table class='table'>
         <tr>
-          <td>处罚时间</td>
+          <td>处罚时间:</td>
           <td><%= @punishment.punish_date.strftime("%Y-%m-%d") %></td>
-          <td>经手人</td>
+          <td>经手人:</td>
           <td><%= @punishment.handled%></td>
         </tr>
         <tr>
-          <td>人员</td>
-          <td colspan='3'><%= @punishment.target %></td>
+          <td>被罚机构:</td>
+          <td colspan='3'><%= @punishment.target_org.name %></td>
         </tr>
-        <tr>
-          <td>分理处/分公司</td>
-          <td colspan='3'><%= @punishment.target_org.try(:name) %></td>
-        </tr>
-        <tr>
-          <td>处罚内容</td>
+          <tr>
+          <td>处罚内容:</td>
           <td><%= @punishment.content %></td>
         </tr>
+        <tr>
+          <td>罚款金额:</td>
+          <td colspan='3'><%= @punishment.punishment_fee %></td>
+        </tr>
+
       </table>
     </div>
   </div>
