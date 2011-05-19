@@ -14,6 +14,7 @@ class PunishmentsController < BaseController
   def show
     @punishment = Punishment.find(params[:id])
     respond_to do |format|
+      format.html
       format.js {render :partial => "export_excel"}
     end
   end

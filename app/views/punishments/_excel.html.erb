@@ -10,28 +10,28 @@
   </tr>
 
   <tr>
-    <td style='border-collapse : collapse;border : thin solid #000'>被罚对象:</td>
-    <td colspan='2' style='border-collapse : collapse;border : thin solid #000;'><%=@punishment.org.name%></td>
+    <td style='border-collapse : collapse;border : thin solid #000;text-align : center;'>被罚对象:</td>
+    <td colspan='2' style='border-collapse : collapse;border : thin solid #000;text-align : center;'><%=@punishment.target_org.name%></td>
   </tr>
   <thead>
     <tr>
-      <td style='border-collapse : collapse;border : thin solid #000'>日期</td>
-      <td style='border-collapse : collapse;border : thin solid #000'>处罚内容</td>
-      <td style='border-collapse : collapse;border : thin solid #000'>罚款金额</td>
+      <td style='border-collapse : collapse;border : thin solid #000;text-align : center;'>日期</td>
+      <td style='border-collapse : collapse;border : thin solid #000;text-align : center;'>处罚内容</td>
+      <td style='border-collapse : collapse;border : thin solid #000;text-align : center;'>罚款金额</td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style='border-collapse : collapse;border : thin solid #000'><%=@punishment.punish_date %></td>
-      <td style='border-collapse : collapse;border : thin solid #000'><%=@punishment.content %></td>
-      <td style='border-collapse : collapse;border : thin solid #000'><%=@punishment.punishment_fee %></td>
+      <td style='border-collapse : collapse;border : thin solid #000;text-align : left;'><%=@punishment.punish_date %></td>
+      <td style='border-collapse : collapse;border : thin solid #000;text-align : left;'><%=@punishment.content %></td>
+      <td style='border-collapse : collapse;border : thin solid #000;text-align : left;'><%=@punishment.punishment_fee %></td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td style='border-collapse : collapse;border : thin solid #000'>部门主管:</td>
-      <td style='border-collapse : collapse;border : thin solid #000'>开票人:</td>
-      <td style='border-collapse : collapse;border : thin solid #000'><%=@punishment.handled%></td>
+      <td style='border-collapse : collapse;border : thin solid #000';text-align : left;>部门主管:</td>
+      <td style='border-collapse : collapse;border : thin solid #000';text-align : left;></td>
+      <td style='border-collapse : collapse;border : thin solid #000';text-align : left;>开票人:<%=@punishment.handled%></td>
     </tr>
   </tfoot>
 </table>

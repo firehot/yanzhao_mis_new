@@ -6,6 +6,6 @@
   <%end%>
 
   <li class="<%=check_sub_active_tab(2)%>">
-    <%= link_to "处罚记录", punishments_path(:active_sub_tab => 2,"search[org_id_eq]" => current_user.org_id)  %>
+    <%= link_to "处罚记录", punishments_path(:active_sub_tab => 2,"search[org_id_or_target_org_id_eq]" => current_user.org_id)  %>
   </li>
 </ul>

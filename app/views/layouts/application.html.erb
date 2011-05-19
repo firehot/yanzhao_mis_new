@@ -84,7 +84,7 @@
               </li>
             <%end%>
             <li class="<%= check_current_controller(['violations','punishments']) %>">
-              <%= link_to "违规处罚", punishments_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)  %>
+              <%= link_to "违规处罚", punishments_path(:active_sub_tab => 1,"search[org_id_or_target_org_id_eq]" => current_user.org_id)  %>
             </li>
             <%if check_power_group('投票系统')%>
               <li class="<%= check_current_controller(['votes'],'votes') %>">
