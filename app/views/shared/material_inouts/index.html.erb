@@ -10,11 +10,12 @@
           <th>单据日期</th>
           <th>仓库</th>
           <th>部门</th>
+          <th>金额</th>
           <th>经办人</th>
           <th>确认人</th>
           <th>状态</th>
-          <th class="last">&nbsp;</th>
-          <th class="last">&nbsp;</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
         </tr>
         <%bills = instance_variable_get("@#{@param_name.tableize}") %>
         <% bills.each do |bill| -%>
@@ -29,6 +30,10 @@
               <%= bill.org.try(:name) %>
             </td>
             <td>
+              <%= bill.amount %>
+            </td>
+
+            <td>
               <%= bill.person_name %>
             </td>
             <td>
@@ -42,11 +47,18 @@
               <%= audit_link(bill) %>
             </td>
 
-            <td class="last">
+            <td>
               <%= link_to "查看/打印",bill %>
               <%= link_to "删除", bill, :method => :delete, :confirm => "您确定要删除该信息吗？" if bill.state.eql? 'DR' %>
             </td>
           </tr>
+          <tfoot>
+            <tr>
+              <td colspan='3'>合计:</td>
+              <td><%=@search.all.sum(&:amount)%></td>
+              <td colspan='5'>&nbsp;</td>
+            </tr>
+          </tfoot>
         <% end -%>
       </table>
       <div class="actions-bar wat-cf">
