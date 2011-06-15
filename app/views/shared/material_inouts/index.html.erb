@@ -52,14 +52,15 @@
               <%= link_to "删除", bill, :method => :delete, :confirm => "您确定要删除该信息吗？" if bill.state.eql? 'DR' %>
             </td>
           </tr>
-          <tfoot>
-            <tr>
-              <td colspan='3'>合计:</td>
-              <td><%=@search.all.sum(&:amount)%></td>
-              <td colspan='5'>&nbsp;</td>
-            </tr>
-          </tfoot>
         <% end -%>
+        <tfoot>
+          <tr>
+            <td colspan='3'>合计:</td>
+            <td><%=@search.all.sum(&:amount)%></td>
+            <td colspan='5'>&nbsp;</td>
+          </tr>
+        </tfoot>
+
       </table>
       <div class="actions-bar wat-cf">
         <%= will_paginate bills  %>
