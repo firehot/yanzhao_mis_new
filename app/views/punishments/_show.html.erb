@@ -1,0 +1,24 @@
+<table class='table'>
+  <tr>
+    <td>处罚时间:</td>
+    <td><%= @punishment.punish_date.strftime("%Y-%m-%d") %></td>
+    <td>经手人:</td>
+    <td><%= @punishment.handled%></td>
+  </tr>
+  <tr>
+    <td>被罚机构:</td>
+    <td colspan='3'><%= @punishment.target_org.name %></td>
+  </tr>
+  <tr>
+    <td>处罚原因:</td>
+    <td colspan='3'><%= @punishment.content %></td>
+  </tr>
+  <tr>
+    <td>处罚依据:</td>
+    <td colspan='3'><%= @punishment.title %></td>
+  </tr>
+  <tr>
+    <td>罚款金额:</td>
+    <td colspan='3'><%= @punishment.punishment_fee %></td>
+  </tr>
+</table>

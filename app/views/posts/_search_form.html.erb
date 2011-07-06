@@ -1,19 +1,12 @@
 <% form_for @search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
   <fieldset class='blockLabels'>
-    <p class='red-text'>
-    查询结果取决与你被授予的权限
-    </p>
     <div class='ctrlHolder'>
       <%=f.label :title_like,"标题"%>
       <%=f.text_field :title_like,:class => "textInput"%>
     </div>
 
     <div class='ctrlHolder'>
-      <%=f.label :org_id_is,"机构/部门"%>
-      <%=f.select :org_id_is,orgs_for_select %>
-    </div>
-    <div class='ctrlHolder'>
-      <%=f.label :user_id_is,"发信人"%>
+      <%=f.label :user_id_is,"发布人"%>
       <%=f.select :user_id_is,option_groups_departments_users_for_select %>
     </div>
     <div class='ctrlHolder'>

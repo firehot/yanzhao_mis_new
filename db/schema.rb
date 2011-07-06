@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110518123745) do
+ActiveRecord::Schema.define(:version => 20110706064440) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -288,27 +288,28 @@ ActiveRecord::Schema.define(:version => 20110518123745) do
   end
 
   create_table "settlements", :force => true do |t|
-    t.integer  "org_id",                                                                              :null => false
+    t.integer  "org_id",                                                                                  :null => false
     t.integer  "user_id"
-    t.string   "mth",                   :limit => 6,                                                  :null => false
-    t.boolean  "is_active",                                                         :default => true, :null => false
-    t.decimal  "start_fee",                          :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "start_carrying_fee",                 :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "start_net_income",                   :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "start_radio",                        :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "start_push_money",                   :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "back_fee",                           :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "back_carrying_fee",                  :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "back_net_income",                    :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "back_radio",                         :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "back_push_money",                    :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "total_push_money",                   :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "total_subsidy",                      :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "total_deduction",                    :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "act_push_money",                     :precision => 15, :scale => 2, :default => 0.0
+    t.string   "mth",                   :limit => 6,                                                      :null => false
+    t.boolean  "is_active",                                                          :default => true,    :null => false
+    t.decimal  "start_fee",                           :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "start_carrying_fee",                  :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "start_net_income",                    :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "start_radio",                         :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "start_push_money",                    :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "back_fee",                            :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "back_carrying_fee",                   :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "back_net_income",                     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "back_radio",                          :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "back_push_money",                     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "total_push_money",                    :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "total_subsidy",                       :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "total_deduction",                     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "act_push_money",                      :precision => 15, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "total_other_deduction",              :precision => 15, :scale => 2
+    t.decimal  "total_other_deduction",               :precision => 15, :scale => 2
+    t.string   "state",                 :limit => 20,                                :default => "draft"
   end
 
   create_table "system_functions", :force => true do |t|

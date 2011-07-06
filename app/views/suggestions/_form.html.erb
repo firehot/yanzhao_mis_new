@@ -1,11 +1,12 @@
 <fieldset class='blockLabels'>
   <%=f.hidden_field :is_secure,:value => true%>
+  <%=f.hidden_field :user_id,:value => current_user.id %>
   <legend>所有项目都为必填项目</legend>
   <%= f.hidden_field :org_id %>
   <% f.fields_for :message_visitors do |mv| %>
     <div class="ctrlHolder">
       <%= mv.label :user_id, "收信人" %>
-      <%= mv.select :user_id, select_for_managers %>
+      <%= mv.select :user_id,option_groups_departments_users_for_select_except_level(1) %>
     </div>
   <%end%>
 

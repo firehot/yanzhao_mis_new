@@ -15,7 +15,16 @@ class PunishmentsController < BaseController
     @punishment = Punishment.find(params[:id])
     respond_to do |format|
       format.html
+      format.js {render :partial => "show"}
+    end
+  end
+  #导出excel
+  def export_excel
+    @punishment = Punishment.find(params[:id])
+    respond_to do |format|
+      format.html
       format.js {render :partial => "export_excel"}
     end
+
   end
 end

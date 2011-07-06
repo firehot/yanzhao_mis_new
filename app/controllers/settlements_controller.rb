@@ -15,8 +15,8 @@ class SettlementsController < BaseController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @settlements }
-      format.csv do 
-        sum = 
+      format.csv do
+        sum =
           [
             "总计:",
             @sum_info[:start_push_money],
@@ -36,7 +36,7 @@ class SettlementsController < BaseController
   def new
     #先判断是否已存在结算信息
     if @search.count > 0
-      @settlement = @search.first 
+      @settlement = @search.first
       flash[:error] = "结算表已存在&nbsp;&nbsp;<a href=#{edit_settlement_path(@settlement)}>修改</a>."
       redirect_to :back
     else
@@ -49,7 +49,7 @@ class SettlementsController < BaseController
       contracts = Contract.org_id_is(params[:search][:org_id_is]).date_from_lte(first_day).date_to_gte(last_day)
       if contracts.blank?
         flash[:error] = "未找到符合条件的合同模板."
-        redirect_to :back 
+        redirect_to :back
       else
         @settlement.build_lines(contracts.first,params[:search][:mth_is])
       end
@@ -111,5 +111,15 @@ class SettlementsController < BaseController
       format.html { redirect_to(settlements_url) }
       format.xml  { head :ok }
     end
+  end
+  # PUT /settlements/1/audit
+  def audit
+    @settlement = Settlement.find(params[:id])
+    if @settlement.audit
+      flash[:notice]="结算表审核完成."
+    else
+      flash[:error]="结算表审核失败."
+    end
+    redirect_to :back
   end
 end

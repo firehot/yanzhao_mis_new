@@ -30,5 +30,13 @@ class Settlement < ActiveRecord::Base
   def exp_org_name
     self.org.name
   end
+  #审核
+  def audit
+    self.update_attributes(:state => "audited")
+  end
+  #是否已审核
+  def audited?
+    self.state.eql? "audited"
+  end
 
 end

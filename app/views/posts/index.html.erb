@@ -1,42 +1,40 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => "caption" %>
-  </div>          
-  <div class="content">          
-    <h2 class="title">收信列表</h2>
+  </div>
+  <div class="content">
+    <h2 class="title">信息列表</h2>
     <div class="inner">
       <table class="table">
         <%@posts.each do |post| -%>
           <tr class="<%= cycle("odd", "even") %> <%= check_message_state(post)%>">
             <td>
-              <span class='ellipsis'> 发件人:<%= post.user == current_user ? '我' : post.user.username%></span>
+              <%= link_to post.title, post_path(post,:active_sub_tab => 4) %>
             </td>
             <td>
-              <span class='ellipsis' style='width : 500px'><%= link_to post.title, post_path(post,:active_sub_tab => 4) %></span>
+              <span class='ellipsis'> <%= post.user == current_user ? '我' : post.user.username%></span>
             </td>
-
             <td>
-              <%= status_time_ago_in_words(post.created_at) %>
+              <%= post.created_at.strftime("%y-%m-%d %H:%M") %>
             </td>
-          </tr>          
+            <td>
+              [<%= post.comments.size %>] 人回复
+            </td>
+          </tr>
         <%end%>
-        <%if @posts.blank?%>
-          <tr><td colspan='20'></td></tr>
-          <%5.times do |index|%>
-            <%if index == 2%>
-              <tr class="<%= cycle("odd", "even") %>"><td colspan='20' class='text-center'>当前没有信件&nbsp;&nbsp;<%=link_to "写信",new_post_path%></td></tr>
-            <%else%>
-              <tr class="<%= cycle("odd", "even") %>"><td colspan='20'>&nbsp;</td></tr>
-            <%end%>
-          <%end%>
-        <%end%>
-
       </table>
     </div>
     <div class="actions-bar wat-cf">
       <div class="actions">
         <%=will_paginate @posts %>
       </div>
+    </div>
+    <div class='inner'>
+      <hr />
+      <h3>发布新信息</h3>
+      <% form_for Post.new, :html => { :class => :uniForm } do |f| -%>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end %>
     </div>
   </div>
 </div>

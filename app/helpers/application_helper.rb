@@ -23,6 +23,13 @@ module ApplicationHelper
     search = Department.is_active_is(true).search(search_param)
     option_groups_from_collection_for_select(search.all,:users,:name,:id,:username)
   end
+  #按照机构分组选择用户
+  def option_groups_departments_users_for_select_except_level(level)
+    #没有用户及无效的机构被剔除
+    search = Department.is_active_is(true)
+    option_groups_from_collection_for_select(search.all,"user_except_level('#{level}')",:name,:id,:username)
+  end
+
   #按照机构分组选择用户,只显示有对应权限的用户
   def option_groups_departments_users_for_select_with_power(func_key)
     #没有用户及无效的机构被剔除

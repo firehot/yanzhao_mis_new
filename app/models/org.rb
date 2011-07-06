@@ -7,4 +7,10 @@ class Org < ActiveRecord::Base
     ret_users = self.users.is_active_is(true).powers_is_select_is(true).powers_system_function_func_key_is(func_key)
     ret_users.uniq
   end
+
+  #去除董事长级别
+  def user_except_level(level)
+    ret_users = self.users.is_active_is(true).level_ne(level)
+    ret_users.uniq
+  end
 end

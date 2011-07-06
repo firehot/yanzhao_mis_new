@@ -1,12 +1,12 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => 'caption' %>
-  </div>          
-  <div class="content">          
+  </div>
+  <div class="content">
     <h2 class="title">结算信息列表</h2>
     <div class="inner">
       <table class="table">
-        <tr>             
+        <tr>
           <th>单位</th>
           <th>月份</th>
           <th>始发货提成</th>
@@ -28,7 +28,13 @@
             <td><%= settlement.total_deduction %></td>
             <td><%= settlement.act_push_money %></td>
             <td class="last">
-              <%= link_to "查看/打印", settlement,:popup => ['分部返款结算表','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']%> |
+
+              <%if check_power('audit_settlement') and !settlement.audited?%>
+                <%= link_to "审核", audit_settlement_path(settlement),:method => :put %> |
+              <%end%>
+              <%if settlement.audited?%>
+                <%= link_to "查看/打印", settlement,:popup => ['分部返款结算表','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']%> |
+              <%end%>
               <%if check_power('edit_settlement')%>
                 <%= link_to "修改", edit_settlement_path(settlement,:active_sub_tab => 4) %> |
               <%end%>
@@ -37,7 +43,7 @@
                 <%= link_to "删除", settlement, :method => :delete, :confirm => "确认要删除吗?" %>
               <%end%>
             </td>
-          </tr>          
+          </tr>
         <% end -%>
         <tr>
           <td colspan='8'>&nbsp;</td>

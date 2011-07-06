@@ -43,8 +43,8 @@
             <li class="<%= check_current_controller(['notices','rules','address_books']) %>">
               <%=link_to "公共信息#{unread_notices_rules_sign}",notices_path("search[state_is]" => "published")%>
             </li>
-            <li class="<%= check_current_controller(['posts']) %>">
-              <%=link_to "在线交流#{unread_posts_sign}",posts_path("search[user_id_does_not_equal]" => current_user)%>
+            <li class="<%= check_current_controller(['posts','suggestions']) %>">
+              <%=link_to "在线交流#{unread_posts_sign}",posts_path%>
             </li>
             <!--
             <%if check_power_group('贵宾系统')%>

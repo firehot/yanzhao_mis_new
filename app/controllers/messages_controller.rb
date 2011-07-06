@@ -11,14 +11,13 @@ class MessagesController < BaseController
   def index
     messages = @search.paginate :page => params[:page],:order => "created_at DESC,org_id"
     #对通知公告信息按照发布部门进行分组
-    messages_group = messages.group_by {|message| message.org.name }
+    messages_group = messages.group_by {|message| message.org.try(:name) }
 
     instance_variable_set("@#{@param_name.tableize}",messages)
     instance_variable_set("@#{@param_name.tableize}_group",messages_group)
     respond_to do |format|
       format.html { render params[:template] if !params[:template].blank? }# index.html.erb
       format.xml  { render :xml => messages }
-      
     end
   end
   # GET /the_models/new
@@ -105,7 +104,7 @@ class MessagesController < BaseController
     message = @model_klazz.find(params[:id])
 
     instance_variable_set("@#{@param_name}",message)
-    
+
     respond_to do |format|
       if message.save
         format.html

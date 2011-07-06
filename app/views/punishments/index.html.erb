@@ -7,14 +7,14 @@
     <div class="inner">
       <table class="table">
         <%@punishments.group_by(&:org).each do |org,ps| -%>
-          <tr><%=org.name%></tr>
+          <tr><td colspan='7'><%=org.name%></td></tr>
           <%ps.each do |p|%>
             <tr class="<%= cycle("odd", "even") %>">
               <td>
                 <%= p.punish_date.strftime("%Y-%m-%d") %>
               </td>
               <td>
-                <%= link_to p.title, p,:class => "ellipsis'" %>
+                <%=link_to p.title,p, :onclick =>"Modalbox.show(this.href,{title : '处罚信息',width : 500});return false;"%>
               </td>
               <td>
                 <%= "#{p.target_org.try(:name)}" %>
@@ -25,20 +25,24 @@
 
               <td>
                 <%if check_power("destroy_punishment")%>
-                  <%= link_to "删除", p, :method => :delete, :confirm => "确定删除吗?" %>
+                  <%= link_to "删除", p, :method => :delete, :confirm => "确定删除吗?" %> |
                 <%end%>
-              </td>
-              <td>
                 <%if check_power("edit_punishment") %>
-                  <%= link_to "修改", edit_punishment_path(p)%>
+                  <%= link_to "修改", edit_punishment_path(p)%> |
                 <%end%>
-              </td>
-              <td>
-                <%= link_to_remote "导出excel",:url => punishment_path(p,:format => :js),:method => :get%>
+
+                <%= link_to_remote "导出excel",:url => export_excel_punishment_path(p,:format => :js),:method => :get%>
               </td>
             </tr>
           <% end -%>
         <% end -%>
+        <tfoot>
+          <tr>
+            <td colspan='3'>合计</td>
+            <td><%= @search.sum(:punishment_fee) %></td>
+            <td>&nbsp;</td>
+          </tr>
+        </tfoot>
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">

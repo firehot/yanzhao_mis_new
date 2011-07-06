@@ -1,12 +1,11 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => 'caption' %>
-  </div>          
+  </div>
   <div class="content">
     <div class="inner">
       <h2 class='text-center'><%=@post.title%></h2>
-      <p><%=@post.org.name%> | <%=@post.user.try(:username)%></p>
-      <p><%=status_time_ago_in_words(@post.created_at)%> </p>
+      <p><%=@post.created_at.strftime("%y-%m-%d %H:%M")%> </p>
       <hr />
       <p>
         <%= @post.body %>
