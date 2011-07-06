@@ -5,6 +5,9 @@
     <ul class="navigation">
       <li><%= link_to_remote "导出word",:url => rule_path(@rule,:format => :js),:method => :get%>
     </ul>
+    <div style='position : absolute;left : -9999px;'>
+      <%=render "word" %>
+    </div>
   <% end %>
 </div>
 

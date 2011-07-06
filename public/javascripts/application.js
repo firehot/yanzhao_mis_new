@@ -513,6 +513,7 @@ var export_word = function(el_id) {
 		word.Application.Visible = true;
 	}
 	catch(e) {
+          window.alert(e.message);
 		window.alert("导出失败,请确认您已安装word软件,并调整了IE的安全设置.");
 	}
 };

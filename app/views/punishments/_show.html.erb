@@ -1,24 +1,54 @@
-<table class='table'>
+<table class='table' style='border-collapse : collapse;' id="punishment_table">
   <tr>
-    <td>处罚时间:</td>
-    <td><%= @punishment.punish_date.strftime("%Y-%m-%d") %></td>
-    <td>经手人:</td>
-    <td><%= @punishment.handled%></td>
+    <td colspan='4' style='text-align : center;'><%= Client.first.name%></td>
   </tr>
   <tr>
-    <td>被罚机构:</td>
-    <td colspan='3'><%= @punishment.target_org.name %></td>
+    <td colspan='4' style='text-align : center;'>内部罚款决定书</td>
   </tr>
   <tr>
-    <td>处罚原因:</td>
-    <td colspan='3'><%= @punishment.content %></td>
+    <td style='border : thin solid #000;'>被罚机构:</td>
+    <td style='border : thin solid #000;'><%= @punishment.target_org.name %></td>
+    <td style='border : thin solid #000;'>日期:</td>
+    <td style='border : thin solid #000;'><%= @punishment.punish_date.strftime("%Y-%m-%d") %></td>
   </tr>
   <tr>
-    <td>处罚依据:</td>
-    <td colspan='3'><%= @punishment.title %></td>
+    <td style='border : thin solid #000;'>处罚原因:</td>
+    <td colspan='3' style='border : thin solid #000;'><%= @punishment.content %></td>
   </tr>
   <tr>
-    <td>罚款金额:</td>
-    <td colspan='3'><%= @punishment.punishment_fee %></td>
+    <td style='border : thin solid #000;'>处罚依据:</td>
+    <td colspan='3' style='border : thin solid #000;'><%= @punishment.title %></td>
+  </tr>
+  <tr>
+    <td style='border : thin solid #000;'>处罚金额:</td>
+    <td colspan='2' style='border : thin solid #000;'>人民币(大写)<%= convertNumToChinese @punishment.punishment_fee %></td>
+    <td style='border : thin solid #000;'>&yen;&nbsp;<%= @punishment.punishment_fee %></td>
+  </tr>
+  <tr>
+    <td>录入机构:</td>
+    <td><%= @punishment.org.try(:name) %></td>
+    <td>主管签字:</td>
+    <td>&nbsp;</td>
   </tr>
 </table>
+<div class="actions-bar text-center">
+  <%=link_to_function '打印',"", :class => 'sexybutton sexysimple sexyblue',:id => "btn_print_punishment"%>
+</div>
+<script type='text/javascript'>
+  var print_func = function(){
+    var web_print =  new com.yanzhao.web_print();
+    var print_config = {
+        top : 0,
+        left : 0,
+        width : '150mm',
+        height : '100mm',
+        content : $('punishment_table').outerHTML
+
+    };
+    web_print.print_html(print_config);
+  };
+  $('btn_print_punishment').observe('click',print_func);
+
+
+</script>
+
