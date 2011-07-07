@@ -6,7 +6,7 @@
   <% f.fields_for :message_visitors do |mv| %>
     <div class="ctrlHolder">
       <%= mv.label :user_id, "收信人" %>
-      <%= mv.select :user_id,option_groups_departments_users_for_select_except_level(1) %>
+      <%= mv.select :user_id,option_groups_departments_users_for_select_except_level(0) %>
     </div>
   <%end%>
 
