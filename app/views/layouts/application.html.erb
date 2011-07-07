@@ -91,6 +91,9 @@
                 <%=link_to "投票系统",votes_path("search[org_id_eq]" => current_user.org) %>
               </li>
             <% end %>
+            <li class="<%= check_current_controller(['employees','salary_tables']) %>">
+              <%= link_to "工资核算", salary_tables_path(:active_sub_tab => 1)  %>
+            </li>
 
           </ul>
         </div>

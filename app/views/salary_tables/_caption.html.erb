@@ -1,0 +1,4 @@
+<ul class="wat-cf">
+  <li class="first  <%=check_sub_active_tab(1)%>"><%= link_to "工资表", salary_tables_path(:active_sub_tab => 1)  %></li>
+  <li class="<%=check_sub_active_tab(2)%>"><%= link_to "员工资料", employees_path(:active_sub_tab => 2) %></li>
+</ul>

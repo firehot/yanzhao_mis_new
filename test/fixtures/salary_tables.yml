@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  mth: MyString
+  bill_date: 2011-07-07
+  note: MyString
+  user: 
+  state: MyString
+
+two:
+  mth: MyString
+  bill_date: 2011-07-07
+  note: MyString
+  user: 
+  state: MyString

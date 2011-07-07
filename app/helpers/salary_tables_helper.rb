@@ -1,0 +1,2 @@
+module SalaryTablesHelper
+end

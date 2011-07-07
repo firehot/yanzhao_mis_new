@@ -1,0 +1,67 @@
+<fieldset class='inlineLabels'>
+  <%=f.error_messages%>
+  <div class="ctrlHolder">
+    <%= f.label :mth, "月份" %>
+    <%=f.select :mth,months_ago_for_select %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :note, "备注" %>
+    <%= f.text_field :note, :class => 'textInput' %>
+  </div>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>出勤天数</th>
+        <th>基本工资</th>
+        <th>工龄工资</th>
+        <th>岗位津贴</th>
+        <th>出勤奖</th>
+        <th>伙食补助</th>
+        <th>住房补贴</th>
+        <th>其他补助</th>
+        <th>应扣款项</th>
+        <th>实发工资</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%f.fields_for :salary_table_lines do |stl|%>
+        <tr>
+          <td>
+            <%= stl.hidden_field :employee_id %>
+            <%= stl.object.employee.name %>
+          </td>
+          <td><%= stl.text_field :work_days,:style => "width : 50px;" %></td>
+          <td><%= stl.text_field :base_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true %></td>
+          <td><%= stl.text_field :work_year_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :position_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :work_days_added,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :food_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :house_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :other_added,:style => "width : 50px;" %></td>
+          <td><%= stl.text_field :deducted_fee,:style => "width : 50px;"%></td>
+          <td><%= stl.text_field :act_salary,:style => "width : 50px;background-color : #E6E6E6;"%></td>
+        </tr>
+      <% end%>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>合计</td>
+        <td><span id='sum_work_days'></span></td>
+        <td><span id='sum_base_salary'></span></td>
+        <td><span id='sum_work_year_salary'></span></td>
+        <td><span id='sum_position_salary'></span></td>
+        <td><span id='sum_work_days_added'></span></td>
+        <td><span id='sum_food_salary'></span></td>
+        <td><span id='sum_house_salary'></span></td>
+        <td><span id='sum_other_added'></span></td>
+        <td><span id='sum_deducted_fee'></span></td>
+        <td><span id='sum_act_salary'></span></td>
+      </tr>
+    </tfoot>
+  </table>
+</fieldset>
+<div class="actions-bar">
+  <%=link_to_function '保存信息',"$('salary_table_form').submit();", :class => 'sexybutton sexysimple sexyblue'%>
+  <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+</div>

@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :salary_tables
+
+  map.resources :employees
+
   map.resources :suggestions,:has_many => :comments
 
   map.resources :votes

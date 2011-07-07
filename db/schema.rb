@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110706064440) do
+ActiveRecord::Schema.define(:version => 20110707083858) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -182,6 +182,25 @@ ActiveRecord::Schema.define(:version => 20110706064440) do
     t.datetime "updated_at"
   end
 
+  create_table "employees", :force => true do |t|
+    t.string   "code",           :limit => 20
+    t.string   "name",           :limit => 10,                                                  :null => false
+    t.string   "sex",            :limit => 1
+    t.string   "id_card",        :limit => 30
+    t.string   "location",       :limit => 60
+    t.integer  "org_id"
+    t.string   "position",       :limit => 20
+    t.string   "entry_date"
+    t.boolean  "is_active",                                                   :default => true
+    t.decimal  "salary_base",                  :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "work_year_base",               :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "position_base",                :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "food_base",                    :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "house_base",                   :precision => 10, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "m_storages", :force => true do |t|
     t.integer  "warehouse_id",                                                   :null => false
     t.integer  "material_id",                                                    :null => false
@@ -276,6 +295,33 @@ ActiveRecord::Schema.define(:version => 20110706064440) do
     t.datetime "updated_at"
     t.integer  "org_id"
     t.integer  "punishment_fee",               :default => 0
+  end
+
+  create_table "salary_table_lines", :force => true do |t|
+    t.integer  "employee_id",                                                      :null => false
+    t.decimal  "work_days",        :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "base_salary",      :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "work_year_salary", :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "position_salary",  :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "food_salary",      :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "house_salary",     :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "work_days_added",  :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "other_added",      :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "deducted_fee",     :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "act_salary",       :precision => 10, :scale => 2, :default => 0.0
+    t.integer  "salary_table_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "salary_tables", :force => true do |t|
+    t.string   "mth",        :limit => 6,                       :null => false
+    t.date     "bill_date",                                     :null => false
+    t.string   "note",       :limit => 20
+    t.integer  "user_id"
+    t.string   "state",      :limit => 10, :default => "draft", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "settlement_lines", :force => true do |t|

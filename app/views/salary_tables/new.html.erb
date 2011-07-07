@@ -1,0 +1,15 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render :partial => 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">新建工资表</h2>
+    <div class="inner">
+      <% form_for @salary_table, :html => { :class => :uniForm,:id => "salary_table_form" } do |f| -%>
+        <%= render "form", :f => f %>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render('sidebar') %>

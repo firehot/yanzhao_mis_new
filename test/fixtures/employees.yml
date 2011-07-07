@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  sex: MyString
+  id_card: MyString
+  location: MyString
+  org: 
+  position: MyString
+  entry_date: MyString
+  is_active: false
+
+two:
+  code: MyString
+  name: MyString
+  sex: MyString
+  id_card: MyString
+  location: MyString
+  org: 
+  position: MyString
+  entry_date: MyString
+  is_active: false

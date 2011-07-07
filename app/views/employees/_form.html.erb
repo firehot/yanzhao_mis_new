@@ -1,0 +1,66 @@
+<fieldset class='blockLabels'>
+  <%=f.error_messages%>
+
+  <div class="ctrlHolder">
+    <%= f.label :org_id, "所属部门" %>
+    <%=f.select :org_id,departments_for_select %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :name, "姓名" %>
+    <%= f.text_field :name, :class => 'textInput' %>
+  </div>
+ <div class="ctrlHolder">
+    <%= f.label :code, "编码" %>
+    <%= f.text_field :code, :class => 'textInput' %>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :sex, "性别" %>
+    <%= f.select :sex,sexes_for_select %>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :id_card, "身份证号" %>
+    <%= f.text_field :id_card, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :location, "籍贯" %>
+    <%= f.text_field :location, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :position, "职位" %>
+    <%= f.text_field :position, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :entry_date, "入职日期" %>
+    <%=f.calendar_date_select :entry_date,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :is_active, "有效标志" %>
+    <%= f.check_box :is_active %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :salary_base, "基本工资基数" %>
+    <%= f.text_field :salary_base,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :work_year_base, "工龄工资基数" %>
+    <%= f.text_field :work_year_base,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :position_base, "岗位津贴基数" %>
+    <%= f.text_field :position_base,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :food_base, "伙食补助基数" %>
+    <%= f.text_field :food_base,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :house_base, "住房补贴基数" %>
+    <%= f.text_field :house_base,:class => "shortText" %>
+  </div>
+</fieldset>
+<div class="actions-bar">
+  <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
+  <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+</div>

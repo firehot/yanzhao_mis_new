@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  employee: 
+  work_days: 9.99
+  base_salary: 9.99
+  work_year_salary: 9.99
+  position_salary: 9.99
+  food_salary: 9.99
+  house_salary: 9.99
+  work_days_added: 9.99
+  other_added: 9.99
+  deducted_fee: 9.99
+  salary_table: 
+
+two:
+  employee: 
+  work_days: 9.99
+  base_salary: 9.99
+  work_year_salary: 9.99
+  position_salary: 9.99
+  food_salary: 9.99
+  house_salary: 9.99
+  work_days_added: 9.99
+  other_added: 9.99
+  deducted_fee: 9.99
+  salary_table: 

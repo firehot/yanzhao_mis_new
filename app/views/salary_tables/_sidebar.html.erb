@@ -1,0 +1,22 @@
+<div class="block">
+  <h3>新建工资表</h3>
+  <div class="content">
+    <% form_for SalaryTable.search,:url => {:controller =>:salary_tables,:action => :new}, :html => { :class => :uniForm } do |f| -%>
+      <fieldset class='inlineLabels'>
+        <div class='ctrlHolder'>
+          <%=f.label :mth,"月份" %>
+          <%=f.select :mth,months_ago_for_select %>
+        </div>
+      </fieldset>
+      <div class="actions-bar">
+        <%=f.submit '新建工资表', :class => 'sexybutton sexysimple sexyblue'%>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="block">
+  <h3>新建</h3>
+  <ul class="navigation">
+    <li><%= link_to "新建员工信息", new_employee_path %></li>
+  </ul>
+</div>

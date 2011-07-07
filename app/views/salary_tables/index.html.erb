@@ -1,0 +1,38 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">工资表</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>月份</th>
+          <th>创建时间</th>
+          <th>创建人</th>
+          <th>状态</th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @salary_tables.each_with_index do |salary_table,index| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td><%= index + 1 %></td>
+            <td><%=salary_table.mth%></td>
+            <td><%=salary_table.bill_date %></td>
+            <td><%=salary_table.user.try(:username) %></td>
+            <td><%=salary_table.state %></td>
+            <td class="last">
+              <%= link_to "修改", edit_salary_table_path(salary_table) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+          <%=will_paginate @salary_tables %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>
