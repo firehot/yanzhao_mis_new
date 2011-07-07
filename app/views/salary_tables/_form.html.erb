@@ -1,5 +1,9 @@
 <fieldset class='inlineLabels'>
   <%=f.error_messages%>
+  <% if f.object.new_record?%>
+    <%= f.hidden_field :bill_date,:value => Date.today %>
+    <%= f.hidden_field :user_id,:value => current_user.id %>
+  <%end%>
   <div class="ctrlHolder">
     <%= f.label :mth, "月份" %>
     <%=f.select :mth,months_ago_for_select %>
@@ -29,18 +33,23 @@
         <tr>
           <td>
             <%= stl.hidden_field :employee_id %>
+            <%= hidden_field_tag :salary_base,stl.object.employee.salary_base,:class => "salary_base" %>
+            <%= hidden_field_tag :work_year_base, stl.object.employee.work_year_base,:class => "work_year_base" %>
+            <%= hidden_field_tag :position_base, stl.object.employee.position_base,:class => "position_base" %>
+            <%= hidden_field_tag :food_base,stl.object.employee.food_base,:class => "food_base" %>
+            <%= hidden_field_tag :house_base,stl.object.employee.house_base,:class => "house_base" %>
             <%= stl.object.employee.name %>
           </td>
-          <td><%= stl.text_field :work_days,:style => "width : 50px;" %></td>
-          <td><%= stl.text_field :base_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true %></td>
-          <td><%= stl.text_field :work_year_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
-          <td><%= stl.text_field :position_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
-          <td><%= stl.text_field :work_days_added,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
-          <td><%= stl.text_field :food_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
-          <td><%= stl.text_field :house_salary,:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
-          <td><%= stl.text_field :other_added,:style => "width : 50px;" %></td>
-          <td><%= stl.text_field :deducted_fee,:style => "width : 50px;"%></td>
-          <td><%= stl.text_field :act_salary,:style => "width : 50px;background-color : #E6E6E6;"%></td>
+          <td><%= stl.text_field :work_days,:class => 'work_days',:style => "width : 50px;" %></td>
+          <td><%= stl.text_field :base_salary,:class =>"base_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true %></td>
+          <td><%= stl.text_field :work_year_salary,:class => "work_year_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :position_salary,:class =>"position_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :work_days_added,:class => "work_days_added",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :food_salary,:class => "food_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :house_salary,:class => "house_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :other_added,:style => "width : 50px;",:class => "other_added" %></td>
+          <td><%= stl.text_field :deducted_fee,:style => "width : 50px;",:class => "deducted_fee"%></td>
+          <td><%= stl.text_field :act_salary,:class =>"act_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true%></td>
         </tr>
       <% end%>
     </tbody>
