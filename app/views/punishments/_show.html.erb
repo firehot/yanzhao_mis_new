@@ -6,10 +6,10 @@
     <td colspan='4' style='text-align : center;'>内部罚款决定书</td>
   </tr>
   <tr>
-    <td style='border : thin solid #000;'>被罚机构:</td>
-    <td style='border : thin solid #000;'><%= @punishment.target_org.name %></td>
-    <td style='border : thin solid #000;'>日期:</td>
-    <td style='border : thin solid #000;'><%= @punishment.punish_date.strftime("%Y-%m-%d") %></td>
+    <td style='border : thin solid #000;width : 30mm;'>被罚机构:</td>
+    <td style='border : thin solid #000;width : 70mm;'><%= @punishment.target_org.name %></td>
+    <td style='border : thin solid #000;width : 30mm;'>日期:</td>
+    <td style='border : thin solid #000;width : 60mm;'><%= @punishment.punish_date.strftime("%Y-%m-%d") %></td>
   </tr>
   <tr>
     <td style='border : thin solid #000;'>处罚原因:</td>
@@ -40,8 +40,8 @@
     var print_config = {
         top : 0,
         left : 0,
-        width : '150mm',
-        height : '100mm',
+        width : '210mm',
+        height : '105mm',
         content : $('punishment_table').outerHTML
 
     };
