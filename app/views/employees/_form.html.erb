@@ -59,6 +59,11 @@
     <%= f.label :house_base, "住房补贴基数" %>
     <%= f.text_field :house_base,:class => "shortText" %>
   </div>
+  <div class="ctrlHolder">
+    <%= f.label :order_by, "排序" %>
+    <%= f.text_field :order_by,:class => "shortText" %>
+  </div>
+
 </fieldset>
 <div class="actions-bar">
   <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
