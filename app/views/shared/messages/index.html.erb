@@ -7,8 +7,8 @@
     <h2 class="title"><%="#{@title}列表"%></h2>
     <div class="inner">
       <table class="table" style='font-size : 12px;'>
-        <%@messages_group.each do |org_name,messages| -%>
-          <tr><td colspan='100'><h3><%=org_name%></h3></td></tr>
+        <%@messages_group.each do |org,messages| -%>
+          <tr><td colspan='100'><h3><%=org.try(:name)%></h3></td></tr>
           <% messages.each do |message| -%>
             <tr class="<%= cycle("odd", "even") %> <%= check_message_state(message)%>">
               <td>

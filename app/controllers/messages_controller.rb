@@ -11,7 +11,7 @@ class MessagesController < BaseController
   def index
     messages = @search.paginate :page => params[:page],:order => "created_at DESC,org_id"
     #对通知公告信息按照发布部门进行分组
-    messages_group = messages.group_by {|message| message.org.try(:name) }
+    messages_group = messages.group_by(&:org)
 
     instance_variable_set("@#{@param_name.tableize}",messages)
     instance_variable_set("@#{@param_name.tableize}_group",messages_group)

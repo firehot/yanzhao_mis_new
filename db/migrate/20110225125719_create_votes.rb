@@ -1,4 +1,4 @@
-#投票信息
+投票信息
 class CreateVotes < ActiveRecord::Migration
   def self.up
     create_table :votes do |t|
