@@ -34,7 +34,7 @@ Rails::Initializer.run do |config|
   config.gem "rails",:version => "2.3.5"
   config.gem "will_paginate",:lib =>"will_paginate"
   config.gem "calendar_date_select"
-  config.gem "warden",:version => "0.10.3"
+  config.gem "warden"
   config.gem "devise",:version => '1.0.6'
   config.gem "paperclip",:version => '2.3.0'
   config.gem 'fastercsv'
