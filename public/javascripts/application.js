@@ -581,9 +581,12 @@ document.observe("dom:loaded", function() {
 		var house_salary = house_base / 26 * work_days;
 		var work_days_added = 0;
 		//月出勤慢23天补助100
-		if (work_days >= 23) work_days_added += 100;
-		//每多1天补助20
-		work_days_added += (work_days - 23) * 20;
+		if (work_days >= 23)
+                {
+                  work_days_added += 100;
+                  //每多1天补助20
+                  work_days_added += (work_days - 23) * 20;
+                }
 		var act_salary = base_salary + work_year_salary + position_salary + food_salary + house_salary + work_days_added + other_added - deducted_fee;
 		//更新界面字段
 		parent_tr.down('input.base_salary').value = base_salary.toFixed(2);
@@ -603,6 +606,7 @@ document.observe("dom:loaded", function() {
 				tmp += parseFloat($(el).value)
 
 			});
+                        if($('sum_' + s))
 			$('sum_'+s).update(tmp.toFixed(2));
 
 		});
@@ -613,4 +617,33 @@ document.observe("dom:loaded", function() {
         cal_sum();
 
 });
-
+//工资表打印功能
+document.observe("dom:loaded", function() {
+  //打印入账联
+  var print_1 = function(evt,print_signature){
+    var s_table = $('salary_table_show').cloneNode(true);
+    s_table.setStyle({borderCollapse : 'collapse'});
+    s_table.select('.salary_table_title').invoke('setStyle',{textAlign : 'center'});
+    s_table.select('th,td').invoke('setStyle',{border : 'thin solid #000'});
+    s_table.select('.salary_table_title td,.salary_table_title th').invoke('setStyle',{border : 'none'});
+    s_table.select('.salary_table_foot td,.salary_table_foot th').invoke('setStyle',{border : 'none'});
+    //如果是打印发放联
+    if(print_signature)
+      s_table.select('.signature').invoke('show');
+    var printer = new com.yanzhao.web_print();
+    var print_config = {
+      top : 0,
+      left : 0,
+      width : '210mm',
+      height : '290mm',
+      pageName : 'A4',
+      content: s_table.outerHTML
+    };
+    printer.print_html(print_config);
+  };
+  if($('btn_print_salary_table_1'))
+  $('btn_print_salary_table_1').observe('click',print_1.bindAsEventListener(print_1,false));
+  //打印发放联
+  if($('btn_print_salary_table_2'))
+  $('btn_print_salary_table_2').observe('click',print_1.bindAsEventListener(print_1,true));
+});

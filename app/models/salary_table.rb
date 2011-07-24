@@ -9,4 +9,11 @@ class SalaryTable < ActiveRecord::Base
     end
     salary_table
   end
+  #审核
+  def audit
+    self.update_attributes(:state => 'audited')
+  end
+  def audited?
+    self.state.eql?('audited')
+  end
 end

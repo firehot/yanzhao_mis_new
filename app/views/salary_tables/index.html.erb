@@ -20,9 +20,13 @@
             <td><%=salary_table.mth%></td>
             <td><%=salary_table.bill_date %></td>
             <td><%=salary_table.user.try(:username) %></td>
-            <td><%=salary_table.state %></td>
+            <td><%=salary_table.audited? ? "已审核" : '草稿'%></td>
             <td class="last">
-              <%= link_to "修改", edit_salary_table_path(salary_table) %>
+              <%= link_to "查看", salary_table %>
+              <%if !salary_table.audited?%>
+                |
+                <%= link_to "修改", edit_salary_table_path(salary_table) %>
+              <%end%>
             </td>
           </tr>
         <% end %>

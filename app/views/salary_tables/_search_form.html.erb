@@ -1,0 +1,11 @@
+<% form_for SalaryTable.search,:url => {:controller =>:salary_tables,:action => :index},:html => {:class => :uniForm } do |f| -%>
+  <fieldset class='inlineLabels'>
+    <div class='ctrlHolder'>
+      <%=f.label :mth_is,"月份"%>
+      <%=f.select :mth_is,months_for_select,:include_blank => true %>
+    </div>
+  </fieldset>
+  <div class="actions-bar">
+    <%=f.submit '查询', :class => 'sexybutton sexysimple sexyblue'%>
+  </div>
+<% end -%>

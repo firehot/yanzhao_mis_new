@@ -1,0 +1,81 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">考勤统计</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class='employee_name'>姓名</th>
+          <th class='mth'>月份</th>
+          <th class='work_days'>出勤天数</th>
+          <th class='base_salary'>基本工资</th>
+          <th class='work_year_salary'>工龄工资</th>
+          <th class='position_salary'>岗位津贴</th>
+          <th class='work_days_added'>出勤奖</th>
+          <th class='food_salary'>伙食补助</th>
+          <th class='house_salary'>住房补贴</th>
+          <th class='other_added'>其他补助</th>
+          <th class='deducted_fee'>应扣款项</th>
+          <th class='act_salary'>实发工资</th>
+
+        </tr>
+        <%@salary_table_lines_group.each do |employee,lines| %>
+          <tr><td colspan='12'><%=employee.name%></td></tr>
+          <% lines.each do |line|%>
+            <tr class="<%= cycle("odd", "even") %>">
+              <td class='employee_name'>&nbsp;</td>
+              <td class='mth'><%= line.salary_table.mth %></td>
+              <td class='work_days'><%= line.work_days %></td>
+              <td class='base_salary'><%= line.base_salary%></td>
+              <td class='work_year_salary'><%= line.work_year_salary%></td>
+              <td class='position_salary'><%= line.position_salary %></td>
+              <td class='work_days_added'><%= line.work_days_added %></td>
+              <td class='food_salary'><%= line.food_salary %></td>
+              <td class='house_salary'><%= line.house_salary %></td>
+              <td class='other_added'><%= line.other_added %></td>
+              <td class='decuted_fee'><%= line.deducted_fee %></td>
+              <td class='act_salary'><%= line.act_salary%></td>
+            </tr>
+          <%end%>
+          <tr>
+            <td class='employee_name'></td>
+            <td class='mth'>小计:</td>
+            <td class='work_days'><%=lines.sum(&:work_days)%></td>
+            <td class='base_salary'><%=lines.sum(&:base_salary)%></td>
+            <td class='work_year_salary'><%=lines.sum(&:work_year_salary)%></td>
+            <td class='position_salary'><%=lines.sum(&:position_salary)%></td>
+            <td class='work_days_added'><%=lines.sum(&:work_days_added)%></td>
+            <td class='food_salary'><%=lines.sum(&:food_salary)%></td>
+            <td class='house_salary'><%=lines.sum(&:house_salary)%></td>
+            <td class='other_added'><%=lines.sum(&:other_added)%></td>
+            <td class='deducted_fee'><%=lines.sum(&:deducted_fee)%></td>
+            <td class='act_salary'><%=lines.sum(&:act_salary)%></td>
+          </tr>
+        <%end%>
+        <tr><td colspan='12'>&nbsp;</td></tr>
+        <tr>
+          <td class='employee_name'></td>
+          <td class='mth'>合计:</td>
+          <td class='work_days'><%=@salary_table_lines.sum(&:work_days)%></td>
+          <td class='base_salary'><%=@salary_table_lines.sum(&:base_salary)%></td>
+          <td class='work_year_salary'><%=@salary_table_lines.sum(&:work_year_salary)%></td>
+          <td class='position_salary'><%=@salary_table_lines.sum(&:position_salary)%></td>
+          <td class='work_days_added'><%=@salary_table_lines.sum(&:work_days_added)%></td>
+          <td class='food_salary'><%=@salary_table_lines.sum(&:food_salary)%></td>
+          <td class='house_salary'><%=@salary_table_lines.sum(&:house_salary)%></td>
+          <td class='other_added'><%=@salary_table_lines.sum(&:other_added)%></td>
+          <td class='deducted_fee'><%=@salary_table_lines.sum(&:deducted_fee)%></td>
+          <td class='act_salary'><%=@salary_table_lines.sum(&:act_salary)%></td>
+        </tr>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+          <%=will_paginate @salary_table_lines%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>

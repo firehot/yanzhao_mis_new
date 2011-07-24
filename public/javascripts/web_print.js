@@ -551,7 +551,7 @@ com.yanzhao.web_print.prototype = {
 	print_html: function(config) {
 		var print_object = this.get_print_object();
 		print_object.PRINT_INITA(config.top, config.left, config.width, config.height, config.print_name);
-		print_object.SET_PRINT_PAGESIZE(1, config.width, config.height, "");
+		print_object.SET_PRINT_PAGESIZE(1, config.width, config.height, typeof(config.pageName) == 'undefined' ? '' : config.pageName);
 		//添加content
 		print_object.ADD_PRINT_HTM(config.top, config.left, config.width, config.height, config.content);
 

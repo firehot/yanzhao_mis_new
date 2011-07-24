@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :salary_tables
+  map.resources :salary_tables,:member => {:audit => :put },:collection => {:index_sum => :get}
 
   map.resources :employees
 
