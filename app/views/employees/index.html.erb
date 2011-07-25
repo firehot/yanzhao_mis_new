@@ -28,7 +28,9 @@
             <td><%=employee.position %></td>
             <td><%=employee.entry_date %></td>
             <td class="last">
-              <%= link_to "修改", edit_employee_path(employee) %>
+              <%if check_power('edit_employee')%>
+                <%= link_to "修改", edit_employee_path(employee) %>
+              <%end%>
             </td>
           </tr>
         <% end %>

@@ -1,7 +1,7 @@
 <div class="actions-bar text-right">
-  <%if !@salary_table.audited?%>
+  <%if !@salary_table.audited? and check_power('audit_salary_table')%>
     <%=link_to '审核工资表',audit_salary_table_path(@salary_table),:method => :put, :class => 'sexybutton sexysimple sexyblue'%>
-  <%else%>
+  <%elsif check_power('print_salary_table')%>
     <%=link_to_function '打印入账联',"",:id =>"btn_print_salary_table_1",:class => 'sexybutton sexysimple sexyblue' %>
     <%=link_to_function '打印发放联',"",:id =>"btn_print_salary_table_2",:class => 'sexybutton sexysimple sexyblue' %>
   <%end%>

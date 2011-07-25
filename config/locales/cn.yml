@@ -36,6 +36,8 @@ cn:
       settlement: 结算表
       warehouse: 仓库信息
       punishment: 处罚信息
+      salary_table: 工资表
+      employee: 员工资料
     attributes:
       bill:
         bill_no: "票据号"

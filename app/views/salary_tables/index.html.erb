@@ -23,7 +23,7 @@
             <td><%=salary_table.audited? ? "已审核" : '草稿'%></td>
             <td class="last">
               <%= link_to "查看", salary_table %>
-              <%if !salary_table.audited?%>
+              <%if !salary_table.audited? and check_power('edit_salary_table')%>
                 |
                 <%= link_to "修改", edit_salary_table_path(salary_table) %>
               <%end%>

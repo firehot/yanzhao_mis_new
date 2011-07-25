@@ -5,7 +5,7 @@
   <div class="content">
     <h2 class="title">修改</h2>
     <div class="inner">
-      <% form_for @salary_table, :html => { :class => :uniForm } do |f| %>
+      <% form_for @salary_table, :html => { :class => :uniForm,:id =>'salary_table_form'} do |f| %>
         <%= render "form", :f => f %>
       <% end %>
     </div>
