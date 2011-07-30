@@ -17,11 +17,11 @@ class Array
     output = FasterCSV.generate(:col_sep => "\t", :row_sep => "\r\n")do |csv|
       csv << self
     end
-    ret =output.utf8_to_utf16 
+    ret =output.utf8_to_utf16
     if with_bom
-      BOM_HEADER + ret 
+      BOM_HEADER + ret
     else
-      ret  
+      ret
     end
   end
 end
@@ -41,7 +41,7 @@ module ActiveRecord
       File.delete(file_name) if File.exist? file_name
       File.open(file_name,"w") do |file|
         file.syswrite csv_string
-      end 
+      end
     end
     #导入数据到数据表中,包括id
     def self.import_csv(dir)
