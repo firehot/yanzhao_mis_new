@@ -6,7 +6,7 @@
   <%end%>
   <div class="ctrlHolder">
     <%= f.label :mth, "月份" %>
-    <%=f.select :mth,months_ago_for_select %>
+    <%=f.text_field :mth,:readonly => true %>
   </div>
   <div class="ctrlHolder">
     <%= f.label :note, "备注" %>

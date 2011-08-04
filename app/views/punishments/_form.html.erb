@@ -3,13 +3,18 @@
     <%=f.error_messages%>
     <%=f.hidden_field :violation_id %>
     <div class="ctrlHolder">
+      <%= f.label :title, "标题(选填)" %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="ctrlHolder">
       <%= f.label :punish_date, "处罚时间" %>
       <%= f.calendar_date_select :punish_date, :class => 'shortText',:value => Date.today %>
     </div>
 
     <div class="ctrlHolder">
-      <%= f.label :title, "处罚依据" %>
-      <%= f.text_field :title, :size => "30",:maxlength => "30",:class => 'textInput title' %>
+      <%= f.label :rule_id, "处罚依据" %>
+      <%= f.select :rule_id,rules_for_select(current_user.org),:prompt => "==请选择处罚依据==" %>
     </div>
     <!--
     <div class="ctrlHolder">

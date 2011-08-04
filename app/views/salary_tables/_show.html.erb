@@ -10,14 +10,12 @@
 <table class='table' id='salary_table_show'>
   <thead>
     <tr class='salary_table_title'>
-      <td colspan='20' class='text-center'><%="#{Client.first.name}(#{@salary_table.mth})工资表"%></td>
+      <td colspan='20' class='text-center'><%="#{Client.first.name}工资表"%></td>
     </tr>
     <tr class='salary_table_title'>
-      <td colspan='2'>月份:</td>
-      <td colspan='2'><%=@salary_table.mth %></td>
-      <td colspan='4'>&nbsp;</td>
-      <td colspan='2'>制表时间:</td>
-      <td colspan='2'><%=@salary_table.bill_date%></td>
+      <td colspan='2'>月份:<%=@salary_table.mth %></td>
+      <td colspan='8'>&nbsp;</td>
+      <td colspan='2'>制表时间:<%=@salary_table.bill_date%></td>
     </tr>
     <tr>
       <th class='employee_name'>姓名</th>
@@ -55,7 +53,6 @@
     <% end%>
   </tbody>
   <tfoot>
-    <tr><td colspan='20'>&nbsp;</td></tr>
     <tr>
       <td class='employee_name'>合计</td>
       <td class='work_days'><%=@salary_table.salary_table_lines.sum(:work_days)%></td>
@@ -70,11 +67,10 @@
       <td class='act_salary'><%=@salary_table.salary_table_lines.sum(:act_salary)%></td>
       <td class='signature' style='display : none;'>&nbsp;</td>
     </tr>
-    <tr><td colspan='20'>&nbsp;</td></tr>
     <tr class='salary_table_foot'>
-      <td colspan='2'>审核人:</td>
-      <td colspan='2'>&nbsp;</td>
-      <td colspan='2'>核算人:</td>
+      <td>审核人:</td>
+      <td colspan='3'>&nbsp;</td>
+      <td>核算人:</td>
       <td colspan='20'>&nbsp;</td>
     </tr>
   </tfoot>

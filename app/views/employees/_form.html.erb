@@ -13,6 +13,10 @@
     <%= f.label :code, "编码" %>
     <%= f.text_field :code, :class => 'textInput' %>
   </div>
+  <div class="ctrlHolder">
+    <%= f.label :entry_date, "入职日期(必填)" %>
+    <%=f.calendar_date_select :entry_date,:class => "shortText" %>
+  </div>
 
   <div class="ctrlHolder">
     <%= f.label :sex, "性别" %>
@@ -30,10 +34,6 @@
   <div class="ctrlHolder">
     <%= f.label :position, "职位" %>
     <%= f.text_field :position, :class => 'textInput' %>
-  </div>
-  <div class="ctrlHolder">
-    <%= f.label :entry_date, "入职日期" %>
-    <%=f.calendar_date_select :entry_date,:class => "shortText" %>
   </div>
   <div class="ctrlHolder">
     <%= f.label :is_active, "有效标志" %>

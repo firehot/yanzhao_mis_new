@@ -1,7 +1,14 @@
 class SalaryTablesController < BaseController
   skip_filter :create_search
   def new
-    @salary_table = SalaryTable.new_with_mth(params[:search][:mth])
+    #先查找当月工资表是否存在
+    if SalaryTable.exists?(:mth => params[:search][:mth])
+      flash[:notice] = "#{params[:search][:mth]}工资表已存在."
+      @salary_tables = SalaryTable.search(params[:search]).order("mth DESC").paginate :page => params[:page]
+      render :action => :index
+    else
+      @salary_table = SalaryTable.new_with_mth(params[:search][:mth])
+    end
   end
   def index
     @salary_tables = SalaryTable.search(params[:search]).order("mth DESC").paginate :page => params[:page]

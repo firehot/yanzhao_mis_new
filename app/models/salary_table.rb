@@ -1,6 +1,6 @@
 class SalaryTable < ActiveRecord::Base
   belongs_to :user
-  has_many :salary_table_lines
+  has_many :salary_table_lines,:dependent => :destroy
   accepts_nested_attributes_for :salary_table_lines
   def self.new_with_mth(mth = 1.months.ago.strftime('%y%m'))
     salary_table = self.new(:mth => mth,:bill_date => Date.today)

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725030247) do
+ActiveRecord::Schema.define(:version => 20110804020957) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -284,7 +284,7 @@ ActiveRecord::Schema.define(:version => 20110725030247) do
   end
 
   create_table "punishments", :force => true do |t|
-    t.string   "title",          :limit => 60,                :null => false
+    t.string   "title",          :limit => 60
     t.integer  "violation_id"
     t.date     "punish_date",                                 :null => false
     t.text     "content",                                     :null => false
@@ -296,6 +296,7 @@ ActiveRecord::Schema.define(:version => 20110725030247) do
     t.datetime "updated_at"
     t.integer  "org_id"
     t.integer  "punishment_fee",               :default => 0
+    t.integer  "rule_id"
   end
 
   create_table "salary_table_lines", :force => true do |t|

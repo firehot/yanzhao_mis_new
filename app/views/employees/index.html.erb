@@ -23,13 +23,16 @@
             <td><%=employee.org.name%></td>
             <td><%=employee.code %></td>
             <td><%=employee.name %></td>
-            <td><%=employee.sex %></td>
+            <td><%=employee.sex.eql?('M') ? "男" : "女" %></td>
             <td><%=employee.id_card %></td>
             <td><%=employee.position %></td>
             <td><%=employee.entry_date %></td>
             <td class="last">
               <%if check_power('edit_employee')%>
                 <%= link_to "修改", edit_employee_path(employee) %>
+              <%end%>
+              <%if check_power('destroy_employee')%>
+                &nbsp;|&nbsp;<%= link_to "删除", employee,:method => :delete,:confirm => "你确定删除该员工信息吗？" %>
               <%end%>
             </td>
           </tr>

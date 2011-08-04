@@ -574,11 +574,11 @@ document.observe("dom:loaded", function() {
 		var position_base = parseFloat(parent_tr.down('input.position_base').value);
 		var food_base = parseFloat(parent_tr.down('input.food_base').value);
 		var house_base = parseFloat(parent_tr.down('input.house_base').value);
-		var base_salary = salary_base / 26 * work_days;
-		var work_year_salary =work_year_base / 26 * work_days;
-		var position_salary = position_base / 26 * work_days;
-		var food_salary = food_base / 26 * work_days;
-		var house_salary = house_base / 26 * work_days;
+		var base_salary = Math.round(salary_base / 26 * work_days);
+		var work_year_salary = Math.round(work_year_base / 26 * work_days);
+		var position_salary = Math.round(position_base / 26 * work_days);
+		var food_salary = Math.round(food_base / 26 * work_days);
+		var house_salary = Math.round(house_base / 26 * work_days);
 		var work_days_added = 0;
 		//月出勤慢23天补助100
 		if (work_days >= 23)
@@ -622,9 +622,9 @@ document.observe("dom:loaded", function() {
   //打印入账联
   var print_1 = function(evt,print_signature){
     var s_table = $('salary_table_show').cloneNode(true);
-    s_table.setStyle({borderCollapse : 'collapse'});
-    s_table.select('.salary_table_title').invoke('setStyle',{textAlign : 'center'});
-    s_table.select('th,td').invoke('setStyle',{border : 'thin solid #000'});
+    s_table.setStyle({width : '100%',borderCollapse : 'collapse'});
+    s_table.select('.salary_table_title').invoke('setStyle',{fontSize : '20px',textAlign : 'center'});
+    s_table.select('th,td').invoke('setStyle',{height : '18px',textAlign : 'center',border : 'thin solid #000'});
     s_table.select('.salary_table_title td,.salary_table_title th').invoke('setStyle',{border : 'none'});
     s_table.select('.salary_table_foot td,.salary_table_foot th').invoke('setStyle',{border : 'none'});
     //如果是打印发放联
@@ -634,8 +634,8 @@ document.observe("dom:loaded", function() {
     var print_config = {
       top : 0,
       left : 0,
-      width : '210mm',
-      height : '290mm',
+      width : '290mm',
+      height : '210mm',
       pageName : 'A4',
       content: s_table.outerHTML
     };
