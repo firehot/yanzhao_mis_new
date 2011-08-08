@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804020957) do
+ActiveRecord::Schema.define(:version => 20110808050409) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20110804020957) do
     t.string   "doc_no",              :limit => 20
     t.boolean  "violation_generated",                :default => false
     t.boolean  "up_state",                           :default => false
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
   end
 
   create_table "base_public_messages_orgs", :id => false, :force => true do |t|

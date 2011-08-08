@@ -12,6 +12,11 @@
       <p>
         <%= @message.body %>
       </p>
+      <hr />
+      <p>
+        <%= link_to @message.attach_file_name,@message.attach.url if @message.attach_file_name.present? %>
+      </p>
+
       <div class='radius-box doc-info'>
         <h3 class='border-bottom'><%=link_to_function "点击查看文档信息","$('doc_info').toggle();" %></h3>
         <div id='doc_info' style='display : none;'>
@@ -27,10 +32,12 @@
           </h3>
           <ul>
             <%@message.message_visitors.each do |visit_info|%>
-              <li>
-                <%=visit_info.user.try(:username)%> |
-                <%=visit_info.visited_at.blank? ? "<span class='red-text'>还未查看</span>" : status_time_ago_in_words(visit_info.visited_at)%>
-              </li>
+              <% if visit_info.user.is_active%>
+                <li>
+                  <%=visit_info.user.try(:username)%> |
+                  <%=visit_info.visited_at.blank? ? "<span class='red-text'>还未查看</span>" : status_time_ago_in_words(visit_info.visited_at)%>
+                </li>
+              <%end%>
             <%end%>
           </ul>
         </div>

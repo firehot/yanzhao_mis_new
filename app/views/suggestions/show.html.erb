@@ -1,7 +1,7 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => 'posts/caption' %>
-  </div>          
+  </div>
   <div class="content">
     <div class="inner">
       <h2 class='text-center'><%=@suggestion.title%></h2>
@@ -11,6 +11,11 @@
       <p>
         <%= @suggestion.body %>
       </p>
+      <hr>附件</hr>
+      <p>
+        <%=link_to  @suggestion.attach_file_name,@suggestion.attach.url %>
+      </p>
+
       <%if !@suggestion.comments.blank?%>
         <div class='radius-box doc-info'>
           <h3 class='border-bottom'>留言(<%=@suggestion.comments.size%>条)</h3>

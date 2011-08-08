@@ -6,11 +6,11 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => "shared/messages/caption" %>
-  </div>          
-  <div class="content">            
+  </div>
+  <div class="content">
     <h2 class="title"><%="新建#{@title}"%></h2>
     <div class="inner">
-      <% form_for @message, :html => { :class => :uniForm,:id => "message_form" } do |f| -%>
+      <% form_for @message, :html => { :class => :uniForm,:multipart => true,:id => "message_form" } do |f| -%>
         <%= render :partial => "shared/messages/form", :locals => {:f => f} %>
       <% end -%>
     </div>

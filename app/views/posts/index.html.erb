@@ -32,7 +32,7 @@
     <div class='inner'>
       <hr />
       <h3>发布新信息</h3>
-      <% form_for Post.new, :html => { :class => :uniForm } do |f| -%>
+      <% form_for Post.new, :html => { :class => :uniForm,:multipart => true } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
       <% end %>
     </div>

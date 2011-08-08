@@ -25,6 +25,12 @@
     <%= f.label :body, "正文(最长3000个汉字)" %>
     <%= f.tinymce :body %>
   </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :attach, "附件" %>
+    <%= f.file_field :attach %>
+  </div>
+
   <% if !f.object.new_record? %>
     <div class="ctrlHolder">
       <%= f.label :is_active, "有效" %>

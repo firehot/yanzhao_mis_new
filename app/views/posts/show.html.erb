@@ -10,6 +10,10 @@
       <p>
         <%= @post.body %>
       </p>
+      <hr>附件:</hr>
+      <p>
+        <%= link_to @post.attach_file_name,@post.attach.url %>
+      </p>
       <%if !@post.comments.blank?%>
         <div class='radius-box doc-info'>
           <h3 class='border-bottom'>留言(<%=@post.comments.size%>条)</h3>

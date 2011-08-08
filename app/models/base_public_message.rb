@@ -1,4 +1,5 @@
 class BasePublicMessage < ActiveRecord::Base
+  has_attached_file :attach
   validates_presence_of :title,:message => "标题不可为空."
   include AASM
   #包含以下三种message
@@ -18,7 +19,7 @@ class BasePublicMessage < ActiveRecord::Base
   {
       :joins => :message_visitors ,
       :select => "DISTINCT base_public_messages.*",
-      :conditions => ["base_public_messages.state = 'published' AND message_visitors.state='draft' AND message_visitors.user_id = ?",user], 
+      :conditions => ["base_public_messages.state = 'published' AND message_visitors.state='draft' AND message_visitors.user_id = ?",user],
       :order => "base_public_messages.created_at DESC"
     }
   }

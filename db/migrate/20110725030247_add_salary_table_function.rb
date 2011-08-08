@@ -5,7 +5,6 @@ class AddSalaryTableFunction < ActiveRecord::Migration
     SystemFunction.create :group_name => "工资核算",:func_name => "查看工资表",:func_key => "index_salary_table"
     SystemFunction.create :group_name => "工资核算",:func_name => "新建工资表",:func_key => "new_salary_table"
     SystemFunction.create :group_name => "工资核算",:func_name => "修改工资表",:func_key => "edit_salary_table"
-    SystemFunction.create :group_name => "工资核算",:func_name => "删除工资表",:func_key => "destroy_salary_table"
     SystemFunction.create :group_name => "工资核算",:func_name => "审核工资表",:func_key => "audit_salary_table"
     SystemFunction.create :group_name => "工资核算",:func_name => "打印工资表",:func_key => "print_salary_table"
     SystemFunction.create :group_name => "工资核算",:func_name => "考勤统计",:func_key => "index_sum_salary_table"
@@ -13,7 +12,6 @@ class AddSalaryTableFunction < ActiveRecord::Migration
     SystemFunction.create :group_name => "工资核算",:func_name => "查看员工资料",:func_key => "index_employees"
     SystemFunction.create :group_name => "工资核算",:func_name => "新建员工资料",:func_key => "new_employee"
     SystemFunction.create :group_name => "工资核算",:func_name => "修改员工资料",:func_key => "edit_employees"
-    SystemFunction.create :group_name => "工资核算",:func_name => "删除员工资料",:func_key => "destroy_employees"
   end
 
   def self.down

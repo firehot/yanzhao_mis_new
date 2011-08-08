@@ -10,6 +10,11 @@
     <%= f.label :body, "正文(最长300个汉字)" %>
     <%= f.tinymce :body %>
   </div>
+  <div class="ctrlHolder">
+    <%= f.label :attach, "添加附件" %>
+    <%= f.file_field :attach %>
+  </div>
+
   <div class="actions-bar">
     <%=f.submit '发布', :class => 'sexybutton sexysimple sexyblue'%>
   </div>

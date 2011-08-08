@@ -2,11 +2,11 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => "posts/caption" %>
-  </div>          
-  <div class="content">            
+  </div>
+  <div class="content">
     <h2 class="title">写信</h2>
     <div class="inner">
-      <% form_for @suggestion, :html => { :class => :uniForm } do |f| -%>
+      <% form_for @suggestion, :html => { :class => :uniForm,:multipart => true } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
       <% end -%>
     </div>

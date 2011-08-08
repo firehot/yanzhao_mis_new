@@ -1,9 +1,9 @@
 <table class='table' style='border-collapse : collapse;' id="punishment_table">
   <tr>
-    <td colspan='4' style='text-align : center;'><%= Client.first.name%></td>
+    <td colspan='4' style='font-size : 20px;font-weight : bold;text-align : center;'><%= Client.first.name%></td>
   </tr>
   <tr>
-    <td colspan='4' style='text-align : center;'>内部罚款决定书</td>
+    <td colspan='4' style='font-size : 20px;font-weight : bold;text-align : center;'>内部罚款决定书</td>
   </tr>
   <tr>
     <td style='border : thin solid #000;width : 30mm;'>被罚机构:</td>
@@ -13,11 +13,11 @@
   </tr>
   <tr>
     <td style='border : thin solid #000;'>处罚原因:</td>
-    <td colspan='3' style='border : thin solid #000;'><%= @punishment.content %></td>
+    <td colspan='3' style='border : thin solid #000;height : 40mm;'><%= @punishment.content %></td>
   </tr>
   <tr>
     <td style='border : thin solid #000;'>处罚依据:</td>
-    <td colspan='3' style='border : thin solid #000;'><%= @punishment.title %></td>
+    <td colspan='3' style='border : thin solid #000;'><%= @punishment.rule.try(:title) %></td>
   </tr>
   <tr>
     <td style='border : thin solid #000;'>处罚金额:</td>
@@ -48,7 +48,6 @@
     web_print.print_html(print_config);
   };
   $('btn_print_punishment').observe('click',print_func);
-
 
 </script>
 

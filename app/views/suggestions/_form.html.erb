@@ -21,6 +21,12 @@
     <%= f.tinymce :body %>
   </div>
 
+  <div class="ctrlHolder">
+    <%= f.label :attach, "添加附件" %>
+    <%= f.file_field :attach %>
+  </div>
+
+
   <div class="actions-bar">
     <%=f.submit '发送信息', :class => 'sexybutton sexysimple sexyblue'%>
     <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
