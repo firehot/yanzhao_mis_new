@@ -622,7 +622,7 @@ document.observe("dom:loaded", function() {
   //打印入账联
   var print_1 = function(evt,print_signature){
     var s_table = $('salary_table_show').cloneNode(true);
-    s_table.setStyle({width : '100%',borderCollapse : 'collapse'});
+    s_table.setStyle({width : '280mm',borderCollapse : 'collapse'});
     s_table.select('.salary_table_title').invoke('setStyle',{fontSize : '20px',textAlign : 'center'});
     s_table.select('th,td').invoke('setStyle',{height : '18px',textAlign : 'center',border : 'thin solid #000'});
     s_table.select('.salary_table_title td,.salary_table_title th').invoke('setStyle',{border : 'none'});
@@ -634,12 +634,11 @@ document.observe("dom:loaded", function() {
     var print_config = {
       top : 0,
       left : 0,
-      width : '290mm',
-      height : '210mm',
-      pageName : 'A4',
+      width : '210mm',
+      height : '290mm',
       content: s_table.outerHTML
     };
-    printer.print_html(print_config);
+    printer.print_table(print_config);
   };
   if($('btn_print_salary_table_1'))
   $('btn_print_salary_table_1').observe('click',print_1.bindAsEventListener(print_1,false));

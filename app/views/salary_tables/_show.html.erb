@@ -10,7 +10,7 @@
 <table class='table' id='salary_table_show'>
   <thead>
     <tr class='salary_table_title'>
-      <td colspan='20' class='text-center'><%="#{Client.first.name}工资表"%></td>
+      <th colspan='20' class='text-center'><%="#{Client.first.name}工资表"%></th>
     </tr>
     <tr class='salary_table_title'>
       <td colspan='2'>月份:<%=@salary_table.mth %></td>
@@ -33,26 +33,26 @@
     </tr>
   </thead>
   <tbody>
-    <%@salary_table.salary_table_lines.each do |stl|%>
-      <tr>
-        <td class='employee_name'>
-          <%= stl.employee.name %>
-        </td>
-        <td class='work_days'><%= stl.work_days %></td>
-        <td class='base_salary'><%= stl.base_salary%></td>
-        <td class='work_year_salary'><%= stl.work_year_salary%></td>
-        <td class='position_salary'><%= stl.position_salary %></td>
-        <td class='work_days_added'><%= stl.work_days_added %></td>
-        <td class='food_salary'><%= stl.food_salary %></td>
-        <td class='house_salary'><%= stl.house_salary %></td>
-        <td class='other_added'><%= stl.other_added %></td>
-        <td class='decuted_fee'><%= stl.deducted_fee %></td>
-        <td class='act_salary'><%= stl.act_salary%></td>
-        <td class='signature' style='display : none;'>&nbsp;</td>
-      </tr>
+    <%@salary_table.salary_table_lines.sort_by {|line| line.employee.try(:code)}.each do |stl|%>
+      <%if stl.work_days > 0%>
+        <tr>
+          <td class='employee_name'>
+            <%= stl.employee.name %>
+          </td>
+          <td class='work_days'><%= stl.work_days %></td>
+          <td class='base_salary'><%= stl.base_salary%></td>
+          <td class='work_year_salary'><%= stl.work_year_salary%></td>
+          <td class='position_salary'><%= stl.position_salary %></td>
+          <td class='work_days_added'><%= stl.work_days_added %></td>
+          <td class='food_salary'><%= stl.food_salary %></td>
+          <td class='house_salary'><%= stl.house_salary %></td>
+          <td class='other_added'><%= stl.other_added %></td>
+          <td class='decuted_fee'><%= stl.deducted_fee %></td>
+          <td class='act_salary'><%= stl.act_salary%></td>
+          <td class='signature' style='display : none;'>&nbsp;</td>
+        </tr>
+      <%end%>
     <% end%>
-  </tbody>
-  <tfoot>
     <tr>
       <td class='employee_name'>合计</td>
       <td class='work_days'><%=@salary_table.salary_table_lines.sum(:work_days)%></td>
@@ -67,6 +67,8 @@
       <td class='act_salary'><%=@salary_table.salary_table_lines.sum(:act_salary)%></td>
       <td class='signature' style='display : none;'>&nbsp;</td>
     </tr>
+  </tbody>
+  <tfoot>
     <tr class='salary_table_foot'>
       <td>审核人:</td>
       <td colspan='3'>&nbsp;</td>

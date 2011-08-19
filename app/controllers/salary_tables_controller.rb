@@ -29,4 +29,11 @@ class SalaryTablesController < BaseController
     end
     render :show
   end
+  def edit
+    @salary_table = SalaryTable.find(params[:id])
+    Employee.find(:all,:conditions => {:is_active => true},:order => "order_by").each do |e|
+      @salary_table.salary_table_lines.build(:employee => e) unless @salary_table.employees.include?(e)
+    end
+  end
+
 end

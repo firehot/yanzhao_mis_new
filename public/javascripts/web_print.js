@@ -551,11 +551,21 @@ com.yanzhao.web_print.prototype = {
 	print_html: function(config) {
 		var print_object = this.get_print_object();
 		print_object.PRINT_INITA(config.top, config.left, config.width, config.height, config.print_name);
-		print_object.SET_PRINT_PAGESIZE(1, config.width, config.height, typeof(config.pageName) == 'undefined' ? '' : config.pageName);
+		print_object.SET_PRINT_PAGESIZE(typeof(config.orient) == 'undefined' ? 0 : config.orient, config.width, 0, typeof(config.pageName) == 'undefined' ? 'A4' : config.pageName);
 		//添加content
 		print_object.ADD_PRINT_HTM(config.top, config.left, config.width, config.height, config.content);
 
 		print_object.PREVIEW();
 		//print_object.PRINT();
+	},
+	//打印html内容
+	print_table: function(config) {
+		var print_object = this.get_print_object();
+		print_object.PRINT_INITA(config.top, config.left, config.width, config.height, config.print_name);
+		print_object.SET_PRINT_PAGESIZE(typeof(config.orient) == 'undefined' ? 0 : config.orient, config.width, 0, typeof(config.pageName) == 'undefined' ? 'A4' : config.pageName);
+		//添加content
+		print_object.ADD_PRINT_TABLE(config.top, config.left, config.width, config.height, config.content);
+
+		print_object.PREVIEW();
 	}
 };
