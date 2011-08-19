@@ -632,10 +632,11 @@ document.observe("dom:loaded", function() {
       s_table.select('.signature').invoke('show');
     var printer = new com.yanzhao.web_print();
     var print_config = {
+      orient : 2,
       top : 0,
       left : 0,
-      width : '210mm',
-      height : '290mm',
+      width : '170mm',
+      height : '270mm',
       content: s_table.outerHTML
     };
     printer.print_table(print_config);

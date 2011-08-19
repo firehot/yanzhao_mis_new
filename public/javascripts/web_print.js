@@ -564,7 +564,8 @@ com.yanzhao.web_print.prototype = {
 		print_object.PRINT_INITA(config.top, config.left, config.width, config.height, config.print_name);
 		print_object.SET_PRINT_PAGESIZE(typeof(config.orient) == 'undefined' ? 0 : config.orient, config.width, 0, typeof(config.pageName) == 'undefined' ? 'A4' : config.pageName);
 		//添加content
-		print_object.ADD_PRINT_TABLE(config.top, config.left, config.width, config.height, config.content);
+                //注意此处是横向打印,
+		print_object.ADD_PRINT_TABLE(config.top, config.left, config.height, config.width, config.content);
 
 		print_object.PREVIEW();
 	}
