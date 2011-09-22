@@ -24,10 +24,11 @@ module ApplicationHelper
     option_groups_from_collection_for_select(search.all,:users,:name,:id,:username)
   end
   #按照机构分组选择用户
-  def option_groups_departments_users_for_select_except_level(level)
+  #levels格式：1,2,3
+  def option_groups_departments_users_for_select_except_level(levels)
     #没有用户及无效的机构被剔除
     search = Department.is_active_is(true)
-    option_groups_from_collection_for_select(search.all,"user_except_level('#{level}')",:name,:id,:username)
+    option_groups_from_collection_for_select(search.all,"user_except_level('#{levels}')",:name,:id,:username)
   end
 
   #按照机构分组选择用户,只显示有对应权限的用户

@@ -12,7 +12,7 @@
       </p>
       <hr>附件:</hr>
       <p>
-        <%= link_to @post.attach_file_name,@post.attach.url %>
+        <%= link_to @post.attach_file_name,@post.attach.url if @post.attach_file_name %>
       </p>
       <%if !@post.comments.blank?%>
         <div class='radius-box doc-info'>
@@ -21,38 +21,42 @@
             <%@post.comments(:order => "created_at DESC").each do |comment|%>
               <li class='border-bottom'>
                 <p class='bold-font big-font'><%=comment.user.try(:username)%> &nbsp;&nbsp;说:<span class='small-font float-right'><%=status_time_ago_in_words(comment.created_at)%></span></p>
-                <p><%=comment.body%></span></p>
-            </li>
-          <%end%>
-        </ul>
-      </div>
-    <%end%>
-    <hr />
-    <div class='radius-box'>
-      <h3 class='border-bottom'>我要回复</h3>
-      <%form_for [@post,Comment.new] do |f|%>
-        <%=f.tinymce :body, :class => "small-textarea"%>
-        <div class="actions-bar">
-          <%=f.submit '发表', :class => 'sexybutton sexysimple sexyblue'%>
+                <p><span><%=comment.body%></span></p>
+              </li>
+            <%end%>
+          </ul>
         </div>
       <%end%>
-    </div>
-    <hr />
-    <div class='radius-box doc-info'>
-      <h3 class='border-bottom'><%=link_to_function "点击查看-文档信息(#{@post.message_visitors.size}条)","$('doc_info').toggle();"%></h3>
-      <div id='doc_info' style='display : none;'>
-        <ul>
-          <li>最后修改于<%=status_time_ago_in_words(@post.updated_at)%></li>
-          <%@post.message_visitors.each do |visit_info|%>
-            <li>
-              <%=visit_info.user.try(:username)%> |
-              <%=visit_info.visited_at.blank? ? "<span class='red-text'>还未查看</span>" : status_time_ago_in_words(visit_info.visited_at)%>
-            </li>
-          <%end%>
-        </ul>
+      <hr />
+      <div class='radius-box'>
+        <h3 class='border-bottom'>我要回复</h3>
+        <%form_for [@post,Comment.new] do |f|%>
+          <%=f.tinymce :body, :class => "small-textarea"%>
+          <div class="actions-bar">
+            <%=f.submit '发表', :class => 'sexybutton sexysimple sexyblue'%>
+          </div>
+        <%end%>
+      </div>
+      <hr />
+      <div class='radius-box doc-info'>
+        <h3 class='border-bottom'><%=link_to_function "点击查看-文档信息(#{@post.message_visitors.size}条)","$('doc_info').toggle();"%></h3>
+        <div id='doc_info' style='display : none;'>
+          <ul>
+            <li>最后修改于<%=status_time_ago_in_words(@post.updated_at)%></li>
+            <%@post.message_visitors.each do |visit_info|%>
+              <li>
+                <%=visit_info.user.try(:username)%> |
+                <%=visit_info.visited_at.blank? ? "<span class='red-text'>还未查看</span>" : status_time_ago_in_words(visit_info.visited_at)%>
+              </li>
+            <%end%>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
+<%
+    #将查看信息写入cookie
+    cookies["post_#{@post.id}_last_updated_at"] = @post.updated_at.strftime('%Y%m%d %H:%M:%S')
+%>

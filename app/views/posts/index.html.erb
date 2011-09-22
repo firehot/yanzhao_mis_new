@@ -19,6 +19,9 @@
             </td>
             <td>
               [<%= post.comments.size %>] 人回复
+              <%if new_comments? post%>
+                <span style='color : red;font-weight : bold;'>新!</span>
+              <%end%>
             </td>
           </tr>
         <%end%>

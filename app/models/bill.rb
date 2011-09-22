@@ -32,9 +32,9 @@ class Bill < ActiveRecord::Base
   #导出选项
   def self.export_options
     {:methods => [:from_org_name,:to_org_name,:pay_type_des,:state_des,:created_date],
-      :only => [:bill_no,:goods_no,:sender_name,:sender_phone,:receiver_name,:receiver_phone,
-        :bill_mth,:fee,:goods_fee,:goods_num,:k_hand_fee,:k_carrying_fee,
-        :act_pay_fee,:storage_fee,:clear_fee,:goods_info,:note]}
+     :only => [:bill_no,:goods_no,:sender_name,:sender_phone,:receiver_name,:receiver_phone,
+               :bill_mth,:fee,:goods_fee,:goods_num,:k_hand_fee,:k_carrying_fee,
+               :act_pay_fee,:storage_fee,:clear_fee,:goods_info,:note]}
   end
   def self.add_validate
     validates_presence_of :bill_no,:message => "不可为空"
@@ -48,15 +48,14 @@ class Bill < ActiveRecord::Base
     validates_numericality_of :goods_fee,  :message => "应为数字"
     validates_numericality_of :goods_num, :only_integer => true,:greater_than => 0, :message => "应大于0"
     validates_presence_of :bill_mth,:message => "不可为空"
-    validates_format_of :goods_no, 
-      :with =>/(\d{6})((?:\xe4[\xb8-\xbf][\x80-\xbf]|[\xe5-\xe8][\x80-\xbf][\x80-\xbf]|\xe9[\x80-\xbd][\x80-\xbf]|\xe9\xbe[\x80-\xa5]){2})(\w\d{1,10})-(\d{1,10})/, 
-      :message => "货号格式不正确"
+    validates_format_of :goods_no, :with => /(\d{6})(\w{0,1})((?:\xe4[\xb8-\xbf][\x80-\xbf]|[\xe5-\xe8][\x80-\xbf][\x80-\xbf]|\xe9[\x80-\xbd][\x80-\xbf]|\xe9\xbe[\x80-\xa5]){0,1})(\w{0,1})(\d{1,10})-(\d{1,10})/,:message => "货号格式不正确"
+    #:with =>/(\d{6})((?:\xe4[\xb8-\xbf][\x80-\xbf]|[\xe5-\xe8][\x80-\xbf][\x80-\xbf]|\xe9[\x80-\xbd][\x80-\xbf]|\xe9\xbe[\x80-\xa5]){2})(\w\d{1,10})-(\d{1,10})/,
   end
   #以下定义named_scope
   named_scope :all_bills,lambda { |user_id|
     query_date_range = ConfigInfo.get_query_range(user_id)
     {:conditions => ["bills.created_at >= ? AND bills.created_at <= ?"] + query_date_range,
-      :order => "bills.created_at DESC,bills.bill_mth DESC,bills.goods_no"}
+     :order => "bills.created_at DESC,bills.bill_mth DESC,bills.goods_no"}
   }
   #以下定义导出时需要用到的属性
   def from_org_name
@@ -79,11 +78,11 @@ class Bill < ActiveRecord::Base
       self.sum(:goods_fee,options),
       self.sum(:goods_num,options),
       self.sum(:k_hand_fee,options),
-      self.sum(:k_carrying_fee,options), 
+      self.sum(:k_carrying_fee,options),
       self.sum(:act_pay_fee,options),
       self.sum(:storage_fee,options),
       self.sum(:clear_fee,options)
-    ] 
+    ]
     empty_col = ["合计:"]
     6.times do |i|
       empty_col += [""]
@@ -92,6 +91,6 @@ class Bill < ActiveRecord::Base
   end
   private
   def gen_bill_date
-    self.bill_date = ('20' + self.goods_no.scan(/\A\d{6}/).first).to_date 
+    self.bill_date = ('20' + self.goods_no.scan(/\A\d{6}/).first).to_date
   end
 end

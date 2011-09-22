@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :commentable,:polymorphic => true
   belongs_to :user
+  belongs_to :post,:touch => true
   validates_presence_of :body,:message => "回复信息不可为空"
 end

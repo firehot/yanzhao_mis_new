@@ -9,8 +9,10 @@ class Org < ActiveRecord::Base
   end
 
   #去除董事长级别
-  def user_except_level(level)
-    ret_users = self.users.is_active_is(true).level_ne(level)
-    ret_users.uniq
+  def user_except_level(levels)
+    ret_users = self.users.is_active_is(true).all
+    except_levels = levels.split(',')
+    ret = ret_users.select {|user| not except_levels.include?(user.level.to_s)}
+    ret.uniq
   end
 end
