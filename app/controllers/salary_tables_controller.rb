@@ -15,7 +15,7 @@ class SalaryTablesController < BaseController
   end
   #出勤统计
   def index_sum
-    @salary_table_lines = SalaryTableLine.search(params[:search]).order("salary_table_lines.employee_id ASC").paginate :page => params[:page]
+    @salary_table_lines = SalaryTableLine.ascend_by_employee_code.search(params[:search]).paginate :page => params[:page]
     @salary_table_lines_group = @salary_table_lines.group_by(&:employee)
   end
   #审核
