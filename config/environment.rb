@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
   config.gem "paperclip",:version => '2.3.0'
   config.gem 'fastercsv'
   config.gem 'searchlogic',:version => '2.4.2'
-  config.gem "rubyist-aasm", :source => "http://gems.github.com", :lib => 'aasm'
+  config.gem "aasm", :version =>'2.1.1', :lib => 'aasm'
   config.gem 'rufus-scheduler', :source => "http://gemcutter.org"
 
 
