@@ -21,6 +21,7 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     devise (1.0.6)
       warden (~> 0.10.3)
+    fastercsv (1.5.4)
     highline (1.6.2)
     mysql (2.8.1)
     net-scp (1.0.4)
@@ -57,6 +58,7 @@ DEPENDENCIES
   calendar_date_select
   capistrano (~> 2.9.0)
   devise (= 1.0.6)
+  fastercsv (~> 1.5.3)
   mysql (= 2.8.1)
   paperclip (= 2.3.0)
   rails (= 2.3.5)
