@@ -37,6 +37,12 @@ set :default_environment, {
 # these http://github.com/rails/irs_process_scripts
 
 namespace :deploy do
+  desc "create cache dir"
+  task :create_cache_dir,:roles => :web do
+     run "cd #{deploy_to}/current && chmod 777 tmp"
+     run "cd #{deploy_to}/current/tmp && mkdir cache && chmod 777 cache"
+  end
+  after "deploy:symlink","deploy:create_cache_dir"
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do

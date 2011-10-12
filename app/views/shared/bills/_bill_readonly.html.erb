@@ -130,7 +130,7 @@
 
     <%if check_power('new_post_info_carrying_bill') && bill_readonly.state == CarryingBill::STATE_TK %>
       <%=link_to '核销',post_infos_path("bills[]" => bill_readonly),:method => :post,:class => 'sexybutton sexysimple'%>
-    <%end%> 
+    <%end%>
   <%end%>
 
   <%if bill_readonly.kind_of?(InoutBill)%>
@@ -140,7 +140,7 @@
 
 
     <%if bill_readonly.state == Bill::STATE_DRAFT || (check_power('edit_inout_bill') && !bill_readonly.state.eql?(Bill::STATE_POST))%>
-      <%=link_to '修改', edit_inout_bill_path(bill_readonly,params),:class => 'sexybutton sexysimple'%>
+      <%=link_to '修改', edit_inout_bill_path(bill_readonly),:class => 'sexybutton sexysimple'%>
     <%end%>
 
 
