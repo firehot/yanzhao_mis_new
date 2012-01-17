@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td style='border : thin solid #000;'>处罚依据:</td>
-    <td colspan='3' style='border : thin solid #000;'><%= @punishment.rule.try(:title) %></td>
+    <td colspan='3' style='border : thin solid #000;'><%= "#{@punishment.rule.try(:title)}(#{@punishment.rule.try(:doc_no)})" %></td>
   </tr>
   <tr>
     <td style='border : thin solid #000;'>处罚金额:</td>

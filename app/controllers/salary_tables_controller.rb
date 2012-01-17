@@ -15,8 +15,8 @@ class SalaryTablesController < BaseController
   end
   #出勤统计
   def index_sum
-    @salary_table_lines = SalaryTableLine.ascend_by_employee_code.search(params[:search]).paginate :page => params[:page]
-    @salary_table_lines_group = @salary_table_lines.group_by(&:employee)
+    @salary_table_lines = SalaryTableLine.ascend_by_employee_code.search(params[:search]).paginate(:page => params[:page])
+    @salary_table_lines_group = @salary_table_lines.sort_by {|l| l.salary_table.mth }.group_by(&:employee)
   end
   #审核
   #PUT salary_tables/1/audit

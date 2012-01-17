@@ -74,23 +74,25 @@
 
             <%if check_power_group('票据管理')%>
               <li class="<%= check_current_controller(['carrying_bills'],'carrying_ bills') %>">
-                <%=link_to "票据管理",carrying_bills_path %>
+                <%=link_to "票据科",carrying_bills_path %>
               </li>
             <%end%>
 
             <%if check_power_group('提货单管理')%>
               <li class="<%= check_current_controller(['inout_bills'],'inout_bills') %>">
-                <%=link_to "提货单管理",inout_bills_path %>
+                <%=link_to "后勤部",inout_bills_path %>
               </li>
             <%end%>
             <li class="<%= check_current_controller(['violations','punishments']) %>">
               <%= link_to "违规处罚", punishments_path(:active_sub_tab => 1)  %>
             </li>
+            <!--
             <%if check_power_group('投票系统')%>
               <li class="<%= check_current_controller(['votes'],'votes') %>">
                 <%=link_to "投票系统",votes_path("search[org_id_eq]" => current_user.org) %>
               </li>
             <% end %>
+            -->
 
             <%if check_power_group('工资核算')%>
               <li class="<%= check_current_controller(['employees','salary_tables']) %>">
