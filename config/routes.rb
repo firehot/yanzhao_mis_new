@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :chat_messages,:only => [:index,:create]
+
   map.resources :salary_tables,:member => {:audit => :put },:collection => {:index_sum => :get}
 
   map.resources :employees
@@ -67,7 +69,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :warehouses
 
-  map.resources :settlements,:member => {:audit => :put}
+  map.resources :settlements,:member => {:audit => :put,:sign => :put},:collection => {:batch_sign => :put}
 
   map.resources :address_books
 

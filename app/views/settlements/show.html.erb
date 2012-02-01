@@ -174,7 +174,7 @@
         <td class='text-center'><%=@settlement.other_settlement_line_deductions.sum(:value) %></td>
       </tr>
       <tr id='sum_rmb'>
-        <%sum_fee = @settlement.start_push_money + @settlement.back_push_money + 
+        <%sum_fee = @settlement.start_push_money + @settlement.back_push_money +
           @settlement.fixed_settlement_line_subsidies.sum(:value) + @settlement.unfixed_settlement_line_subsidies.sum(:value) -
         @settlement.fixed_settlement_line_deductions.sum(:value) - @settlement.unfixed_settlement_line_deductions.sum(:value) -
         @settlement.other_settlement_line_deductions.sum(:value)
@@ -183,9 +183,12 @@
         <td colspan='2'>&yen;:<%=sum_fee%></td>
       </tr>
       <tr id='sign_area'>
-        <td colspan='2'>核准:</td>
-        <td colspan='2'>审核:</td>
-        <td colspan='2'>核算:</td>
+        <td>核准:</td>
+        <td><%=@settlement.signer.try(:username)%></td>
+        <td>审核:</td>
+        <td><%=@settlement.auditor.try(:username)%></td>
+        <td>核算:</td>
+        <td><%=@settlement.user.try(:username)%></td>
         <td colspan='2'><span id='tk_label' style='display : none;'>提款:</span></td>
       </tr>
       <tr>

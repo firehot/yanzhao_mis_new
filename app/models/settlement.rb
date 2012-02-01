@@ -1,6 +1,8 @@
 class Settlement < ActiveRecord::Base
   belongs_to :org
   belongs_to :user
+  belongs_to :signer,:class_name => "User"
+  belongs_to :auditor,:class_name => "User"
   has_many :fixed_settlement_line_subsidies,:dependent => :destroy
   has_many :fixed_settlement_line_deductions,:dependent => :destroy
   has_many :unfixed_settlement_line_deductions,:dependent => :destroy
@@ -31,12 +33,20 @@ class Settlement < ActiveRecord::Base
     self.org.name
   end
   #审核
-  def audit
-    self.update_attributes(:state => "audited")
+  def audit(cur_user)
+    self.update_attributes(:state => "audited",:audit_date => Time.now,:auditor => cur_user)
+  end
+  #签字
+  def sign(cur_user)
+    self.update_attributes(:state => "signed",:sign_date => Time.now,:signer => cur_user)
   end
   #是否已审核
   def audited?
-    self.state.eql? "audited"
+    self.state.eql? "audited" or self.state.eql? "signed"
+  end
+  #是否已签字
+  def signed?
+    self.state.eql? "signed"
   end
 
 end

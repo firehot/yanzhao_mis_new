@@ -6,7 +6,17 @@
     <h2 class="title">结算信息列表</h2>
     <div class="inner">
       <table class="table">
+        <tr class='settlement_selector'>
+          <td colspan='3'>
+            <%= link_to_function "全选","",:id => "btn_settlement_all"%> |
+            <%= link_to_function "不选","",:id => "btn_settlement_none"%>
+          </td>
+          <td colspan='6'>&nbsp;</td>
+          <td><%= link_to "全部签字",batch_sign_settlements_path,:method => :put,:id => "btn_batch_sign",:class => 'sexybutton sexysimple sexyblue'%></td>
+        </tr>
+
         <tr>
+          <th class='settlement_selector'>&nbsp;</th>
           <th>单位</th>
           <th>月份</th>
           <th>始发货提成</th>
@@ -19,7 +29,8 @@
         </tr>
         <% @settlements.each do |settlement| -%>
           <tr class="<%= cycle("odd", "even") %>">
-            <td><%= settlement.org.name %></td>
+            <td class='settlement_selector'><input type='checkbox' value='<%= settlement.id %>'></td>
+            <td width='30'><%= settlement.org.name %></td>
             <td><%= settlement.mth %></td>
             <td><%= settlement.start_push_money %></td>
             <td><%= settlement.back_push_money %></td>
@@ -32,8 +43,12 @@
               <%if check_power('audit_settlement') and !settlement.audited?%>
                 <%= link_to "审核", audit_settlement_path(settlement),:method => :put %> |
               <%end%>
-              <%if settlement.audited?%>
-                <%= link_to "查看/打印", settlement,:popup => ['分部返款结算表','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']%> |
+              <%if check_power('sign_settlement') and settlement.audited? and !settlement.signed?%>
+                <%= link_to "签字", sign_settlement_path(settlement),:method => :put %> |
+              <%end%>
+
+              <%if settlement.signed?%>
+                <%= link_to "打印", settlement,:popup => ['分部返款结算表','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']%> |
               <%end%>
               <%if check_power('edit_settlement')%>
                 <%= link_to "修改", edit_settlement_path(settlement,:active_sub_tab => 4) %> |
@@ -46,9 +61,11 @@
           </tr>
         <% end -%>
         <tr>
-          <td colspan='8'>&nbsp;</td>
+          <td class='settlement_selector'>&nbsp;</td>
+          <td colspan='9'>&nbsp;</td>
         </tr>
         <tr>
+          <td class='settlement_selector'>&nbsp;</td>
           <td>总计:</td>
           <td>&nbsp;</td>
           <td><%= @sum_info[:start_push_money]%></td>
@@ -57,6 +74,7 @@
           <td><%= @sum_info[:total_subsidy] %></td>
           <td><%= @sum_info[:total_deduction] %></td>
           <td><%= @sum_info[:act_push_money] %></td>
+          <td>&nbsp;</td>
         </tr>
       </table>
       <div class="actions-bar wat-cf">
@@ -67,3 +85,22 @@
 </div>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
+<script type='text/javascript'>
+  var settlement_ids = [];
+  var origion_href = "<%= batch_sign_settlements_path %>";
+  var select_settlement = function(context,select) {
+    $$('.settlement_selector input[type="checkbox"]').each(function(el) {el.checked = select;});
+  };
+
+$('btn_settlement_all').observe('click',select_settlement.bindAsEventListener(window,true));
+$('btn_settlement_none').observe('click',select_settlement.bindAsEventListener(window,false));
+$$('#btn_settlement_all,#btn_settlement_none,.settlement_selector input[type="checkbox"]').invoke('observe','click',function(){
+    settlement_ids.clear();
+    $$('.settlement_selector input[type="checkbox"]').each(function(el) {if(el.checked) settlement_ids.push(el.value);});
+    var attach_params = $H({"settlement_ids[]" : settlement_ids}).toQueryString();
+    $('btn_batch_sign').href = origion_href + '?' + attach_params;
+    })
+<%if params[:show_select].blank?%>
+  $$('.settlement_selector').invoke('hide');
+<%end%>
+</script>

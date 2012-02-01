@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808050409) do
+ActiveRecord::Schema.define(:version => 20120201062817) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -91,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20110808050409) do
     t.integer  "deliver_id"
     t.integer  "confirm_id"
     t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "chat_messages", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.text     "content",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -288,11 +295,11 @@ ActiveRecord::Schema.define(:version => 20110808050409) do
   end
 
   create_table "punishments", :force => true do |t|
-    t.string   "title",          :limit => 60
+    t.string   "title",          :limit => 60, :default => ""
     t.integer  "violation_id"
-    t.date     "punish_date",                                 :null => false
-    t.text     "content",                                     :null => false
-    t.string   "handled",        :limit => 20,                :null => false
+    t.date     "punish_date",                                  :null => false
+    t.text     "content",                                      :null => false
+    t.string   "handled",        :limit => 20,                 :null => false
     t.integer  "user_id"
     t.integer  "target_org_id"
     t.string   "target"
@@ -332,7 +339,7 @@ ActiveRecord::Schema.define(:version => 20110808050409) do
 
   create_table "settlement_lines", :force => true do |t|
     t.integer  "settlement_id",                                                               :null => false
-    t.string   "type",          :limit => 50,                                                 :null => false
+    t.string   "type",          :limit => 50,                                :default => "",  :null => false
     t.string   "name",          :limit => 60,                                                 :null => false
     t.decimal  "value",                       :precision => 15, :scale => 2, :default => 0.0
     t.datetime "created_at"
@@ -362,6 +369,10 @@ ActiveRecord::Schema.define(:version => 20110808050409) do
     t.datetime "updated_at"
     t.decimal  "total_other_deduction",               :precision => 15, :scale => 2
     t.string   "state",                 :limit => 20,                                :default => "draft"
+    t.integer  "auditor_id"
+    t.datetime "audit_date"
+    t.integer  "signer_id"
+    t.datetime "sign_date"
   end
 
   create_table "system_functions", :force => true do |t|

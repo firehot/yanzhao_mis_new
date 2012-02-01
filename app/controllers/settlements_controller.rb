@@ -71,6 +71,7 @@ class SettlementsController < BaseController
   # POST /settlements.xml
   def create
     @settlement = Settlement.new(params[:settlement])
+    @settlement.user = current_user
 
     respond_to do |format|
       if @settlement.save
@@ -115,10 +116,32 @@ class SettlementsController < BaseController
   # PUT /settlements/1/audit
   def audit
     @settlement = Settlement.find(params[:id])
-    if @settlement.audit
+    if @settlement.audit(current_user)
       flash[:notice]="结算表审核完成."
     else
       flash[:error]="结算表审核失败."
+    end
+    redirect_to :back
+  end
+  # PUT /settlements/1/sign
+  def sign
+    @settlement = Settlement.find(params[:id])
+    if @settlement.sign(current_user)
+      flash[:notice]="结算表签字完成."
+    else
+      flash[:error]="结算表签字失败."
+    end
+    redirect_to :back
+  end
+  #批量签字
+  #PUT /settlements/batch_sign
+  def batch_sign
+    if params[:settlement_ids].present?
+      flash[:notice]="结算表批量签字完成."
+      @settlements = Settlement.find(params[:settlement_ids])
+      @settlements.each {|s| s.sign(current_user) }
+    else
+      flash[:error]="请选择要签字的结算表."
     end
     redirect_to :back
   end

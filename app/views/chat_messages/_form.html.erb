@@ -1,0 +1,10 @@
+<fieldset class='blockLabels'>
+  <%=f.hidden_field :user_id,:value => current_user.id %>
+  <div class="ctrlHolder">
+    <%= f.label :content, "&nbsp;" %>
+    <%= f.tinymce :content %>
+  </div>
+  <div class="actions-bar">
+    <%=f.submit '发送', :class => 'sexybutton sexysimple sexyblue'%>
+  </div>
+</fieldset>

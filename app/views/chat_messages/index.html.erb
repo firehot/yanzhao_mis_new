@@ -1,0 +1,38 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render :partial => "caption" %>
+  </div>
+  <div class="content">
+    <div class="inner">
+      <table class="table">
+        <%@chat_messages.each do |m| -%>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td width='50px;'>
+              <span class='ellipsis' style='font-weight : bold;'>
+                <%= m.user == current_user ? '我' : m.user.username%>
+                &nbsp;&nbsp;
+                <%= m.created_at.strftime("%y-%m-%d %H:%M") %>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;&nbsp;<%= m.content%></td>
+          </tr>
+        <%end%>
+      </table>
+    </div>
+    <div class="actions-bar wat-cf">
+      <div class="actions">
+        <%=will_paginate @chat_messages %>
+      </div>
+    </div>
+    <div class='inner'>
+      <hr />
+      <h3>发布新信息</h3>
+      <% form_for ChatMessage.new, :html => { :class => :uniForm,:multipart => true } do |f| -%>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render(:partial => 'sidebar') %>
