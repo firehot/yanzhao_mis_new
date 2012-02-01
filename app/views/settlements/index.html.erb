@@ -100,7 +100,7 @@ $$('#btn_settlement_all,#btn_settlement_none,.settlement_selector input[type="ch
     var attach_params = $H({"settlement_ids[]" : settlement_ids}).toQueryString();
     $('btn_batch_sign').href = origion_href + '?' + attach_params;
     })
-<%if params[:show_select].blank?%>
+<%if params[:show_select].blank? or !check_power('sign_settlement')%>
   $$('.settlement_selector').invoke('hide');
 <%end%>
 </script>
