@@ -90,11 +90,15 @@
   var origion_href = "<%= batch_sign_settlements_path %>";
   var select_settlement = function(context,select) {
     $$('.settlement_selector input[type="checkbox"]').each(function(el) {el.checked = select;});
+    settlement_ids.clear();
+    $$('.settlement_selector input[type="checkbox"]').each(function(el) {if(el.checked) settlement_ids.push(el.value);});
+    var attach_params = $H({"settlement_ids[]" : settlement_ids}).toQueryString();
+    $('btn_batch_sign').href = origion_href + '?' + attach_params;
   };
 
 $('btn_settlement_all').observe('click',select_settlement.bindAsEventListener(window,true));
 $('btn_settlement_none').observe('click',select_settlement.bindAsEventListener(window,false));
-$$('#btn_settlement_all,#btn_settlement_none,.settlement_selector input[type="checkbox"]').invoke('observe','click',function(){
+$$('.settlement_selector input[type="checkbox"]').invoke('observe','click',function(){
     settlement_ids.clear();
     $$('.settlement_selector input[type="checkbox"]').each(function(el) {if(el.checked) settlement_ids.push(el.value);});
     var attach_params = $H({"settlement_ids[]" : settlement_ids}).toQueryString();
