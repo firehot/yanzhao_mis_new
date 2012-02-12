@@ -6,6 +6,7 @@
     <div class='ctrlHolder'>
       <%=f.label :title_like,"标题"%>
       <%=f.text_field :title_like,:class => "textInput"%>
+      <%=f.hidden_field :is_active_is,:value => 1 %>
     </div>
     <div class='ctrlHolder'>
       <%=f.label :doc_no_like,"文件号"%>

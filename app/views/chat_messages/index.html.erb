@@ -5,10 +5,13 @@
   <div class="content">
     <div class="inner">
       <table class="table">
+        <tr class='odd'>
+          <td>&nbsp;</td>
+        </tr>
         <%@chat_messages.each do |m| -%>
-          <tr class="<%= cycle("odd", "even") %>">
+          <tr class="even">
             <td width='50px;'>
-              <span class='ellipsis' style='font-weight : bold;'>
+              <span class='ellipsis' style='font-size : 0.8em;'>
                 <%= m.user == current_user ? '我' : m.user.username%>
                 &nbsp;&nbsp;
                 <%= m.created_at.strftime("%y-%m-%d %H:%M") %>
@@ -16,7 +19,7 @@
             </td>
           </tr>
           <tr>
-            <td>&nbsp;&nbsp;<%= m.content%></td>
+            <td class='chat_content'><%= m.content%></td>
           </tr>
         <%end%>
       </table>

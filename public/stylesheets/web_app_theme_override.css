@@ -3,7 +3,7 @@
   position : relative;
   zoom : 1;   /*解决ie6下的bug*/
 }
-#user-navigation { 
+#user-navigation {
   bottom : 0;
   right : 20px;
   width : 250px;
@@ -97,9 +97,9 @@ ul.navigation li a:link,ul.navigation li a:visited {
 /*文字的省略号表示*/
 .ellipsis {
   display:block;
-  overflow: hidden; 
+  overflow: hidden;
   text-overflow:ellipsis;
-  white-space:nowrap; 
+  white-space:nowrap;
   width:180px;
 }
 
@@ -164,7 +164,7 @@ ul.navigation li a:link,ul.navigation li a:visited {
 }
 
 #util-navigation ul li a:link,#util-navigation ul li a:visited,#util-navigation ul li a:hover,#util-navigation ul li a:active {
-  color : #FFFFFF;  
+  color : #FFFFFF;
   text-decoration : none;
 }
 #util-navigation a.logout {
@@ -229,3 +229,7 @@ position : absolute;
 
 /*只读文本框*/
 input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue;}
+/*聊天室内容显示*/
+.chat_content p {
+  margin : 4px 0 4px 10px;
+}

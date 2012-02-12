@@ -1,6 +1,6 @@
 <ul class="wat-cf">
   <li class="first <%=check_sub_active_tab(1)%>">
-    <%= link_to "聊天室",chat_messages_path("search[created_at_gte]" => 2.hours.ago,:active_sub_tab => 1)   %>
+    <%= link_to "聊天室",chat_messages_path(:active_sub_tab => 1)   %>
   </li>
   <li class="<%=check_sub_active_tab(6)%>">
     <%= link_to "建议箱",suggestions_path(:active_sub_tab => 6) %>

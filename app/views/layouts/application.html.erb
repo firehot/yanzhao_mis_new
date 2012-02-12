@@ -41,7 +41,7 @@
         <div id="main-navigation">
           <ul class="wat-cf">
             <li class="<%= check_current_controller(['notices','rules','address_books']) %>">
-              <%=link_to "公共信息#{unread_notices_rules_sign}",notices_path("search[state_is]" => "published")%>
+              <%=link_to "公共信息#{unread_notices_rules_sign}",notices_path("search[is_active_is]" => true,"search[state_is]" => "published")%>
             </li>
             <li class="<%= check_current_controller(['chat_messages','suggestions']) %>">
               <%=link_to "在线交流",chat_messages_path("search[created_at_gte]" => 2.hours.ago)%>

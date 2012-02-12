@@ -39,7 +39,7 @@
             <td><%= settlement.total_deduction %></td>
             <td><%= settlement.act_push_money %></td>
             <td class="last">
-
+              <%= link_to "查看", settlement,:popup => ['分部返款结算表','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']%> |
               <%if check_power('audit_settlement') and !settlement.audited?%>
                 <%= link_to "审核", audit_settlement_path(settlement),:method => :put %> |
               <%end%>
@@ -48,7 +48,7 @@
               <%end%>
 
               <%if settlement.signed?%>
-                <%= link_to "打印", settlement,:popup => ['分部返款结算表','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']%> |
+                <%= link_to "打印", settlement_path(settlement,:show_print => 1),:popup => ['分部返款结算表','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']%> |
               <%end%>
               <%if check_power('edit_settlement')%>
                 <%= link_to "修改", edit_settlement_path(settlement,:active_sub_tab => 4) %> |
