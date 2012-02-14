@@ -295,11 +295,11 @@ ActiveRecord::Schema.define(:version => 20120201071020) do
   end
 
   create_table "punishments", :force => true do |t|
-    t.string   "title",          :limit => 60, :default => ""
+    t.string   "title",          :limit => 60
     t.integer  "violation_id"
-    t.date     "punish_date",                                  :null => false
-    t.text     "content",                                      :null => false
-    t.string   "handled",        :limit => 20,                 :null => false
+    t.date     "punish_date",                                 :null => false
+    t.text     "content",                                     :null => false
+    t.string   "handled",        :limit => 20,                :null => false
     t.integer  "user_id"
     t.integer  "target_org_id"
     t.string   "target"
@@ -339,7 +339,7 @@ ActiveRecord::Schema.define(:version => 20120201071020) do
 
   create_table "settlement_lines", :force => true do |t|
     t.integer  "settlement_id",                                                               :null => false
-    t.string   "type",          :limit => 50,                                :default => "",  :null => false
+    t.string   "type",          :limit => 50,                                                 :null => false
     t.string   "name",          :limit => 60,                                                 :null => false
     t.decimal  "value",                       :precision => 15, :scale => 2, :default => 0.0
     t.datetime "created_at"
