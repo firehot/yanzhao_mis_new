@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218042604) do
+ActiveRecord::Schema.define(:version => 20120218070432) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -91,6 +91,25 @@ ActiveRecord::Schema.define(:version => 20120218042604) do
     t.integer  "deliver_id"
     t.integer  "confirm_id"
     t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "budget_tables", :force => true do |t|
+    t.integer  "org_id",                                                            :null => false
+    t.decimal  "sum_carrying_fee",  :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "commission_rate",   :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "rent_fee",          :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "salary_rate",       :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "utilities_fee",     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "office_fee",        :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "communication_fee", :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "profit_rate",       :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "goods_loaded",      :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "distance",          :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "fuel_fee",          :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "compensate_rate",   :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "vehicle_fee",       :precision => 15, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

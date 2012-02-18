@@ -1,0 +1,2 @@
+class BudgetTablesController < BaseController
+end

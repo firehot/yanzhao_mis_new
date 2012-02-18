@@ -1,0 +1,46 @@
+<h1>Listing budget_tables</h1>
+
+<table>
+  <tr>
+    <th>Org</th>
+    <th>Sum carrying fee</th>
+    <th>Commission rate</th>
+    <th>Rent fee</th>
+    <th>Salary rate</th>
+    <th>Utilities fee</th>
+    <th>Office fee</th>
+    <th>Communication fee</th>
+    <th>Profit rate</th>
+    <th>Goods loaded</th>
+    <th>Distance</th>
+    <th>Fuel fee</th>
+    <th>Compensate rate</th>
+    <th>Vehicle fee</th>
+  </tr>
+
+<% @budget_tables.each do |budget_table| %>
+  <tr>
+    <td><%=h budget_table.org %></td>
+    <td><%=h budget_table.sum_carrying_fee %></td>
+    <td><%=h budget_table.commission_rate %></td>
+    <td><%=h budget_table.rent_fee %></td>
+    <td><%=h budget_table.salary_rate %></td>
+    <td><%=h budget_table.utilities_fee %></td>
+    <td><%=h budget_table.office_fee %></td>
+    <td><%=h budget_table.communication_fee %></td>
+    <td><%=h budget_table.profit_rate %></td>
+    <td><%=h budget_table.goods_loaded %></td>
+    <td><%=h budget_table.distance %></td>
+    <td><%=h budget_table.fuel_fee %></td>
+    <td><%=h budget_table.compensate_rate %></td>
+    <td><%=h budget_table.vehicle_fee %></td>
+    <td><%= link_to 'Show', budget_table %></td>
+    <td><%= link_to 'Edit', edit_budget_table_path(budget_table) %></td>
+    <td><%= link_to 'Destroy', budget_table, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New budget_table', new_budget_table_path %>
