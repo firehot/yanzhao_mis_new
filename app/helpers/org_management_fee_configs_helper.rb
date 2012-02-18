@@ -1,0 +1,2 @@
+module OrgManagementFeeConfigsHelper
+end

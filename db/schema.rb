@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120201071020) do
+ActiveRecord::Schema.define(:version => 20120218042604) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -223,6 +223,18 @@ ActiveRecord::Schema.define(:version => 20120201071020) do
     t.boolean  "alert",                                       :default => false
   end
 
+  create_table "management_fee_configs", :force => true do |t|
+    t.decimal  "commission_rate",   :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "salary_rate",       :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "profit_rate",       :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "compensate_rate",   :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "utilities_fee",     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "communication_fee", :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "vehicle_fee",       :precision => 15, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "material_inout_lines", :force => true do |t|
     t.integer  "material_inout_id",                                                 :null => false
     t.integer  "material_id",                                                       :null => false
@@ -264,6 +276,17 @@ ActiveRecord::Schema.define(:version => 20120201071020) do
     t.datetime "visited_at"
     t.string   "note",                   :limit => 200
     t.string   "state",                  :limit => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "org_management_fee_configs", :force => true do |t|
+    t.integer  "org_id",                                                       :null => false
+    t.decimal  "rent_fee",     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "office_fee",   :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "distance",     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "goods_loaded", :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "fuel_fee",     :precision => 15, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

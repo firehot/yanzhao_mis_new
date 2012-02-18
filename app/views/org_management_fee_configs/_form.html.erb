@@ -1,0 +1,33 @@
+<fieldset class='blockLabels'>
+  <legend>非统一费用</legend>
+  <%=f.error_messages%>
+  <div class="ctrlHolder">
+    <%= f.label :org_id, "分理处/分公司" %>
+    <%=f.select :org_id,sub_companies_for_select %>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :rent_fee, "房租(元)" %>
+    <%=f.text_field :rent_fee,:class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :office_fee, "办公费(元)" %>
+    <%= f.text_field :office_fee, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :distance, "距离(公里)" %>
+    <%= f.text_field :distance, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :fuel_fee, "油耗(元/公里)" %>
+    <%= f.text_field :fuel_fee, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :goods_loaded, "装货量(元)" %>
+    <%= f.text_field :goods_loaded, :class => 'textInput' %>
+  </div>
+</fieldset>
+<div class="actions-bar">
+  <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
+  <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+</div>

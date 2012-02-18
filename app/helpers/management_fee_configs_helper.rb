@@ -1,0 +1,2 @@
+module ManagementFeeConfigsHelper
+end

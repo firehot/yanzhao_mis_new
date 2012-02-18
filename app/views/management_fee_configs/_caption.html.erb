@@ -1,0 +1,8 @@
+<ul class="wat-cf">
+  <li class="first  <%=check_sub_active_tab(1)%>">
+    <%= link_to "预算比例", management_fee_configs_path(:active_sub_tab => 1)  %>
+  </li>
+  <li class="<%=check_sub_active_tab(2)%>">
+    <%= link_to "费用设置", org_management_fee_configs_path(:active_sub_tab => 2)  %>
+  </li>
+</ul>

@@ -1,0 +1,38 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render :partial => 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">查看</h2>
+    <div class="inner">
+      <table class='table'>
+        <tr>
+          <td>提成比例</td>
+          <td><%= @management_fee_config.commission_rate_display%> &#37;</td>
+          <td>工资比例</td>
+          <td><%= @management_fee_config.salary_rate_display%> &#37;</td>
+        </tr>
+        <tr>
+          <td>利润比例</td>
+          <td><%= @management_fee_config.profit_rate_display%> &#37;</td>
+          <td>赔偿比例</td>
+          <td><%= @management_fee_config.compensate_rate_display%> &#37;</td>
+        </tr>
+        <tr>
+          <td>水电费</td>
+          <td><%= @management_fee_config.utilities_fee %></td>
+          <td>电话费</td>
+          <td><%= @management_fee_config.communication_fee %></td>
+        </tr>
+        <tr>
+          <td>车辆费</td>
+          <td><%= @management_fee_config.vehicle_fee %></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render('sidebar') %>

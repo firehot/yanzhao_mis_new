@@ -1,0 +1,41 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">管理费预算比例</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>提成比例</th>
+          <th>工资比例</th>
+          <th>利润比例</th>
+          <th>赔偿比例</th>
+          <th>水电费</th>
+          <th>电话费</th>
+          <th>车辆费用</th>
+          <th>&nbsp;</th>
+        </tr>
+        <% @management_fee_configs.each_with_index do |mfc,index| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td><%= index + 1 %></td>
+            <td><%=mfc.commission_rate%></td>
+            <td><%=mfc.salary_rate %></td>
+            <td><%=mfc.profit_rate %></td>
+            <td><%=mfc.compensate_rate%></td>
+            <td><%=mfc.utilities_fee %></td>
+            <td><%=mfc.communication_fee %></td>
+            <td><%=mfc.vehicle_fee %></td>
+            <td>
+              <%if check_power('edit_management_fee_config')%>
+                <%= link_to "修改", edit_management_fee_config_path(mfc) %>
+              <%end%>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>

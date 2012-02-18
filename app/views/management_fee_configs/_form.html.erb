@@ -1,0 +1,41 @@
+<fieldset class='blockLabels'>
+  <legend>统一比例</legend>
+  <%=f.error_messages%>
+
+  <div class="ctrlHolder">
+    <%= f.label :commission_rate_display, "提成比例" %>
+    <%=f.text_field :commission_rate_display,:class => 'textInput' %>&#37;
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :salary_rate_display, "工资比例 " %>
+    <%= f.text_field :salary_rate_display, :class => 'textInput' %>&#37;
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :profit_rate_display, "利润比例 " %>
+    <%= f.text_field :profit_rate_display, :class => 'textInput' %>&#37;
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :compensate_rate_display, "赔偿比例 " %>
+    <%= f.text_field :compensate_rate_display, :class => 'textInput' %>&#37;
+  </div>
+</fieldset>
+<fieldset>
+  <legend>统一费用</legend>
+  <div class="ctrlHolder">
+    <%= f.label :utilities_fee, "水电费" %>
+    <%= f.text_field :utilities_fee, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :commmunication_fee, "通讯费" %>
+    <%= f.text_field :communication_fee, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :vehicle_fee, "车辆费" %>
+    <%= f.text_field :vehicle_fee, :class => 'textInput' %>
+  </div>
+
+</fieldset>
+<div class="actions-bar">
+  <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
+  <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+</div>

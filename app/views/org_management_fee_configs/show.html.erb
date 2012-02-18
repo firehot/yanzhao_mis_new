@@ -1,0 +1,39 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render :partial => 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">查看</h2>
+    <div class="inner">
+      <table class='table'>
+        <tr>
+          <td>分理处</td>
+          <td><%= @org_management_fee_config.org.name %> </td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td>房租</td>
+          <td><%= @org_management_fee_config.rent_fee %> </td>
+          <td>办公费</td>
+          <td><%= @org_management_fee_config.office_fee %> &#37;</td>
+        </tr>
+        <tr>
+          <td>距离</td>
+          <td><%= @org_management_fee_config.distance %> </td>
+          <td>装货量</td>
+          <td><%= @org_management_fee_config.goods_loaded%> </td>
+        </tr>
+        <tr>
+          <td>油耗</td>
+          <td><%= @org_management_fee_config.fuel_fee %></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render('sidebar') %>

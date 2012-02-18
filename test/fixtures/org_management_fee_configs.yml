@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  org: 
+  rent_fee: 9.99
+  office_fee: 9.99
+  distance: 9.99
+  goods_loaded: 9.99
+  fuel_fee: 9.99
+
+two:
+  org: 
+  rent_fee: 9.99
+  office_fee: 9.99
+  distance: 9.99
+  goods_loaded: 9.99
+  fuel_fee: 9.99

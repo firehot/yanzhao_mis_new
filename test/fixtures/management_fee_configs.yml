@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  commission_rate: 9.99
+  salary_rate: 9.99
+  profit_rate: 9.99
+  compensate_rate: 9.99
+  utilities_fee: 9.99
+  communication_fee: 9.99
+  vehicle: 
+
+two:
+  commission_rate: 9.99
+  salary_rate: 9.99
+  profit_rate: 9.99
+  compensate_rate: 9.99
+  utilities_fee: 9.99
+  communication_fee: 9.99
+  vehicle: 

@@ -1,0 +1,45 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">分理处管理费用设置</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>分理处</th>
+          <th>房租</th>
+          <th>办公费</th>
+          <th>距离</th>
+          <th>装货费</th>
+          <th>油耗</th>
+          <th>&nbsp;</th>
+        </tr>
+        <% @org_management_fee_configs.each_with_index do |mfc,index| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td><%= index + 1 %></td>
+            <td><%=mfc.org.name %></td>
+            <td><%=mfc.rent_fee %></td>
+            <td><%=mfc.office_fee %></td>
+            <td><%=mfc.distance %></td>
+            <td><%=mfc.goods_loaded %></td>
+            <td><%=mfc.fuel_fee %></td>
+            <td>
+              <%if check_power('edit_org_management_fee_config')%>
+                <%= link_to "修改", edit_org_management_fee_config_path(mfc) %>
+              <%end%>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+          <%=will_paginate @org_management_fee_configs %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>

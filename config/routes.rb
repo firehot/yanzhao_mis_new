@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :org_management_fee_configs
+
+  map.resources :management_fee_configs
+
   map.resources :chat_messages,:only => [:index,:create]
 
   map.resources :salary_tables,:member => {:audit => :put },:collection => {:index_sum => :get}

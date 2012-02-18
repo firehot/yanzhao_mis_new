@@ -1,0 +1,2 @@
+class ManagementFeeConfigsController < BaseController
+end
