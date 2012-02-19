@@ -1,0 +1,15 @@
+<% form_for BudgetTable.new,:url => {:controller =>"budget_tables",:action => :new},:html => {:class => :uniForm } do |f| -%>
+  <fieldset class='inlineLabels'>
+    <div class='ctrlHolder'>
+      <%=f.label :org_id,"分理处/分公司"%>
+      <%=f.select :org_id,sub_companies_for_select %>
+    </div>
+    <div class='ctrlHolder'>
+      <%=f.label :sum_carrying_fee,"月平均货量"%>
+      <%=f.text_field :sum_carrying_fee,:class => "textInput"%>
+    </div>
+  </fieldset>
+  <div class="actions-bar">
+    <%=f.submit '生成预算表', :class => 'sexybutton sexysimple sexyblue'%>
+  </div>
+<% end -%>

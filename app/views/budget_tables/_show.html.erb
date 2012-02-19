@@ -1,0 +1,79 @@
+<table class='table'>
+  <tr>
+    <td colspan='3'>分理处 </td>
+    <td colspan='3'>
+      <%= @budget_table.org.name %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan='3'>月均货量:</td>
+    <td colspan='3'>
+      <%= @budget_table.sum_carrying_fee %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>提成额 = 月均货量 x 提成比例:</td>
+    <td colspan='3'>
+      <%= @budget_table.commission_fee %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>月管理费= 提成额 - 预算费用:</td>
+    <td colspan='3'><%= @budget_table.management_fee_per_month %></td>
+  </tr>
+  <tr>
+    <td colspan='3'>管理费比例= 月管理费 / 月均货量:</td>
+    <td colspan='3'><%= @budget_table.management_fee_rate * 100 %>&#37;</td>
+  </tr>
+  <tr>
+    <td colspan='6' class='text-center'>预算费用</td>
+  </tr>
+  <tr>
+    <td>房租:</td>
+    <td>
+      <%= @budget_table.rent_fee%>
+    </td>
+    <td>工资:</td>
+    <td>
+      <%= @budget_table.salary_fee%>
+    </td>
+    <td>水电费:</td>
+    <td>
+      <%= @budget_table.utilities_fee%>
+    </td>
+
+  </tr>
+  <tr>
+    <td>电话费:</td>
+    <td>
+      <%= @budget_table.communication_fee%>
+    </td>
+    <td>办公费:</td>
+    <td>
+      <%= @budget_table.office_fee%>
+    </td>
+    <td>利润:</td>
+    <td>
+      <%= @budget_table.profit_fee%>
+    </td>
+  </tr>
+  <tr>
+    <td>盘货费:</td>
+    <td>
+      <%= @budget_table.inventory_fee%>
+    </td>
+    <td>赔偿:</td>
+    <td>
+      <%= @budget_table.compensate_fee%>
+    </td>
+    <td>车辆费:</td>
+    <td>
+      <%= @budget_table.vehicle_fee%>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>预算费用合计:</td>
+    <td colspan='3'><%= @budget_table.sum_budget_fee%></td>
+  </tr>
+</table>

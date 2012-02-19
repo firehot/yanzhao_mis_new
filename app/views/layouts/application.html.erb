@@ -100,8 +100,8 @@
               </li>
             <%end%>
             <%if check_power_group('预算工具')%>
-              <li class="<%= check_current_controller(['management_fee_configs','org_management_fee_configs']) %>">
-                <%= link_to "预算工具", management_fee_configs_path(:active_sub_tab => 1)  %>
+              <li class="<%= check_current_controller(['management_fee_configs','org_management_fee_configs','budget_tables']) %>">
+                <%= link_to "预算工具", budget_tables_path(:active_sub_tab => 1)  %>
               </li>
             <%end%>
 

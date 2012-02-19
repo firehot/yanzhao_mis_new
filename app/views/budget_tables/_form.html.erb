@@ -1,0 +1,100 @@
+<table class='table'>
+  <tr>
+    <td colspan='3'>分理处 </td>
+    <td colspan='3'>
+      <%= f.object.org.name %>
+      <%= f.hidden_field :org_id %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan='3'>分理处 </td>
+    <td colspan='3'>月均货量:</td>
+    <td colspan='3'>
+      <%= f.object.sum_carrying_fee %>
+      <%= f.hidden_field :sum_carrying_fee %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>提成额 = 月均货量 x 提成比例:</td>
+    <td colspan='3'>
+      <%= f.object.commission_fee %>
+      <%= f.hidden_field :commission_rate %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>月管理费= 提成额 - 预算费用:</td>
+    <td colspan='3'><%= f.object.management_fee_per_month %></td>
+  </tr>
+  <tr>
+    <td colspan='3'>管理费比例= 月管理费 / 月均货量:</td>
+    <td colspan='3'><%= f.object.management_fee_rate * 100 %>&#37;</td>
+  </tr>
+  <tr>
+    <td colspan='6' class='text-center'>预算费用</td>
+  </tr>
+  <tr>
+    <td>房租:</td>
+    <td>
+      <%= f.object.rent_fee%>
+      <%= f.hidden_field :rent_fee%>
+    </td>
+    <td>工资:</td>
+    <td>
+      <%= f.object.salary_fee%>
+      <%= f.hidden_field :salary_rate %>
+    </td>
+    <td>水电费:</td>
+    <td>
+      <%= f.object.utilities_fee%>
+      <%= f.hidden_field :utilities_fee%>
+    </td>
+
+  </tr>
+  <tr>
+    <td>电话费:</td>
+    <td>
+      <%= f.object.communication_fee%>
+      <%= f.hidden_field :communication_fee%>
+    </td>
+    <td>办公费:</td>
+    <td>
+      <%= f.object.office_fee%>
+      <%= f.hidden_field :office_fee%>
+    </td>
+    <td>利润:</td>
+    <td>
+      <%= f.object.profit_fee%>
+      <%= f.hidden_field :profit_rate %>
+    </td>
+  </tr>
+  <tr>
+    <td>盘货费:</td>
+    <td>
+      <%= f.object.inventory_fee%>
+      <%= f.hidden_field :goods_loaded%>
+      <%= f.hidden_field :distance %>
+      <%= f.hidden_field :fuel_fee %>
+
+    </td>
+    <td>赔偿:</td>
+    <td>
+      <%= f.object.compensate_fee%>
+      <%= f.hidden_field :compensate_rate %>
+    </td>
+    <td>车辆费:</td>
+    <td>
+      <%= f.object.vehicle_fee%>
+      <%= f.hidden_field :vehicle_fee %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>预算费用合计:</td>
+    <td colspan='3'><%= f.object.sum_budget_fee%></td>
+  </tr>
+</table>
+
+<div class="actions-bar">
+  <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
+  <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+</div>

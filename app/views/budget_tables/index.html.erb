@@ -1,46 +1,41 @@
-<h1>Listing budget_tables</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">预算表</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>分理处</th>
+          <th>月均货量</th>
+          <th>提成额</th>
+          <th>月管理费</th>
+          <th>管理费比例</th>
+          <th>&nbsp;</th>
+        </tr>
+        <% @budget_tables.each_with_index do |bt,index| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td><%= index + 1 %></td>
+            <td><%=bt.org.name %></td>
+            <td><%=bt.sum_carrying_fee %></td>
+            <td><%=bt.profit_fee %></td>
+            <td><%=bt.management_fee_per_month%></td>
+            <td><%=bt.management_fee_rate*100 %>&#37;</td>
+            <td>
+              <%= link_to "查看",bt %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+          <%=will_paginate @budget_tables %>
+        </div>
+      </div>
 
-<table>
-  <tr>
-    <th>Org</th>
-    <th>Sum carrying fee</th>
-    <th>Commission rate</th>
-    <th>Rent fee</th>
-    <th>Salary rate</th>
-    <th>Utilities fee</th>
-    <th>Office fee</th>
-    <th>Communication fee</th>
-    <th>Profit rate</th>
-    <th>Goods loaded</th>
-    <th>Distance</th>
-    <th>Fuel fee</th>
-    <th>Compensate rate</th>
-    <th>Vehicle fee</th>
-  </tr>
-
-<% @budget_tables.each do |budget_table| %>
-  <tr>
-    <td><%=h budget_table.org %></td>
-    <td><%=h budget_table.sum_carrying_fee %></td>
-    <td><%=h budget_table.commission_rate %></td>
-    <td><%=h budget_table.rent_fee %></td>
-    <td><%=h budget_table.salary_rate %></td>
-    <td><%=h budget_table.utilities_fee %></td>
-    <td><%=h budget_table.office_fee %></td>
-    <td><%=h budget_table.communication_fee %></td>
-    <td><%=h budget_table.profit_rate %></td>
-    <td><%=h budget_table.goods_loaded %></td>
-    <td><%=h budget_table.distance %></td>
-    <td><%=h budget_table.fuel_fee %></td>
-    <td><%=h budget_table.compensate_rate %></td>
-    <td><%=h budget_table.vehicle_fee %></td>
-    <td><%= link_to 'Show', budget_table %></td>
-    <td><%= link_to 'Edit', edit_budget_table_path(budget_table) %></td>
-    <td><%= link_to 'Destroy', budget_table, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New budget_table', new_budget_table_path %>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>

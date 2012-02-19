@@ -26,8 +26,8 @@
             <td><%=mfc.goods_loaded %></td>
             <td><%=mfc.fuel_fee %></td>
             <td>
-              <%if check_power('edit_org_management_fee_config')%>
-                <%= link_to "修改", edit_org_management_fee_config_path(mfc) %>
+              <%if check_power('update_org_management_fee_config')%>
+                <%= link_to "修改", edit_org_management_fee_config_path(mfc,:active_sub_tab => 3) %>
               <%end%>
             </td>
           </tr>

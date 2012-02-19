@@ -28,8 +28,8 @@
             <td><%=mfc.communication_fee %></td>
             <td><%=mfc.vehicle_fee %></td>
             <td>
-              <%if check_power('edit_management_fee_config')%>
-                <%= link_to "修改", edit_management_fee_config_path(mfc) %>
+              <%if check_power('update_management_fee_config')%>
+                <%= link_to "修改", edit_management_fee_config_path(mfc,:active_sub_tab => 2) %>
               <%end%>
             </td>
           </tr>
