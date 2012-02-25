@@ -38,6 +38,9 @@ cn:
       punishment: 处罚信息
       salary_table: 工资表
       employee: 员工资料
+      management_fee_config: 预算费用设置信息
+      org_management_fee_config: 分理处预算费用设置信息
+      budget_table: 预算表
     attributes:
       bill:
         bill_no: "票据号"

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219074623) do
+ActiveRecord::Schema.define(:version => 20120225021254) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -96,22 +96,26 @@ ActiveRecord::Schema.define(:version => 20120219074623) do
   end
 
   create_table "budget_tables", :force => true do |t|
-    t.integer  "org_id",                                                            :null => false
-    t.decimal  "sum_carrying_fee",  :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "commission_rate",   :precision => 15, :scale => 3, :default => 0.0
-    t.decimal  "rent_fee",          :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "salary_rate",       :precision => 15, :scale => 3, :default => 0.0
-    t.decimal  "utilities_fee",     :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "office_fee",        :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "communication_fee", :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "profit_rate",       :precision => 15, :scale => 3, :default => 0.0
-    t.decimal  "goods_loaded",      :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "distance",          :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "fuel_fee",          :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "compensate_rate",   :precision => 15, :scale => 3, :default => 0.0
-    t.decimal  "vehicle_fee",       :precision => 15, :scale => 2, :default => 0.0
+    t.integer  "org_id",                                                                          :null => false
+    t.decimal  "sum_carrying_fee",                :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "commission_rate",                 :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "rent_fee",                        :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "salary_rate",                     :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "utilities_fee",                   :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "office_fee",                      :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "communication_fee",               :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "profit_rate",                     :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "goods_loaded",                    :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "distance",                        :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "fuel_fee",                        :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "compensate_rate",                 :precision => 15, :scale => 3, :default => 0.0
+    t.decimal  "vehicle_fee",                     :precision => 15, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "other_item_name1",  :limit => 20
+    t.decimal  "other_item_fee1",                 :precision => 15, :scale => 2, :default => 0.0
+    t.string   "other_item_name2",  :limit => 20
+    t.decimal  "other_item_fee2",                 :precision => 15, :scale => 2, :default => 0.0
   end
 
   create_table "chat_messages", :force => true do |t|
@@ -300,14 +304,21 @@ ActiveRecord::Schema.define(:version => 20120219074623) do
   end
 
   create_table "org_management_fee_configs", :force => true do |t|
-    t.integer  "org_id",                                                       :null => false
-    t.decimal  "rent_fee",     :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "office_fee",   :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "distance",     :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "goods_loaded", :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "fuel_fee",     :precision => 15, :scale => 2, :default => 0.0
+    t.integer  "org_id",                                                                         :null => false
+    t.decimal  "rent_fee",                       :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "office_fee",                     :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "distance",                       :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "goods_loaded",                   :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "fuel_fee",                       :precision => 15, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "vehicle_fee",                    :precision => 15, :scale => 2, :default => 0.0
+    t.string   "other_item_name1", :limit => 20
+    t.decimal  "other_item_fee1",                :precision => 15, :scale => 2, :default => 0.0
+    t.string   "other_item_name2", :limit => 20
+    t.decimal  "other_item_fee2",                :precision => 15, :scale => 2, :default => 0.0
+    t.string   "other_item_name3", :limit => 20
+    t.decimal  "other_item_fee3",                :precision => 15, :scale => 2, :default => 0.0
   end
 
   create_table "orgs", :force => true do |t|

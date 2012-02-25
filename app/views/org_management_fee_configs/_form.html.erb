@@ -26,6 +26,28 @@
     <%= f.label :goods_loaded, "装货量(元)" %>
     <%= f.text_field :goods_loaded, :class => 'textInput' %>
   </div>
+  <div class="ctrlHolder">
+    <%= f.label :vehicle_fee, "车辆费(元)" %>
+    <%= f.text_field :vehicle_fee, :class => 'textInput' %>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :other_item_name1, "补助项目1" %>
+    <%= f.text_field :other_item_name1, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :other_item_fee1, "补助费用1" %>
+    <%= f.text_field :other_item_fee1, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :other_item_name2, "补助项目2" %>
+    <%= f.text_field :other_item_name2, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :other_item_fee2, "补助费用2" %>
+    <%= f.text_field :other_item_fee2, :class => 'textInput' %>
+  </div>
+
 </fieldset>
 <div class="actions-bar">
   <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>

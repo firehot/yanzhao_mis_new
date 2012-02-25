@@ -25,6 +25,9 @@
             <td><%=bt.management_fee_rate*100 %>&#37;</td>
             <td>
               <%= link_to "查看",bt %>
+              <% if check_power('destroy_budget_table')%>
+                <%= link_to "删除", bt,:method => :delete,:confirm => "您确定要删除吗?" %>
+              <%end%>
             </td>
           </tr>
         <% end %>

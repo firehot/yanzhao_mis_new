@@ -10,7 +10,7 @@
         </tr>
         <%@chat_messages.each do |m| -%>
           <tr class="even">
-            <td width='50px;'>
+            <td width='50px;' style='padding : 2px;'>
               <span class='ellipsis' style='font-size : 0.8em;'>
                 <%= m.user == current_user ? '我' : m.user.username%>
                 &nbsp;&nbsp;

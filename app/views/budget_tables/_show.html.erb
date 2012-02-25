@@ -23,6 +23,11 @@
     <td colspan='3'><%= @budget_table.management_fee_per_month %></td>
   </tr>
   <tr>
+    <td colspan='3'>全年管理费= 月管理费*12:</td>
+    <td colspan='3'><%= @budget_table.management_fee_year  %></td>
+  </tr>
+
+  <tr>
     <td colspan='3'>管理费比例= 月管理费 / 月均货量:</td>
     <td colspan='3'><%= @budget_table.management_fee_rate * 100 %>&#37;</td>
   </tr>
@@ -73,7 +78,22 @@
     </td>
   </tr>
   <tr>
+    <td> <%= @budget_table.try(:other_item_name1) %></td>
+    <td>
+      <%= @budget_table.try(:other_item_fee1)%>
+    </td>
+    <td><%= @budget_table.try(:other_item_name2) %></td>
+    <td>
+      <%= @budget_table.try(:other_item_fee2)%>
+    </td>
+
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
     <td colspan='3'>预算费用合计:</td>
     <td colspan='3'><%= @budget_table.sum_budget_fee%></td>
   </tr>
+
 </table>

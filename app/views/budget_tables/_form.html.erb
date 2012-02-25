@@ -27,8 +27,13 @@
     <td colspan='3'><%= f.object.management_fee_per_month %></td>
   </tr>
   <tr>
+    <td colspan='3'>全年管理费= 月管理费 * 12:</td>
+    <td colspan='3'><%= f.object.management_fee_year %></td>
+  </tr>
+
+  <tr>
     <td colspan='3'>管理费比例= 月管理费 / 月均货量:</td>
-    <td colspan='3'><%= f.object.management_fee_rate * 100 %>&#37;</td>
+    <td colspan='3'><%= f.object.management_fee_rate * 100.0 %>&#37;</td>
   </tr>
   <tr>
     <td colspan='6' class='text-center'>预算费用</td>
@@ -69,14 +74,31 @@
     </td>
   </tr>
   <tr>
-    <td>盘货费:</td>
+    <td>装货量(元)</td>
     <td>
-      <%= f.object.inventory_fee%>
+      <%= f.object.goods_loaded %>
       <%= f.hidden_field :goods_loaded%>
-      <%= f.hidden_field :distance %>
-      <%= f.hidden_field :fuel_fee %>
-
     </td>
+
+    <td>距离(公里)</td>
+    <td>
+      <%= f.object.distance %>
+      <%= f.hidden_field :distance %>
+    </td>
+
+    <td>油耗(元/公里)</td>
+    <td>
+      <%= f.object.fuel_fee %>
+      <%= f.hidden_field :fuel_fee %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan='3'>盘货费:</td>
+    <td colspan='3'>
+      <%= f.object.inventory_fee%>
+    </td>
+  </tr>
+  <tr>
     <td>赔偿:</td>
     <td>
       <%= f.object.compensate_fee%>
@@ -87,7 +109,30 @@
       <%= f.object.vehicle_fee%>
       <%= f.hidden_field :vehicle_fee %>
     </td>
+    <td colspan='2'>&nbsp;</td>
   </tr>
+  <tr>
+    <td>
+      <%= f.object.try(:other_item_name1) %>
+      <%= f.hidden_field :other_item_name1 %>
+    </td>
+    <td>
+      <%= f.object.try(:other_item_fee1)%>
+      <%= f.hidden_field :other_item_fee1%>
+    </td>
+    <td>
+      <%= f.object.try(:other_item_name2) %>
+      <%= f.hidden_field :other_item_name2 %>
+    </td>
+    <td>
+      <%= f.object.try(:other_item_fee2)%>
+      <%= f.hidden_field :other_item_fee2%>
+    </td>
+
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
   <tr>
     <td colspan='3'>预算费用合计:</td>
     <td colspan='3'><%= f.object.sum_budget_fee%></td>

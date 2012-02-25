@@ -19,41 +19,50 @@ class BudgetTable < ActiveRecord::Base
     budget_table.goods_loaded = org_config.try(:goods_loaded)
     budget_table.distance = org_config.try(:distance)
     budget_table.fuel_fee = org_config.try(:fuel_fee)
-    budget_table.vehicle_fee = global_config.try(:vehicle_fee)
+    budget_table.vehicle_fee = org_config.try(:vehicle_fee)
+
+    budget_table.other_item_name1 = org_config.try(:other_item_name1)
+    budget_table.other_item_fee1 = org_config.try(:other_item_fee1)
+    budget_table.other_item_name2 = org_config.try(:other_item_name2)
+    budget_table.other_item_fee2 = org_config.try(:other_item_fee2)
+
     budget_table
   end
   #提成额 = 月均货量 * 提成比例
   def commission_fee
-    (self.sum_carrying_fee*commission_rate).to_f.roundf(2)
+    (self.sum_carrying_fee*commission_rate).to_f.roundf
   end
-  #管理费比例 = 月管理费
   #工资 = 月均货量 * 工资比例
   def salary_fee
-    (sum_carrying_fee * salary_rate).to_f.roundf(2)
+    (sum_carrying_fee * salary_rate).to_f.roundf
   end
   #利润
   def profit_fee
-    (sum_carrying_fee * profit_rate).to_f.roundf(2)
+    (sum_carrying_fee * profit_rate).to_f.roundf
   end
   #赔偿 = 月均货量 * 赔偿比例
   def compensate_fee
-    (sum_carrying_fee * compensate_rate).to_f.roundf(2)
+    (sum_carrying_fee * compensate_rate).to_f.roundf
   end
   #盘货费 = (月均货量 / 装货量 * 110% * 距离 * 油耗)
   def inventory_fee
-    (sum_carrying_fee/goods_loaded*1.1*distance*fuel_fee).to_f.roundf(2)
+    (sum_carrying_fee/goods_loaded*1.1*distance*fuel_fee).to_f.roundf
   end
   #预算费用合计
   def sum_budget_fee
-    rent_fee + salary_fee + utilities_fee + communication_fee + office_fee + profit_fee + inventory_fee + compensate_fee + vehicle_fee
+    rent_fee + salary_fee + utilities_fee + communication_fee + office_fee + profit_fee + inventory_fee + compensate_fee + vehicle_fee + other_item_fee1 + other_item_fee2
 
   end
   #月管理费 = 提成额 - 预算费用合计
   def management_fee_per_month
     commission_fee - sum_budget_fee
   end
+  #全年管理费总额
+  def management_fee_year
+    management_fee_per_month*12
+  end
   #管理费比例 = 月管理费 / 月均货量
   def management_fee_rate
-    (management_fee_per_month/sum_carrying_fee).to_f.roundf(2)
+    (management_fee_per_month/sum_carrying_fee).roundf(4)
   end
 end

@@ -31,6 +31,10 @@
               <%if check_power('update_management_fee_config')%>
                 <%= link_to "修改", edit_management_fee_config_path(mfc,:active_sub_tab => 2) %>
               <%end%>
+              <%if check_power('destroy_management_fee_config')%>
+                <%= link_to "删除", mfc,:method => :delete,:active_sub_tab => 2,:confirm => "您确定删除吗？" %>
+              <%end%>
+
             </td>
           </tr>
         <% end %>
