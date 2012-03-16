@@ -39,6 +39,7 @@ Rails::Initializer.run do |config|
   config.gem 'searchlogic',:version => '2.4.2'
   config.gem "aasm", :version =>'2.1.1', :lib => 'aasm'
   config.gem 'rufus-scheduler', :source => "http://gemcutter.org"
+  config.gem 'default_value_for', :version => "~> 1.0.7"
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).

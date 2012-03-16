@@ -9,6 +9,7 @@ gem 'searchlogic','2.4.2'
 gem "aasm", '~> 2.1.1'
 gem 'rake','0.8.7'
 gem 'fastercsv','~> 1.5.3'
+gem 'default_value_for','~> 1.0.7'
 source :gemcutter
 gem 'rufus-scheduler',"2.0.10"
 group :development do

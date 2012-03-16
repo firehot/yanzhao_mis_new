@@ -19,6 +19,7 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    default_value_for (1.0.7)
     devise (1.0.6)
       warden (~> 0.10.3)
     fastercsv (1.5.4)
@@ -57,6 +58,7 @@ DEPENDENCIES
   aasm (~> 2.1.1)
   calendar_date_select
   capistrano (~> 2.9.0)
+  default_value_for (~> 1.0.7)
   devise (= 1.0.6)
   fastercsv (~> 1.5.3)
   mysql (= 2.8.1)

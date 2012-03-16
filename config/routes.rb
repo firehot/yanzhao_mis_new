@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :invoice_types
+
   map.resources :budget_tables
 
   map.resources :org_management_fee_configs

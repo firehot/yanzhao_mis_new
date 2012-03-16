@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @invoice_type.name %>
+</p>
+
+<p>
+  <b>Is active:</b>
+  <%=h @invoice_type.is_active %>
+</p>
+
+<p>
+  <b>Order by:</b>
+  <%=h @invoice_type.order_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_invoice_type_path(@invoice_type) %> |
+<%= link_to 'Back', invoice_types_path %>
