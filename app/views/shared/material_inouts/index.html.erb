@@ -37,7 +37,7 @@
               <%= bill.person_name %>
             </td>
             <td>
-              <%= bill.auditor.username %>
+              <%= bill.auditor.try(:username)%>
             </td>
 
             <td>

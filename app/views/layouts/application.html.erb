@@ -104,6 +104,11 @@
                 <%= link_to "预算工具", budget_tables_path(:active_sub_tab => 1)  %>
               </li>
             <%end%>
+            <%if check_power_group('票据登记')%>
+              <li class="<%= check_current_controller(['common_invoice_receipts']) %>">
+                <%= link_to "普通票据登记", common_invoice_receipts_path(:active_sub_tab => 1)  %>
+              </li>
+            <%end%>
 
           </ul>
         </div>

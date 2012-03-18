@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :common_invoice_receipts
+
+  map.resources :common_invoices
+
   map.resources :invoice_types
 
   map.resources :budget_tables

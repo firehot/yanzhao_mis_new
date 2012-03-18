@@ -1,6 +1,6 @@
 <fieldset class='blockLabels'>
   <div class="ctrlHolder">
-    <%= f.label :name, "物品名称" %>
+    <%= f.label :name, "名称" %>
     <%= f.text_field :name, :class => 'textInput' %>
   </div>
   <div class="ctrlHolder">
@@ -13,6 +13,11 @@
     <p class='formHint'>例如:个、件、套、张等</p>
   </div>
   <div class="ctrlHolder">
+    <%= f.label :unit_price, "采购单价" %>
+    <%= f.text_field :unit_price, :class => 'shortText' %>
+  </div>
+
+  <div class="ctrlHolder">
     <%= f.label :min_count, "库存报警下限" %>
     <%= f.text_field :min_count, :class => 'shortText' %>
     <p class='formHint'>当物品库存低于此下限时,系统将自动提示报警</p>
@@ -24,6 +29,6 @@
   </div>
 </fieldset>
 <div class="actions-bar">
-  <%=f.submit '保存物品信息', :class => 'sexybutton sexysimple sexyblue'%>
+  <%=f.submit '保存', :class => 'sexybutton sexysimple sexyblue'%>
   <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
-</div>       
+</div>

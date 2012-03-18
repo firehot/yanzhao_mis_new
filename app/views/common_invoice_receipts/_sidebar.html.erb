@@ -1,0 +1,24 @@
+<div class="block">
+  <h3>新建</h3>
+  <ul class="navigation">
+    <%if check_power('new_common_invoice_receipt')%>
+      <li><%=link_to "新建入库单",new_common_invoice_receipt_path(:active_sub_tab => 6)%></li>
+    <%end%>
+
+    <%if check_power('new_durable_shippment')%>
+      <li><%=link_to "新建领用单",new_durable_shippment_path(:active_sub_tab => 9)%></li>
+    <%end%>
+    <%if check_power('new_common_invoice')%>
+      <li><%=link_to "新建票据类型",new_common_invoice_path(:active_sub_tab => 7)%></li>
+    <%end%>
+    <%if params[:action] == 'show'%>
+      <li><%=link_to "导出",self.send("#{@param_name}_path",instance_variable_get("@#{@param_name}"),{:format => :csv})%></li>
+    <%end%>
+  </ul>
+</div>
+<div class="block">
+  <h3>查询</h3>
+  <div class="content">
+    <%= render :partial => "search_form" %>
+  </div>
+</div>

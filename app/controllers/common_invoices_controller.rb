@@ -1,0 +1,2 @@
+class CommonInvoicesController < BaseController
+end

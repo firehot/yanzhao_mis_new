@@ -4,7 +4,7 @@
     <%=text_field_tag "","", :class => 'material_name',:style => "width : 150px;",:readonly => true %>
     <%
       #FIXME 根据出入库类型设置查询参数,入库时,显示所有商品,出库时,仅显示库存大于0的商品
-    search_params = {"search[material_type_is]" => material_type}
+    search_params = {"search[material_type_is]" => "CommonInvoice"}
     search_params["search[qty_gt]"] = 0 if @param_name.include?('shippment')
   %>
 <%=link_to "选择",show_search_m_storages_path(search_params),

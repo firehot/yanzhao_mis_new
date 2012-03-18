@@ -1,0 +1,2 @@
+module CommonInvoicesHelper
+end
