@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  check_date: 2012-03-19
+  org: 
+  computer_balance_count: 1
+  computer_receive_count: 1
+  computer_used_count: 1
+  computer_invalid_count: 1
+  computer_rest_count: 1
+  hand_balance_count: 1
+  hand_receive_count: 1
+  hand_used_count: 1
+  hand_invalid_count: 1
+  hand_rest_count: 1
+  user: 
+
+two:
+  check_date: 2012-03-19
+  org: 
+  computer_balance_count: 1
+  computer_receive_count: 1
+  computer_used_count: 1
+  computer_invalid_count: 1
+  computer_rest_count: 1
+  hand_balance_count: 1
+  hand_receive_count: 1
+  hand_used_count: 1
+  hand_invalid_count: 1
+  hand_rest_count: 1
+  user: 
