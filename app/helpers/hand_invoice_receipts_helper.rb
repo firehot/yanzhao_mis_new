@@ -1,0 +1,2 @@
+module HandInvoiceReceiptsHelper
+end

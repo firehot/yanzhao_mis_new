@@ -1,0 +1,23 @@
+<tr class='fields'>
+  <td>
+    <%=f.hidden_field :material_id,:value => HandInvoice.default_hand_invoice.id %>
+    <%=HandInvoice.default_hand_invoice.name %>
+  </td>
+  <td>
+    <%=HandInvoice.default_hand_invoice.unit %>
+  </td>
+  <td>
+    <%=f.text_field :price,:value => HandInvoice.default_hand_invoice.unit_price,:style => "width : 50px;",:class => "material_price" %>
+  </td>
+  <td>
+    <%=f.text_field :qty,:style => "width : 50px;",:class => "material_qty"%>
+  </td>
+  <td>
+    <%=f.text_field :from_no,:style => "width : 70px;",:maxlength => 12,:size => 12 %>
+   ~
+    <%=f.text_field :to_no,:style => "width : 70px;",:maxlength => 12,:size => 12 %>
+  </td>
+  <td>
+    <%=f.text_field :line_amt,:style => "width : 50px;",:class => 'material_total',:style => "width : 50px;",:readonly => true %>
+  </td>
+</tr>

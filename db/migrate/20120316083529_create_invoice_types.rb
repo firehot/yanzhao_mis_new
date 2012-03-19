@@ -11,8 +11,8 @@ class CreateInvoiceTypes < ActiveRecord::Migration
     #给materials表添加单价字段
     add_column :materials,:unit_price,:decimal,:precision => 10,:scale => 2,:default => 0
     #给material_lines添加起止票号字段
-    add_column :material_inout_lines,:from_no,:string,:default => 15
-    add_column :material_inout_lines,:to_no,:string,:default => 15
+    add_column :material_inout_lines,:from_no,:string,:limit => 15
+    add_column :material_inout_lines,:to_no,:string,:limit => 15
     #给material_lines添加invoice_type字段
     add_column :material_inout_lines,:invoice_type_id,:integer
   end

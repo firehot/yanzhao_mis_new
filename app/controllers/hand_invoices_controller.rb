@@ -1,0 +1,2 @@
+class HandInvoicesController < MaterialsController
+end
