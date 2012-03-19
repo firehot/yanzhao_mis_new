@@ -1,31 +1,53 @@
 <div class="block">
-  <h3>新建</h3>
+  <h3>运单票据管理</h3>
   <ul class="navigation">
     <%if check_power('new_hand_invoice_receipt')%>
-      <li><%=link_to "手工票入库单",new_hand_invoice_receipt_path(:active_sub_tab => 6)%></li>
+      <li><%=link_to "手工票入库单",hand_invoice_receipts_path(:active_sub_tab => 1)%></li>
     <%end%>
 
     <%if check_power('new_hand_invoice_shippment')%>
-      <li><%=link_to "手工票领用单",new_hand_invoice_shippment_path(:active_sub_tab => 9)%></li>
+      <li><%=link_to "手工票领用单",hand_invoice_shippments_path(:active_sub_tab => 1)%></li>
     <%end%>
     <li>
-      <%=link_to "修改手工票信息",edit_hand_invoice_path(HandInvoice.default_hand_invoice,:active_sub_tab => 9)%>
+      <%=link_to "修改手工票设置",edit_hand_invoice_path(HandInvoice.default_hand_invoice,:active_sub_tab => 7)%>
     </li>
     <%if check_power('new_computer_invoice_receipt')%>
-      <li><%=link_to "机打票入库单",new_computer_invoice_receipt_path(:active_sub_tab => 6)%></li>
+      <li><%=link_to "机打票入库单",computer_invoice_receipts_path(:active_sub_tab => 1)%></li>
     <%end%>
 
     <%if check_power('new_computer_invoice_shippment')%>
-      <li><%=link_to "机打票领用单",new_computer_invoice_shippment_path(:active_sub_tab => 9)%></li>
+      <li><%=link_to "机打票领用单",computer_invoice_shippments_path(:active_sub_tab => 1)%></li>
     <%end%>
     <li>
-      <%=link_to "修改机打票信息",edit_computer_invoice_path(ComputerInvoice.default_computer_invoice,:active_sub_tab => 9)%>
+      <%=link_to "修改机打票设置",edit_computer_invoice_path(ComputerInvoice.default_computer_invoice,:active_sub_tab => 9)%>
     </li>
   </ul>
 </div>
+<div class="block">
+  <h3>其他票据管理</h3>
+  <ul class="navigation">
+    <%if check_power('new_common_invoice_receipt')%>
+      <li><%=link_to "票据入库单",common_invoice_receipts_path(:active_sub_tab => 1)%></li>
+    <%end%>
+
+    <%if check_power('new_common_invoice_shippment')%>
+      <li><%=link_to "票据领用单",common_invoice_shippments_path(:active_sub_tab => 1)%></li>
+    <%end%>
+    <%if check_power('new_common_invoice')%>
+      <li><%=link_to "新建票据类型",new_common_invoice_path(:active_sub_tab => 7)%></li>
+    <%end%>
+  </ul>
+</div>
+
 <div class="block">
   <h3>查询</h3>
   <div class="content">
     <%= render "search_form" %>
   </div>
+</div>
+<div class="block">
+  <h3>库存统计</h3>
+  <ul class="navigation">
+    <li><%= link_to "库存统计", index_invoice_m_storages_path  %></li>
+  </ul>
 </div>

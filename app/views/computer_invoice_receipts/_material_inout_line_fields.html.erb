@@ -1,5 +1,5 @@
 <% invoice = ComputerInvoice.default_computer_invoice%>
-<tr class='fields'>
+<tr class='fields material_inout_line'>
   <td>
     <%=f.hidden_field :material_id,:value => invoice.id %>
     <%=invoice.name %>

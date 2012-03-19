@@ -1,0 +1,46 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'hand_invoice_receipts/caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">库存查询</h2>
+    <div class="inner">
+      <table class='table'>
+        <tr>
+          <th class='first'></th>
+          <th>物品名称</th>
+          <th>规格</th>
+          <th>单位</th>
+          <th>当前均价</th>
+          <th>库存数量</th>
+          <th>金额</th>
+        </tr>
+        <%@m_storages.each do |m|%>
+          <tr class="<%=cycle 'odd','even'%>">
+            <td><%=link_to_function("<span class='red-text'>警</span>","Modalbox.show('<h2>#{m.material.name}库存低于下限:#{m.material.min_count}</h2>',{title : false})") if m.alert%></td>
+            <td><%=m.material.try(:name)%></td>
+            <td><%=m.material.try(:description)%></td>
+            <td><%=m.material.try(:unit)%></td>
+            <td><%=m.avg_price%></td>
+            <td><%=m.qty%></td>
+            <td><%=m.qty*m.avg_price%></td>
+          </tr>
+        <%end%>
+        <tr>
+          <td colspan='6'>小计:</td>
+          <td><%=@m_storages.sum {|m| m.qty*m.avg_price}%></td>
+        </tr>
+        <tr>
+          <td colspan='6'>合计:</td>
+          <td><%=@sum_info%></td>
+        </tr>
+
+      </table>
+      <div class="actions-bar wat-cf">
+        <%=will_paginate @m_storages %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'hand_invoice_receipts/sidebar') -%>

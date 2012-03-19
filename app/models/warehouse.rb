@@ -1,7 +1,7 @@
 class Warehouse < ActiveRecord::Base
   validates_presence_of :name,:message => "名称不可为空"
   #获取默认的票据仓库
-  DEFAULT_INVOICE_WAREHOUSE_NAME="default_invoice_warehouse_dont_delete!!"
+  DEFAULT_INVOICE_WAREHOUSE_NAME="票据仓库(勿修改)"
   DEFAULT_INVOICE_WAREHOUSE_TYPE="invoice_warehouse"
   def self.default_invoice_warehouse
     self.find_or_create_by_name_and_warehouse_type(DEFAULT_INVOICE_WAREHOUSE_NAME,DEFAULT_INVOICE_WAREHOUSE_TYPE)

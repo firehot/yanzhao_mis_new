@@ -1,5 +1,13 @@
 class ShippmentObserver < ActiveRecord::Observer
   observe :durable_shippment,:consumer_shippment,:common_invoice_shippment,:hand_invoice_shippment,:computer_invoice_shippment
+  #出货处理前,检查库存
+  def before_save(shippment)
+    #如果领用数量大于库存数,则返回
+    if line.qty > m_storage.qty
+      shippment.errors.add(:material_id,"库存数量不足")
+      return false
+    end
+  end
 
   #出货处理完毕后,物品的库存
   def after_save(shippment)

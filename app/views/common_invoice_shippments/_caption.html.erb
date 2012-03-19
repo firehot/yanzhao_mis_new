@@ -1,1 +1,34 @@
-<%= render :partial => "common_invoice_receipts/caption" %>
+<ul class="wat-cf">
+  <%if check_power('new_common_invoice_shippment')%>
+    <li class="first <%=check_sub_active_tab(1) %>">
+      <%= link_to "领用单", common_invoice_shippments_path(:active_sub_tab => 1) %>
+    </li>
+  <%end%>
+
+  <%if check_power('common_invoice_shippment_audit')%>
+    <li class="<%=check_sub_active_tab(15) %>">
+      <%= link_to "待确认", common_invoice_shippments_path(:active_sub_tab => 15,"search[state]" => MaterialInout::STATE_DRAFT,"search[auditor_id]" => current_user) %>
+    </li>
+  <% end %>
+  <%if check_power('new_common_invoice')%>
+    <li class="<%=check_sub_active_tab(16) %>">
+      <%= link_to "票据分类", common_invoices_path(:active_sub_tab => 16) %>
+    </li>
+    <% if params[:active_sub_tab] == '7'%>
+      <li class='active'>
+        <%=link_to "新建票据类型",new_common_invoice_path(:active_sub_tab => 7)%>
+      </li>
+    <%end%>
+
+  <% end %>
+
+  <%if params[:active_sub_tab] == '4'%>
+    <li class="<%=check_sub_active_tab(4) %>"><%= link_to "查看领用单", common_invoice_shippment_path(@common_invoice_shippment,:active_sub_tab => 4) %></li>
+  <%end%>
+  <%if check_power('new_common_invoice_shippment')%>
+    <li class= class="<%=check_sub_active_tab(6) %>">
+      <%= link_to "新建领用单", new_common_invoice_shippment_path(:active_sub_tab => 6) %>
+    </li>
+  <%end%>
+
+</ul>

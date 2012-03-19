@@ -90,7 +90,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :durable_materials
 
-  map.resources :m_storages,:collection => {:show_search => :get,:search => :get}
+  map.resources :m_storages,:collection => {:index_invoice => :get,:show_search => :get,:search => :get}
 
   map.resources :material_inout_lines,:only => [:index]
 

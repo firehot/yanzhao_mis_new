@@ -10,37 +10,25 @@
       <%= link_to "待确认", common_invoice_receipts_path(:active_sub_tab => 15,"search[state]" => MaterialInout::STATE_DRAFT,"search[auditor_id]" => current_user) %>
     </li>
   <% end %>
-
-
   <%if check_power('new_common_invoice')%>
-    <li class="<%=check_sub_active_tab(3) %>">
-      <%= link_to "分类", common_invoices_path(:active_sub_tab => 3) %>
+    <li class="<%=check_sub_active_tab(16) %>">
+      <%= link_to "票据分类", common_invoices_path(:active_sub_tab => 16) %>
     </li>
-  <%end%>
-  <%if params[:active_sub_tab] == '4'%>
-    <li class="<%=check_sub_active_tab(4) %>"><%= link_to "查看入库单", durable_receipt_path(@durable_receipt,:active_sub_tab => 4) %></li>
-  <%end%>
-
-  <%if check_power('new_durable_shippment')%>
-    <%if params[:active_sub_tab] == '5'%>
-      <li class="active"><%= link_to "查看领用单", durable_shippment_path(@durable_shippment,:active_sub_tab => 5) %></li>
+    <% if params[:active_sub_tab] == '7'%>
+      <li class='active'>
+        <%=link_to "新建票据类型",new_common_invoice_path(:active_sub_tab => 7)%>
+      </li>
     <%end%>
-  <%end%>
-  <%if params[:active_sub_tab] == '6'%>
-    <li class="active"><%= link_to "新建入库单", new_durable_receipt_path(:active_sub_tab => 6) %></li>
-  <%end%>
-  <%if params[:active_sub_tab] == '9'%>
-    <li class="active"><%= link_to "新建领用单", new_durable_shippment_path(:active_sub_tab => 9) %></li>
+
+  <% end %>
+
+  <%if params[:active_sub_tab] == '4'%>
+    <li class="<%=check_sub_active_tab(4) %>"><%= link_to "查看入库单", common_invoice_receipt_path(@common_invoice_receipt,:active_sub_tab => 4) %></li>
   <%end%>
 
-  <%if params[:active_sub_tab] == '7'%>
-    <li class="active"><%= link_to "新建物品", new_durable_material_path(:active_sub_tab => 7) %></li>
-  <%end%>
-
-  <%if params[:active_sub_tab] == '8'%>
-    <li class="active"><%= link_to "修改物品资料", edit_durable_material_path(@durable_material,:active_sub_tab => 8) %></li>
-  <%end%>
-  <%if check_power('m_storages')%>
-    <li class="<%=check_sub_active_tab(10) %>"><%= link_to "库存查询", m_storages_path(:in_what => 'durable_receipts',"search[material_type_is]" => "DurableMaterial","search[qty_gt]" => 0, "search[material_is_active]" => true,:active_sub_tab => 10) %></li>
+  <%if check_power('new_common_invoice_receipt')%>
+    <li class= class="<%=check_sub_active_tab(6) %>">
+      <%= link_to "新建入库单", new_common_invoice_receipt_path(:active_sub_tab => 6) %>
+    </li>
   <%end%>
 </ul>

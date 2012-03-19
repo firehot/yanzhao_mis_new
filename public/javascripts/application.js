@@ -646,4 +646,14 @@ document.observe("dom:loaded", function() {
   //打印发放联
   if($('btn_print_salary_table_2'))
   $('btn_print_salary_table_2').observe('click',print_1.bindAsEventListener(print_1,true));
+
+  //手工运单和机打运单合计自动计算功能
+  var cal_line_amt = function(evt){
+      var tr=evt.element().up('tr.material_inout_line');
+      var el_price=parseFloat(tr.down('input.material_price').getValue());
+      var el_qty=parseFloat(tr.down('input.material_qty').getValue());
+      var material_total = (el_price*el_qty).ceil();
+      tr.down('input.material_total').setValue(material_total);
+  };
+  $$('tr.material_inout_line .material_price,tr.material_inout_line .material_qty').invoke('observe','change',cal_line_amt);
 });

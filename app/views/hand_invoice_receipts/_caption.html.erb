@@ -15,22 +15,14 @@
     <li class="<%=check_sub_active_tab(4) %>"><%= link_to "查看入库单", hand_invoice_receipt_path(@hand_invoice_receipt,:active_sub_tab => 4) %></li>
   <%end%>
 
-  <%if check_power('new_hand_invoice_shippment')%>
-    <%if params[:active_sub_tab] == '5'%>
-      <li class="active"><%= link_to "查看领用单", hand_invoice_shippment_path(@hand_invoice_shippment,:active_sub_tab => 5) %></li>
-    <%end%>
+  <%if check_power('new_hand_invoice_receipt')%>
+    <li class="<%=check_sub_active_tab(6) %>">
+      <%= link_to "新建入库单", new_hand_invoice_receipt_path(:active_sub_tab => 6) %>
+    </li>
   <%end%>
-  <%if params[:active_sub_tab] == '6'%>
-    <li class="active"><%= link_to "新建入库单", new_hand_invoice_receipt_path(:active_sub_tab => 6) %></li>
-  <%end%>
-  <%if params[:active_sub_tab] == '9'%>
-    <li class="active"><%= link_to "新建领用单", new_hand_invoice_shippment_path(:active_sub_tab => 9) %></li>
+  <%if params[:active_sub_tab] == '7'%>
+    <li class="active">
+      <%= link_to "修改手工票设置", edit_hand_invoice_path(HandInvoice.default_hand_invoice,:active_sub_tab => 7) %></li>
   <%end%>
 
-  <%if params[:active_sub_tab] == '8'%>
-    <li class="active"><%= link_to "修改手工票信息", edit_hand_invoice_path(HandInvoide.default_hand_invoice,:active_sub_tab => 8) %></li>
-  <%end%>
-  <%if check_power('m_storages')%>
-    <li class="<%=check_sub_active_tab(10) %>"><%= link_to "库存查询", m_storages_path(:in_what => 'durable_receipts',"search[material_type_is]" => "DurableMaterial","search[qty_gt]" => 0, "search[material_is_active]" => true,:active_sub_tab => 10) %></li>
-  <%end%>
 </ul>

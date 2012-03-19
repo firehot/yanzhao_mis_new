@@ -7,9 +7,10 @@ class MaterialInout < ActiveRecord::Base
   belongs_to :confirm
 
   has_many :material_inout_lines,:dependent => :destroy
-  accepts_nested_attributes_for :material_inout_lines,:allow_destroy => true ,:reject_if => lambda{|attributes| attributes['material_id'].blank? or attributes['qty'].eql('0') or attributes['qty'].blank? }
+  accepts_nested_attributes_for :material_inout_lines,:allow_destroy => true ,:reject_if => lambda{|attributes| attributes['material_id'].blank? or attributes['qty'].eql?('0') or attributes['qty'].blank? }
   validates_presence_of :person_name,:message => "经办人不可为空!"
   validates_presence_of :inout_date,:message => "日期不可为空"
+  validates_presence_of :material_inout_lines,:message => "单据明细不可为空"
   #单据状态
   STATE_DRAFT = 'DR'    #草稿
   STATE_CONFIRM = 'CO'  #已确认

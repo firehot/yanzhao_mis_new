@@ -1,1 +1,31 @@
-<%= render :partial => "hand_invoice_receipts/caption" %>
+<ul class="wat-cf">
+  <%if check_power('new_hand_invoice_shippment')%>
+    <li class="first <%=check_sub_active_tab(1) %>">
+      <%= link_to "领用单", hand_invoice_shippments_path(:active_sub_tab => 1) %>
+    </li>
+  <%end%>
+
+  <%if check_power('hand_invoice_shippment_audit')%>
+    <li class="<%=check_sub_active_tab(15) %>">
+      <%= link_to "待确认", hand_invoice_shippments_path(:active_sub_tab => 15,"search[state]" => MaterialInout::STATE_DRAFT,"search[auditor_id]" => current_user) %>
+    </li>
+  <% end %>
+
+  <%if params[:active_sub_tab] == '4'%>
+    <li class="<%=check_sub_active_tab(4) %>">
+      <%= link_to "查看领用单", hand_invoice_shippment_path(@hand_invoice_shippment,:active_sub_tab => 4) %>
+    </li>
+  <%end%>
+  <%if check_power('new_hand_invoice_shippment')%>
+    <li class="<%=check_sub_active_tab(6) %>">
+      <%= link_to "新建领用单", new_hand_invoice_shippment_path(:active_sub_tab => 6) %>
+    </li>
+  <%end%>
+
+  <%if params[:active_sub_tab] == '7'%>
+    <li class="active">
+      <%= link_to "修改手工票设置", edit_hand_invoice_path(HandInvoice.default_hand_invoice,:active_sub_tab => 7) %></li>
+  <%end%>
+
+
+</ul>

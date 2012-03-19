@@ -2,6 +2,10 @@
   <fieldset class='blockLabels'>
     <%=hidden_field_tag :active_sub_tab,params[:active_sub_tab]%>
     <div class='ctrlHolder'>
+      <%=f.label :org_id_eq,"领用部门"%>
+      <%=f.select :org_id_eq,orgs_for_select,:include_blank => true %>
+    </div>
+    <div class='ctrlHolder'>
       <%=f.label :person_name_like,"经手人"%>
       <%=f.text_field :person_name_like,:class => "textInput" %>
     </div>

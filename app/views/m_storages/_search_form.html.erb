@@ -1,6 +1,10 @@
-<% form_for CommonInvoiceReceipt.search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
+<% form_for HandInvoiceReceipt.search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
   <fieldset class='blockLabels'>
     <%=hidden_field_tag :active_sub_tab,params[:active_sub_tab]%>
+    <div class='ctrlHolder'>
+      <%=f.label :person_name_like,"经手人"%>
+      <%=f.text_field :person_name_like,:class => "textInput" %>
+    </div>
     <div class='ctrlHolder'>
       <%=f.label :inout_date_gte,"入库日期"%>
       <%=f.calendar_date_select :inout_date_gte,:class => "textInput" %>
@@ -9,11 +13,6 @@
       <%=f.label :inout_date_lte,"~"%>
       <%=f.calendar_date_select :inout_date_lte,:class => "textInput" %>
     </div>
-    <div class='ctrlHolder'>
-      <%=f.label :person_name_like,"经手人"%>
-      <%=f.text_field :person_name_like,:class => "textInput" %>
-    </div>
-
   </fieldset>
   <div class="actions-bar">
     <%=f.submit '查询', :class => 'sexybutton sexysimple sexyblue'%>
