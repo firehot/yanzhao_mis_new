@@ -1,4 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :computer_invoice_shippments
+
+  map.resources :computer_invoice_receipts
+
+
+  map.resources :computer_invoices
+
+  map.resources :hand_invoice_shippments
 
   map.resources :hand_invoices
 

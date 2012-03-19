@@ -1,5 +1,5 @@
 class ReceiptObserver < ActiveRecord::Observer
-  observe :durable_receipt,:consumer_receipt,:common_invoice_receipt
+  observe :durable_receipt,:consumer_receipt,:common_invoice_receipt,:hand_invoice_receipt,:computer_invoice_receipt
   #收货处理完毕后,更新对应物品的库存和均价
   def after_save(receipt)
     #只有审核后才进行处理

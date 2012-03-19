@@ -1,0 +1,2 @@
+class ComputerInvoiceShippmentsController < MaterialInoutsController
+end

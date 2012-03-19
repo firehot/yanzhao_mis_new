@@ -1,0 +1,2 @@
+class HandInvoiceShippmentsController < MaterialInoutsController
+end
