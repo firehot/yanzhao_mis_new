@@ -51,7 +51,7 @@ class UsersController < BaseController
       end
     end
   end
- 
+
   def update_ex
     @user = User.find(params[:id])
 

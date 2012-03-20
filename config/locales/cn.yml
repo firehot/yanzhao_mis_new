@@ -41,6 +41,17 @@ cn:
       management_fee_config: 预算费用设置信息
       org_management_fee_config: 分理处预算费用设置信息
       budget_table: 预算表
+      common_invoice: 普通票据
+      common_invoice_receipt: 普通票据入库单
+      common_invoice_shippment: 普通票据领用单
+      hand_invoice_shippment: 手工票领用单
+      hand_invoice_receipt: 手工票据入库单
+      computer_invoice_shippment: 机打票领用单
+      computer_invoice_receipt: 机打票入库单
+      invoice_check: 运单盘查表
+      computer_invoice: 机打票
+      hand_invoice: 手工票
+
     attributes:
       bill:
         bill_no: "票据号"

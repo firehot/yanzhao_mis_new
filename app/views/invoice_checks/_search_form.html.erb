@@ -1,0 +1,21 @@
+<% form_for InvoiceCheck.search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
+  <fieldset class='blockLabels'>
+    <%=hidden_field_tag :active_sub_tab,params[:active_sub_tab]%>
+    <div class='ctrlHolder'>
+      <%=f.label :org_id_is,"分理处/分公司"%>
+      <%=f.select :org_id_is,orgs_for_select,:prompt => "请选择机构" %>
+    </div>
+
+    <div class='ctrlHolder'>
+      <%=f.label :check_date_gte,"盘查日期"%>
+      <%=f.calendar_date_select :check_date_gte,:class => "textInput" %>
+    </div>
+    <div class='ctrlHolder'>
+      <%=f.label :check_date_lte,"~"%>
+      <%=f.calendar_date_select :check_date_lte,:class => "textInput" %>
+    </div>
+  </fieldset>
+  <div class="actions-bar">
+    <%=f.submit '查询', :class => 'sexybutton sexysimple sexyblue'%>
+  </div>
+<% end -%>
