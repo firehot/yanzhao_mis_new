@@ -19,7 +19,11 @@
             </td>
           </tr>
           <tr>
-            <td class='chat_content'><%= m.content%></td>
+            <td class='chat_content'>
+              <div style="word-wrap : break-word;word-break : normal;">
+                <%= m.content%>
+              </div>
+            </td>
           </tr>
         <%end%>
       </table>
