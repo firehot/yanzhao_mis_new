@@ -1,1 +1,95 @@
-<%=render :file => "shared/materials/index"%>
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render :partial => "caption" %>
+  </div>
+  <div class="content">
+    <h2 class="title">运单盘查信息列表</h2>
+    <div class="inner">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th colspan='5'>电脑票</th>
+            <th colspan='5'>手工票</th>
+            <th>&nbsp;</th>
+          </tr>
+          <tr>
+            <th>盘查日期</th>
+            <th>分理处/分公司</th>
+            <th>上期结余</th>
+            <th>本次领用</th>
+            <th>本次使用</th>
+            <th>本次作废</th>
+            <th>本期结余</th>
+            <th>上期结余</th>
+            <th>本次领用</th>
+            <th>本次使用</th>
+            <th>本次作废</th>
+            <th>本期结余</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @invoice_checks.each do |ic| %>
+            <tr class="<%= cycle("odd", "even") %>">
+              <td>
+                <%= ic.check_date %>
+              </td>
+              <td>
+                <%= ic.org.try(:name) %>
+              </td>
+              <td>
+                <%= ic.computer_balance_count %>
+              </td>
+              <td>
+                <%= ic.computer_receive_count %>
+              </td>
+              <td>
+                <%= ic.computer_used_count %>
+              </td>
+              <td>
+                <%= ic.computer_invalid_count %>
+              </td>
+              <td>
+                <%= ic.computer_rest_count %>
+              </td>
+              <td>
+                <%= ic.hand_balance_count %>
+              </td>
+              <td>
+                <%= ic.hand_receive_count %>
+              </td>
+              <td>
+                <%= ic.hand_used_count %>
+              </td>
+              <td>
+                <%= ic.hand_invalid_count %>
+              </td>
+              <td>
+                <%= ic.hand_rest_count %>
+              </td>
+
+              <td>
+                <%= link_to "查看", invoice_check_path(ic,:active_sub_tab => 3) %>
+                <%if check_power('update_invoice_check')%>
+                  |
+                  <%= link_to "修改", edit_invoice_check_path(ic,:active_sub_tab => 4) %> |
+                <%end%>
+
+                <%if check_power('destroy_invoice_check')%>
+                  |
+                  <%= link_to "删除", ic, :method => :delete, :confirm => "您确定要删除该单据吗？" %>
+                <%end%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="actions-bar wat-cf">
+        <%= will_paginate @invoice_checks  %>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

@@ -1,26 +1,23 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :invoice_checks
 
-  map.resources :computer_invoice_shippments
+  map.resources :computer_invoice_shippments,:member => {:confirm => :put}
 
-  map.resources :computer_invoice_receipts
-
+  map.resources :computer_invoice_receipts,:member => {:confirm => :put}
 
   map.resources :computer_invoices
 
-  map.resources :hand_invoice_shippments
+  map.resources :hand_invoice_shippments,:member => {:confirm => :put}
 
   map.resources :hand_invoices
 
-  map.resources :hand_invoice_receipts
+  map.resources :hand_invoice_receipts,:member => {:confirm => :put}
 
-  map.resources :common_invoice_shippments
+  map.resources :common_invoice_shippments,:member => {:confirm => :put}
 
-  map.resources :common_invoice_receipts
+  map.resources :common_invoice_receipts,:member => {:confirm => :put}
 
   map.resources :common_invoices
-
-  map.resources :invoice_types
 
   map.resources :budget_tables
 
@@ -41,8 +38,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :punishments,:member => {:export_excel => :get}
 
   map.resources :violations
-
-
 
   map.resources :settlement_lines,:only => [:index]
 

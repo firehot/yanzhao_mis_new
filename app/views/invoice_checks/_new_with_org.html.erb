@@ -1,5 +1,6 @@
 <% form_for InvoiceCheck.new,:url => {:controller =>:invoice_checks,:action => :new},:html => { :class => :uniForm } do |f|%>
   <fieldset class='blockLabels'>
+    <%= hidden_field_tag :active_sub_tab,2 %>
     <div class="ctrlHolder">
       <%= f.label :org_id, "选择分理处/分公司:" %>
       <%= f.select :org_id,orgs_for_select %>

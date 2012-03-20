@@ -656,4 +656,22 @@ document.observe("dom:loaded", function() {
       tr.down('input.material_total').setValue(material_total);
   };
   $$('tr.material_inout_line .material_price,tr.material_inout_line .material_qty').invoke('observe','change',cal_line_amt);
+
+  //运单盘查信息表自动计算
+  var cal_invoice_check =function(evt){
+      var computer_balance_count = parseFloat($('invoice_check_computer_balance_count').getValue());
+      var computer_receive_count = parseFloat($('invoice_check_computer_receive_count').getValue());
+      var computer_used_count = parseFloat($('invoice_check_computer_used_count').getValue());
+      var computer_invalid_count = parseFloat($('invoice_check_computer_invalid_count').getValue());
+      var computer_rest_count = computer_balance_count + computer_receive_count - computer_used_count - computer_invalid_count;
+      var hand_balance_count = parseFloat($('invoice_check_hand_balance_count').getValue());
+      var hand_receive_count = parseFloat($('invoice_check_hand_receive_count').getValue());
+      var hand_used_count = parseFloat($('invoice_check_hand_used_count').getValue());
+      var hand_invalid_count = parseFloat($('invoice_check_hand_invalid_count').getValue());
+      var hand_rest_count = hand_balance_count + hand_receive_count - hand_used_count - hand_invalid_count;
+      $('computer_rest_count').update(computer_rest_count);
+      $('hand_rest_count').update(hand_rest_count);
+
+  };
+  $$('#invoice_check_computer_used_count,#invoice_check_computer_invalid_count,#invoice_check_hand_used_count,#invoice_check_hand_invalid_count').invoke('observe','change',cal_invoice_check);
 });

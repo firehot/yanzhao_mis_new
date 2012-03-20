@@ -3,7 +3,6 @@
     <td colspan='2'>分理处/分公司:</td>
     <td>
       <%=@invoice_check.org.name %>
-      <%=f.hidden_field :org_id  %>
     </td>
     <td colspan='2'>
       盘查日期:
@@ -23,15 +22,13 @@
   <tr>
     <td>
       <%= @invoice_check.computer_balance_count %>
-      <%= f.hidden_field :computer_balance_count %>
     </td>
     <td>
       <%= @invoice_check.computer_receive_count %>
-      <%= f.hidden_field :computer_receive_count  %>
     </td>
-    <td><%= f.text_field :computer_used_count,:class => "shortText" %></td>
-    <td><%= f.text_field :computer_invalid_count,:class => "shortText" %></td>
-    <td><span id='computer_rest_count'><%=@invoice_check.computer_rest_count  %></span></td>
+    <td><%= @invoice_check.computer_used_count %></td>
+    <td><%= @invoice_check.computer_invalid_count %></td>
+    <td><%=@invoice_check.computer_rest_count  %></td>
   </tr>
   <tr>
     <th colspan='5'>手工票</th>
@@ -46,19 +43,12 @@
   <tr>
     <td>
       <%= @invoice_check.hand_balance_count %>
-      <%= f.hidden_field :hand_balance_count  %>
     </td>
     <td>
       <%= @invoice_check.hand_receive_count %>
-      <%= f.hidden_field :hand_receive_count  %>
     </td>
-    <td><%= f.text_field :hand_used_count,:class => "shortText" %></td>
-    <td><%= f.text_field :hand_invalid_count,:class => "shortText" %></td>
-    <td><span id='hand_rest_count'><%=@invoice_check.hand_rest_count  %></span></td>
+    <td><%=@invoice_check.hand_used_count %></td>
+    <td><%=@invoice_check.hand_invalid_count %></td>
+    <td><%=@invoice_check.hand_rest_count  %></td>
   </tr>
-
 </table>
-<div class="actions-bar">
-  <%=f.submit '保存盘查信息', :class => 'sexybutton sexysimple sexyblue'%>
-  <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
-</div>

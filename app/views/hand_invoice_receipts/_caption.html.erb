@@ -24,5 +24,9 @@
     <li class="active">
       <%= link_to "修改手工票设置", edit_hand_invoice_path(HandInvoice.default_hand_invoice,:active_sub_tab => 7) %></li>
   <%end%>
+  <%if params[:active_sub_tab] == '11'%>
+    <li class="active">
+      <%= link_to "库存统计", index_invoice_m_storages_path(:active_sub_tab => 11)%></li>
+  <%end%>
 
 </ul>
