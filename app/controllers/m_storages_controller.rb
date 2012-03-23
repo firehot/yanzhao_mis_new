@@ -5,6 +5,7 @@ class MStoragesController < BaseController
   end
   #票据库存统计
   def index_invoice
+    @search = MStorage.warehouse_id_eq(Warehouse.default_invoice_warehouse.id).material_type_equals(["CommonInvoice","HandInvoice","ComputerInvoice"])
     @m_storages = @search.paginate :page => params[:page],:per_page => 8,:order => "created_at DESC"
     @sum_info = @search.sum('qty*avg_price')
   end

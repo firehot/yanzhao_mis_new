@@ -68,7 +68,7 @@
   <div class="block">
     <h3>库存统计</h3>
     <ul class="navigation">
-      <li><%= link_to "库存统计", index_invoice_m_storages_path("search[warehouse_id_eq]" => Warehouse.default_invoice_warehouse.id,:active_sub_tab => 11)  %></li>
+      <li><%= link_to "库存统计", index_invoice_m_storages_path(:active_sub_tab => 11)  %></li>
     </ul>
   </div>
 <%end%>
