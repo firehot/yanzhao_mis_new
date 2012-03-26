@@ -232,4 +232,6 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
 /*聊天室内容显示*/
 .chat_content p {
   margin : 2px 0 2px 10px;
+  word-wrap : break-word;
+  word-break : normal;
 }
