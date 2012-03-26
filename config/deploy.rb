@@ -40,7 +40,7 @@ namespace :deploy do
   desc "create cache dir"
   task :create_cache_dir,:roles => :web do
      run "cd #{deploy_to}/current && chmod 777 tmp"
-     run "cd #{deploy_to}/current/tmp && mkdir cache && chmod 777 cache"
+     #run "cd #{deploy_to}/current/tmp && mkdir cache && chmod 777 cache"
   end
   after "deploy:symlink","deploy:create_cache_dir"
   task :start do ; end
