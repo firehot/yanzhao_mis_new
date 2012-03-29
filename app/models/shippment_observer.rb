@@ -5,6 +5,7 @@ class ShippmentObserver < ActiveRecord::Observer
     return if shippment.state == MaterialInout::STATE_DRAFT
     #如果领用数量大于库存数,则返回
     shippment.material_inout_lines.each do |line|
+      m_storage = MStorage.warehouse_id_is(shippment.warehouse).material_id_is(line.material).first
       if line.qty > m_storage.qty
         shippment.errors.add(:material_id,"库存数量不足")
         return false
