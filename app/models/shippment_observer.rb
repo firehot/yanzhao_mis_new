@@ -6,7 +6,7 @@ class ShippmentObserver < ActiveRecord::Observer
     #如果领用数量大于库存数,则返回
     shippment.material_inout_lines.each do |line|
       m_storage = MStorage.warehouse_id_is(shippment.warehouse).material_id_is(line.material).first
-      if line.qty > m_storage.qty
+      if line.qty*line.material.package_volume > m_storage.qty
         shippment.errors.add(:material_id,"库存数量不足")
         return false
       end
@@ -19,7 +19,7 @@ class ShippmentObserver < ActiveRecord::Observer
     shippment.material_inout_lines.each do |line|
       m_storage = MStorage.warehouse_id_is(shippment.warehouse).material_id_is(line.material).first
       #更新库存
-      m_storage.qty -= line.qty
+      m_storage.qty -= line.qty*line.material.package_volume
       #设置库存报警
       m_storage.alert = (line.material.min_count > 0 && m_storage.qty <= line.material.min_count) ? true : false
       m_storage.save

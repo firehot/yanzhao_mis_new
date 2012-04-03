@@ -2,7 +2,7 @@ class MaterialInoutsController < BaseController
   def new
     bill = @model_klazz.new(:inout_date => Date.today)
     bill.org = current_user.org
-    2.times {bill.material_inout_lines.build }
+    1.times {bill.material_inout_lines.build }
     instance_variable_set("@#{@param_name}",bill)
   end
   #票据确认操作
@@ -24,7 +24,7 @@ class MaterialInoutsController < BaseController
   end
   private
   def gen_export(bill)
-    header =["仓库:#{bill.warehouse.name}",'',"经办人:#{bill.person_name}",bill.org.blank? ? "" : "部门:#{bill.org.name}","日期:#{bill.created_at.strftime('%Y-%m-%d')}"] 
+    header =["仓库:#{bill.warehouse.name}",'',"经办人:#{bill.person_name}",bill.org.blank? ? "" : "部门:#{bill.org.name}","日期:#{bill.created_at.strftime('%Y-%m-%d')}"]
     sum = bill.material_inout_lines.sum(:line_amt)
     sum_arr = ['','','','合计:',sum]
     Array::BOM_HEADER + header.export_line_csv + bill.material_inout_lines.export_csv(MaterialInoutLine.export_options,false) + sum_arr.export_line_csv

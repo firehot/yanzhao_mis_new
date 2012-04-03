@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320012357) do
+ActiveRecord::Schema.define(:version => 20120401085355) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -253,14 +253,6 @@ ActiveRecord::Schema.define(:version => 20120320012357) do
     t.datetime "updated_at"
   end
 
-  create_table "invoice_types", :force => true do |t|
-    t.string   "name",       :limit => 60,                   :null => false
-    t.boolean  "is_active",                :default => true
-    t.integer  "order_by",                 :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "m_storages", :force => true do |t|
     t.integer  "warehouse_id",                                                   :null => false
     t.integer  "material_id",                                                    :null => false
@@ -284,16 +276,15 @@ ActiveRecord::Schema.define(:version => 20120320012357) do
   end
 
   create_table "material_inout_lines", :force => true do |t|
-    t.integer  "material_inout_id",                                                  :null => false
-    t.integer  "material_id",                                                        :null => false
-    t.integer  "qty",                                              :default => 1
-    t.decimal  "price",             :precision => 10, :scale => 2, :default => 0.0
-    t.decimal  "line_amt",          :precision => 10, :scale => 2, :default => 0.0
+    t.integer  "material_inout_id",                                                               :null => false
+    t.integer  "material_id",                                                                     :null => false
+    t.integer  "qty",                                                            :default => 1
+    t.decimal  "price",                           :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "line_amt",                        :precision => 10, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "from_no",                                          :default => "15"
-    t.string   "to_no",                                            :default => "15"
-    t.integer  "invoice_type_id"
+    t.string   "from_no",           :limit => 15
+    t.string   "to_no",             :limit => 15
   end
 
   create_table "material_inouts", :force => true do |t|
@@ -311,15 +302,16 @@ ActiveRecord::Schema.define(:version => 20120320012357) do
   end
 
   create_table "materials", :force => true do |t|
-    t.string   "name",        :limit => 60,                                                        :null => false
-    t.boolean  "is_active",                                                :default => true,       :null => false
-    t.string   "description", :limit => 60
-    t.string   "type",        :limit => 30,                                :default => "Material", :null => false
-    t.integer  "min_count",                                                :default => 0
-    t.string   "unit",        :limit => 10,                                :default => "个",      :null => false
+    t.string   "name",           :limit => 60,                                                        :null => false
+    t.boolean  "is_active",                                                   :default => true,       :null => false
+    t.string   "description",    :limit => 60
+    t.string   "type",           :limit => 30,                                :default => "Material", :null => false
+    t.integer  "min_count",                                                   :default => 0
+    t.string   "unit",           :limit => 10,                                :default => "个",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "unit_price",                :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "unit_price",                   :precision => 10, :scale => 2, :default => 0.0
+    t.integer  "package_volume",                                              :default => 1
   end
 
   create_table "message_visitors", :force => true do |t|

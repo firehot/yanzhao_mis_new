@@ -13,6 +13,10 @@
     <%=f.text_field :qty,:style => "width : 50px;",:class => "material_qty"%>
   </td>
   <td>
+    <%= hidden_field_tag :package_volume,HandInvoice.default_hand_invoice.package_volume,:class => "package_volume" %>
+    <span class='package_qty'></span>
+  </td>
+  <td>
     <%=f.text_field :from_no,:style => "width : 70px;",:maxlength => 12,:size => 12 %>
    ~
     <%=f.text_field :to_no,:style => "width : 70px;",:maxlength => 12,:size => 12 %>

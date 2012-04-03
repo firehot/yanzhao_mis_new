@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 set :application, "yanzhao_mis_new"
 #set :repository,  "git://github.com/chengdh/il_yanzhao.git"
 set :repository, "."
-set :local_repository, "file:///media//WORK/yanzhao_mis_new/.git"
+set :local_repository, "~/myproject/yanzhao_mis_new/.git"
 #set :local_repository, "file://f:/il_yanzhao/.git"
 set :deploy_via, :copy
 set :copy_cache, true

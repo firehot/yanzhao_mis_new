@@ -652,8 +652,12 @@ document.observe("dom:loaded", function() {
       var tr=evt.element().up('tr.material_inout_line');
       var el_price=parseFloat(tr.down('input.material_price').getValue());
       var el_qty=parseFloat(tr.down('input.material_qty').getValue());
+      var el_package_volume=parseFloat(tr.down('.package_volume').getValue());
       var material_total = (el_price*el_qty).ceil();
+      var package_qty=(el_qty*el_package_volume).ceil();
       tr.down('input.material_total').setValue(material_total);
+      tr.down('.package_qty').update(package_qty);
+
   };
   $$('tr.material_inout_line .material_price,tr.material_inout_line .material_qty').invoke('observe','change',cal_line_amt);
 

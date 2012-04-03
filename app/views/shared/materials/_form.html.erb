@@ -13,6 +13,12 @@
     <p class='formHint'>例如:个、件、套、张等</p>
   </div>
   <div class="ctrlHolder">
+    <%= f.label :package_volume, "包装系数" %>
+    <%= f.text_field :package_volume, :class => 'shortText' %>
+    <p class='formHint'>例如:当前物品可以拆分的计量单位</p>
+  </div>
+
+  <div class="ctrlHolder">
     <%= f.label :unit_price, "单价" %>
     <%= f.text_field :unit_price, :class => 'shortText' %>
   </div>
