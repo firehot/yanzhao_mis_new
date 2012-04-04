@@ -23,7 +23,7 @@
         </tr>
         <%@salary_table_lines_group.each do |employee,lines| %>
           <tr><td colspan='12'><%=employee.name%></td></tr>
-          <% lines.each do |line|%>
+          <% lines.sort_by {|l| l.salary_table.mth }.each do |line|%>
             <tr class="<%= cycle("odd", "even") %>">
               <td class='employee_name'>&nbsp;</td>
               <td class='mth'><%= line.salary_table.mth %></td>

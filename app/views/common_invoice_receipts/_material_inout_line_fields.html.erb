@@ -14,7 +14,7 @@
     <%=text_field_tag "","", :class => 'material_unit',:style => "width : 50px;",:readonly => true %>
   </td>
   <td>
-    <%=f.text_field :price,:style => "width : 50px;",:readonly =>@param_name.include?('shippment'),:class => "material_price" %>
+    <%=f.text_field :price,:style => "width : 50px;",:readonly =>@param_name.include?('shippment'),:class => "common_invoice_price" %>
   </td>
   <td>
     <%=f.text_field :qty,:style => "width : 50px;",:class => "material_qty"%>

@@ -11,7 +11,7 @@
           <th>物品名称</th>
           <th>规格</th>
           <th>单位</th>
-          <th>当前均价</th>
+          <th>单价</th>
           <th>库存数量</th>
           <th>金额</th>
         </tr>
@@ -21,9 +21,9 @@
             <td><%=m.material.try(:name)%></td>
             <td><%=m.material.try(:description)%></td>
             <td><%=m.material.try(:unit)%></td>
-            <td><%=m.avg_price%></td>
+            <td><%=m.material.try(:unit_price)%></td>
             <td><%=m.qty%></td>
-            <td><%=m.qty*m.avg_price%></td>
+            <td><%=m.qty*m.material.try(:unit_price) %></td>
           </tr>
         <%end%>
         <tr>

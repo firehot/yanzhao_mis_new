@@ -2,7 +2,7 @@ class ChatMessagesController < BaseController
   # GET /chat_messages
   # GET /chat_messages.xml
   def index
-    @chat_messages = ChatMessage.search(params[:search]).paginate :page => params[:page],:order => "created_at DESC"
+    @chat_messages = ChatMessage.search(params[:search]).paginate :page => params[:page],:per_page => 20,:order => "created_at DESC"
 
     respond_to do |format|
       format.html # index.html.erb

@@ -459,18 +459,33 @@ com.yanzhao.MaterialSelector.prototype = {
 		el_name = this.target_el.select('.material_name').first();
 		el_unit = this.target_el.select('.material_unit').first();
 		el_price = this.target_el.select('.material_price').first();
+        //普通票据，价格自票据设置信息中取
+		el_common_invoice_price = this.target_el.select('.common_invoice_price').first();
 		el_qty = this.target_el.select('.material_qty').first();
 		el_total = this.target_el.select('.material_total').first();
 		el_id.value = this.selected_material.material.id;
 		el_name.value = this.selected_material.material.name;
 		el_unit.value = this.selected_material.material.unit;
-		el_price.value = this.selected_material.avg_price;
-		//以下注册监听事件
-		el_price.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
-		el_qty.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
+        if(typeof(el_price) !='undefined')
+        {
+            el_price.value = this.selected_material.avg_price;
+            //以下注册监听事件
+            el_price.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
+            el_qty.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
+            //先计算
+            this.cal_line_amt(null, el_price, el_qty, el_total);
 
-		//先计算
-		this.cal_line_amt(null, el_price, el_qty, el_total);
+        }
+        if(typeof(el_common_invoice_price) !='undefined')
+        {
+            el_common_invoice_price.value = this.selected_material.material.unit_price;
+            el_common_invoice_price.observe('change', this.cal_line_amt.bindAsEventListener(this, el_common_invoice_price, el_qty, el_total));
+            el_qty.observe('change', this.cal_line_amt.bindAsEventListener(this, el_common_invoice_price, el_qty, el_total));
+            //先计算
+            this.cal_line_amt(null, el_common_invoice_price, el_qty, el_total);
+
+        }
+
 
 	},
 	//计算每行合计
