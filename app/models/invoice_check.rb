@@ -17,8 +17,8 @@ class InvoiceCheck < ActiveRecord::Base
     invoice_check = self.new(:org => org)
     #获取最近一次盘查记录
     last_invoice_check = InvoiceCheck.first(:conditions => {:org_id => org.id},:order => "check_date DESC")
-    invoice_check.computer_balance_count = last_invoice_check.computer_balance_count if last_invoice_check
-    invoice_check.hand_balance_count = last_invoice_check.hand_balance_count if last_invoice_check
+    invoice_check.computer_balance_count = last_invoice_check.computer_rest_count if last_invoice_check
+    invoice_check.hand_balance_count = last_invoice_check.hand_rest_count if last_invoice_check
     #计算最近一段领取数量
     start_date = '1909-01-01'
     start_date = last_invoice_check.check_date if last_invoice_check
