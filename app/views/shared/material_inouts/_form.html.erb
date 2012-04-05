@@ -17,7 +17,7 @@
   <%end%>
 
   <div class="ctrlHolder">
-    <% 
+    <%
       warehouse_type = 'DurableWarehouse' if f.object.class == DurableReceipt || f.object.class == DurableShippment
       warehouse_type = 'ConsumerWarehouse' if f.object.class == ConsumerReceipt || f.object.class == ConsumerShippment
     %>
@@ -34,7 +34,7 @@
 </div>
 <div class="ctrlHolder">
   <%= f.label :auditor_id, "审核人" %>
-  <% 
+  <%
     func_key = 'durable_receipt_audit' if f.object.class == DurableReceipt
     func_key = 'durable_shippment_audit' if f.object.class == DurableShippment
     func_key = 'consumer_receipt_audit' if f.object.class == ConsumerReceipt
@@ -83,6 +83,6 @@
 </div>
 
 <div class="actions-bar">
-  <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
+  <%=f.submit '保存信息',:disable_with => "正在保存...", :class => 'sexybutton sexysimple sexyblue'%>
   <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
 </div>

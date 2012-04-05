@@ -34,5 +34,16 @@ class MaterialInout < ActiveRecord::Base
   def amount
     self.material_inout_lines.sum(:line_amt)
   end
+  #检查库存是否足够,在出库时使用
+  protected
+  def check_storage
+    self.material_inout_lines.each do |line|
+      m_storage = MStorage.warehouse_id_is(self.warehouse).material_id_is(line.material).first
+      #检查出库库存是否足够
+      if line.qty*line.material.package_volume > m_storage.qty
+        self.errors.add(:material_inout_lines,"#{line.material.name}:当前库存不足!")
+      end
+    end
+  end
 
 end
