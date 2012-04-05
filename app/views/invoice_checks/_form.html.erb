@@ -59,6 +59,6 @@
 
 </table>
 <div class="actions-bar">
-  <%=f.submit '保存盘查信息', :class => 'sexybutton sexysimple sexyblue'%>
+  <%=f.submit '保存盘查信息',:disable_with => "正在保存...", :class => 'sexybutton sexysimple sexyblue'%>
   <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
 </div>
