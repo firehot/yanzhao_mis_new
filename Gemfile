@@ -13,5 +13,5 @@ gem 'default_value_for','~> 1.0.7'
 source :gemcutter
 gem 'rufus-scheduler',"2.0.10"
 group :development do
-  gem 'capistrano','~> 2.9.0'
+  gem 'capistrano'
 end
