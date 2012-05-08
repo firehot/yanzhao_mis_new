@@ -17,9 +17,11 @@
     <span class='package_qty'></span>
   </td>
   <td>
-    <%=f.text_field :from_no,:style => "width : 70px;",:maxlength => 12,:size => 12 %>
-   ~
-    <%=f.text_field :to_no,:style => "width : 70px;",:maxlength => 12,:size => 12 %>
+    <div class='bill_no_wrapper'>
+      <%=f.text_field :from_no,:style => "width : 70px;",:maxlength => 12,:size => 12,:class => 'from_no' %>
+      ~
+      <%=f.text_field :to_no,:style => "width : 70px;",:maxlength => 12,:size => 12,:class => 'to_no'  %>
+    </div>
   </td>
   <td>
     <%=f.text_field :line_amt,:style => "width : 50px;",:class => 'material_total',:style => "width : 50px;",:readonly => true %>

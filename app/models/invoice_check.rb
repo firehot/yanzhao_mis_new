@@ -12,6 +12,32 @@ class InvoiceCheck < ActiveRecord::Base
   def hand_rest_count
     self.hand_balance_count + self.hand_receive_count - self.hand_used_count - hand_invalid_count
   end
+  #NOTE 手工票需要按照x本x份显示
+  def hand_balance_count_display
+    ret = self.hand_balance_count.divmod(HandInvoice.default_hand_invoice.package_volume)
+    if ret.first == 0
+      "#{ret.last}份"
+    else
+      "#{ret.first}本零#{ret.last}份"
+    end
+  end
+  def hand_rest_count_display
+    ret = self.hand_rest_count.divmod(HandInvoice.default_hand_invoice.package_volume)
+    if ret.first == 0
+      "#{ret.last}份"
+    else
+      "#{ret.first}本零#{ret.last}份"
+    end
+  end
+  #手工票本期领用
+  def hand_receive_count_display
+    ret = self.hand_receive_count.divmod(HandInvoice.default_hand_invoice.package_volume)
+    if ret.first == 0
+      "#{ret.last}份"
+    else
+      "#{ret.first}本#{ret.last}份"
+    end
+  end
   #新建
   def self.new_with_org(org)
     invoice_check = self.new(:org => org)

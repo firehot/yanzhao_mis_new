@@ -688,9 +688,13 @@ document.observe("dom:loaded", function() {
       var hand_used_count = parseFloat($('invoice_check_hand_used_count').getValue());
       var hand_invalid_count = parseFloat($('invoice_check_hand_invalid_count').getValue());
       var hand_rest_count = hand_balance_count + hand_receive_count - hand_used_count - hand_invalid_count;
+      var hand_invoice_package_volume = parseFloat($('hand_invoice_package_volume').getValue());
       $('computer_rest_count').update(computer_rest_count);
-      $('hand_rest_count').update(hand_rest_count);
-
+      var hand_rest_display = Math.floor(hand_rest_count/hand_invoice_package_volume) + '本' + (hand_rest_count % hand_invoice_package_volume)+'份'
+      $('hand_rest_count').update(hand_rest_display);
   };
   $$('#invoice_check_computer_used_count,#invoice_check_computer_invalid_count,#invoice_check_hand_used_count,#invoice_check_hand_invalid_count').invoke('observe','change',cal_invoice_check);
+  //手工票领取表单,单价不可修改,运单编号在领取时不填写
+  $$('#new_hand_invoice_shippment .material_price').invoke('writeAttribute','readonly',true);
+  $$('#new_hand_invoice_shippment .bill_no_wrapper').invoke('hide');
 });

@@ -45,16 +45,21 @@
   </tr>
   <tr>
     <td>
-      <%= @invoice_check.hand_balance_count %>
+      <%= @invoice_check.hand_balance_count_display %>
       <%= f.hidden_field :hand_balance_count  %>
     </td>
     <td>
-      <%= @invoice_check.hand_receive_count %>
+      <%= @invoice_check.hand_receive_count_display %>
       <%= f.hidden_field :hand_receive_count  %>
     </td>
     <td><%= f.text_field :hand_used_count,:class => "shortText" %></td>
     <td><%= f.text_field :hand_invalid_count,:class => "shortText" %></td>
-    <td><span id='hand_rest_count'><%=@invoice_check.hand_rest_count  %></span></td>
+    <td>
+      <%= hidden_field_tag :hand_invoice_package_volume,HandInvoice.default_hand_invoice.package_volume %>
+      <span id='hand_rest_count'>
+        <%=@invoice_check.hand_rest_count_display %>
+      </span>
+    </td>
   </tr>
 
 </table>
