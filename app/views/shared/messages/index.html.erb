@@ -35,17 +35,18 @@
               <td>
                 <%= link_to "查看", self.send("#{@param_name}_path",message,:active_sub_tab => 10) %>
                 <%if ['draft','waitting'].include?(message.state) && (message.user == current_user || message.publisher == current_user)%>
-                  | <%= link_to "修改/审核", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%> |
-                  <%= link_to "删除", message, :method => :delete, :confirm => "确定删除吗?" %>
+                  | <%= link_to "修改/审核", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
+                <%end%>
+                <%if message.publisher == current_user %>
+                  | <%= link_to "删除", message, :method => :delete, :confirm => "确定删除吗?" %>
                 <%end%>
                 <%if ['published'].include?(message.state) && check_power("edit_rule_after_published")%>
                   <%= link_to "修改", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
                 <%end%>
-
               </td>
             </tr>
-          <% end -%>
-        <% end -%>
+          <% end %>
+        <% end %>
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">
@@ -55,4 +56,4 @@
     </div>
   </div>
 </div>
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
+<% content_for :sidebar, render(:partial => 'sidebar') %>
