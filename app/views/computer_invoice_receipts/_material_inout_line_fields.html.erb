@@ -13,7 +13,11 @@
   <td class='invoice_qty'>
     <%=f.text_field :qty,:style => "width : 50px;",:class => "material_qty"%>
   </td>
-  <td class='invoice_package_qty'>&nbsp;</td>
+  <td class='invoice_package_qty'>
+    <%= hidden_field_tag :package_volume,ComputerInvoice.default_computer_invoice.package_volume,:class => "package_volume" %>
+    <span class='package_qty'><%= f.object.qty*ComputerInvoice.default_computer_invoice.package_volume %></span>
+  </td>
+
   <td class='invoice_bill_no'>&nbsp;</td>
   <td class='invoice_line_amt'>
     <%=f.text_field :line_amt,:style => "width : 50px;",:class => 'material_total',:style => "width : 50px;",:readonly => true %>
