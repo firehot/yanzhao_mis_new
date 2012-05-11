@@ -1,7 +1,7 @@
 <ul class="wat-cf">
   <%if check_power('new_common_invoice_shippment')%>
     <li class="first <%=check_sub_active_tab(1) %>">
-      <%= link_to "领用单", common_invoice_shippments_path(:active_sub_tab => 1) %>
+      <%= link_to "领用单", common_invoice_shippments_path("search[org_id_eq]" => current_user.org_id,:active_sub_tab => 1) %>
     </li>
   <%end%>
 
@@ -30,5 +30,4 @@
       <%= link_to "新建领用单", new_common_invoice_shippment_path(:active_sub_tab => 6) %>
     </li>
   <%end%>
-
 </ul>

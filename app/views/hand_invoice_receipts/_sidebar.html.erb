@@ -6,7 +6,7 @@
     <%end%>
 
     <%if check_power('new_hand_invoice_shippment')%>
-      <li><%=link_to "手工票领用单",hand_invoice_shippments_path(:active_sub_tab => 1)%></li>
+      <li><%=link_to "手工票领用单",hand_invoice_shippments_path("search[org_id_eq]" => current_user.org_id,:active_sub_tab => 1)%></li>
     <%end%>
 
     <%if check_power('update_hand_invoice')%>
@@ -19,7 +19,7 @@
     <%end%>
 
     <%if check_power('new_computer_invoice_shippment')%>
-      <li><%=link_to "机打票领用单",computer_invoice_shippments_path(:active_sub_tab => 1)%></li>
+      <li><%=link_to "机打票领用单",computer_invoice_shippments_path("search[org_id_eq]" => current_user.org_id,:active_sub_tab => 1)%></li>
     <%end%>
 
     <%if check_power('update_computer_invoice')%>
@@ -37,7 +37,7 @@
     <%end%>
 
     <%if check_power('new_common_invoice_shippment')%>
-      <li><%=link_to "票据领用单",common_invoice_shippments_path(:active_sub_tab => 1)%></li>
+      <li><%=link_to "票据领用单",common_invoice_shippments_path("search[org_id_eq]" => current_user.org_id,:active_sub_tab => 1)%></li>
     <%end%>
     <%if check_power('new_common_invoice')%>
       <li><%=link_to "新建票据类型",new_common_invoice_path(:active_sub_tab => 7)%></li>

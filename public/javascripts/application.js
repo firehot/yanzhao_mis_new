@@ -696,5 +696,8 @@ document.observe("dom:loaded", function() {
   $$('#invoice_check_computer_used_count,#invoice_check_computer_invalid_count,#invoice_check_hand_used_count,#invoice_check_hand_invalid_count').invoke('observe','change',cal_invoice_check);
   //手工票领取表单,单价不可修改,运单编号在领取时不填写
   $$('#new_hand_invoice_shippment .material_price').invoke('writeAttribute','readonly',true);
-  $$('#new_hand_invoice_shippment .bill_no_wrapper').invoke('hide');
+  $$('#new_computer_invoice_shippment .material_price').invoke('writeAttribute','readonly',true);
+  $$('#new_hand_invoice_shippment .invoice_bill_no').invoke('hide');
+  $$('#new_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_bill_no,#new_computer_invoice_shippment .invoice_package_qty,#edit_computer_invoice_shippment .invoice_package_qty').invoke('hide');
+  //显示手工票审核界面时,自动计算合计金额
 });

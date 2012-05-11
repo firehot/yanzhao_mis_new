@@ -6,6 +6,7 @@ class MaterialInoutsController < BaseController
     instance_variable_set("@#{@param_name}",bill)
   end
   #票据确认操作
+  #PUT material_inouts/confirm
   def confirm
     inout_bill = @model_klazz.find(params[:id])
     inout_bill.confirm(current_user)

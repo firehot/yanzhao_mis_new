@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :computer_invoices
 
-  map.resources :hand_invoice_shippments,:member => {:confirm => :put}
+  map.resources :hand_invoice_shippments,:member => {:show_confirm => :get,:confirm => :put}
 
   map.resources :hand_invoices
 

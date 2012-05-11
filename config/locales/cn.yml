@@ -102,46 +102,13 @@ cn:
         qty: "数量"
         price: "单价"
         line_amt: "金额"
+
+      hand_invoice_shippment:
+        material_inout_lines: "明细"
+
     errors:
       template:
         header:
           one:   "保存{{model}} 时发生了一个错误."
           other: "保存{{model}} 发生了{{count}}个错误."
         body:    "以下字段发生了错误:"
-#ed in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
-  datetime:
-    distance_in_words:
-      half_a_minute: "half a minute"
-      less_than_x_seconds:
-        one:   "less than 1 second"
-        other: "less than {{count}} seconds"
-      x_seconds:
-        one:   "1 second"
-        other: "{{count}} seconds"
-      less_than_x_minutes:
-        one:   "less than a minute"
-        other: "less than {{count}} minutes"
-      x_minutes:
-        one:   "1 minute"
-        other: "{{count}} minutes"
-      about_x_hours:
-        one:   "about 1 hour"
-        other: "about {{count}} hours"
-      x_days:
-        one:   "1 day"
-        other: "{{count}} days"
-      about_x_months:
-        one:   "about 1 month"
-        other: "about {{count}} months"
-      x_months:
-        one:   "1 month"
-        other: "{{count}} months"
-      about_x_years:
-        one:   "about 1 year"
-        other: "about {{count}} years"
-      over_x_years:
-        one:   "over 1 year"
-        other: "over {{count}} years"
-      almost_x_years:
-        one:   "almost 1 year"
-        other: "almost {{count}} years"

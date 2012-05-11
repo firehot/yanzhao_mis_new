@@ -1,0 +1,15 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render :partial => "caption" %>
+  </div>
+  <div class="content">
+    <h2 class="title">审核</h2>
+    <div class="inner">
+      <% form_for @hand_invoice_shippment,:url => confirm_hand_invoice_shippment_path(@hand_invoice_shippment),:method => :put,:html => { :class => :uniForm } do |f| %>
+        <%= render "form", :f => f %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

@@ -1,20 +1,21 @@
 <% invoice = ComputerInvoice.default_computer_invoice%>
 <tr class='fields material_inout_line'>
-  <td>
+  <td class='invoice_name'>
     <%=f.hidden_field :material_id,:value => invoice.id %>
     <%=invoice.name %>
   </td>
-  <td>
+  <td class='invoice_unit'>
     <%=invoice.unit %>
   </td>
-  <td>
+  <td class='invoice_price'>
     <%=f.text_field :price,:value => invoice.unit_price,:style => "width : 50px;",:class => "material_price" %>
   </td>
-  <td>
+  <td class='invoice_qty'>
     <%=f.text_field :qty,:style => "width : 50px;",:class => "material_qty"%>
   </td>
-  <td>&nbsp;</td>
-  <td>
+  <td class='invoice_package_qty'>&nbsp;</td>
+  <td class='invoice_bill_no'>&nbsp;</td>
+  <td class='invoice_line_amt'>
     <%=f.text_field :line_amt,:style => "width : 50px;",:class => 'material_total',:style => "width : 50px;",:readonly => true %>
   </td>
 </tr>
