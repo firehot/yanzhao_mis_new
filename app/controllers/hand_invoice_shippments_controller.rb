@@ -11,6 +11,6 @@ class HandInvoiceShippmentsController < MaterialInoutsController
     @hand_invoice_shippment.update_attributes(params[:hand_invoice_shippment])
     @hand_invoice_shippment.confirm(current_user)
     flash[:notice] = '单据审核成功.'
-    redirect_to :show
+    redirect_to @hand_invoice_shippment
   end
 end
