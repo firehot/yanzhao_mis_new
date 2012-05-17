@@ -5,7 +5,7 @@
   <div class="content">
     <h2 class="title">新建</h2>
     <div class="inner">
-      <% form_for instance_variable_get("@#{@param_name}"),  :html => { :class => :uniForm } do |f| -%>
+      <% form_for instance_variable_get("@#{@param_name}"), :html => { :class => :uniForm } do |f| -%>
         <%= render "shared/materials/form", :f => f %>
       <% end -%>
     </div>
