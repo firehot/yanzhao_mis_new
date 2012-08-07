@@ -40,7 +40,8 @@ class CarryingBill < Bill
     CarryingBill.states[state]
   end
   #2010-6-15 客户要求保存时计算扣手续费/扣运费/实付货款
+  #新增数据或修改运费、付款方式时,重新计算相关费用
   def before_save
-    self.cal_fee!
+    self.cal_fee! if self.new_record? or self.changes['goods_fee'] or self.changes['pay_type']
   end
 end
