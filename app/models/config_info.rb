@@ -4,7 +4,7 @@ class ConfigInfo < ActiveRecord::Base
   validates_numericality_of :config_num_to,  :message => "应为数字"
   #以下定义系统配置中不同配置项的键值
   #仓储费费率
-  KEY_STORAGE_FEE_RATE = "key_storage_fee_rate"; 
+  KEY_STORAGE_FEE_RATE = "key_storage_fee_rate";
   #手续费费率键值
   KEY_HAND_FEE_RATE = "key_hand_fee_rate"
   #强制查询时间区间
@@ -19,7 +19,7 @@ class ConfigInfo < ActiveRecord::Base
   def self.get_hand_fee_a
     ret = []
     self.hand_fee_rates.each do |fee_rate|
-      ret += [[(fee_rate.config_num_from..fee_rate.config_num_to),fee_rate.config_value_num]] 
+      ret += [[(fee_rate.config_num_from..fee_rate.config_num_to),fee_rate.config_value_num]]
     end
     ret
   end
@@ -69,6 +69,17 @@ class ConfigInfo < ActiveRecord::Base
         ret.first.config_date_to.blank? ? Time.now.years_since(10).beginning_of_day : ret.first.config_date_to]
     else
       [Time.now.years_ago(10).beginning_of_day,Time.now.years_since(10).beginning_of_day]
+    end
+  end
+  #2012-08-07 设置手续费比例数据
+  def self.set_hand_fee_data(fee_range=(0..200000),fee_step=500)
+    fee_range.step(fee_step) do |fee|
+      fee_from = fee + 1
+      fee_to = fee + fee_step
+      q,r = fee_from.divmod fee_step
+      fee_rate =q
+      fee_rate = q + 1 if r > 0
+      ConfigInfo.create!(:config_key => KEY_HAND_FEE_RATE,:config_num_from => fee_from,:config_num_to => fee_to,:config_value_num => fee_rate)
     end
   end
 end
