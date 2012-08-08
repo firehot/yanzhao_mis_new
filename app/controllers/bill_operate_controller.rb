@@ -35,13 +35,13 @@ class BillOperateController < BaseController
     #票据明细
     lines =[]
     #得到前台传入的票据id数组,并进行操作
-    if !params[:bills].blank? 
+    if !params[:bills].blank?
       bills = Bill.find(params[:bills])
       lines = bill_operate.bills
       #设置票据状态为已提款
-      bills.each_with_index do |bill,index| 
+      bills.each_with_index do |bill,index|
         #只在提款或提货时计算费用
-        bill.cal_fee! if [CarryingBill::STATE_TK,InoutBill::STATE_DELIVER].include?(after_state)
+        bill.cal_fee! if [InoutBill::STATE_DELIVER].include?(after_state)
         #清仓处理,运费及代收货款被清零
         bill.fee,bill.goods_fee = 0,0 if [InoutBill::STATE_CLEAR].include?(after_state)
 
@@ -53,13 +53,13 @@ class BillOperateController < BaseController
     end
     respond_to do |format|
       #如果没有选择票据进行处理,则返回表单界面,并显示错误
-      if lines.blank? 
+      if lines.blank?
         flash[:error] = "您当前没有选择任何票据."
-        format.html { render :partial => 'share/faile_save.rjs',:object => bill_operate} 
+        format.html { render :partial => 'share/faile_save.rjs',:object => bill_operate}
         format.xml  { render :xml => bill_operate.errors, :status => :unprocessable_entity }
-        format.js { render :partial => 'share/faile_save.rjs',:object => bill_operate} 
+        format.js { render :partial => 'share/faile_save.rjs',:object => bill_operate}
       elsif bill_operate.save
-        flash[:notice] = "共有#{lines.size}张票据成功进行了处理." 
+        flash[:notice] = "共有#{lines.size}张票据成功进行了处理."
         format.html { redirect_to :back }
         format.xml  { render :xml => bill_operate, :status => :created, :location => bill_operate }
         format.js  do
@@ -68,15 +68,15 @@ class BillOperateController < BaseController
           end
         end
       else
-        flash[:error] = "票据处理失败." 
-        format.html { render :partial => 'share/faile_save.rjs',:object => bill_operate} 
+        flash[:error] = "票据处理失败."
+        format.html { render :partial => 'share/faile_save.rjs',:object => bill_operate}
         format.xml  { render :xml => bill_operate.errors, :status => :unprocessable_entity }
-        format.js { render :partial => 'share/faile_save.rjs',:object => bill_operate} 
+        format.js { render :partial => 'share/faile_save.rjs',:object => bill_operate}
       end
     end
   end
   #根据当前操作的类型得到操作后票据的状态,在子类中覆盖
   def after_state
     Bill::STATE_DRAFT
-  end 
+  end
 end
