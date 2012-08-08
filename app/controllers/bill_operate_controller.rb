@@ -15,8 +15,8 @@ class BillOperateController < BaseController
       lines = bill_operate.bills
 
       the_bill =Bill.find(params[:bill_id])
-      #只在提款或提货时计算费用
-      the_bill.cal_fee! if [CarryingBill::STATE_TK,InoutBill::STATE_DELIVER].include?(after_state)
+      #只在提货时计算费用
+      the_bill.cal_fee! if [InoutBill::STATE_DELIVER].include?(after_state)
       lines<<the_bill
     end
     respond_to do |format|
