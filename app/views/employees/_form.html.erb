@@ -1,6 +1,5 @@
 <fieldset class='blockLabels'>
   <%=f.error_messages%>
-
   <div class="ctrlHolder">
     <%= f.label :org_id, "所属部门" %>
     <%=f.select :org_id,departments_for_select %>
@@ -9,7 +8,7 @@
     <%= f.label :name, "姓名" %>
     <%= f.text_field :name, :class => 'textInput' %>
   </div>
- <div class="ctrlHolder">
+  <div class="ctrlHolder">
     <%= f.label :code, "编码" %>
     <%= f.text_field :code, :class => 'textInput' %>
   </div>
@@ -32,12 +31,9 @@
     <%= f.text_field :location, :class => 'textInput' %>
   </div>
   <div class="ctrlHolder">
-    <%= f.label :position, "职位" %>
-    <%= f.text_field :position, :class => 'textInput' %>
-  </div>
-  <div class="ctrlHolder">
-    <%= f.label :is_active, "有效标志" %>
-    <%= f.check_box :is_active %>
+    <%=hidden_field_tag :positions_object,positions_to_json %>
+    <%= f.label :position_id, "岗位" %>
+    <%= f.select :position_id,positions_for_select,:class => 'textInput',:prompt => "请选择所属岗位" %>
   </div>
   <div class="ctrlHolder">
     <%= f.label :salary_base, "基本工资基数" %>
@@ -62,6 +58,14 @@
   <div class="ctrlHolder">
     <%= f.label :order_by, "排序" %>
     <%= f.text_field :order_by,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :is_active, "有效标志" %>
+    <%= f.check_box :is_active %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :is_probation, "试用期标志" %>
+    <%= f.check_box :is_probation %>
   </div>
 
 </fieldset>

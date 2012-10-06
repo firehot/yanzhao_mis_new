@@ -51,6 +51,7 @@ cn:
       invoice_check: 运单盘查表
       computer_invoice: 机打票
       hand_invoice: 手工票
+      position: 岗位信息
 
     attributes:
       bill:

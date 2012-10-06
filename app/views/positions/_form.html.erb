@@ -1,0 +1,31 @@
+<fieldset class='blockLabels'>
+  <%=f.error_messages%>
+  <div class="ctrlHolder">
+    <%= f.label :name, "职位名称" %>
+    <%= f.text_field :name, :class => 'textInput' %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :is_active, "有效标志" %>
+    <%= f.check_box :is_active %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :salary_base, "基本工资基数" %>
+    <%= f.text_field :salary_base,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :position_base, "岗位津贴基数" %>
+    <%= f.text_field :position_base,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :food_base, "伙食补助基数" %>
+    <%= f.text_field :food_base,:class => "shortText" %>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :house_base, "住房补贴基数" %>
+    <%= f.text_field :house_base,:class => "shortText" %>
+  </div>
+</fieldset>
+<div class="actions-bar">
+  <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue',:disable_with => "正在保存..."%>
+  <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+</div>

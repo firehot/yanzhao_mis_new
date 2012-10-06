@@ -6,4 +6,8 @@
   <%if check_power('index_employees') or check_power('new_employee') or check_power('edit_employee') %>
     <li class="<%=check_sub_active_tab(2)%>"><%= link_to "员工资料", employees_path(:active_sub_tab => 2) %></li>
   <%end%>
+  <%if check_power('index_positions') or check_power('new_position') or check_power('edit_position') %>
+    <li class="<%=check_sub_active_tab(3)%>"><%= link_to "岗位", positions_path(:active_sub_tab => 3) %></li>
+  <%end%>
+
 </ul>

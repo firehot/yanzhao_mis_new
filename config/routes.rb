@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :positions
+
   map.resources :invoice_checks
 
   map.resources :computer_invoice_shippments,:member => {:confirm => :put}

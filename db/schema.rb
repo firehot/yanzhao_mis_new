@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401085355) do
+ActiveRecord::Schema.define(:version => 20121006054352) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(:version => 20120401085355) do
 
   create_table "employees", :force => true do |t|
     t.string   "code",           :limit => 20
-    t.string   "name",           :limit => 10,                                                  :null => false
+    t.string   "name",           :limit => 10,                                                   :null => false
     t.string   "sex",            :limit => 1
     t.string   "id_card",        :limit => 30
     t.string   "location",       :limit => 60
@@ -235,6 +235,8 @@ ActiveRecord::Schema.define(:version => 20120401085355) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_by",                                                    :default => 0
+    t.integer  "position_id"
+    t.boolean  "is_probation",                                                :default => false
   end
 
   create_table "invoice_checks", :force => true do |t|
@@ -352,6 +354,23 @@ ActiveRecord::Schema.define(:version => 20120401085355) do
     t.datetime "updated_at"
     t.string   "type",           :limit => 20
     t.boolean  "is_sub_company",                :default => false
+  end
+
+  create_table "positions", :force => true do |t|
+    t.string   "name",          :limit => 60,                                                  :null => false
+    t.boolean  "is_active",                                                  :default => true
+    t.decimal  "salary_base",                 :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "position_base",               :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "house_base",                  :precision => 15, :scale => 2, :default => 0.0
+    t.decimal  "food_base",                   :precision => 15, :scale => 2, :default => 0.0
+    t.string   "other_name_1",  :limit => 60
+    t.decimal  "other_fee_1",                 :precision => 15, :scale => 2, :default => 0.0
+    t.string   "other_name_2",  :limit => 60
+    t.decimal  "other_fee_2",                 :precision => 15, :scale => 2, :default => 0.0
+    t.string   "other_name_3",  :limit => 60
+    t.decimal  "other_fee_3",                 :precision => 15, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "post_infos", :force => true do |t|

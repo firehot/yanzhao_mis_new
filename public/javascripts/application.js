@@ -459,33 +459,30 @@ com.yanzhao.MaterialSelector.prototype = {
 		el_name = this.target_el.select('.material_name').first();
 		el_unit = this.target_el.select('.material_unit').first();
 		el_price = this.target_el.select('.material_price').first();
-        //普通票据，价格自票据设置信息中取
+		//普通票据，价格自票据设置信息中取
 		el_common_invoice_price = this.target_el.select('.common_invoice_price').first();
 		el_qty = this.target_el.select('.material_qty').first();
 		el_total = this.target_el.select('.material_total').first();
 		el_id.value = this.selected_material.material.id;
 		el_name.value = this.selected_material.material.name;
 		el_unit.value = this.selected_material.material.unit;
-        if(typeof(el_price) !='undefined')
-        {
-            el_price.value = this.selected_material.avg_price;
-            //以下注册监听事件
-            el_price.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
-            el_qty.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
-            //先计算
-            this.cal_line_amt(null, el_price, el_qty, el_total);
+		if (typeof(el_price) != 'undefined') {
+			el_price.value = this.selected_material.avg_price;
+			//以下注册监听事件
+			el_price.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
+			el_qty.observe('change', this.cal_line_amt.bindAsEventListener(this, el_price, el_qty, el_total));
+			//先计算
+			this.cal_line_amt(null, el_price, el_qty, el_total);
 
-        }
-        if(typeof(el_common_invoice_price) !='undefined')
-        {
-            el_common_invoice_price.value = this.selected_material.material.unit_price;
-            el_common_invoice_price.observe('change', this.cal_line_amt.bindAsEventListener(this, el_common_invoice_price, el_qty, el_total));
-            el_qty.observe('change', this.cal_line_amt.bindAsEventListener(this, el_common_invoice_price, el_qty, el_total));
-            //先计算
-            this.cal_line_amt(null, el_common_invoice_price, el_qty, el_total);
+		}
+		if (typeof(el_common_invoice_price) != 'undefined') {
+			el_common_invoice_price.value = this.selected_material.material.unit_price;
+			el_common_invoice_price.observe('change', this.cal_line_amt.bindAsEventListener(this, el_common_invoice_price, el_qty, el_total));
+			el_qty.observe('change', this.cal_line_amt.bindAsEventListener(this, el_common_invoice_price, el_qty, el_total));
+			//先计算
+			this.cal_line_amt(null, el_common_invoice_price, el_qty, el_total);
 
-        }
-
+		}
 
 	},
 	//计算每行合计
@@ -596,12 +593,11 @@ document.observe("dom:loaded", function() {
 		var house_salary = Math.round(house_base / 26 * work_days);
 		var work_days_added = 0;
 		//月出勤慢23天补助100
-		if (work_days >= 23)
-                {
-                  work_days_added += 100;
-                  //每多1天补助20
-                  work_days_added += (work_days - 23) * 20;
-                }
+		if (work_days >= 23) {
+			work_days_added += 100;
+			//每多1天补助20
+			work_days_added += (work_days - 23) * 20;
+		}
 		var act_salary = base_salary + work_year_salary + position_salary + food_salary + house_salary + work_days_added + other_added - deducted_fee;
 		//更新界面字段
 		parent_tr.down('input.base_salary').value = base_salary.toFixed(2);
@@ -611,93 +607,121 @@ document.observe("dom:loaded", function() {
 		parent_tr.down('input.house_salary').value = house_salary.toFixed(2);
 		parent_tr.down('input.work_days_added').value = work_days_added.toFixed(2);
 		parent_tr.down('input.act_salary').value = act_salary.toFixed(2);
-                cal_sum();
+		cal_sum();
 
 	};
 	//计算合计
-	var cal_sum = function() { ['work_days', 'base_salary', 'work_year_salary','other_added','deducted_fee', 'position_salary', 'food_salary', 'house_salary', 'work_days_added', 'act_salary'].each(function(s) {
+	var cal_sum = function() { ['work_days', 'base_salary', 'work_year_salary', 'other_added', 'deducted_fee', 'position_salary', 'food_salary', 'house_salary', 'work_days_added', 'act_salary'].each(function(s) {
 			var tmp = 0;
 			$$('.' + s).each(function(el) {
 				tmp += parseFloat($(el).value)
 
 			});
-                        if($('sum_' + s))
-			$('sum_'+s).update(tmp.toFixed(2));
+			if ($('sum_' + s)) $('sum_' + s).update(tmp.toFixed(2));
 
 		});
 
 	};
 	//一次绑定多个element事件
 	$$('input.work_days,input.other_added,input.deducted_fee').invoke('observe', 'change', cal_salary);
-        cal_sum();
+	cal_sum();
 
 });
 //工资表打印功能
 document.observe("dom:loaded", function() {
-  //打印入账联
-  var print_1 = function(evt,print_signature){
-    var s_table = $('salary_table_show').cloneNode(true);
-    s_table.setStyle({width : '280mm',borderCollapse : 'collapse'});
-    s_table.select('.salary_table_title').invoke('setStyle',{fontSize : '20px',textAlign : 'center'});
-    s_table.select('th,td').invoke('setStyle',{height : '18px',textAlign : 'center',border : 'thin solid #000'});
-    s_table.select('.salary_table_title td,.salary_table_title th').invoke('setStyle',{border : 'none'});
-    s_table.select('.salary_table_foot td,.salary_table_foot th').invoke('setStyle',{border : 'none'});
-    //如果是打印发放联
-    if(print_signature)
-      s_table.select('.signature').invoke('show');
-    var printer = new com.yanzhao.web_print();
-    var print_config = {
-      orient : 2,
-      top : 0,
-      left : 0,
-      width : '170mm',
-      height : '270mm',
-      content: s_table.outerHTML
-    };
-    printer.print_table(print_config);
-  };
-  if($('btn_print_salary_table_1'))
-  $('btn_print_salary_table_1').observe('click',print_1.bindAsEventListener(print_1,false));
-  //打印发放联
-  if($('btn_print_salary_table_2'))
-  $('btn_print_salary_table_2').observe('click',print_1.bindAsEventListener(print_1,true));
+	//打印入账联
+	var print_1 = function(evt, print_signature) {
+		var s_table = $('salary_table_show').cloneNode(true);
+		s_table.setStyle({
+			width: '280mm',
+			borderCollapse: 'collapse'
+		});
+		s_table.select('.salary_table_title').invoke('setStyle', {
+			fontSize: '20px',
+			textAlign: 'center'
+		});
+		s_table.select('th,td').invoke('setStyle', {
+			height: '18px',
+			textAlign: 'center',
+			border: 'thin solid #000'
+		});
+		s_table.select('.salary_table_title td,.salary_table_title th').invoke('setStyle', {
+			border: 'none'
+		});
+		s_table.select('.salary_table_foot td,.salary_table_foot th').invoke('setStyle', {
+			border: 'none'
+		});
+		//如果是打印发放联
+		if (print_signature) s_table.select('.signature').invoke('show');
+		var printer = new com.yanzhao.web_print();
+		var print_config = {
+			orient: 2,
+			top: 0,
+			left: 0,
+			width: '170mm',
+			height: '270mm',
+			content: s_table.outerHTML
+		};
+		printer.print_table(print_config);
+	};
+	if ($('btn_print_salary_table_1')) $('btn_print_salary_table_1').observe('click', print_1.bindAsEventListener(print_1, false));
+	//打印发放联
+	if ($('btn_print_salary_table_2')) $('btn_print_salary_table_2').observe('click', print_1.bindAsEventListener(print_1, true));
 
-  //手工运单和机打运单合计自动计算功能
-  var cal_line_amt = function(evt){
-      var tr=evt.element().up('tr.material_inout_line');
-      var el_price=parseFloat(tr.down('input.material_price').getValue());
-      var el_qty=parseFloat(tr.down('input.material_qty').getValue());
-      var el_package_volume=parseFloat(tr.down('.package_volume').getValue());
-      var material_total = (el_price*el_qty).ceil();
-      var package_qty=(el_qty*el_package_volume).ceil();
-      tr.down('input.material_total').setValue(material_total);
-      tr.down('.package_qty').update(package_qty);
+	//手工运单和机打运单合计自动计算功能
+	var cal_line_amt = function(evt) {
+		var tr = evt.element().up('tr.material_inout_line');
+		var el_price = parseFloat(tr.down('input.material_price').getValue());
+		var el_qty = parseFloat(tr.down('input.material_qty').getValue());
+		var el_package_volume = parseFloat(tr.down('.package_volume').getValue());
+		var material_total = (el_price * el_qty).ceil();
+		var package_qty = (el_qty * el_package_volume).ceil();
+		tr.down('input.material_total').setValue(material_total);
+		tr.down('.package_qty').update(package_qty);
 
-  };
-  $$('tr.material_inout_line .material_price,tr.material_inout_line .material_qty').invoke('observe','change',cal_line_amt);
+	};
+	$$('tr.material_inout_line .material_price,tr.material_inout_line .material_qty').invoke('observe', 'change', cal_line_amt);
 
-  //运单盘查信息表自动计算
-  var cal_invoice_check =function(evt){
-      var computer_balance_count = parseFloat($('invoice_check_computer_balance_count').getValue());
-      var computer_receive_count = parseFloat($('invoice_check_computer_receive_count').getValue());
-      var computer_used_count = parseFloat($('invoice_check_computer_used_count').getValue());
-      var computer_invalid_count = parseFloat($('invoice_check_computer_invalid_count').getValue());
-      var computer_rest_count = computer_balance_count + computer_receive_count - computer_used_count - computer_invalid_count;
-      var hand_balance_count = parseFloat($('invoice_check_hand_balance_count').getValue());
-      var hand_receive_count = parseFloat($('invoice_check_hand_receive_count').getValue());
-      var hand_used_count = parseFloat($('invoice_check_hand_used_count').getValue());
-      var hand_invalid_count = parseFloat($('invoice_check_hand_invalid_count').getValue());
-      var hand_rest_count = hand_balance_count + hand_receive_count - hand_used_count - hand_invalid_count;
-      var hand_invoice_package_volume = parseFloat($('hand_invoice_package_volume').getValue());
-      $('computer_rest_count').update(computer_rest_count);
-      var hand_rest_display = Math.floor(hand_rest_count/hand_invoice_package_volume) + '本' + (hand_rest_count % hand_invoice_package_volume)+'份'
-      $('hand_rest_count').update(hand_rest_display);
-  };
-  $$('#invoice_check_computer_used_count,#invoice_check_computer_invalid_count,#invoice_check_hand_used_count,#invoice_check_hand_invalid_count').invoke('observe','change',cal_invoice_check);
-  //手工票领取表单,单价不可修改,运单编号在领取时不填写
-  $$('#new_hand_invoice_shippment .material_price').invoke('writeAttribute','readonly',true);
-  $$('#new_computer_invoice_shippment .material_price').invoke('writeAttribute','readonly',true);
-  $$('#new_hand_invoice_shippment .invoice_bill_no').invoke('hide');
-  $$('#new_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_bill_no,#new_computer_invoice_shippment .invoice_package_qty,#edit_computer_invoice_shippment .invoice_package_qty').invoke('hide');
-  //显示手工票审核界面时,自动计算合计金额
+	//运单盘查信息表自动计算
+	var cal_invoice_check = function(evt) {
+		var computer_balance_count = parseFloat($('invoice_check_computer_balance_count').getValue());
+		var computer_receive_count = parseFloat($('invoice_check_computer_receive_count').getValue());
+		var computer_used_count = parseFloat($('invoice_check_computer_used_count').getValue());
+		var computer_invalid_count = parseFloat($('invoice_check_computer_invalid_count').getValue());
+		var computer_rest_count = computer_balance_count + computer_receive_count - computer_used_count - computer_invalid_count;
+		var hand_balance_count = parseFloat($('invoice_check_hand_balance_count').getValue());
+		var hand_receive_count = parseFloat($('invoice_check_hand_receive_count').getValue());
+		var hand_used_count = parseFloat($('invoice_check_hand_used_count').getValue());
+		var hand_invalid_count = parseFloat($('invoice_check_hand_invalid_count').getValue());
+		var hand_rest_count = hand_balance_count + hand_receive_count - hand_used_count - hand_invalid_count;
+		var hand_invoice_package_volume = parseFloat($('hand_invoice_package_volume').getValue());
+		$('computer_rest_count').update(computer_rest_count);
+		var hand_rest_display = Math.floor(hand_rest_count / hand_invoice_package_volume) + '本' + (hand_rest_count % hand_invoice_package_volume) + '份'
+		$('hand_rest_count').update(hand_rest_display);
+	};
+	$$('#invoice_check_computer_used_count,#invoice_check_computer_invalid_count,#invoice_check_hand_used_count,#invoice_check_hand_invalid_count').invoke('observe', 'change', cal_invoice_check);
+	//手工票领取表单,单价不可修改,运单编号在领取时不填写
+	$$('#new_hand_invoice_shippment .material_price').invoke('writeAttribute', 'readonly', true);
+	$$('#new_computer_invoice_shippment .material_price').invoke('writeAttribute', 'readonly', true);
+	$$('#new_hand_invoice_shippment .invoice_bill_no').invoke('hide');
+	$$('#new_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_bill_no,#new_computer_invoice_shippment .invoice_package_qty,#edit_computer_invoice_shippment .invoice_package_qty').invoke('hide');
+	//显示手工票审核界面时,自动计算合计金额
+	//员工资料-岗位列表变化,修改响应的工资项目金额
+	$$('#employee_position_id').invoke('observe', 'change', function() {
+		var positions_object = $('positions_object').getValue().evalJSON();
+		var cur_position_id = $('employee_position_id').getValue();
+		var p_obj = positions_object.detect(function(o) {
+			return o["id"] == cur_position_id;
+		});
+		//设置工资技术项目
+		if ( !! p_obj) {
+			$('employee_salary_base').setValue(p_obj["salary_base"]);
+			$('employee_position_base').setValue(p_obj["position_base"]);
+			$('employee_house_base').setValue(p_obj["house_base"]);
+			$('employee_food_base').setValue(p_obj["food_base"]);
+		}
+
+	});
+
 });
+

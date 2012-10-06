@@ -1,0 +1,45 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">职位列表</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>职位名称</th>
+          <th>基本工资</th>
+          <th>岗位津贴</th>
+          <th>住房津贴</th>
+          <th>伙食补助</th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @positions.each_with_index do |p,index| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td><%= index + 1 %></td>
+            <td><%=p.name %></td>
+            <td><%=p.salary_base %></td>
+            <td><%=p.position_base %></td>
+            <td><%=p.house_base %></td>
+            <td><%=p.position_base %></td>
+            <td class="last">
+              <%if check_power('edit_position')%>
+                <%= link_to "修改", edit_position_path(p) %>
+              <%end%>
+              <%if check_power('destroy_position')%>
+                &nbsp;|&nbsp;<%= link_to "删除", p,:method => :delete,:confirm => "你确定删除该职位信息吗？" %>
+              <%end%>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+          <%=will_paginate @positions %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>

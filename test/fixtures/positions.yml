@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  is_active: false
+  salary_base: 9.99
+  position_base: 9.99
+  house_base: 9.99
+  food_base: 9.99
+  other_name_1: MyString
+  other_fee_1: 9.99
+  other_name_2: MyString
+  other_fee_2: 9.99
+  other_name_3: MyString
+  other_fee_3: 9.99
+
+two:
+  name: MyString
+  is_active: false
+  salary_base: 9.99
+  position_base: 9.99
+  house_base: 9.99
+  food_base: 9.99
+  other_name_1: MyString
+  other_fee_1: 9.99
+  other_name_2: MyString
+  other_fee_2: 9.99
+  other_name_3: MyString
+  other_fee_3: 9.99
