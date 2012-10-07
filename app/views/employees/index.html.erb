@@ -25,7 +25,7 @@
             <td><%=employee.name %></td>
             <td><%=employee.sex.eql?('M') ? "男" : "女" %></td>
             <td><%=employee.id_card %></td>
-            <td><%=employee.position %></td>
+            <td><%=employee.position.try(:name) %></td>
             <td><%=employee.entry_date %></td>
             <td class="last">
               <%if check_power('edit_employee')%>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006054352) do
+ActiveRecord::Schema.define(:version => 20121007071519) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -225,7 +225,7 @@ ActiveRecord::Schema.define(:version => 20121006054352) do
     t.string   "location",       :limit => 60
     t.integer  "org_id"
     t.string   "position",       :limit => 20
-    t.string   "entry_date"
+    t.date     "entry_date",                                                                     :null => false
     t.boolean  "is_active",                                                   :default => true
     t.decimal  "salary_base",                  :precision => 10, :scale => 2, :default => 0.0
     t.decimal  "work_year_base",               :precision => 10, :scale => 2, :default => 0.0
