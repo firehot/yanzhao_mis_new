@@ -19,6 +19,7 @@
         <th>出勤天数</th>
         <th>基本工资</th>
         <th>工龄工资</th>
+        <th>职位津贴</th>
         <th>岗位津贴</th>
         <th>出勤奖</th>
         <th>伙食补助</th>
@@ -36,6 +37,7 @@
             <%= hidden_field_tag :salary_base,stl.object.employee.salary_base,:class => "salary_base" %>
             <%= hidden_field_tag :work_year_base, stl.object.employee.work_year_base,:class => "work_year_base" %>
             <%= hidden_field_tag :position_base, stl.object.employee.position_base,:class => "position_base" %>
+            <%= hidden_field_tag :position_base_2, stl.object.employee.position_base_2,:class => "position_base_2" %>
             <%= hidden_field_tag :food_base,stl.object.employee.food_base,:class => "food_base" %>
             <%= hidden_field_tag :house_base,stl.object.employee.house_base,:class => "house_base" %>
             <%= stl.object.employee.name %>
@@ -44,6 +46,7 @@
           <td><%= stl.text_field :base_salary,:class =>"base_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true %></td>
           <td><%= stl.text_field :work_year_salary,:class => "work_year_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
           <td><%= stl.text_field :position_salary,:class =>"position_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
+          <td><%= stl.text_field :position_2_salary,:class =>"position_2_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
           <td><%= stl.text_field :work_days_added,:class => "work_days_added",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
           <td><%= stl.text_field :food_salary,:class => "food_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
           <td><%= stl.text_field :house_salary,:class => "house_salary",:style => "width : 50px;background-color : #E6E6E6;",:readonly => true  %></td>
@@ -60,6 +63,7 @@
         <td><span id='sum_base_salary'></span></td>
         <td><span id='sum_work_year_salary'></span></td>
         <td><span id='sum_position_salary'></span></td>
+        <td><span id='sum_position_2_salary'></span></td>
         <td><span id='sum_work_days_added'></span></td>
         <td><span id='sum_food_salary'></span></td>
         <td><span id='sum_house_salary'></span></td>

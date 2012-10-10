@@ -584,25 +584,28 @@ document.observe("dom:loaded", function() {
 		var salary_base = parseFloat(parent_tr.down('input.salary_base').value);
 		var work_year_base = parseFloat(parent_tr.down('input.work_year_base').value);
 		var position_base = parseFloat(parent_tr.down('input.position_base').value);
+		var position_base_2 = parseFloat(parent_tr.down('input.position_base_2').value);
 		var food_base = parseFloat(parent_tr.down('input.food_base').value);
 		var house_base = parseFloat(parent_tr.down('input.house_base').value);
 		var base_salary = Math.round(salary_base / 26 * work_days);
 		var work_year_salary = Math.round(work_year_base / 26 * work_days);
 		var position_salary = Math.round(position_base / 26 * work_days);
+		var position_2_salary = Math.round(position_base_2 / 26 * work_days);
 		var food_salary = Math.round(food_base / 26 * work_days);
 		var house_salary = Math.round(house_base / 26 * work_days);
 		var work_days_added = 0;
-		//月出勤慢23天补助100
+		//月出勤满23天补助100
 		if (work_days >= 23) {
 			work_days_added += 100;
 			//每多1天补助20
 			work_days_added += (work_days - 23) * 20;
 		}
-		var act_salary = base_salary + work_year_salary + position_salary + food_salary + house_salary + work_days_added + other_added - deducted_fee;
+		var act_salary = base_salary + work_year_salary + position_salary +position_2_salary  + food_salary + house_salary + work_days_added + other_added - deducted_fee;
 		//更新界面字段
 		parent_tr.down('input.base_salary').value = base_salary.toFixed(2);
 		parent_tr.down('input.work_year_salary').value = work_year_salary.toFixed(2);
 		parent_tr.down('input.position_salary').value = position_salary.toFixed(2);
+		parent_tr.down('input.position_2_salary').value = position_2_salary.toFixed(2);
 		parent_tr.down('input.food_salary').value = food_salary.toFixed(2);
 		parent_tr.down('input.house_salary').value = house_salary.toFixed(2);
 		parent_tr.down('input.work_days_added').value = work_days_added.toFixed(2);
@@ -611,7 +614,7 @@ document.observe("dom:loaded", function() {
 
 	};
 	//计算合计
-	var cal_sum = function() { ['work_days', 'base_salary', 'work_year_salary', 'other_added', 'deducted_fee', 'position_salary', 'food_salary', 'house_salary', 'work_days_added', 'act_salary'].each(function(s) {
+	var cal_sum = function() { ['work_days', 'base_salary', 'work_year_salary', 'other_added', 'deducted_fee', 'position_salary','position_2_salary', 'food_salary', 'house_salary', 'work_days_added', 'act_salary'].each(function(s) {
 			var tmp = 0;
 			$$('.' + s).each(function(el) {
 				tmp += parseFloat($(el).value)
@@ -713,7 +716,7 @@ document.observe("dom:loaded", function() {
 		var p_obj = positions_object.detect(function(o) {
 			return o["id"] == cur_position_id;
 		});
-		//设置工资技术项目
+		//设置工资基数项目
 		if ( !! p_obj) {
 			$('employee_salary_base').setValue(p_obj["salary_base"]);
 			$('employee_position_base').setValue(p_obj["position_base"]);

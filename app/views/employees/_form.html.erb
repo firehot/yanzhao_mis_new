@@ -32,7 +32,7 @@
   </div>
   <div class="ctrlHolder">
     <%=hidden_field_tag :positions_object,positions_to_json %>
-    <%= f.label :position_id, "岗位" %>
+    <%= f.label :position_id, "职位" %>
     <%= f.select :position_id,positions_for_select,:class => 'textInput',:prompt => "请选择所属岗位" %>
   </div>
   <div class="ctrlHolder">
@@ -44,9 +44,14 @@
     <%= f.text_field :work_year_base,:class => "shortText" %>
   </div>
   <div class="ctrlHolder">
-    <%= f.label :position_base, "岗位津贴基数" %>
+    <%= f.label :position_base, "职位津贴基数" %>
     <%= f.text_field :position_base,:class => "shortText" %>
   </div>
+  <div class="ctrlHolder">
+    <%= f.label :position_base_2, "岗位津贴基数" %>
+    <%= f.text_field :position_base_2,:class => "shortText" %>
+  </div>
+
   <div class="ctrlHolder">
     <%= f.label :food_base, "伙食补助基数" %>
     <%= f.text_field :food_base,:class => "shortText" %>
