@@ -34,7 +34,7 @@
     </tr>
   </thead>
   <tbody>
-    <%@salary_table.salary_table_lines.sort_by {|line| line.employee.try(:code)}.each do |stl|%>
+    <%@salary_table.salary_table_lines.sort_by {|line| line.try(:employee).try(:code)}.each do |stl|%>
       <%if stl.work_days > 0%>
         <tr>
           <td class='employee_name'>
