@@ -37,7 +37,7 @@
   </div>
   <div class="ctrlHolder">
     <%= f.label :salary_base, "基本工资基数" %>
-    <%= f.text_field :salary_base,:class => "shortText" %>
+    <%= f.text_field :salary_base,:class => "shortText",:readonly => true %>
   </div>
   <div class="ctrlHolder">
     <%= f.label :work_year_base, "工龄工资基数" %>
@@ -45,20 +45,20 @@
   </div>
   <div class="ctrlHolder">
     <%= f.label :position_base, "职位津贴基数" %>
-    <%= f.text_field :position_base,:class => "shortText" %>
+    <%= f.text_field :position_base,:class => "shortText",:readonly => true,:style => "background : #F0F0EE;" %>
   </div>
   <div class="ctrlHolder">
     <%= f.label :position_base_2, "岗位津贴基数" %>
-    <%= f.text_field :position_base_2,:class => "shortText" %>
+    <%= f.text_field :position_base_2,:class => "shortText"%>
   </div>
 
   <div class="ctrlHolder">
     <%= f.label :food_base, "伙食补助基数" %>
-    <%= f.text_field :food_base,:class => "shortText" %>
+    <%= f.text_field :food_base,:class => "shortText",:readonly => true,:style => "background : #F0F0EE;" %>
   </div>
   <div class="ctrlHolder">
     <%= f.label :house_base, "住房补贴基数" %>
-    <%= f.text_field :house_base,:class => "shortText" %>
+    <%= f.text_field :house_base,:class => "shortText",:readonly => true,:style => "background : #F0F0EE;" %>
   </div>
   <div class="ctrlHolder">
     <%= f.label :order_by, "排序" %>

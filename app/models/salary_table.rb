@@ -5,6 +5,8 @@ class SalaryTable < ActiveRecord::Base
   accepts_nested_attributes_for :salary_table_lines
   def self.new_with_mth(mth = 1.months.ago.strftime('%y%m'))
     salary_table = self.new(:mth => mth,:bill_date => Date.today)
+    #调整试用期员工工资
+    Employee.adjust_all_probation_salary_base
     Employee.find(:all,:conditions => {:is_active => true},:order => "order_by").each do |e|
       salary_table.salary_table_lines.build(:employee => e)
     end
