@@ -70,6 +70,14 @@ class Bill < ActiveRecord::Base
   def created_date
     created_at.strftime('%Y-%m-%d')
   end
+  #扣保险费
+  def k_insured_fee
+    k_fee = 0
+    if self.pay_type == PAYTYPE_KP      #自货款扣除
+      k_fee = self.insured_fee
+    end
+    k_fee
+  end
   #根据给定的条件计算合计
   #返回一个hash数组,便于导出
   def self.calculate_sum(options ={})

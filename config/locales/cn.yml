@@ -52,6 +52,7 @@ cn:
       computer_invoice: 机打票
       hand_invoice: 手工票
       position: 岗位信息
+      chat_message: 留言信息
 
     attributes:
       bill:

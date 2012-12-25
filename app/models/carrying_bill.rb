@@ -33,7 +33,7 @@ class CarryingBill < Bill
     else
       self[:k_carrying_fee] = 0
     end
-    self[:act_pay_fee]= self[:goods_fee] - self[:k_hand_fee] - self[:k_carrying_fee]
+    self[:act_pay_fee]= self[:goods_fee] - self[:k_hand_fee] - self[:k_carrying_fee] - self.k_insured_fee
   end
   #导出时需要用到的属性
   def state_des

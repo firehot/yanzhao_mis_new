@@ -6,6 +6,7 @@ class BillsController < BaseController
     #单据选择时,缓存到客户端的id数组
     @bill_ids = @search.all(:select => "bills.id")
 
+    sum_k_insured_fee = @search.all(:conditions => {:pay_type => "KP"})
     #以下得到合计信息
     @sum_info = {
       :count =>@search.count,
@@ -14,6 +15,7 @@ class BillsController < BaseController
       :sum_goods_num => @search.sum(:goods_num),
       :sum_k_hand_fee => @search.sum(:k_hand_fee),
       :sum_k_carrying_fee => @search.sum(:k_carrying_fee),
+      :sum_k_insured_fee => sum_k_insured_fee ,
       :sum_act_pay_fee => @search.sum(:act_pay_fee),
       :sum_storage_fee => @search.sum(:storage_fee),
       :sum_clear_fee => @search.sum(:clear_fee)
@@ -164,7 +166,8 @@ class BillsController < BaseController
           bills.first.cal_fee! if ['deliver'].include?(params[:operate])
           #清仓处理,运费及代收货款被清零
           bills.first.fee,bills.first.goods_fee = 0,0 if ['clear_info'].include?(params[:operate])
-          render :json => [bills.first,params[:operate]],:callback => 'billOperateUtil.addBill'
+          return_bill = bills.first.attributes.update({'k_insured_fee' => bills.first.k_insured_fee})
+          render :json => [return_bill,params[:operate]],:callback => 'billOperateUtil.addBill'
         else
           render :text => "未查询到指定票据(或者票据未确认?)",:status => :bad_request
         end

@@ -1,4 +1,4 @@
-class InoutBill < Bill 
+class InoutBill < Bill
   belongs_to :deliver
   belongs_to :clear_info
   self.add_validate

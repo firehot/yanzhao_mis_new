@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010012746) do
+ActiveRecord::Schema.define(:version => 20121225092259) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20121010012746) do
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "insured_fee",                   :precision => 15, :scale => 2, :default => 0.0
   end
 
   create_table "budget_tables", :force => true do |t|

@@ -17,9 +17,15 @@
                 <%= m.created_at.strftime("%y-%m-%d %H:%M") %>
               </span>
             </td>
+            <td style='text-align:right;font-size : 0.8em;'>
+              <%if check_power("destroy_chat_message")%>
+                <%= link_to "删除", m, :method => :delete, :confirm => "确定删除吗?" %>
+              <%end%>
+
+            </td>
           </tr>
           <tr>
-            <td class='chat_content'>
+            <td class='chat_content' colspan="2">
               <%= m.content%>
             </td>
           </tr>

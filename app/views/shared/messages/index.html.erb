@@ -12,7 +12,7 @@
           <% messages.each do |message| -%>
             <tr class="<%= cycle("odd", "even") %> <%= check_message_state(message)%>">
               <td>
-                <%= status_time_ago_in_words(message.created_at) %>
+                <%= message.created_at.strftime("%Y-%m-%d %H:%M") %>
               </td>
               <td>
                 <%=  message.user == current_user ? '我' : message.user.username %>
@@ -40,7 +40,7 @@
                 <%if message.publisher == current_user %>
                   | <%= link_to "删除", message, :method => :delete, :confirm => "确定删除吗?" %>
                 <%end%>
-                <%if ['published'].include?(message.state) && check_power("edit_rule_after_published")%>
+                <%if ['published'].include?(message.state) && check_power("edit_rule_after_publish")%>
                   <%= link_to "修改", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
                 <%end%>
               </td>

@@ -15,6 +15,7 @@
       <%if bill_list[:bills].any?{|the_bill| the_bill.class.eql?(CarryingBill)}%>
         <th>扣运费</th>
         <th>扣手续费</th>
+        <th>扣保险费</th>
         <th>实付货款</th>
       <%else%>
         <th>件数</th>
@@ -45,6 +46,7 @@
         <%if bill_list[:bills].any?{|the_bill| the_bill.class.eql?(CarryingBill)}%>
           <td><%=bill.k_carrying_fee%></td>
           <td><%=bill.k_hand_fee%></td>
+          <td><%=bill.k_insured_fee%></td>
           <td><%=bill.act_pay_fee%></td>
         <%else%>
           <td><%=bill.goods_num%></td>
@@ -71,6 +73,7 @@
       <%if bill_list[:bills].any?{|the_bill| the_bill.class.eql?(CarryingBill)}%>
         <td><%=bill_list[:bills].sum {|bill| bill.k_carrying_fee}%></td>
         <td><%=bill_list[:bills].sum {|bill| bill.k_hand_fee}%></td>
+        <td><%=bill_list[:bills].sum {|bill| bill.k_insured_fee}%></td>
         <td><%=bill_list[:bills].sum {|bill| bill.act_pay_fee}%></td>
       <%else%>
         <td><%=bill_list[:bills].sum {|bill| bill.goods_num}%></td>
@@ -85,14 +88,13 @@
           <%="共有票据#{@sum_info[:count]}张,运费#{@sum_info[:sum_fee]}元,货款#{@sum_info[:sum_goods_fee]}元,货物#{@sum_info[:sum_goods_num]}件"%>
 
           <%if bill_list[:bills].any?{|the_bill| the_bill.class.eql?(CarryingBill)}%>
-            <%="扣手续费#{@sum_info[:sum_k_hand_fee]}元,扣运费#{@sum_info[:sum_k_carrying_fee]}元,实付货款#{@sum_info[:sum_act_pay_fee]}元"%>
+            <%="扣手续费#{@sum_info[:sum_k_hand_fee]}元,扣运费#{@sum_info[:sum_k_carrying_fee]}元,实付货款#{@sum_info[:sum_act_pay_fee]}元"%>,<%="扣保险费#{@sum_info[:sum_k_hand_fee]}元,扣运费#{@sum_info[:sum_k_insured_fee]}元,实付货款#{@sum_info[:sum_act_pay_fee]}元"%>
           <%else%>
             <%="仓储费#{@sum_info[:sum_storage_fee]}元,清仓收入#{@sum_info[:sum_clear_fee]}元"%>
           <%end%>
         </td>
-      </tr> 
+      </tr>
     <%end%>
-
   </tbody>
 </table>
 <div id='paginate_wrap' class='actions-bar wat-cf'>
@@ -105,6 +107,6 @@
 <%if bill_list[:show_select]%>
   <script type='text/javascript'>
     //更新页面中数据的选中状态
-  selector.update_page_selected();  
+  selector.update_page_selected();
   </script>
 <%end%>

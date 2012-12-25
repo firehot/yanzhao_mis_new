@@ -177,7 +177,7 @@ billOperateUtil.addBill = function(callback_json) {
 		$('error_span').update('票据' + the_bill.bill_no + '已在选择列表中');
 		return false;
 	}
-	var tr_template = new Template("<tr class='added_bill' id='added_bill_#{id}'>" + "<input type='hidden' name='bills[]' value='#{id}'/>" + "<input class='goods_fee' type='hidden' value='#{goods_fee}' id='goods_fee_#{id}' />" + "<input class='fee' type='hidden' value='#{fee}' id='fee_#{id}' />" + "<input class='k_hand_fee' type='hidden' value='#{k_hand_fee}' id='k_hand_fee_#{id}' />" + "<input class='k_carrying_fee' type='hidden' value='#{k_carrying_fee}' id='k_carrying_fee_#{id}' />" + "<input class='act_pay_fee' type='hidden' value='#{act_pay_fee}' id='act_pay_fee_#{id}' />" + "<input class='storage_fee' type='hidden' value='#{storage_fee}' id='storage_fee_#{id}' />" + "<td>#{index}</td>" + "<td>#{bill_no}</td>" + "<td>#{goods_no}</td>" + "<td>#{sender_name}</td>" + "<td>#{goods_fee}</td>" + "<td>#{fee}</td>" + (operate_type == 'tk_info' ? "<td>#{k_hand_fee}</td><td>#{k_carrying_fee}</td><td>#{act_pay_fee}</td>": "") + (operate_type == 'deliver' ? "<td>#{storage_fee}</td>": "") + (operate_type == 'clear_info' ? "<td><input type='text' id='clear_fee_#{id}' class='clear_fee' name='clear_fee[]' value='#{clear_fee}' style='width : 50px;font-size : 1.2em;height : 25px;border : 2px solid blue;'/></td>": "") + "<td><a class='red_text' style='cursor:pointer;' onclick=$('added_bill_#{id}').remove();billOperateUtil.cal_sum();>删除</a></td></tr>");
+	var tr_template = new Template("<tr class='added_bill' id='added_bill_#{id}'>" + "<input type='hidden' name='bills[]' value='#{id}'/>" + "<input class='goods_fee' type='hidden' value='#{goods_fee}' id='goods_fee_#{id}' />" + "<input class='fee' type='hidden' value='#{fee}' id='fee_#{id}' />" + "<input class='k_hand_fee' type='hidden' value='#{k_hand_fee}' id='k_hand_fee_#{id}' />" + "<input class='k_carrying_fee' type='hidden' value='#{k_carrying_fee}' id='k_carrying_fee_#{id}' />" +"<input class='k_insured_fee' type='hidden' value='#{k_insured_fee}' id='k_insured_fee_#{id}' />" + "<input class='act_pay_fee' type='hidden' value='#{act_pay_fee}' id='act_pay_fee_#{id}' />" + "<input class='storage_fee' type='hidden' value='#{storage_fee}' id='storage_fee_#{id}' />" + "<td>#{index}</td>" + "<td>#{bill_no}</td>" + "<td>#{goods_no}</td>" + "<td>#{sender_name}</td>" + "<td>#{goods_fee}</td>" + "<td>#{fee}</td>" + (operate_type == 'tk_info' ? "<td>#{k_hand_fee}</td><td>#{k_carrying_fee}</td><td>#{k_insured_fee}</td><td>#{act_pay_fee}</td>": "") + (operate_type == 'deliver' ? "<td>#{storage_fee}</td>": "") + (operate_type == 'clear_info' ? "<td><input type='text' id='clear_fee_#{id}' class='clear_fee' name='clear_fee[]' value='#{clear_fee}' style='width : 50px;font-size : 1.2em;height : 25px;border : 2px solid blue;'/></td>": "") + "<td><a class='red_text' style='cursor:pointer;' onclick=$('added_bill_#{id}').remove();billOperateUtil.cal_sum();>删除</a></td></tr>");
 	//计算原有单据,便于计算序号
 	var index = $$('#list_table tr.added_bill').size() + 1;
 	the_bill.index = index;
@@ -218,6 +218,7 @@ billOperateUtil.cal_sum = function() {
 	cal_single_sum('goods_fee');
 	cal_single_sum('k_hand_fee');
 	cal_single_sum('k_carrying_fee');
+	cal_single_sum('k_insured_fee');
 	cal_single_sum('act_pay_fee');
 	cal_single_sum('storage_fee');
 	cal_single_sum('clear_fee');
@@ -725,6 +726,10 @@ document.observe("dom:loaded", function() {
 		}
 
 	});
+    //默认不显示查询区间设置界面
+    $$('#query_range_toggle').invoke('observe','click',function(){
+        $$(".query_range_content").invoke("toggle");
+    });
 
 });
 

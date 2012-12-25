@@ -70,14 +70,19 @@
     <div class='ctrlHolder'>
       <%= f.label :pay_type, '运费信息' %>
       <div class='multiField' id='fee_wrap'>
-        <label class='blockLabel' style='width : 35%;'>
+        <label class='blockLabel' style='width : 20%;'>
           <span>支付方式</span>
           <%=f.select :pay_type,payType_for_select%>
         </label>
-        <label class='blockLabel' style='width : 35%;'>
+        <label class='blockLabel' style='width : 20%;'>
           <span>金额</span>
           <%= f.text_field :fee,:size => "10",:maxlength => "10",:class=>"textInput",:id => 'fee',:live => false %>
         </label>
+        <label class='blockLabel'>
+          <span>保险费</span>
+          <%= f.text_field :insured_fee,:size => "10",:maxlength => "10",:class=>"textInput",:id => 'fee',:live => false %>
+        </label>
+
       </div>
     </div>
 
