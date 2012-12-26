@@ -1,0 +1,2 @@
+module AllInvoiceShippmentsHelper
+end

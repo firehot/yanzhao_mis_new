@@ -1,4 +1,4 @@
-<% form_for HandInvoiceShippment.search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
+<% form_for MaterialInout.search,:url => {:action => :index,:controller => :all_invoice_shippments},:html => {:class => :uniForm } do |f| -%>
   <fieldset class='blockLabels'>
     <%=hidden_field_tag :active_sub_tab,params[:active_sub_tab]%>
     <div class='ctrlHolder'>
