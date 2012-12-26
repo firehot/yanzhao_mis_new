@@ -20,6 +20,6 @@
 
   <td class='invoice_bill_no'>&nbsp;</td>
   <td class='invoice_line_amt'>
-    <%=f.text_field :line_amt,:style => "width : 50px;",:class => 'material_total',:style => "width : 50px;",:readonly => true %>
+    <%=f.text_field :line_amt,:value => f.object.qty*invoice.unit_price,:style => "width : 50px;",:class => 'material_total',:style => "width : 50px;",:readonly => true %>
   </td>
 </tr>

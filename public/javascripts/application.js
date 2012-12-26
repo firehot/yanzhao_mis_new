@@ -708,7 +708,7 @@ document.observe("dom:loaded", function() {
 	$$('#new_hand_invoice_shippment .material_price').invoke('writeAttribute', 'readonly', true);
 	$$('#new_computer_invoice_shippment .material_price').invoke('writeAttribute', 'readonly', true);
 	$$('#new_hand_invoice_shippment .invoice_bill_no').invoke('hide');
-	$$('#new_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_bill_no,#new_computer_invoice_shippment .invoice_package_qty,#edit_computer_invoice_shippment .invoice_package_qty').invoke('hide');
+	$$('#new_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_package_qty').invoke('hide');
 	//显示手工票审核界面时,自动计算合计金额
 	//员工资料-岗位列表变化,修改响应的工资项目金额
 	$$('#employee_position_id').invoke('observe', 'change', function() {

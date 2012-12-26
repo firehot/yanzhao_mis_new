@@ -105,8 +105,8 @@
               </li>
             <%end%>
             <%if check_power_group('手工票登记') or  check_power_group('机打票登记') or check_power_group('库存及票据盘查') or check_power_group('其他票据登记')  %>
-              <li class="<%= check_current_controller(['common_invoice_receipts','common_invoice_shippments','common_invoices','hand_invoice_receipts','hand_invoice_shippments','hand_invoices','computer_invoice_receipts','computer_invoice_shippments','computer_invoices','m_storages','invoice_checks']) %>">
-                <%= link_to "票据登记", hand_invoice_shippments_path("search[org_id_eq]" => current_user.org_id,:active_sub_tab => 1)  %>
+              <li class="<%= check_current_controller(['all_invoice_receipts','all_invoice_shippments','common_invoice_receipts','common_invoice_shippments','common_invoices','hand_invoice_receipts','hand_invoice_shippments','hand_invoices','computer_invoice_receipts','computer_invoice_shippments','computer_invoices','m_storages','invoice_checks']) %>">
+                <%= link_to "票据登记", all_invoice_receipts_path("search[org_id_eq]" => current_user.org_id,:active_sub_tab => 1)  %>
               </li>
             <%end%>
           </ul>

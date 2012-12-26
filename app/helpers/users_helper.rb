@@ -1,8 +1,9 @@
 module UsersHelper
   #判断当前用户是否具备给定分类的功能权限
+  #group_name_or_group_names 功能分组名称或名称数组
   def check_power_group(group_name)
     if current_user.is_admin
-      true
+      return true
     else
       group_power = current_user.powers.group_by {|power| power.system_function.group_name }
       if group_power[group_name].blank?
@@ -13,6 +14,9 @@ module UsersHelper
     end
   end
   #判断当前用户是否具有给定的权限
+  def check_power_groups(g_names)
+    g_names.any? {|g_name| check_power_group(g_name)}
+  end
   def check_power(func_key)
     if current_user.is_admin
       true

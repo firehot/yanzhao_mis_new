@@ -1,4 +1,4 @@
-<% form_for HandInvoiceReceipt.search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
+<% form_for MaterialInout.search,:url => {:action => :index},:html => {:class => :uniForm } do |f| -%>
   <fieldset class='blockLabels'>
     <%=hidden_field_tag :active_sub_tab,params[:active_sub_tab]%>
     <div class='ctrlHolder'>
@@ -17,4 +17,4 @@
   <div class="actions-bar">
     <%=f.submit '查询', :class => 'sexybutton sexysimple sexyblue'%>
   </div>
-<% end -%>
+<% end %>

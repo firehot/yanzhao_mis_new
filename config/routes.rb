@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+
+  #所有入库单
+  map.resources :all_invoice_receipts,:only => :index
+  #职位
   map.resources :positions
 
   map.resources :invoice_checks
