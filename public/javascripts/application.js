@@ -727,8 +727,8 @@ document.observe("dom:loaded", function() {
 
 	});
     //默认不显示查询区间设置界面
-    $$('#query_range_toggle').invoke('observe','click',function(){
-        $$(".query_range_content").invoke("toggle");
+    $$('#hand_fee_list_toggle').invoke('observe','click',function(){
+        $$(".hand_fee_list_content").invoke("toggle");
     });
 
 });

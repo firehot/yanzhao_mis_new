@@ -37,7 +37,7 @@
                 <%if ['draft','waitting'].include?(message.state) && (message.user == current_user || message.publisher == current_user)%>
                   | <%= link_to "修改/审核", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
                 <%end%>
-                <%if message.publisher == current_user %>
+                <%if ['draft','waitting'].include?(message.state) && (message.user == current_user) %>
                   | <%= link_to "删除", message, :method => :delete, :confirm => "确定删除吗?" %>
                 <%end%>
                 <%if ['published'].include?(message.state) && check_power("edit_rule_after_publish")%>
