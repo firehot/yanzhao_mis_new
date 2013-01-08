@@ -1,5 +1,8 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+
+jQuery.noConflict();
+jQuery(function($){new JVerticalMenu().init();});
 //yanzhao-bill begin
 //单据选择器对象，主要用于选择单据，并将选择的单据传给服务器
 var SelectHelper = {};

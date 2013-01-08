@@ -3,11 +3,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%=Client.first.name%> - 综合信息系统-<%=current_user.username%></title>
-    <%= javascript_include_tag :all%>
-    <%= calendar_date_select_includes :blue%>
+    <%= javascript_include_tag 'jquery-1.8.3.min.js','jverticalmenu', "prototype",'effects','dragdrop','controls','live_validation','modalbox','application','web_print' %>
+    <%= calendar_date_select_includes :blue %>
     <%= init_tinymce_hammer_if_required %>
     <%= stylesheet_link_tag "web_app_theme", "themes/blue/style","live_validation","uni-form",
-      "modalbox","/sexybuttons/sexybuttons","web_app_theme_override" %>
+      "modalbox","/sexybuttons/sexybuttons","jverticalmenu","web_app_theme_override" %>
   </head>
   <body>
     <div id="container">
@@ -113,15 +113,49 @@
         </div>
       </div>
       <div id="wrapper" class="wat-cf">
+        <div id="jverticalmenu-wrapper" class='block wat-cf'>
+          <div id="jverticalmenu">
+            <ul>
+              <li><a href="#" class="jverticalmenu-device-l">Devices</a>
+                <ul>
+                  <li><a href="#" class="jverticalmenu-explorer-l">Devices 1</a></li>
+                  <li><a href="#">Devices 2</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="jverticalmenu-explorer-l">Projects</a></li>
+              <li><a href="#" class="jverticalmenu-search-l">Report</a></li>
+              <li><a href="#" class="jverticalmenu-void-alt-l">Feedback</a></li>
+              <li><a href="#" class="jverticalmenu-lightbulb-l">Help</a></li>
+              <li><a href="#" class="jverticalmenu-gear-l">Config</a>
+                <ul>
+                  <li><a href="#">Config 1</a></li>
+                  <li><a href="#">Config 2</a>
+                    <ul>
+                      <li><a href="#">Config 2.1</a></li>
+                      <li><a href="#">Config 2.2</a></li>
+                      <li><a href="#">Config 2.3</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#" class="jverticalmenu-home-l">Home</a>
+                <ul>
+                  <li><a href="#">Home 1</a></li>
+                  <li><a href="#">Home 2</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div id="main">
           <div id='flash' class="flash">
             <% flash.each do |type, message| -%>
               <div class="message <%= type %>">
                 <p><%= message %></p>
               </div>
-            <% end -%>
+            <% end %>
           </div>
-
           <%= yield %>
           <div id="footer">
             <%= render :partial => 'shared/footer' %>

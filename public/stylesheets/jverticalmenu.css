@@ -1,0 +1,116 @@
+/*
+ * jverticalmenu.css
+ * author: kazuhiro.yamada
+ */
+
+#jverticalmenu-wrapper {
+  float : left;
+  width           : 60px;
+  height          : 1px;
+}
+#jverticalmenu {
+  /*width           : 140px;*/
+  position        : absolute;
+  width           : 51px;
+  height          : 100%;
+  color           : white;
+}
+
+#jverticalmenu ul {
+  margin         : 0;
+  padding        : 0;
+  list-style-type: none;
+  font           : bold 12px Verdana;
+  background     : #2F427A;
+}
+
+#jverticalmenu ul li {
+  position: relative;
+}
+
+#jverticalmenu ul li a {
+  display            : block;
+  /*overflow       : auto;*/ /*force hasLayout in IE7 */
+  overflow           : hidden;
+  color              : white;
+  text-decoration    : none;
+  padding            : 0 0 0 50px;
+  border-bottom      : 1px solid #778;
+  border-right       : 1px solid #778;
+  vertical-align     : middle;
+  line-height        : 40px;
+  background-position: 5px 0px;
+  background-size    : contain;
+}
+
+#jverticalmenu ul li ul{
+  position: absolute;
+  width: 170px; /*Sub Menu Items width */
+  top: 0;
+  font-weight: normal;
+  visibility: hidden;
+}
+
+#jverticalmenu ul li a:link, #jverticalmenu ul li a:visited, #jverticalmenu ul li a:active{
+  color: white;
+}
+
+
+#jverticalmenu ul li a.selected{ /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+  background-color: gray;
+  color: white;
+}
+
+#jverticalmenu ul li a:hover{
+  background-color: gray; /*background of menu items during onmouseover (hover state)*/
+  color: white;
+}
+
+.rightarrowclass {
+  position: absolute;
+  top     : 14px;
+  right   : 5px;
+}
+
+/* light icon */
+.jverticalmenu-home-l {
+  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Home.png) no-repeat center left;
+}
+
+.jverticalmenu-device-l {
+  background: url(../images/jverticalmenu/light_icons/Devices/HTC-Touch.png) no-repeat center left;
+}
+
+.jverticalmenu-explorer-l {
+  background: url(../images/jverticalmenu/light_icons/OSFolders/Explorer.png) no-repeat center left;
+}
+
+.jverticalmenu-search-l {
+  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Search.png) no-repeat center left;
+}
+
+.jverticalmenu-search-l {
+  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Search.png) no-repeat center left;
+}
+
+.jverticalmenu-void-alt-l {
+  background: url(../images/jverticalmenu/light_icons/CommunicationInternet/VoIP-Alt.png) no-repeat center left;
+}
+
+.jverticalmenu-lightbulb-l {
+  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Lightbulb.png) no-repeat center left;
+}
+
+.jverticalmenu-gear-l {
+  background: url(../images/jverticalmenu/light_icons/SystemSettings/Gear.png) no-repeat center left;
+}
+
+/* dark icon */
+.jverticalmenu-home-d {
+  background: url(../images/jverticalmenu/dark_icons/Miscellaneous/Home.png) no-repeat center left;
+}
+
+/* Holly Hack for IE \*/
+* html #jverticalmenu ul li { float: left; height: 1%; }
+* html #jverticalmenu ul li a { height: 1%; }
+/* End */
