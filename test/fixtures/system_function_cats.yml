@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cat_name: MyString
+  is_active: false
+  order_by: 1
+  note: MyText
+
+two:
+  cat_name: MyString
+  is_active: false
+  order_by: 1
+  note: MyText

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225092259) do
+ActiveRecord::Schema.define(:version => 20130109024127) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -472,13 +472,33 @@ ActiveRecord::Schema.define(:version => 20121225092259) do
     t.datetime "sign_date"
   end
 
-  create_table "system_functions", :force => true do |t|
-    t.string   "group_name", :limit => 60,                   :null => false
-    t.string   "func_name",  :limit => 60,                   :null => false
-    t.string   "func_key",   :limit => 60,                   :null => false
-    t.boolean  "is_active",                :default => true, :null => false
+  create_table "system_function_cats", :force => true do |t|
+    t.string   "cat_name",                 :limit => 60,                   :null => false
+    t.boolean  "is_active",                              :default => true, :null => false
+    t.integer  "order_by",                               :default => 0
+    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "system_function_group_id"
+  end
+
+  create_table "system_function_groups", :force => true do |t|
+    t.string   "group_name", :limit => 60,                   :null => false
+    t.boolean  "is_active",                :default => true, :null => false
+    t.integer  "order_by",                 :default => 0
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "system_functions", :force => true do |t|
+    t.string   "group_name",             :limit => 60,                   :null => false
+    t.string   "func_name",              :limit => 60,                   :null => false
+    t.string   "func_key",               :limit => 60,                   :null => false
+    t.boolean  "is_active",                            :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "system_function_cat_id"
   end
 
   create_table "tk_infos", :force => true do |t|
