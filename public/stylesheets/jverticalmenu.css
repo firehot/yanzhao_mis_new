@@ -5,12 +5,13 @@
 
 #jverticalmenu-wrapper {
   float : left;
-  width           : 60px;
+  width           : 40px;
   height          : 1px;
 }
 #jverticalmenu {
   /*width           : 140px; */
   position        : absolute;
+  left            : -5px;
   width           : 51px;
   color           : white;
 }
@@ -48,7 +49,7 @@
 }
 #jverticalmenu ul li ul{
   position: absolute;
-  width: 170px; /*Sub Menu Items width */
+  width: 140px; /*Sub Menu Items width */
   top: 0;
   font-weight: normal;
   visibility: hidden;

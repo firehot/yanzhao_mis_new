@@ -111,7 +111,8 @@ var JVerticalMenu = function() {
 					if ($targetul.queue().length <= 1) { //if 1 or less queued animations
 						$targetul.css({
 							left: menuleft,
-							width: header._dimensions.subulw
+							//width: header._dimensions.subulw
+                            width : "150px"
 						}).animate({
 							height: 'show',
 							opacity: 'show'
