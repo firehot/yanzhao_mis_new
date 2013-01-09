@@ -9,10 +9,9 @@
   height          : 1px;
 }
 #jverticalmenu {
-  /*width           : 140px;*/
+  /*width           : 140px; */
   position        : absolute;
   width           : 51px;
-  height          : 100%;
   color           : white;
 }
 
@@ -29,7 +28,7 @@
 }
 
 #jverticalmenu ul li a {
-  display            : block;
+  display           : block;
   /*overflow       : auto;*/ /*force hasLayout in IE7 */
   overflow           : hidden;
   color              : white;
@@ -43,6 +42,10 @@
   background-size    : contain;
 }
 
+#jverticalmenu ul li a span {
+  display : block;
+  width : 140px;
+}
 #jverticalmenu ul li ul{
   position: absolute;
   width: 170px; /*Sub Menu Items width */

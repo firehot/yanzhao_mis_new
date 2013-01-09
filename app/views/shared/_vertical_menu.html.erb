@@ -1,0 +1,16 @@
+<div id="jverticalmenu-wrapper" class='block wat-cf'>
+  <div id="jverticalmenu">
+    <ul>
+      <%@grouped_system_function_cats.each do |group,func_cats|%>
+        <li>
+          <a href="#" class="jverticalmenu-device-l"><span><%= group.group_name %></span></a>
+          <ul>
+            <% func_cats.each do |cat|%>
+              <li><a href="#" class="jverticalmenu-explorer-l"><%= cat.cat_name%></a></li>
+            <%end%>
+          </ul>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>

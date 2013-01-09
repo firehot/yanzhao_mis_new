@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109024127) do
+ActiveRecord::Schema.define(:version => 20130109061205) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -473,13 +473,15 @@ ActiveRecord::Schema.define(:version => 20130109024127) do
   end
 
   create_table "system_function_cats", :force => true do |t|
-    t.string   "cat_name",                 :limit => 60,                   :null => false
-    t.boolean  "is_active",                              :default => true, :null => false
-    t.integer  "order_by",                               :default => 0
+    t.string   "cat_name",                 :limit => 60,                    :null => false
+    t.boolean  "is_active",                               :default => true, :null => false
+    t.integer  "order_by",                                :default => 0
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "system_function_group_id"
+    t.string   "default_action",           :limit => 200
+    t.string   "icon",                     :limit => 60
   end
 
   create_table "system_function_groups", :force => true do |t|
@@ -489,6 +491,7 @@ ActiveRecord::Schema.define(:version => 20130109024127) do
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "icon",       :limit => 60
   end
 
   create_table "system_functions", :force => true do |t|
@@ -499,6 +502,7 @@ ActiveRecord::Schema.define(:version => 20130109024127) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "system_function_cat_id"
+    t.string   "cat_name",               :limit => 60
   end
 
   create_table "tk_infos", :force => true do |t|

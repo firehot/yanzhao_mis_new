@@ -24,6 +24,7 @@
             <li><%=link_to "退出系统",destroy_user_session_path,:class => "logout" %></li>
           </ul>
         </div>
+        <!--
         <div id="user-navigation">
           <%if current_user.is_admin%>
             <ul class="wat-cf">
@@ -38,6 +39,7 @@
             </ul>
           <%end%>
         </div>
+        -->
         <div id="main-navigation">
           <ul class="wat-cf">
             <li class="<%= check_current_controller(['notices','rules','address_books']) %>">
@@ -52,7 +54,6 @@
                 <%=link_to "贵宾系统",vip_infos_path%>
               </li>
             <%end%>
-            -->
 
             <%if check_power_group('分成结算')%>
               <li class="<%= check_current_controller(['settlement_lines','settlements','contracts']) %>">
@@ -86,13 +87,11 @@
             <li class="<%= check_current_controller(['violations','punishments']) %>">
               <%= link_to "违规处罚", punishments_path(:active_sub_tab => 1)  %>
             </li>
-            <!--
             <%if check_power_group('投票系统')%>
               <li class="<%= check_current_controller(['votes'],'votes') %>">
                 <%=link_to "投票系统",votes_path("search[org_id_eq]" => current_user.org) %>
               </li>
             <% end %>
-            -->
 
             <%if check_power_group('工资核算')%>
               <li class="<%= check_current_controller(['employees','salary_tables']) %>">
@@ -110,44 +109,11 @@
               </li>
             <%end%>
           </ul>
+            -->
         </div>
       </div>
       <div id="wrapper" class="wat-cf">
-        <div id="jverticalmenu-wrapper" class='block wat-cf'>
-          <div id="jverticalmenu">
-            <ul>
-              <li><a href="#" class="jverticalmenu-device-l">Devices</a>
-                <ul>
-                  <li><a href="#" class="jverticalmenu-explorer-l">Devices 1</a></li>
-                  <li><a href="#">Devices 2</a></li>
-                </ul>
-              </li>
-              <li><a href="#" class="jverticalmenu-explorer-l">Projects</a></li>
-              <li><a href="#" class="jverticalmenu-search-l">Report</a></li>
-              <li><a href="#" class="jverticalmenu-void-alt-l">Feedback</a></li>
-              <li><a href="#" class="jverticalmenu-lightbulb-l">Help</a></li>
-              <li><a href="#" class="jverticalmenu-gear-l">Config</a>
-                <ul>
-                  <li><a href="#">Config 1</a></li>
-                  <li><a href="#">Config 2</a>
-                    <ul>
-                      <li><a href="#">Config 2.1</a></li>
-                      <li><a href="#">Config 2.2</a></li>
-                      <li><a href="#">Config 2.3</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#" class="jverticalmenu-home-l">Home</a>
-                <ul>
-                  <li><a href="#">Home 1</a></li>
-                  <li><a href="#">Home 2</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-
+        <%= render :partial => "shared/vertical_menu" %>
         <div id="main">
           <div id='flash' class="flash">
             <% flash.each do |type, message| -%>

@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :password, :password_confirmation,:is_admin,:is_active,:org_id,:remember_me,:powers_attributes,:level
   accepts_nested_attributes_for :powers
+  #获取分组的system_functions
+  def grouped_system_function_cats
+    cat_ids = []
+    self.system_functions.each {|sf| cat_ids += [sf.system_function_cat.id] if sf.system_function_cat}
+    cat_ids.uniq!
+    sf_cats = SystemFunctionCat.find(cat_ids,:order => "order_by ASC")
+    grouped_sf_cat = sf_cats.group_by {|sf_cat| sf_cat.system_function_group}
+  end
 end

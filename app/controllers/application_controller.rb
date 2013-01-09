@@ -22,8 +22,10 @@ class ApplicationController < ActionController::Base
   #检查未读公告/规章制度/消息
   def check_unread_messages
     if user_signed_in?
-      @unread_notices_count = Notice.unread_messages(current_user).count 
-      @unread_rules_count = Rule.unread_messages(current_user).count 
+      #获取当前用户权限设置
+      @grouped_system_function_cats = current_user.grouped_system_function_cats
+      @unread_notices_count = Notice.unread_messages(current_user).count
+      @unread_rules_count = Rule.unread_messages(current_user).count
       @unread_posts_count = Post.unread_messages(current_user).count
       @unread_suggestions_count = Suggestion.unread_messages(current_user).count
 
