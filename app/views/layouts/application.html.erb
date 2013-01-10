@@ -24,7 +24,6 @@
             <li><%=link_to "退出系统",destroy_user_session_path,:class => "logout" %></li>
           </ul>
         </div>
-        <!--
         <div id="user-navigation">
           <%if current_user.is_admin%>
             <ul class="wat-cf">
@@ -39,7 +38,6 @@
             </ul>
           <%end%>
         </div>
-        -->
         <div id="main-navigation">
           <ul class="wat-cf">
             <li class="<%= check_current_controller(['notices','rules','address_books']) %>">
