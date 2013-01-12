@@ -1,0 +1,21 @@
+<ul class="wat-cf">
+  <li class="<%=check_sub_active_tab(5)%>">
+    <%= link_to "通讯录", address_book_lines_path(:active_sub_tab => 5)   %>
+  </li>
+
+  <%if params[:active_sub_tab] == '8'%>
+    <li class="active">
+      <%= link_to "新建", self.send("new_#{@param_name}_path",:active_sub_tab => 8)   %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '9'%>
+    <li class="active">
+      <%= link_to "修改", self.send("edit_#{@param_name}_path",instance_variable_get("@#{@param_name}"),:active_sub_tab => 9)   %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '10'%>
+    <li class="active">
+      <%= link_to "查看", self.send("#{@param_name}_path",instance_variable_get("@#{@param_name}"),:active_sub_tab => 10)   %>
+    </li>
+  <%end%>
+</ul>

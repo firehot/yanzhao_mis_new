@@ -1,0 +1,29 @@
+<ul class="wat-cf">
+  <li class="<%=check_sub_active_tab(2)%>">
+    <%= link_to "规章制度#{unread_rules_count}", rules_path(:active_sub_tab => 2,"search[state_is]" => "published","search[is_active_is]" => true)   %>
+  </li>
+  <li class="first <%=check_sub_active_tab(7)%>">
+    <%= link_to "我发布的-规章制度", rules_path(:active_sub_tab => 7,"search[user_id_is]" => current_user,"search[is_active_is]" => true)  %>
+  </li>
+  <%if check_power('publish_rule')%>
+    <li class="<%=check_sub_active_tab(4)%>">
+      <%= link_to "我审核的-规章制度", rules_path(:active_sub_tab => 4,"search[publisher_id_is]" => current_user,"search[is_active_is]" => true)   %>
+    </li>
+  <%end%>
+
+  <%if params[:active_sub_tab] == '8'%>
+    <li class="active">
+      <%= link_to "新建", self.send("new_#{@param_name}_path",:active_sub_tab => 8)   %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '9'%>
+    <li class="active">
+      <%= link_to "修改", self.send("edit_#{@param_name}_path",instance_variable_get("@#{@param_name}"),:active_sub_tab => 9)   %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '10'%>
+    <li class="active">
+      <%= link_to "查看", self.send("#{@param_name}_path",instance_variable_get("@#{@param_name}"),:active_sub_tab => 10)   %>
+    </li>
+  <%end%>
+</ul>

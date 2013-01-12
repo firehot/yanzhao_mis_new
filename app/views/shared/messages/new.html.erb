@@ -5,16 +5,16 @@
 <%=render "shared/messages/set_variables"%>
 <div class="block">
   <div class="secondary-navigation">
-    <%= render :partial => "shared/messages/caption" %>
+    <%= render "caption" %>
   </div>
   <div class="content">
     <h2 class="title"><%="新建#{@title}"%></h2>
     <div class="inner">
       <% form_for @message, :html => { :class => :uniForm,:multipart => true,:id => "message_form" } do |f| -%>
         <%= render :partial => "shared/messages/form", :locals => {:f => f} %>
-      <% end -%>
+      <% end %>
     </div>
   </div>
 </div>
 
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
+<% content_for :sidebar, render(:partial => 'sidebar') %>

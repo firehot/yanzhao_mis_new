@@ -1,12 +1,12 @@
 <div class="block">
   <div class="secondary-navigation">
-    <%= render 'shared/messages/caption' %>
-  </div>          
-  <div class="content">          
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
     <h2 class="title">通讯录列表</h2>
     <div class="inner">
       <table class="table">
-        <tr>             
+        <tr>
           <th>所属部门</th>
           <th>通讯录名称</th>
           <th>联系人数量</th>
@@ -38,7 +38,7 @@
                 <%= link_to "删除", address_book, :method => :delete, :confirm => "确定删除吗?" %>
               <%end%>
             </td>
-          </tr>          
+          </tr>
         <% end -%>
       </table>
       <div class="actions-bar wat-cf">
