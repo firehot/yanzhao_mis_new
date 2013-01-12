@@ -163,6 +163,11 @@
 .admin-cat-l {
   background: url(../images/jverticalmenu/light_icons/Devices/Mouse.png) no-repeat center left;
 }
+
+/*子菜单*/
+.function-sub {
+  background: url(../images/jverticalmenu/light_icons/SystemSettings/Gear.png) no-repeat center left;
+}
 /* dark icon */
 .jverticalmenu-home-d {
   background: url(../images/jverticalmenu/dark_icons/Miscellaneous/Home.png) no-repeat center left;

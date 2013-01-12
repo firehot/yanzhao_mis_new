@@ -6,7 +6,7 @@
           <a href="#" class="<%= group.icon%>"><span><%= group.group_name %></span></a>
           <ul>
             <% func_cats.each do |cat|%>
-              <li><a href="<%= eval cat.default_action %>"><span><%= cat.cat_name%></span></a></li>
+              <li><a class='function-sub' href="<%= eval cat.default_action %>"><span><%= cat.cat_name%></span></a></li>
             <%end%>
           </ul>
         </li>
