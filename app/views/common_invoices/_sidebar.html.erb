@@ -1,1 +1,8 @@
-<%= render :partial => "common_invoice_receipts/sidebar" %>
+<div class="block">
+  <h3>其他票据管理</h3>
+  <ul class="navigation">
+    <%if check_power('new_common_invoice')%>
+      <li><%=link_to "新建票据类型",new_common_invoice_path(:active_sub_tab => 7)%></li>
+    <%end%>
+  </ul>
+</div>

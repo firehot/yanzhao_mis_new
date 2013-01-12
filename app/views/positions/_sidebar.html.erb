@@ -1,1 +1,8 @@
-<%= render :partial => "salary_tables/sidebar" %>
+<%if check_power('new_position')%>
+  <div class="block">
+    <h3>新建</h3>
+    <ul class="navigation">
+      <li><%= link_to "新建职位资料", new_position_path %></li>
+    </ul>
+  </div>
+<%end%>

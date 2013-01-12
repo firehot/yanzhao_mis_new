@@ -1,18 +1,5 @@
 <ul class="wat-cf">
-  <%if check_power("read_budget_tables")%>
-    <li class="first  <%=check_sub_active_tab(1)%>">
-      <%= link_to "预算表", budget_tables_path(:active_sub_tab => 1)  %>
-    </li>
-  <%end%>
-
-  <%if check_power("read_management_fee_configs")%>
-    <li class="<%=check_sub_active_tab(2)%>">
-      <%= link_to "预算比例", management_fee_configs_path(:active_sub_tab => 2)  %>
-    </li>
-  <%end%>
-  <%if check_power("read_org_management_fee_configs")%>
-    <li class="<%=check_sub_active_tab(3)%>">
-      <%= link_to "费用设置", org_management_fee_configs_path(:active_sub_tab => 3)  %>
-    </li>
-  <%end%>
+  <li class="<%=check_sub_active_tab(2)%>">
+    <%= link_to "预算比例", management_fee_configs_path(:active_sub_tab => 2)  %>
+  </li>
 </ul>

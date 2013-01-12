@@ -1,1 +1,6 @@
-<%=render "common_invoice_receipts/caption"%>
+<!--标题条-->
+<ul class="wat-cf">
+  <li class="<%=check_sub_active_tab(5) %>">
+    <%= link_to "票据分类", common_invoices_path(:active_sub_tab => 5) %>
+  </li>
+</ul>

@@ -1,2 +1,11 @@
 <!--标题条-->
-<%= render "hand_invoice_receipts/caption" %>
+<ul class="wat-cf">
+  <li class="first <%=check_sub_active_tab(3) %>">
+    <%= link_to "出库单", all_invoice_shippments_path(:active_sub_tab => 3) %>
+  </li>
+  <%if check_power('computer_invoice_shippment_audit') or  check_power('hand_invoice_shippment_audit') or  check_power('common_invoice_shippment_audit')%>
+    <li class="<%=check_sub_active_tab(4) %>">
+      <%= link_to "待确认", all_invoice_shippments_path(:active_sub_tab => 4,"search[state]" => MaterialInout::STATE_DRAFT,"search[auditor_id]" => current_user) %>
+    </li>
+  <%end%>
+</ul>

@@ -1,1 +1,8 @@
-<%= render :partial => "hand_invoice_receipts/sidebar" %>
+<%if check_power('new_invoice_check')%>
+  <div class="block">
+    <h3>运单票据盘查</h3>
+    <div class="content">
+      <%= render "invoice_checks/new_with_org" %>
+    </div>
+  </div>
+<%end%>

@@ -1,1 +1,33 @@
-<%= render "hand_invoice_receipts/sidebar" %>
+<div class="block">
+  <h3>运单票据管理</h3>
+  <ul class="navigation">
+    <li><%=link_to "新建手工票领用单",new_hand_invoice_shippment_path(:active_sub_tab => 1)%></li>
+    <li><%=link_to "新建机打票领用单",new_computer_invoice_shippment_path(:active_sub_tab => 1)%></li>
+    <%if check_power('update_hand_invoice')%>
+      <li>
+        <%=link_to "修改手工票设置",edit_hand_invoice_path(HandInvoice.default_hand_invoice,:active_sub_tab => 7)%>
+      </li>
+    <%end%>
+
+    <%if check_power('update_computer_invoice')%>
+      <li>
+        <%=link_to "修改机打票设置",edit_computer_invoice_path(ComputerInvoice.default_computer_invoice,:active_sub_tab => 9)%>
+      </li>
+    <%end%>
+  </ul>
+</div>
+<div class="block">
+  <h3>其他票据管理</h3>
+  <ul class="navigation">
+    <%if check_power('new_common_invoice_shippment')%>
+      <li><%=link_to "新建票据领用单",new_common_invoice_shippment_path(:active_sub_tab => 1)%></li>
+    <%end%>
+  </ul>
+</div>
+
+<div class="block">
+  <h3>查询</h3>
+  <div class="content">
+    <%= render "search_form" %>
+  </div>
+</div>

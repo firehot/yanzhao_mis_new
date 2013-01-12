@@ -1,2 +1,11 @@
 <!--标题条-->
-<%= render "hand_invoice_receipts/caption" %>
+<ul class="wat-cf">
+  <li class="first <%=check_sub_active_tab(1) %>">
+    <%= link_to "入库单", all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id) %>
+  </li>
+  <%if check_power('computer_invoice_receipt_audit') or  check_power('hand_invoice_receipt_audit') or  check_power('common_invoice_receipt_audit')%>
+    <li class="<%=check_sub_active_tab(2) %>">
+      <%= link_to "待确认", all_invoice_receipts_path(:active_sub_tab => 2,"search[state]" => MaterialInout::STATE_DRAFT,"search[auditor_id]" => current_user) %>
+    </li>
+  <%end%>
+</ul>

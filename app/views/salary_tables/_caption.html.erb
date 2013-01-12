@@ -1,13 +1,3 @@
 <ul class="wat-cf">
-  <%if check_power('index_salary_table') or check_power('new_salary_table') or check_power('edit_salary_table') or check_power('audit_salary_table') or check_power('print_salary_table')%>
-    <li class="first  <%=check_sub_active_tab(1)%>"><%= link_to "工资表", salary_tables_path(:active_sub_tab => 1)  %></li>
-  <%end%>
-
-  <%if check_power('index_employees') or check_power('new_employee') or check_power('edit_employee') %>
-    <li class="<%=check_sub_active_tab(2)%>"><%= link_to "员工资料", employees_path(:active_sub_tab => 2) %></li>
-  <%end%>
-  <%if check_power('index_positions') or check_power('new_position') or check_power('edit_position') %>
-    <li class="<%=check_sub_active_tab(3)%>"><%= link_to "职位", positions_path(:active_sub_tab => 3) %></li>
-  <%end%>
-
+  <li class="first  <%=check_sub_active_tab(1)%>"><%= link_to "工资表", salary_tables_path(:active_sub_tab => 1)  %></li>
 </ul>

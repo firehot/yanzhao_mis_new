@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   #获取分组的system_functions
   def grouped_system_function_cats
     cat_ids = []
-    self.system_functions.each {|sf| cat_ids += [sf.system_function_cat.id] if sf.system_function_cat}
+    self.powers.each {|p| cat_ids += [p.system_function.system_function_cat.id] if p.is_select and p.system_function.try(:system_function_cat) }
     cat_ids.uniq!
     sf_cats = SystemFunctionCat.find(cat_ids,:order => "order_by ASC")
     grouped_sf_cat = sf_cats.group_by {|sf_cat| sf_cat.system_function_group}

@@ -1,1 +1,16 @@
-<%= render :partial => "management_fee_configs/sidebar"%>
+<%if check_power("create_budget_table")%>
+  <div class="block">
+    <h3>生成预算表</h3>
+    <div class="content">
+      <%=render "budget_tables/create_budget_form"%>
+    </div>
+  </div>
+<%end%>
+<%if check_power("read_budget_tables")%>
+  <div class="block">
+    <h3>查询预算表</h3>
+    <div class="content">
+      <%=render "budget_tables/search_form"%>
+    </div>
+  </div>
+<%end%>

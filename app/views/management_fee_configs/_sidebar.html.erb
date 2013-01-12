@@ -1,29 +1,8 @@
-<%if check_power("create_budget_table")%>
-  <div class="block">
-    <h3>生成预算表</h3>
-    <div class="content">
-      <%=render "budget_tables/create_budget_form"%>
-    </div>
-  </div>
-<%end%>
-
-<%if check_power("read_budget_tables")%>
-  <div class="block">
-    <h3>查询预算表</h3>
-    <div class="content">
-      <%=render "budget_tables/search_form"%>
-    </div>
-  </div>
-<%end%>
-
 <div class="block">
   <h3>新建</h3>
   <ul class="navigation">
     <%if check_power("create_management_fee_config")%>
       <li><%=link_to "新建预算比例",new_management_fee_config_path(:active_sub_tab => 1)%></li>
-    <%end%>
-    <%if check_power("create_org_management_fee_config")%>
-      <li><%=link_to "新建分理处设置",new_org_management_fee_config_path(:active_sub_tab => 2)%></li>
     <%end%>
   </ul>
 </div>

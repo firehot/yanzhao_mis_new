@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112143751) do
+ActiveRecord::Schema.define(:version => 20130112162439) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -495,15 +495,13 @@ ActiveRecord::Schema.define(:version => 20130112143751) do
   end
 
   create_table "system_functions", :force => true do |t|
-    t.string   "group_name",             :limit => 60,                    :null => false
-    t.string   "func_name",              :limit => 60,                    :null => false
-    t.string   "func_key",               :limit => 60,                    :null => false
-    t.boolean  "is_active",                             :default => true, :null => false
+    t.string   "group_name",             :limit => 60,                   :null => false
+    t.string   "func_name",              :limit => 60,                   :null => false
+    t.string   "func_key",               :limit => 60,                   :null => false
+    t.boolean  "is_active",                            :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "system_function_cat_id"
-    t.string   "cat_name",               :limit => 60
-    t.string   "default_action",         :limit => 400
   end
 
   create_table "tk_infos", :force => true do |t|
