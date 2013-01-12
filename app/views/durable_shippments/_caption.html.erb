@@ -1,1 +1,27 @@
-<%=render "durable_receipts/caption"%>
+<ul class="wat-cf">
+  <%if check_power('new_durable_shippment')%>
+    <li class="<%=check_sub_active_tab(2) %>">
+      <%= link_to "领用单", durable_shippments_path(:active_sub_tab => 2) %>
+    </li>
+  <%end%>
+  <%if check_power('durable_shippment_audit')%>
+    <li class="<%=check_sub_active_tab(16) %>"><%= link_to "待确认领用单", durable_shippments_path(:active_sub_tab => 16,"search[state]" => MaterialInout::STATE_DRAFT,"search[auditor_id]" => current_user) %></li>
+  <%end %>
+
+  <%if params[:active_sub_tab] == '4'%>
+    <li class="<%=check_sub_active_tab(4) %>"><%= link_to "查看入库单", durable_receipt_path(@durable_receipt,:active_sub_tab => 4) %></li>
+  <%end%>
+
+  <%if check_power('new_durable_shippment')%>
+    <%if params[:active_sub_tab] == '5'%>
+      <li class="active"><%= link_to "新建领用单", durable_shippment_path(@durable_shippment,:active_sub_tab => 5) %></li>
+    <%end%>
+  <%end%>
+  <%if check_power('m_storages')%>
+    <li class="<%=check_sub_active_tab(10) %>"><%= link_to "库存查询", m_storages_path(:in_what => 'durable_receipts',"search[material_type_is]" => "DurableMaterial","search[qty_gt]" => 0, "search[material_is_active]" => true,:active_sub_tab => 10) %></li>
+  <%end%>
+
+  <%if check_power('material_inout_lines')%>
+    <li class="<%=check_sub_active_tab(11) %>"><%= link_to "部门耐用品汇总", material_inout_lines_path(:active_sub_tab => 11,"search[material_inout_state_eq]" => MaterialInout::STATE_CONFIRM) %></li>
+  <%end%>
+</ul>

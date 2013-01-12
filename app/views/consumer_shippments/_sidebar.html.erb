@@ -1,1 +1,16 @@
-<%= render "consumer_receipts/sidebar" %>
+<div class="block">
+  <h3>新建</h3>
+  <ul class="navigation">
+    <%if check_power('new_consumer_shippment')%>
+      <li><%=link_to "新建领用单",new_consumer_shippment_path(:active_sub_tab => 9)%></li>
+    <%end%>
+  </ul>
+</div>
+
+<div class="block">
+  <h3>查询</h3>
+  <div class="content">
+    <%= render :partial => "search_form" %>
+  </div>
+</div>
+

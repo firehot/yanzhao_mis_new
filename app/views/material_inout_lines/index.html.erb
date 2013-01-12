@@ -1,8 +1,8 @@
 <div class="block">
   <div class="secondary-navigation">
-    <%= render 'durable_receipts/caption' %>
-  </div>          
-  <div class="content">          
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
     <h2 class="title">耐用品列表</h2>
     <div class="inner">
       <%form_for :search,:url => {:action => :index},:html => {:method => :get} do |f|%>
@@ -18,7 +18,7 @@
       <%end%>
 
       <table class="table">
-        <tr>             
+        <tr>
           <th class='first'>&nbsp;</th>
           <th>物品名称</th>
           <th>数量</th>
@@ -45,7 +45,7 @@
                   <%=link_to "报废",new_scrapped_info_path(:org_id => line.org_id,:price => (line.amt.to_f/line.qty),:material_id => line.material.id,:active_sub_tab => 13)%>
                 <%end%>
               </td>
-            </tr>          
+            </tr>
           <% end -%>
         <% end -%>
       </table>
@@ -55,4 +55,4 @@
   </div>
 </div>
 
-<!--% content_for :sidebar, render(:partial => 'sidebar') -%-->
+<% content_for :sidebar, render(:partial => 'sidebar') %>

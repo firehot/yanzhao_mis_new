@@ -1,12 +1,12 @@
 <div class="block">
   <div class="secondary-navigation">
-    <%= render :partial => 'durable_receipts/caption' %>
-  </div>          
-  <div class="content">          
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
     <h2 class="title">报废单据列表</h2>
     <div class="inner">
       <table class="table">
-        <tr>             
+        <tr>
           <th>单据日期</th>
           <th>部门</th>
           <th>经办人</th>
@@ -25,10 +25,10 @@
               <%= bill.person_name %>
             </td>
             <td class="last">
-              <%= link_to "查看/打印",scrapped_info_path(bill,:active_sub_tab => 14) %> 
+              <%= link_to "查看/打印",scrapped_info_path(bill,:active_sub_tab => 14) %>
               <!--%= link_to "删除", bill, :method => :delete, :confirm => "您确定要删除该信息吗？" %-->
             </td>
-          </tr>          
+          </tr>
         <% end -%>
       </table>
       <div class="actions-bar wat-cf">

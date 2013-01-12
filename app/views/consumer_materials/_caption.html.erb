@@ -1,1 +1,12 @@
-<%=render "consumer_receipts/caption"%>
+<ul class="wat-cf">
+  <%if check_power('new_consumer_material')%>
+    <li class="<%=check_sub_active_tab(3) %>"><%= link_to "物品定义", consumer_materials_path(:active_sub_tab => 3) %></li>
+  <%end%>
+  <%if params[:active_sub_tab] == '7'%>
+    <li class="active"><%= link_to "新建物品", new_consumer_material_path(:active_sub_tab => 7) %></li>
+  <%end%>
+
+  <%if params[:active_sub_tab] == '8'%>
+    <li class="active"><%= link_to "修改物品资料", edit_consumer_material_path(@consumer_material,:active_sub_tab => 8) %></li>
+  <%end%>
+</ul>
