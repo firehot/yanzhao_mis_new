@@ -1,19 +1,19 @@
 <div class="block">
   <div class="secondary-navigation">
-    <%=render "carrying_bills/caption"%>
-  </div>          
-  <div class="content">          
+    <%=render "caption"%>
+  </div>
+  <div class="content">
     <h2 class="title">确认清单</h2>
     <div class="inner">
       <table class='table'>
         <tr>
           <td>确认人:<%=@confirm.user.username%></td>
+          <td>&nbsp;</td>
           <td>确认日期:<%=@confirm.created_at.to_date%></td>
-          <td class='text-right'><%=link_to '导出明细',confirm_bills_path(@confirm,:format => :csv),:class => "sexybutton sexysimple sexyblue"%></td>
         </tr>
       </table>
       <%=render :partial => "shared/bills/bill_list",:object =>{:show_sum => false,:bills => (@confirm.bills.paginate :page => 1,:per_page => 1000)} %>
     </div>
   </div>
 </div>
-<!--%=render :partial => "share_operate/side_bar"%-->
+<% content_for :sidebar, render('sidebar') %>

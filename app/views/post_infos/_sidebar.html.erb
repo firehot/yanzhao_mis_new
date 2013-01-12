@@ -4,3 +4,11 @@
     <%=render "shared/bill_operates/search_form"%>
   </div>
 </div>
+<%if params[:action].eql?('show')%>
+  <div class="block">
+    <h3>导出</h3>
+    <ul class="navigation">
+      <li><%=link_to '导出明细',post_infos_path(@post_info,:format => :csv)%></li>
+    </ul>
+  </div>
+<%end%>

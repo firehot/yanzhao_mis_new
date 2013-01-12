@@ -1,6 +1,6 @@
 <div class="block">
   <div class="secondary-navigation">
-    <%= render :partial => "violations/caption" %>
+    <%= render "caption" %>
   </div>
   <div class="content">
     <div class="inner">
@@ -8,4 +8,4 @@
     </div>
   </div>
 </div>
-<% content_for :sidebar, render(:partial => 'violations/sidebar') -%>
+<% content_for :sidebar, render('sidebar') %>
