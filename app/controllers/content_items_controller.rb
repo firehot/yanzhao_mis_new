@@ -1,0 +1,2 @@
+class ContentItemsController < BaseController
+end

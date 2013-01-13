@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :content_items
+
 
   #所有票据出库单
   map.resources :all_invoice_shippments,:only => :index

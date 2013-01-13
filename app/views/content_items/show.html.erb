@@ -1,0 +1,33 @@
+<p>
+  <b>Title:</b>
+  <%=h @content_item.title %>
+</p>
+
+<p>
+  <b>Published at:</b>
+  <%=h @content_item.published_at %>
+</p>
+
+<p>
+  <b>Context:</b>
+  <%=h @content_item.context %>
+</p>
+
+<p>
+  <b>Is active:</b>
+  <%=h @content_item.is_active %>
+</p>
+
+<p>
+  <b>Publisher:</b>
+  <%=h @content_item.publisher_id %>
+</p>
+
+<p>
+  <b>Content class:</b>
+  <%=h @content_item.content_class %>
+</p>
+
+
+<%= link_to 'Edit', edit_content_item_path(@content_item) %> |
+<%= link_to 'Back', content_items_path %>

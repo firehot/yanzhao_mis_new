@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112162439) do
+ActiveRecord::Schema.define(:version => 20130113134431) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -171,6 +171,36 @@ ActiveRecord::Schema.define(:version => 20130112162439) do
 
   create_table "confirms", :force => true do |t|
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_classes", :force => true do |t|
+    t.string   "name",       :limit => 60,                    :null => false
+    t.string   "code",       :limit => 30,                    :null => false
+    t.boolean  "hidden",                   :default => false, :null => false
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_item_images", :force => true do |t|
+    t.integer  "content_item_id",                 :null => false
+    t.string   "img_file_name",    :limit => 200, :null => false
+    t.string   "img_content_type", :limit => 60
+    t.integer  "img_file_size"
+    t.datetime "img_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_items", :force => true do |t|
+    t.string   "title",            :limit => 60,                   :null => false
+    t.datetime "published_at"
+    t.text     "context"
+    t.boolean  "is_active",                      :default => true, :null => false
+    t.integer  "publisher_id"
+    t.integer  "content_class_id",                                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
