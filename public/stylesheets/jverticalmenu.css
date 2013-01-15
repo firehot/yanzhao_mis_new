@@ -78,99 +78,99 @@
 
 /* light icon */
 .jverticalmenu-home-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Home.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Home.png) no-repeat center left;
 }
 
 .jverticalmenu-device-l {
-  background: url(../images/jverticalmenu/light_icons/Devices/HTC-Touch.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Devices/HTC-Touch.png) no-repeat center left;
 }
 
 .jverticalmenu-explorer-l {
-  background: url(../images/jverticalmenu/light_icons/OSFolders/Explorer.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/OSFolders/Explorer.png) no-repeat center left;
 }
 
 .jverticalmenu-search-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Search.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Search.png) no-repeat center left;
 }
 
 .jverticalmenu-search-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Search.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Search.png) no-repeat center left;
 }
 
 .jverticalmenu-void-alt-l {
-  background: url(../images/jverticalmenu/light_icons/CommunicationInternet/VoIP-Alt.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/CommunicationInternet/VoIP-Alt.png) no-repeat center left;
 }
 
 .jverticalmenu-lightbulb-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Lightbulb.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Lightbulb.png) no-repeat center left;
 }
 
 .jverticalmenu-gear-l {
-  background: url(../images/jverticalmenu/light_icons/SystemSettings/Gear.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/SystemSettings/Gear.png) no-repeat center left;
 }
 .jverticalmenu-tuneup-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/TuneUp-Utilities.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/TuneUp-Utilities.png) no-repeat center left;
 }
 /*公共信息*/
 .notice-cat-l {
-  background: url(../images/jverticalmenu/light_icons/CommunicationInternet/RSS.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/CommunicationInternet/RSS.png) no-repeat center left;
 }
 
 /*在线交流*/
 .chat-cat-l {
-  background: url(../images/jverticalmenu/light_icons/CommunicationInternet/AIM.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/CommunicationInternet/AIM.png) no-repeat center left;
 }
 
 /*分成结算*/
 .settlement-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Calculator.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Calculator.png) no-repeat center left;
 }
 
 /*耐用品*/
 .durable-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Zip.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Zip.png) no-repeat center left;
 }
 /*易耗品*/
 .consume-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Lightbulb.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Lightbulb.png) no-repeat center left;
 }
 /*票据科*/
 .carrying-bill-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Office/Notepad.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Office/Notepad.png) no-repeat center left;
 }
 /*后勤部*/
 .inout-bill-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Lightbulb.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Lightbulb.png) no-repeat center left;
 }
 /*违规处罚*/
 .punishment-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Miscellaneous/Lightning.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Miscellaneous/Lightning.png) no-repeat center left;
 }
 /*工资核算*/
 .salary-table-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Office/Graphing-Spreadsheets.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Office/Graphing-Spreadsheets.png) no-repeat center left;
 }
 /*预算工具*/
 .budget-table-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Office/Writing.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Office/Writing.png) no-repeat center left;
 }
 /*票据管理*/
 .invoice-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Office/Slideshow.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Office/Slideshow.png) no-repeat center left;
 }
 
 /*系统管理*/
 .admin-cat-l {
-  background: url(../images/jverticalmenu/light_icons/Devices/Mouse.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/Devices/Mouse.png) no-repeat center left;
 }
 
 /*子菜单*/
 .function-sub {
-  background: url(../images/jverticalmenu/light_icons/SystemSettings/Gear.png) no-repeat center left;
+  background: url(/images/jverticalmenu/light_icons/SystemSettings/Gear.png) no-repeat center left;
 }
 /* dark icon */
 .jverticalmenu-home-d {
-  background: url(../images/jverticalmenu/dark_icons/Miscellaneous/Home.png) no-repeat center left;
+  background: url(/images/jverticalmenu/dark_icons/Miscellaneous/Home.png) no-repeat center left;
 }
 
 /* Holly Hack for IE \*/

@@ -6,8 +6,8 @@ var JVerticalMenu = function() {
 	var self = this;
 	//Specify full URL to down and right arrow images (23 is padding-right added to top level LIs with drop downs):
 	this.arrowimages = {
-		down: ['downarrowclass', 'images/jverticalmenu/down.gif', 23],
-		right: ['rightarrowclass', 'images/jverticalmenu/right.gif']
+		down: ['downarrowclass', '/images/jverticalmenu/down.gif', 23],
+		right: ['rightarrowclass', '/images/jverticalmenu/right.gif']
 	};
 	this.transition = {
 		topovertime: 100,

@@ -1,8 +1,10 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-
 jQuery.noConflict();
-jQuery(function($){new JVerticalMenu().init();});
+jQuery(function($) {
+	new JVerticalMenu().init();
+});
+
 //yanzhao-bill begin
 //单据选择器对象，主要用于选择单据，并将选择的单据传给服务器
 var SelectHelper = {};
@@ -180,7 +182,7 @@ billOperateUtil.addBill = function(callback_json) {
 		$('error_span').update('票据' + the_bill.bill_no + '已在选择列表中');
 		return false;
 	}
-	var tr_template = new Template("<tr class='added_bill' id='added_bill_#{id}'>" + "<input type='hidden' name='bills[]' value='#{id}'/>" + "<input class='goods_fee' type='hidden' value='#{goods_fee}' id='goods_fee_#{id}' />" + "<input class='fee' type='hidden' value='#{fee}' id='fee_#{id}' />" + "<input class='k_hand_fee' type='hidden' value='#{k_hand_fee}' id='k_hand_fee_#{id}' />" + "<input class='k_carrying_fee' type='hidden' value='#{k_carrying_fee}' id='k_carrying_fee_#{id}' />" +"<input class='k_insured_fee' type='hidden' value='#{k_insured_fee}' id='k_insured_fee_#{id}' />" + "<input class='act_pay_fee' type='hidden' value='#{act_pay_fee}' id='act_pay_fee_#{id}' />" + "<input class='storage_fee' type='hidden' value='#{storage_fee}' id='storage_fee_#{id}' />" + "<td>#{index}</td>" + "<td>#{bill_no}</td>" + "<td>#{goods_no}</td>" + "<td>#{sender_name}</td>" + "<td>#{goods_fee}</td>" + "<td>#{fee}</td>" + (operate_type == 'tk_info' ? "<td>#{k_hand_fee}</td><td>#{k_carrying_fee}</td><td>#{k_insured_fee}</td><td>#{act_pay_fee}</td>": "") + (operate_type == 'deliver' ? "<td>#{storage_fee}</td>": "") + (operate_type == 'clear_info' ? "<td><input type='text' id='clear_fee_#{id}' class='clear_fee' name='clear_fee[]' value='#{clear_fee}' style='width : 50px;font-size : 1.2em;height : 25px;border : 2px solid blue;'/></td>": "") + "<td><a class='red_text' style='cursor:pointer;' onclick=$('added_bill_#{id}').remove();billOperateUtil.cal_sum();>删除</a></td></tr>");
+	var tr_template = new Template("<tr class='added_bill' id='added_bill_#{id}'>" + "<input type='hidden' name='bills[]' value='#{id}'/>" + "<input class='goods_fee' type='hidden' value='#{goods_fee}' id='goods_fee_#{id}' />" + "<input class='fee' type='hidden' value='#{fee}' id='fee_#{id}' />" + "<input class='k_hand_fee' type='hidden' value='#{k_hand_fee}' id='k_hand_fee_#{id}' />" + "<input class='k_carrying_fee' type='hidden' value='#{k_carrying_fee}' id='k_carrying_fee_#{id}' />" + "<input class='k_insured_fee' type='hidden' value='#{k_insured_fee}' id='k_insured_fee_#{id}' />" + "<input class='act_pay_fee' type='hidden' value='#{act_pay_fee}' id='act_pay_fee_#{id}' />" + "<input class='storage_fee' type='hidden' value='#{storage_fee}' id='storage_fee_#{id}' />" + "<td>#{index}</td>" + "<td>#{bill_no}</td>" + "<td>#{goods_no}</td>" + "<td>#{sender_name}</td>" + "<td>#{goods_fee}</td>" + "<td>#{fee}</td>" + (operate_type == 'tk_info' ? "<td>#{k_hand_fee}</td><td>#{k_carrying_fee}</td><td>#{k_insured_fee}</td><td>#{act_pay_fee}</td>": "") + (operate_type == 'deliver' ? "<td>#{storage_fee}</td>": "") + (operate_type == 'clear_info' ? "<td><input type='text' id='clear_fee_#{id}' class='clear_fee' name='clear_fee[]' value='#{clear_fee}' style='width : 50px;font-size : 1.2em;height : 25px;border : 2px solid blue;'/></td>": "") + "<td><a class='red_text' style='cursor:pointer;' onclick=$('added_bill_#{id}').remove();billOperateUtil.cal_sum();>删除</a></td></tr>");
 	//计算原有单据,便于计算序号
 	var index = $$('#list_table tr.added_bill').size() + 1;
 	the_bill.index = index;
@@ -604,7 +606,7 @@ document.observe("dom:loaded", function() {
 			//每多1天补助20
 			work_days_added += (work_days - 23) * 20;
 		}
-		var act_salary = base_salary + work_year_salary + position_salary +position_2_salary  + food_salary + house_salary + work_days_added + other_added - deducted_fee;
+		var act_salary = base_salary + work_year_salary + position_salary + position_2_salary + food_salary + house_salary + work_days_added + other_added - deducted_fee;
 		//更新界面字段
 		parent_tr.down('input.base_salary').value = base_salary.toFixed(2);
 		parent_tr.down('input.work_year_salary').value = work_year_salary.toFixed(2);
@@ -618,7 +620,7 @@ document.observe("dom:loaded", function() {
 
 	};
 	//计算合计
-	var cal_sum = function() { ['work_days', 'base_salary', 'work_year_salary', 'other_added', 'deducted_fee', 'position_salary','position_2_salary', 'food_salary', 'house_salary', 'work_days_added', 'act_salary'].each(function(s) {
+	var cal_sum = function() { ['work_days', 'base_salary', 'work_year_salary', 'other_added', 'deducted_fee', 'position_salary', 'position_2_salary', 'food_salary', 'house_salary', 'work_days_added', 'act_salary'].each(function(s) {
 			var tmp = 0;
 			$$('.' + s).each(function(el) {
 				tmp += parseFloat($(el).value)
@@ -729,10 +731,10 @@ document.observe("dom:loaded", function() {
 		}
 
 	});
-    //默认不显示查询区间设置界面
-    $$('#hand_fee_list_toggle').invoke('observe','click',function(){
-        $$(".hand_fee_list_content").invoke("toggle");
-    });
+	//默认不显示查询区间设置界面
+	$$('#hand_fee_list_toggle').invoke('observe', 'click', function() {
+		$$(".hand_fee_list_content").invoke("toggle");
+	});
 
 });
 

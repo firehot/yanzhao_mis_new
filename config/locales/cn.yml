@@ -2,6 +2,16 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 cn:
+#tinymce 相关翻译
+  Manager: "管理"
+  Folders: "文件夹"
+  "Create folder": "创建文件夹"
+  Create: "创建"
+  Items: "文件"
+  Delete: "删除"
+  "Upload file": "上传文件"
+  Upload: "上传"
+
   activerecord:
     models:
       address_book: 通讯录
@@ -114,3 +124,5 @@ cn:
           one:   "保存{{model}} 时发生了一个错误."
           other: "保存{{model}} 发生了{{count}}个错误."
         body:    "以下字段发生了错误:"
+
+
