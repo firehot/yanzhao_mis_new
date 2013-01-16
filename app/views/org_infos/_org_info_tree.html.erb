@@ -1,0 +1,15 @@
+<!--组织机构表-->
+<ul>
+  <% child_org_infos.each do |child_org| %>
+    <li>
+      <%= child_org.name%>
+      <div class="org_info_operate">
+        <%= link_to "修改", edit_org_info_path(@root_org_info) %>
+        &nbsp;&nbsp;
+        <%= link_to "删除", @root_org_info,:method => :delete,:confirm => "确定要删除吗?" %>
+      </div>
+
+      <%= render  :partial => "org_info_tree",:locals => {:child_org_infos => child_org.children} %>
+    </li>
+  <% end %>
+</ul>

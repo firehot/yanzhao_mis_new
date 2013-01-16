@@ -3,6 +3,7 @@
 jQuery.noConflict();
 jQuery(function($) {
 	new JVerticalMenu().init();
+    $("#org_info_tree").jOrgChart({chartElement : '#org_info_tree_wrapper'});
 });
 
 //yanzhao-bill begin

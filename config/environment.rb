@@ -28,19 +28,20 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "mysql"
-  config.gem "rails",:version => "2.3.5"
-  config.gem "will_paginate",:lib =>"will_paginate"
-  config.gem "calendar_date_select"
-  config.gem "warden"
-  config.gem "devise",:version => '1.0.6'
-  config.gem "paperclip",:version => '2.3.0'
-  config.gem 'fastercsv'
-  config.gem 'searchlogic',:version => '2.4.2'
-  config.gem "aasm", :version =>'2.1.1', :lib => 'aasm'
-  config.gem 'rufus-scheduler', :source => "http://gemcutter.org"
-  config.gem 'default_value_for', :version => "~> 1.0.7"
 
+  #config.gem "mysql"
+  #config.gem "rails",:version => "2.3.5"
+  #config.gem "will_paginate",:lib =>"will_paginate"
+  #config.gem "calendar_date_select"
+  #config.gem "warden"
+  #config.gem "devise",:version => '1.0.6'
+  #config.gem "paperclip",:version => '2.3.0'
+  #config.gem 'fastercsv'
+  #config.gem 'searchlogic',:version => '2.4.2'
+  #config.gem "aasm", :version =>'2.1.1', :lib => 'aasm'
+  #config.gem 'rufus-scheduler', :source => "http://gemcutter.org"
+  #config.gem 'default_value_for', :version => "~> 1.0.7"
+  #
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

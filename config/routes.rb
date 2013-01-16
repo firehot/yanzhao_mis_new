@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :position_infos
+
+  map.resources :org_infos
+
   map.resources :content_items
 
   #所有票据出库单

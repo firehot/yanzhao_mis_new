@@ -1,0 +1,28 @@
+<h1>Listing position_infos</h1>
+
+<table>
+  <tr>
+    <th>Org info</th>
+    <th>Name</th>
+    <th>Is active</th>
+    <th>Parent</th>
+    <th>Note</th>
+  </tr>
+
+<% @position_infos.each do |position_info| %>
+  <tr>
+    <td><%=h position_info.org_info %></td>
+    <td><%=h position_info.name %></td>
+    <td><%=h position_info.is_active %></td>
+    <td><%=h position_info.parent_id %></td>
+    <td><%=h position_info.note %></td>
+    <td><%= link_to 'Show', position_info %></td>
+    <td><%= link_to 'Edit', edit_position_info_path(position_info) %></td>
+    <td><%= link_to 'Destroy', position_info, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New position_info', new_position_info_path %>

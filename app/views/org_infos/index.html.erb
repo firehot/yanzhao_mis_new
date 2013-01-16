@@ -1,0 +1,22 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">&nbsp;</h2>
+    <div class="inner">
+      <div id='org_info_tree_wrapper'>
+        <ul id="org_info_tree" style='display : none;'>
+          <li>
+            <%= @root_org_info.name %>
+            <div class='org_info_operate'>
+              <%= link_to "修改", edit_org_info_path(@root_org_info) %>
+              <%= link_to "删除", @root_org_info,:method => :delete,:confirm => "确定要删除吗?" %>
+            </div>
+            <%= render :partial => "org_info_tree",:locals => {:child_org_infos => @root_org_info.children } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

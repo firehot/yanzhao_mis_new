@@ -1,0 +1,28 @@
+<p>
+  <b>Org info:</b>
+  <%=h @position_info.org_info %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @position_info.name %>
+</p>
+
+<p>
+  <b>Is active:</b>
+  <%=h @position_info.is_active %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @position_info.parent_id %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @position_info.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_position_info_path(@position_info) %> |
+<%= link_to 'Back', position_infos_path %>

@@ -235,3 +235,16 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
   word-wrap : break-word;
   word-break : normal;
 }
+#org_info_tree_wrapper{
+  text-align : center;
+}
+.jOrgChart .node {
+  padding : 5px;
+  background : #F8F8F8;
+  border : 1px solid gray;
+}
+/*机构操作按钮*/
+.org_info_operate {
+  border-top : 1px solid gray;
+  padding-top : 20px;
+}
