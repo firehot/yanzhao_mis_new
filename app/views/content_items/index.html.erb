@@ -1,30 +1,33 @@
-<h1>Listing content_items</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Published at</th>
-    <th>Context</th>
-    <th>Is active</th>
-    <th>Publisher</th>
-    <th>Content class</th>
-  </tr>
-
-<% @content_items.each do |content_item| %>
-  <tr>
-    <td><%=h content_item.title %></td>
-    <td><%=h content_item.published_at %></td>
-    <td><%=h content_item.context %></td>
-    <td><%=h content_item.is_active %></td>
-    <td><%=h content_item.publisher_id %></td>
-    <td><%=h content_item.content_class %></td>
-    <td><%= link_to 'Show', content_item %></td>
-    <td><%= link_to 'Edit', edit_content_item_path(content_item) %></td>
-    <td><%= link_to 'Destroy', content_item, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New content_item', new_content_item_path %>
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">列表</h2>
+    <div class="inner">
+      <table class="table">
+        <%@content_items.each do |item| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td>
+              <%= item.created_at.strftime("%Y-%m-%d %H:%M") %>
+            </td>
+            <td>
+              <%= link_to item.title, item,:class => "ellipsis'" %>
+            </td>
+            <td>
+              <%= link_to "查看", content_item_path(item,:content_class_code => params[:content_class_code]) %>
+              <%= link_to "修改", edit_content_item_path(item,:content_class_code => params[:content_class_code],:active_sub_tab => 9)%>
+              <%= link_to "删除", content_item_path(item,:content_class_code => params[:content_class_code]), :method => :delete, :confirm => "确定删除吗?" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+          <%=will_paginate @content_items %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render(:partial => 'sidebar') %>

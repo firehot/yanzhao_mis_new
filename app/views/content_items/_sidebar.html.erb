@@ -1,0 +1,38 @@
+<div class="block">
+  <!--根据前端传回的参数判断显示内容-->
+  <!--公司简介-->
+  <%if params[:content_class_code].eql?('company_introduce') and check_power("new_compnay_introduce")%>
+    <ul class="navigation">
+      <li><%=link_to "新建公司简介",new_content_item_path(:content_class_code => 'company_introduce')%></li>
+    </ul>
+  <%end%>
+  <!--公司文化-->
+  <%if params[:content_class_code].eql?('company_culture') and check_power('new_company_culture')%>
+    <ul class="navigation">
+      <li><%=link_to "新建公司文化",new_content_item_path(:content_class_code => 'company_culture')%></li>
+    </ul>
+
+  <%end%>
+
+  <!--公司大事记-->
+  <%if params[:content_class_code].eql?('company_log') and check_power("new_company_log")%>
+    <ul class="navigation">
+      <li><%=link_to "新建公司大事",new_content_item_path(:content_class_code => 'company_log')%></li>
+    </ul>
+
+  <%end%>
+
+  <!--公司公司活动-->
+  <%if params[:content_class_code].eql?('company_activity') and check_power('new_company_activity')%>
+    <ul class="navigation">
+      <li><%=link_to "新建公司活动",new_content_item_path(:content_class_code => 'company_activity')%></li>
+    </ul>
+  <%end%>
+
+  <!--员工手册-->
+  <%if params[:content_class_code].eql?('worker_manual') and check_power('new_worker_manual')%>
+    <ul class="navigation">
+      <li><%=link_to "新建员工手册",new_content_item_path(:content_class_code => 'worker_manual')%></li>
+    </ul>
+  <%end%>
+</div>

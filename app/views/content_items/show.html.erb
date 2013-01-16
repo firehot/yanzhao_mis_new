@@ -1,33 +1,17 @@
-<p>
-  <b>Title:</b>
-  <%=h @content_item.title %>
-</p>
-
-<p>
-  <b>Published at:</b>
-  <%=h @content_item.published_at %>
-</p>
-
-<p>
-  <b>Context:</b>
-  <%=h @content_item.context %>
-</p>
-
-<p>
-  <b>Is active:</b>
-  <%=h @content_item.is_active %>
-</p>
-
-<p>
-  <b>Publisher:</b>
-  <%=h @content_item.publisher_id %>
-</p>
-
-<p>
-  <b>Content class:</b>
-  <%=h @content_item.content_class %>
-</p>
-
-
-<%= link_to 'Edit', edit_content_item_path(@content_item) %> |
-<%= link_to 'Back', content_items_path %>
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render "caption" %>
+  </div>
+  <div class="content">
+    <div class="inner">
+      <h2 class='text-center'><%=@content_item.title%></h2>
+      <p><%=@content_item.created_at.strftime('%Y-%m-%d')%> </p>
+      <hr />
+      <p>
+        <%= @content_item.context %>
+      </p>
+      <hr />
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render(:partial => 'sidebar') %>

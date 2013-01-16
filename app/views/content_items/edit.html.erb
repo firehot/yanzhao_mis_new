@@ -1,36 +1,14 @@
-<h1>Editing content_item</h1>
-
-<% form_for(@content_item) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :published_at %><br />
-    <%= f.datetime_select :published_at %>
-  </p>
-  <p>
-    <%= f.label :context %><br />
-    <%= f.text_area :context %>
-  </p>
-  <p>
-    <%= f.label :is_active %><br />
-    <%= f.check_box :is_active %>
-  </p>
-  <p>
-    <%= f.label :publisher_id %><br />
-    <%= f.text_field :publisher_id %>
-  </p>
-  <p>
-    <%= f.label :content_class %><br />
-    <%= f.text_field :content_class %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @content_item %> |
-<%= link_to 'Back', content_items_path %>
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render "caption" %>
+  </div>
+  <div class="content">
+    <h2 class="title">修改</h2>
+    <div class="inner">
+      <% form_for @content_item,:html => { :id =>'content_item_form',:class => "uniForm" } do |f| %>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render(:partial => 'sidebar') %>

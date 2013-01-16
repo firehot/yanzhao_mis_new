@@ -1,0 +1,20 @@
+<ul class="wat-cf">
+  <li class="first <%=check_sub_active_tab(1)%>">
+    <%= link_to "列表", content_items_path(:active_sub_tab => 1,:content_class_code => params[:content_class_code],"search[is_active_is]" => true)  %>
+  </li>
+  <%if params[:active_sub_tab] == '8'%>
+    <li class="active">
+      <%= link_to "新建", new_content_item_path(:content_class_code => params[:content_class_code],:active_sub_tab => 8)   %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '9'%>
+    <li class="active">
+      <%= link_to "修改", edit_content_item_path(@content_item,:content_class_code => params[:content_class_code],:active_sub_tab => 9)   %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '10'%>
+    <li class="active">
+      <%= link_to "查看", content_item_path(@content_item,:content_class_code => params[:content_class_code],:active_sub_tab => 10)   %>
+    </li>
+  <%end%>
+</ul>

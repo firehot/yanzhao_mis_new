@@ -2,9 +2,9 @@
   <%=f.hidden_field :user_id,:value => current_user.id %>
   <div class="ctrlHolder">
     <%= f.label :content, "&nbsp;" %>
-    <%= f.tinymce :content %>
+    <%= f.tinymce_managed :content %>
   </div>
   <div class="actions-bar">
-    <%=f.submit '发送', :class => 'sexybutton sexysimple sexyblue'%>
+    <%=f.submit '发送', :class => 'sexybutton sexysimple sexyblue',:disable_with => "正在保存..."%>
   </div>
 </fieldset>

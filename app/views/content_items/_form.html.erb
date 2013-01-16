@@ -1,0 +1,29 @@
+<fieldset class='blockLabels'>
+  <%=f.error_messages%>
+  <%=f.hidden_field :content_class_id %>
+  <%=hidden_field_tag :content_class_code,f.object.content_class.code%>
+
+  <div class="ctrlHolder">
+    <%= f.label :title, "标题" %>
+    <%= f.text_field :title, :size => "30",:maxlength => "30",:class => 'textInput title' %>
+    <p class="formHint">信息标题,最长30个汉字</p>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :context, "正文(最长3000个汉字)" %>
+    <%= f.tinymce_managed :context %>
+  </div>
+
+  <% if !f.object.new_record? %>
+    <div class="ctrlHolder">
+      <%= f.label :is_active, "有效" %>
+      <%= f.check_box :is_active %>
+      <p class="formHint">若信息设置为无效,则不能被查询</p>
+    </div>
+  <% end %>
+
+  <div class="actions-bar">
+    <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue',:disable_with => "正在保存..."%>
+    <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+  </div>
+</fieldset>

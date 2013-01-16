@@ -60,7 +60,7 @@
   </div>
 
   <div class="actions-bar">
-    <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
+    <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue',:disable_with => "正在保存..."%>
     <%if !@message.new_record? && (@message.publisher == current_user or current_user.is_admin?) %>
       <%=link_to_function '审核并发布信息',"$('message_form').action='#{@publish_path}';$('message_form').submit();return false;", :class => 'sexybutton sexysimple sexyblue'%>
     <%end%>
