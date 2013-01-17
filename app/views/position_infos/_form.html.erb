@@ -1,0 +1,37 @@
+<fieldset class='blockLabels'>
+  <%=f.error_messages%>
+  <div class="ctrlHolder">
+    <%= f.label :org_info_id, "所属机构" %>
+    <p>
+      <%= f.object.org_info.name%>
+      <%= f.hidden_field :org_info_id %>
+    </p>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :parent_id, "上级职位" %>
+    <p><%=f.select :parent_id,position_infos_for_select(f.object.org_info),:include_blank => true %></p>
+    <p class="formHint">如果是顶层职位,请将该项设置为空</p>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :name, "职位名称" %>
+    <%= f.text_field :name, :size => "30",:maxlength => "30" %>
+    <p class="formHint">职位名称,最长30个汉字</p>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :is_active, "有效" %>
+    <%= f.check_box :is_active %>
+    <p class="formHint">若信息设置为无效,则不能被查询</p>
+  </div>
+  <div class="ctrlHolder">
+    <%= f.label :order_by, "序号" %>
+    <%= f.text_field :order_by,:size => "30",:maxlength => "30" %>
+    <p class="formHint">该信息在界面中的显示顺序</p>
+  </div>
+  <div class="actions-bar">
+    <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue',:disable_with => "正在保存..."%>
+    <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+  </div>
+</fieldset>

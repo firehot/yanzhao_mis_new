@@ -1,6 +1,6 @@
 #coding: utf-8
 #机构信息
-class OrgInfosController < ApplicationController
+class OrgInfosController < BaseController
   def index
     #获取根目录
     @root_org_info = OrgInfo.find_by_parent_id(nil)

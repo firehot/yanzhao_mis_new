@@ -1,0 +1,15 @@
+<!--职位表-->
+<ul>
+  <% child_position_infos.each do |child_position| %>
+    <li>
+      <%= child_position.name%>
+      <div class="org_chart_operate">
+        <%= link_to "修改", edit_org_info_position_info_path(child_position.org_info,child_position,:active_sub_tab => 6) %>
+        &nbsp;&nbsp;
+        <%= link_to "删除", org_info_position_info_path(child_position.org_info,child_position),:method => :delete,:confirm => "确定要删除吗?" %>
+      </div>
+
+      <%= render  :partial => "position_info_tree",:locals => {:child_position_infos => child_position.children} %>
+    </li>
+  <% end %>
+</ul>

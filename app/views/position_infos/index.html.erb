@@ -1,28 +1,24 @@
-<h1>Listing position_infos</h1>
-
-<table>
-  <tr>
-    <th>Org info</th>
-    <th>Name</th>
-    <th>Is active</th>
-    <th>Parent</th>
-    <th>Note</th>
-  </tr>
-
-<% @position_infos.each do |position_info| %>
-  <tr>
-    <td><%=h position_info.org_info %></td>
-    <td><%=h position_info.name %></td>
-    <td><%=h position_info.is_active %></td>
-    <td><%=h position_info.parent_id %></td>
-    <td><%=h position_info.note %></td>
-    <td><%= link_to 'Show', position_info %></td>
-    <td><%= link_to 'Edit', edit_position_info_path(position_info) %></td>
-    <td><%= link_to 'Destroy', position_info, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New position_info', new_position_info_path %>
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">&nbsp;</h2>
+    <div class="inner">
+      <div id='position_info_tree_wrapper'>
+        <ul id="position_info_tree" style='display : none;'>
+          <li>
+            <%= @root_position_info.name %>
+            <div class='org_chart_operate'>
+              <%= link_to "修改", edit_org_info_position_info_path(@root_position_info.org_info,@root_position_info,:active_sub_tab => 6) %>
+              &nbsp;&nbsp;
+              <%= link_to "删除", org_info_position_info_path(@root_position_info.org_info,@root_position_info),:method => :delete,:confirm => "确定要删除吗?" %>
+            </div>
+            <%= render :partial => "position_info_tree",:locals => {:child_position_infos => @root_position_info.children } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>

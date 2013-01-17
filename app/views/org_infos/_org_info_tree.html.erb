@@ -2,13 +2,15 @@
 <ul>
   <% child_org_infos.each do |child_org| %>
     <li>
-      <%= child_org.name%>
-      <div class="org_info_operate">
-        <%= link_to "修改", edit_org_info_path(@root_org_info) %>
-        &nbsp;&nbsp;
-        <%= link_to "删除", @root_org_info,:method => :delete,:confirm => "确定要删除吗?" %>
+      <%unless child_org.position_infos.empty?%>
+        <%= link_to child_org.name,org_info_position_infos_path(child_org,:active_sub_tab => 4)%>
+      <%else%>
+        <%= link_to child_org.name, new_org_info_position_info_path(child_org,:active_sub_tab => 5)  %>
+      <%end%>
+      <div class="org_chart_operate">
+        <%= link_to "修改", edit_org_info_path(child_org,:active_sub_tab => 3) %>
+        <%= link_to "删除", child_org,:method => :delete,:confirm => "确定要删除吗?" %>
       </div>
-
       <%= render  :partial => "org_info_tree",:locals => {:child_org_infos => child_org.children} %>
     </li>
   <% end %>

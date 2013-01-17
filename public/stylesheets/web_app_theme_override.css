@@ -244,7 +244,7 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
   border : 1px solid gray;
 }
 /*机构操作按钮*/
-.org_info_operate {
+.org_chart_operate {
   border-top : 1px solid gray;
   padding-top : 20px;
 }

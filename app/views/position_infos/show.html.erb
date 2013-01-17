@@ -1,28 +1,23 @@
-<p>
-  <b>Org info:</b>
-  <%=h @position_info.org_info %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%=h @position_info.name %>
-</p>
-
-<p>
-  <b>Is active:</b>
-  <%=h @position_info.is_active %>
-</p>
-
-<p>
-  <b>Parent:</b>
-  <%=h @position_info.parent_id %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%=h @position_info.note %>
-</p>
-
-
-<%= link_to 'Edit', edit_position_info_path(@position_info) %> |
-<%= link_to 'Back', position_infos_path %>
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title">&nbsp;</h2>
+    <div class="inner">
+      <div id='position_info_tree_wrapper'>
+        <ul id="position_info_tree" style='display : none;'>
+          <li>
+            <%= @root_position_info.name %>
+            <div class='org_info_operate'>
+              <%= link_to "修改", edit_org_info_position_info_path(@root_position_info) %>
+              &nbsp;&nbsp;
+              <%= link_to "删除", @root_position_info,:method => :delete,:confirm => "确定要删除吗?" %>
+            </div>
+            <%= render :partial => "position_info_tree",:locals => {:child_position_infos => @root_position_info.children } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

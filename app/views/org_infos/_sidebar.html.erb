@@ -1,0 +1,11 @@
+<div class="block">
+  <h3>新建</h3>
+  <%if check_power("new_org_info")%>
+    <ul class="navigation">
+      <li>
+        <%= link_to "新建机构信息", new_org_info_path(:active_sub_tab => 2)  %>
+      </li>
+    </ul>
+  <%end%>
+</div>
+

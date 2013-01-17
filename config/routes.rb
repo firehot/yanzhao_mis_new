@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :position_infos
 
-  map.resources :org_infos
+  map.resources :position_infos,:only => [:update,:create]
+
+  map.resources :org_infos,:has_many => :position_infos
 
   map.resources :content_items
 

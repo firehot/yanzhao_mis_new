@@ -1,6 +1,36 @@
 <ul class="wat-cf">
-  <li class="first">
-    <%= link_to "组织机构图", "#"  %>
+  <li class="first <%=check_sub_active_tab(1)%>">
+    <%= link_to "组织机构图", org_infos_path(:active_sub_tab => 1)  %>
   </li>
+  <%if params[:active_sub_tab] == '2'%>
+    <li class="active">
+      <%= link_to "新建", new_org_info_path(:active_sub_tab => 2)  %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '3'%>
+    <li class="active">
+      <%= link_to "修改", '#'  %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '4'%>
+    <li class="active">
+      <%= link_to "职位信息图", '#'  %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '5'%>
+    <li class="active">
+      <%= link_to "新建职位",  '#' %>
+    </li>
+  <%end%>
+
+  <%if params[:active_sub_tab] == '6'%>
+    <li class="active">
+      <%= link_to "修改职位", '#' %>
+    </li>
+  <%end%>
+
+
+
+
 </ul>
 
