@@ -163,6 +163,10 @@
 .admin-cat-l {
   background: url(/images/jverticalmenu/light_icons/Devices/Mouse.png) no-repeat center left;
 }
+/*组织机构图*/
+.org-info-cat-l {
+  background: url(/images/jverticalmenu/light_icons/OSFolders/Personal.png) no-repeat center left;
+}
 
 /*子菜单*/
 .function-sub {

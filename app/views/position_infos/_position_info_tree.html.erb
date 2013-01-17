@@ -9,9 +9,9 @@
       <%end%>
 
       <div class="org_chart_operate">
-        <%= link_to "修改", edit_org_info_position_info_path(child_position.org_info,child_position,:active_sub_tab => 6) %>
+        <%= link_to "修改", edit_org_info_position_info_path(child_position.org_info,child_position,:active_sub_tab => 6) if check_power('update_position_info') %>
         &nbsp;&nbsp;
-        <%= link_to "删除", org_info_position_info_path(child_position.org_info,child_position),:method => :delete,:confirm => "确定要删除吗?" %>
+        <%= link_to "删除", org_info_position_info_path(child_position.org_info,child_position),:method => :delete,:confirm => "确定要删除吗?" if check_power('destroy_position_info')%>
       </div>
 
       <%= render  :partial => "position_info_tree",:locals => {:child_position_infos => child_position.children} %>
