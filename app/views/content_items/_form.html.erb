@@ -14,14 +14,11 @@
     <%= f.tinymce_managed :context %>
   </div>
 
-  <% if !f.object.new_record? %>
-    <div class="ctrlHolder">
-      <%= f.label :is_active, "有效" %>
-      <%= f.check_box :is_active %>
-      <p class="formHint">若信息设置为无效,则不能被查询</p>
-    </div>
-  <% end %>
-
+  <div class="ctrlHolder">
+    <%= f.label :is_active, "有效" %>
+    <%= f.check_box :is_active %>
+    <p class="formHint">若信息设置为无效,则不能被查询</p>
+  </div>
   <div class="actions-bar">
     <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue',:disable_with => "正在保存..."%>
     <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>

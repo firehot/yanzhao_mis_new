@@ -28,9 +28,26 @@
       <%= link_to "修改职位", '#' %>
     </li>
   <%end%>
+  <%if params[:active_sub_tab] == '9'%>
+    <li class="active">
+      <%= link_to "职位条目", '#'  %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '10'%>
+    <li class="active">
+      <%= link_to "新建职位条目", '#'  %>
+    </li>
+  <%end%>
 
-
-
-
+  <%if params[:active_sub_tab] == '11'%>
+    <li class="active">
+      <%= link_to "修改职位条目", '#'  %>
+    </li>
+  <%end%>
+  <%if params[:active_sub_tab] == '12'%>
+    <li class="active">
+      <%= link_to "查看职位条目", '#'  %>
+    </li>
+  <%end%>
 </ul>
 

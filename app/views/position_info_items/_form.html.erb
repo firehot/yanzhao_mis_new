@@ -1,0 +1,32 @@
+<fieldset class='blockLabels'>
+  <%=f.error_messages%>
+  <div class="ctrlHolder">
+    <%= f.label :position_info_id, "职位" %>
+    <p>
+      <%= f.hidden_field :position_info_id %>
+      <%= f.object.position_info.name %>
+    </p>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :title, "条目标题" %>
+    <%= f.text_field :title, :size => "30",:maxlength => "30",:class => 'textInput title' %>
+    <p class="formHint">标题,最长30个汉字</p>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :content, "正文(最长3000个汉字)" %>
+    <%= f.tinymce_managed :content %>
+  </div>
+
+  <div class="ctrlHolder">
+    <%= f.label :is_active, "&nbsp;" %>
+    <%= f.check_box :is_active %><span>有效</span>
+    <p class="formHint">若信息设置为无效,则不能被查询</p>
+  </div>
+
+  <div class="actions-bar">
+    <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
+    <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+  </div>
+</fieldset>

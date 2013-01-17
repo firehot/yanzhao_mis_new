@@ -1,0 +1,14 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render "caption" %>
+  </div>
+  <div class="content">
+    <h2 class="title">修改</h2>
+    <div class="inner">
+      <% form_for @position_info_item, :html => { :class => :uniForm,:id => "position_info_item_form" } do |f| %>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render('sidebar') %>

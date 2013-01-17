@@ -1,0 +1,2 @@
+module PositionInfoItemsHelper
+end

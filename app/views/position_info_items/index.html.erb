@@ -1,0 +1,28 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <%= render 'caption' %>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= @position_info_items.first.try(:position_info).try(:name)%></h2>
+    <div class="inner">
+      <table class="table">
+        <%@position_info_items.each do |item| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td>
+              <%= item.created_at.strftime("%Y-%m-%d %H:%M") %>
+            </td>
+            <td>
+              <%= link_to item.title, item,:class => "ellipsis'" %>
+            </td>
+            <td>
+              <%= link_to "查看", position_info_position_info_item_path(item.position_info,item,:active_sub_tab => 12) %>
+              <%= link_to "修改", edit_position_info_position_info_item_path(item.position_info,item,:active_sub_tab => 11) %>
+              <%= link_to "删除", position_info_position_info_item_path(item.position_info,item),:method => :delete,:confirm => "确定要删除吗?" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render(:partial => 'sidebar') %>
