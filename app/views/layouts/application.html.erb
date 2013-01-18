@@ -3,13 +3,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%=Client.first.name%> - 综合信息系统-<%=current_user.username%></title>
-    <%= javascript_include_tag 'jquery-1.8.3.min.js','jverticalmenu','jquery.jOrgChart', "prototype",'effects','dragdrop','controls','live_validation','modalbox' %>
+    <%= javascript_include_tag 'jquery-1.8.3.min.js','jverticalmenu','jquery.jOrgChart','popover', "prototype",'effects','dragdrop','controls','live_validation','modalbox' %>
     <%= calendar_date_select_includes :blue %>
     <!--%= init_tinymce_hammer_if_required %-->
     <%= tinymce_managed_javascript_tag "file_manager" %>
     <%= javascript_include_tag 'application','web_print' %>
     <%= stylesheet_link_tag "web_app_theme", "themes/blue/style","live_validation","uni-form",
-      "modalbox","/sexybuttons/sexybuttons","jverticalmenu","jquery.jOrgChart","web_app_theme_override" %>
+      "modalbox","/sexybuttons/sexybuttons","jverticalmenu","jquery.jOrgChart",'popover',"web_app_theme_override" %>
   </head>
   <body>
     <div id="container">
@@ -27,18 +27,22 @@
           </ul>
         </div>
         <div id="user-navigation">
-          <%if current_user.is_admin%>
-            <ul class="wat-cf">
+          <ul class="wat-cf">
+            <%if current_user.is_admin%>
               <li class="<%= check_current_controller(['clients']) %>">
                 <%=link_to "公司信息",edit_client_path(Client.first) %>
               </li>
               <li class="<%= check_current_controller(['departments','sub_companies','warehouses']) %>">
-                <%=link_to "基础资料",departments_path %></li>
+                <%=link_to "基础资料",departments_path %>
+              </li>
               <li class="<%= controller.controller_path == 'users' ? 'active' : '' %>">
                 <%=link_to "用户管理",users_path%>
               </li>
-            </ul>
-          <%end%>
+            <%end%>
+            <li>
+              <%= link_to "侧栏", "#",:id => "btn_sidebar" %>
+            </li>
+          </ul>
         </div>
         <div id="main-navigation">
           <ul class="wat-cf">
@@ -109,7 +113,7 @@
               </li>
             <%end%>
           </ul>
-            -->
+          -->
         </div>
       </div>
       <div id="wrapper" class="wat-cf">

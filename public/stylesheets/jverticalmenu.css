@@ -4,15 +4,12 @@
  */
 
 #jverticalmenu-wrapper {
-  float : left;
-  width           : 40px;
+  float           : left;
+  width           : 13%;
   height          : 1px;
 }
 #jverticalmenu {
-  /*width           : 140px; */
-  position        : absolute;
-  left            : -5px;
-  width           : 51px;
+  width           : 140px;
   color           : white;
 }
 

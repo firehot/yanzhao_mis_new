@@ -48,11 +48,13 @@ var JVerticalMenu = function() {
 			});
 		},
 		function(e) {
+            /*
 			$(".rightarrowclass").hide();
 			$("#jverticalmenu").animate({
 				width: '51'
 			},
 			self.transition.topovertime);
+            */
 		})
 		$headers.hover(
 		function(e) {
