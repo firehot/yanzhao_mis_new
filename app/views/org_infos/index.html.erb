@@ -8,8 +8,7 @@
       <div id='org_info_tree_wrapper'>
         <ul id="org_info_tree" style='display : none;'>
           <li>
-
-            <%unless @root_org_info.position_infos.empty?%>
+            <%unless @root_org_info.try(:position_infos).empty?%>
               <%= link_to @root_org_info.name,org_info_position_infos_path(@root_org_info,:active_sub_tab => 4) %>
             <%else%>
               <%= link_to @root_org_info.name, new_org_info_position_info_path(@root_org_info,:active_sub_tab => 5)  %>

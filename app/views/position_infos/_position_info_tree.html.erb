@@ -2,7 +2,7 @@
 <ul>
   <% child_position_infos.each do |child_position| %>
     <li>
-      <%unless child_position.position_info_items.empty?%>
+      <%unless child_position.try(:position_info_items).empty?%>
         <%= link_to child_position.name,position_info_position_info_items_path(child_position) %>
       <%else%>
         <%= link_to child_position.name,new_position_info_position_info_item_path(child_position) %>
