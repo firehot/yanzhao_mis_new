@@ -2,7 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 cn:
-#tinymce 相关翻译
+  #tinymce 相关翻译
   Manager: "管理"
   Folders: "文件夹"
   "Create folder": "创建文件夹"
@@ -63,6 +63,9 @@ cn:
       hand_invoice: 手工票
       position: 岗位信息
       chat_message: 留言信息
+      org_info: 机构信息
+      position_info: 岗位信息
+      position_info_item: 岗位文件
 
     attributes:
       bill:

@@ -5,7 +5,7 @@
   </div>
   <div class="content">
     <div class="inner">
-      <h2 class='text-center'><%=@message.title%></h2>
+      <!--h2 class='text-center'><%=@message.title%></h2-->
       <p><%=@message.org.name%> | <%=@message.user.try(:username)%></p>
       <p><%=status_time_ago_in_words(@message.created_at)%> </p>
       <hr />
