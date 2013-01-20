@@ -1,12 +1,12 @@
 <div class="block">
   <div class="secondary-navigation">
     <%= render :partial => 'shared/orgs/caption' %>
-  </div>          
-  <div class="content">          
+  </div>
+  <div class="content">
     <h2 class="title">信息列表</h2>
     <div class="inner">
       <table class="table">
-        <tr>             
+        <tr>
           <th class="first"></th>
           <th>名称</th>
           <th>地址</th>
@@ -21,9 +21,9 @@
             <td><%=org.address%></td>
             <td><%=org.phone%></td>
             <td class="last">
-              <%= link_to "修改", self.send("edit_#{@param_name}_path",org) %> 
+              <%= link_to "修改", self.send("edit_#{@param_name}_path",org) %>
             </td>
-          </tr>          
+          </tr>
         <% end -%>
       </table>
       <div class="actions-bar wat-cf">

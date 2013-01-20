@@ -48,7 +48,7 @@ var JVerticalMenu = function() {
 			});
 		},
 		function(e) {
-            /*
+			/*
 			$(".rightarrowclass").hide();
 			$("#jverticalmenu").animate({
 				width: '51'
@@ -114,7 +114,7 @@ var JVerticalMenu = function() {
 						$targetul.css({
 							left: menuleft,
 							//width: header._dimensions.subulw
-                            width : "150px"
+							width: "150px"
 						}).animate({
 							height: 'show',
 							opacity: 'show'

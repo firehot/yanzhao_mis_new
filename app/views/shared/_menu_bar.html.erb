@@ -1,0 +1,14 @@
+<div id='menu_bar' class="block">
+  <%@grouped_system_function_cats.each do |group,func_cats|%>
+    <div class='menu-group'>
+      <h3 class='group_name' id="menu_group_<%=group.id%>"><%= group.group_name %></h3>
+      <ul class="navigation" style='display : none;'>
+        <% func_cats.each do |cat|%>
+          <li>
+            <%= link_to cat.cat_name, instance_eval(cat.default_action) %>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+  <%end%>
+</div>

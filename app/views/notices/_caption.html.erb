@@ -25,4 +25,8 @@
       <%= link_to "查看", self.send("#{@param_name}_path",instance_variable_get("@#{@param_name}"),:active_sub_tab => 10)   %>
     </li>
   <%end%>
+  <li style="float : right;">
+    <%= link_to "更多操作...", "#",:id => 'btn_rightbar'   %>
+  </li>
+
 </ul>

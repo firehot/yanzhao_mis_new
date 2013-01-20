@@ -175,6 +175,9 @@
 }
 
 /* Holly Hack for IE \*/
-* html #jverticalmenu ul li { float: left; height: 1%; }
+* html #jverticalmenu ul li {
+  float: left;
+  height: 1%;
+}
 * html #jverticalmenu ul li a { height: 1%; }
 /* End */

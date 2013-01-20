@@ -2,11 +2,25 @@
 // This file is automatically included by javascript_include_tag :defaults
 jQuery.noConflict();
 jQuery(function($) {
-	new JVerticalMenu().init();
-    $("#org_info_tree").jOrgChart({chartElement : '#org_info_tree_wrapper'});
-    $("#position_info_tree").jOrgChart({chartElement : '#position_info_tree_wrapper'});
-    //显示侧边栏
-    $('#btn_sidebar').popover({header : '',content : '#sidebar'});
+	$("#org_info_tree").jOrgChart({
+		chartElement: '#org_info_tree_wrapper'
+	});
+	$("#position_info_tree").jOrgChart({
+		chartElement: '#position_info_tree_wrapper'
+	});
+	//显示侧边栏
+
+	//$('#btn_sidebar').click(function(){$('#rightbar').show();$.fancybox($('#rightbar'));});
+	$('#btn_rightbar').popover({content : $('#rightbar')});
+	/*menu_bar的点击事件*/
+	$('#menu_bar .group_name').click(function() {
+		var cur_el = $(this).next('.navigation:first')[0];
+		$('#menu_bar .navigation').each(function(index, el) {
+			if (el == cur_el) $(el).toggle();
+			else $(el).hide();
+		});
+	});
+
 });
 
 //yanzhao-bill begin

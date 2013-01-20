@@ -1,15 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%=Client.first.name%> - 综合信息系统-<%=current_user.username%></title>
-    <%= javascript_include_tag 'jquery-1.8.3.min.js','jverticalmenu','jquery.jOrgChart','popover', "prototype",'effects','dragdrop','controls','live_validation','modalbox' %>
+    <%= javascript_include_tag 'jquery-1.8.3.min.js','popover','jquery.jOrgChart', "prototype",'effects','dragdrop','controls','live_validation','modalbox' %>
     <%= calendar_date_select_includes :blue %>
     <!--%= init_tinymce_hammer_if_required %-->
     <%= tinymce_managed_javascript_tag "file_manager" %>
     <%= javascript_include_tag 'application','web_print' %>
-    <%= stylesheet_link_tag "web_app_theme", "themes/blue/style","live_validation","uni-form",
-      "modalbox","/sexybuttons/sexybuttons","jverticalmenu","jquery.jOrgChart",'popover',"web_app_theme_override" %>
+    <%= stylesheet_link_tag "web_app_theme", "themes/blue/style","live_validation","uni-form","modalbox","/sexybuttons/sexybuttons",'popover',"jquery.jOrgChart","web_app_theme_override" %>
   </head>
   <body>
     <div id="container">
@@ -39,9 +38,6 @@
                 <%=link_to "用户管理",users_path%>
               </li>
             <%end%>
-            <li>
-              <%= link_to "侧栏", "#",:id => "btn_sidebar" %>
-            </li>
           </ul>
         </div>
         <div id="main-navigation">
@@ -117,7 +113,10 @@
         </div>
       </div>
       <div id="wrapper" class="wat-cf">
-        <%= render :partial => "shared/vertical_menu" %>
+        <div id='sidebar'>
+          <%= render "shared/menu_bar" %>
+        </div>
+
         <div id="main">
           <div id='flash' class="flash">
             <% flash.each do |type, message| -%>
@@ -131,7 +130,8 @@
             <%= render :partial => 'shared/footer' %>
           </div>
         </div>
-        <div id="sidebar">
+
+        <div id="rightbar">
           <%= yield :sidebar %>
         </div>
       </div>
