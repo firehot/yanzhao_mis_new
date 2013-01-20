@@ -5,7 +5,7 @@
       <%unless child_org.try(:position_infos).blank? %>
         <%= link_to child_org.name,org_info_position_infos_path(child_org,:active_sub_tab => 4)%>
       <%else%>
-        <%= link_to child_org.name, new_org_info_position_info_path(child_org,:active_sub_tab => 5)  %>
+        <%= link_to child_org.name, new_org_info_position_info_path(child_org,:active_sub_tab => 5)%>
       <%end%>
       <div class="org_chart_operate">
         <%= link_to "修改", edit_org_info_path(child_org,:active_sub_tab => 3) if check_power('update_org_info')%>

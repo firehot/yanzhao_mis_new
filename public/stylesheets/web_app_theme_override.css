@@ -262,19 +262,31 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
   word-wrap : break-word;
   word-break : normal;
 }
-#org_info_tree_wrapper{
-  text-align : center;
-}
+/*组织机构相关css*/
 .jOrgChart .node {
   padding : 5px;
-  background : #F8F8F8;
-  border : 1px solid gray;
+  background  : #E0D9BF;
+  color       : white;
+  border : 5px solid gray;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -webkit-transition: opacity 0.25s linear;
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -moz-transition: opacity 0.25s linear;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.25s linear;
+
 }
-/*机构操作按钮*/
+.jOrgChart {text-align : center;}
+.jOrgChart table {margin : auto;}
 .org_chart_operate {
   border-top : 1px solid gray;
-  padding-top : 20px;
+  padding-top : 5px;
 }
+
 /*重设popover样式*/
 .popover .header { display : none;}
 

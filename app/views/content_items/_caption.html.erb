@@ -1,6 +1,6 @@
 <ul class="wat-cf">
   <li class="first <%=check_sub_active_tab(1)%>">
-    <%= link_to "列表", content_items_path(:active_sub_tab => 1,:content_class_code => params[:content_class_code],"search[is_active_is]" => true)  %>
+    <%= link_to content_class_name(params[:content_class_code]), content_items_path(:active_sub_tab => 1,:content_class_code => params[:content_class_code],"search[is_active_is]" => true)  %>
   </li>
   <%if params[:active_sub_tab] == '8'%>
     <li class="active">
