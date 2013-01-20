@@ -39,16 +39,15 @@ class AddCatNameToSystemFunction < ActiveRecord::Migration
       "budget_table" => ["预算表",'budget_tables_path(:active_sub_tab => 1)'],
       "management_fee_config" => ["预算设置",'management_fee_configs_path(:active_sub_tab => 2)'],
       "org_management_fee_config" => ["分理处预算设置",'org_management_fee_configs_path(:active_sub_tab => 3)'],
-      "common_invoice_shippment" => ["票据领用",'all_invoice_shippments_path(:active_sub_tab => 1)'],
       "common_invoice" => ["票据入库",'all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)'],
       "hand_invoice" => ["票据入库",'all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)'],
       "computer_invoice" => ["票据入库",'all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)'],
       "invoice_check" => ["运单盘查",'invoice_checks_path(:active_sub_tab => 12)'],
       "hand_invoice_receipt" => ["票据入库",'all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)'],
       "computer_invoice_receipt" => ["票据入库",'all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)'],
-      "computer_invoice_receipt" => ["票据入库",'all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)'],
       "common_invoice_receipt" => ["票据入库",'all_invoice_receipts_path(:active_sub_tab => 1,"search[org_id_eq]" => current_user.org_id)'],
       "hand_invoice_shippment" => ["票据领用",'all_invoice_shippments_path(:active_sub_tab => 1) '],
+      "common_invoice_shippment" => ["票据领用",'all_invoice_shippments_path(:active_sub_tab => 1)'],
       "computer_invoice_shippment" => ["票据领用",'all_invoice_shippments_path(:active_sub_tab => 1)'],
       "view_m_storage_invoice" => ["票据库存统计",'invoice_checks_path(:active_sub_tab => 12)']
     }
