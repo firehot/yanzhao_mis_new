@@ -17,4 +17,5 @@
       <%= link_to "查看", content_item_path(@content_item,:content_class_code => params[:content_class_code],:active_sub_tab => 10)   %>
     </li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

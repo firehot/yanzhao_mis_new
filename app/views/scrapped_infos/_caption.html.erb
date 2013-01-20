@@ -8,4 +8,5 @@
   <%if params[:active_sub_tab] == '14'%>
     <li class="active"><%= link_to "查看报废单", scrapped_info_path(@scrapped_info,:active_sub_tab => 14) %></li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

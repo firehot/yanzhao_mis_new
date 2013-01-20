@@ -9,4 +9,5 @@
   <%if params[:active_sub_tab] == '8'%>
     <li class="active"><%= link_to "修改物品资料", edit_consumer_material_path(@consumer_material,:active_sub_tab => 8) %></li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

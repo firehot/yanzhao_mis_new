@@ -10,4 +10,5 @@
   <%if params[:active_sub_tab] == '6'%>
     <li class="active"><%= link_to "新建入库单", new_durable_receipt_path(:active_sub_tab => 6) %></li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

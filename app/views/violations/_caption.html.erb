@@ -2,4 +2,5 @@
   <li class="first <%=check_sub_active_tab(1)%>">
     <%= link_to "违规记录", violations_path(:active_sub_tab => 1,"search[target_org_id_eq]" => current_user.org_id)  %>
   </li>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

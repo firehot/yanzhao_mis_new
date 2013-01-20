@@ -24,4 +24,5 @@
   <%if check_power('material_inout_lines')%>
     <li class="<%=check_sub_active_tab(11) %>"><%= link_to "部门耐用品汇总", material_inout_lines_path(:active_sub_tab => 11,"search[material_inout_state_eq]" => MaterialInout::STATE_CONFIRM) %></li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

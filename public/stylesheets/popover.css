@@ -30,7 +30,7 @@
   border-top: 25px solid rgba(0,0,0,0);
   border-left: 25px solid rgba(0,0,0,0);
   border-right: 25px solid rgba(0,0,0,0);
-border-bottom: 25px solid #2F427A; }
+  border-bottom: 25px solid black; }
 .popover .header {
   font-weight: bold;
   margin: 0;
@@ -39,9 +39,10 @@ border-bottom: 25px solid #2F427A; }
   color: white;
   background-color: black;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.6)), color-stop(0.2, rgba(255, 255, 255, 0.4)), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.5, transparent), to(transparent) );
-text-align: center; }
+text-align: center;
+}
 .popover .content {
   min-width: 200px;
   overflow-x: hidden;
-overflow-y: auto;
+  overflow-y: auto;
 }

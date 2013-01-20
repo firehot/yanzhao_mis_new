@@ -276,5 +276,11 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
   padding-top : 20px;
 }
 /*重设popover样式*/
-.popover > .header { display : none;}
+.popover .header { display : none;}
+
+/*更多操作按钮*/
+#more-operate{
+  float : right;
+  border-left : 1px solid gray;
+}
 

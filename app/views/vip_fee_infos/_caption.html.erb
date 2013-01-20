@@ -11,4 +11,5 @@
   <%if check_power('upload_vip_files')%>
     <li class="<%=check_sub_active_tab(4) %>"><%= link_to "VIP数据导入", new_upload_vip_file_path(:active_sub_tab => 4)  %></li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

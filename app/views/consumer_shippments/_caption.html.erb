@@ -10,4 +10,5 @@
   <%if params[:active_sub_tab] == '9'%>
     <li class="active"><%= link_to "新建领用单", new_consumer_shippment_path(:active_sub_tab => 9) %></li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

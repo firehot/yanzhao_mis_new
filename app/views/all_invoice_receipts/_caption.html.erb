@@ -8,4 +8,5 @@
       <%= link_to "待确认", all_invoice_receipts_path(:active_sub_tab => 2,"search[state]" => MaterialInout::STATE_DRAFT,"search[auditor_id]" => current_user) %>
     </li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>

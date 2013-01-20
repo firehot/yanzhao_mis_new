@@ -36,4 +36,5 @@
     <%= link_to "修改", self.send("edit_#{@param_name}_path",instance_variable_get("@#{@param_name}"),:active_sub_tab => 10)   %>
     </li>
   <%end%>
+  <%= render :partial => "shared/more_operate" %>
 </ul>
