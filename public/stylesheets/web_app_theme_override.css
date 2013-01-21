@@ -11,7 +11,7 @@
 }
 #rightbar {
   padding : 5px;
-  width : 250px;
+  width : 280px;
 }
 
 #header {
@@ -292,8 +292,19 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
 
 /*更多操作按钮*/
 #more-operate{
+  width : 280px;
   float : right;
   border-left : 1px solid gray;
+}
+/*右侧下拉框样式*/
+.dropdown-menu ul {
+  padding : 5px;
+  border-radius : 0;
+  border : 1px solid #2F427A;
+}
+.dropdown-menu ul.navigation {
+  border : none;
+  box-shadow : none;
 }
 /*科室tab样式*/
 #dep_tab a {

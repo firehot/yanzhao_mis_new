@@ -11,7 +11,7 @@ jQuery(function($) {
 	//显示侧边栏
 
 	//$('#btn_sidebar').click(function(){$('#rightbar').show();$.fancybox($('#rightbar'));});
-	$('#btn_rightbar').popover({content : $('#rightbar')});
+	//$('#btn_rightbar').popover({content : $('#rightbar')});
 	/*menu_bar的点击事件*/
 	$('#menu_bar .group_name').click(function() {
 		var cur_el = $(this).next('.navigation:first')[0];
