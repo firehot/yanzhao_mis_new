@@ -1,9 +1,11 @@
 #通知公告、规章制度基础controller
 class MessagesController < BaseController
+  #before_filter :filter_index,:only => :index
   #此处改变filter的顺序,先跳过基类的filter,然后重新声明
   skip_before_filter :check_unread_messages
   before_filter :before_show,:only => :show
   before_filter :check_unread_messages
+  before_filter :filter_index
 
 
   # GET /the_models
@@ -157,6 +159,15 @@ class MessagesController < BaseController
       @search = @model_klazz.search(params[:search])
     else
       @search = @model_klazz.my_messages(current_user).search(params[:search])
+    end
+  end
+  #设置messages#index的过滤条件
+  def filter_index
+    #判断是否传入了org_id_eq条件
+    if params[:search].try(:[],:org_id_eq).blank?
+      params[:search] = {} unless params[:search]
+      params[:search][:org_id_eq] = Department.first.id
+      @search = @search.search(:org_id_eq => params[:search][:org_id_eq])
     end
   end
 end

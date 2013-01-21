@@ -6,54 +6,59 @@
   <div class="content">
     <h2 class="title"><%="#{@title}列表"%></h2>
     <div class="inner">
-      <table class="table" style='font-size : 12px;'>
-        <%@messages_group.each do |org,messages| -%>
-          <tr><td colspan='100'><h3><%=org.try(:name)%></h3></td></tr>
-          <% messages.each do |message| -%>
-            <tr class="<%= cycle("odd", "even") %> <%= check_message_state(message)%>">
-              <td>
-                <%= message.created_at.strftime("%Y-%m-%d %H:%M") %>
-              </td>
-              <td>
-                <%=  message.user == current_user ? '我' : message.user.username %>
-              </td>
-              <td>
-                <%= message.doc_no if message.type.eql? 'Rule' %>
-              </td>
-
-              <td>
-                <%= link_to message.title, message,:class => "ellipsis'" %>
-              </td>
-              <td>
-                <%= message.is_secure ? "保密" : "公开" %>
-              </td>
-
-              <td>
-                <%= state_display(BasePublicMessage,message.state) %>
-              </td>
-
-              <td>
-                <%= link_to "查看", self.send("#{@param_name}_path",message,:active_sub_tab => 10) %>
-                <%if ['draft','waitting'].include?(message.state) && (message.user == current_user || message.publisher == current_user)%>
-                  | <%= link_to "修改/审核", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
-                <%end%>
-                <%if ['draft','waitting'].include?(message.state) && (message.user == current_user) %>
-                  | <%= link_to "删除", message, :method => :delete, :confirm => "确定删除吗?" %>
-                <%end%>
-                <%if ['published'].include?(message.state) && check_power("edit_rule_after_publish")%>
-                  <%= link_to "修改", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
-                <%end%>
-              </td>
-            </tr>
-          <% end %>
-        <% end %>
-      </table>
-      <div class="actions-bar wat-cf">
-        <div class="actions">
-          <%=will_paginate @messages %>
-        </div>
+      <!--科室列表-->
+      <div id='dep_tab'>
+        <ul>
+          <%Department.all(:conditions => {:is_active => true},:order => "order_by ASC").each do |dep|%>
+            <li><%= link_to dep.name, self.send("#{controller_name}_path","search[org_id_eq]" => dep.id) ,:class => messages_active_tab(dep.id) %></li>
+          <%end%>
+        </ul>
       </div>
+      <table class="table" style='font-size : 12px;'>
+        <% @messages.each do |message| -%>
+          <tr class="<%= cycle("odd", "even") %> <%= check_message_state(message)%>">
+            <td>
+              <%= message.created_at.strftime("%Y-%m-%d %H:%M") %>
+            </td>
+            <td>
+              <%=  message.user == current_user ? '我' : message.user.username %>
+            </td>
+            <td>
+              <%= message.doc_no if message.type.eql? 'Rule' %>
+            </td>
+
+            <td>
+              <%= link_to message.title, message,:class => "ellipsis'" %>
+            </td>
+            <td>
+              <%= message.is_secure ? "保密" : "公开" %>
+            </td>
+
+            <td>
+              <%= state_display(BasePublicMessage,message.state) %>
+            </td>
+
+            <td>
+              <%= link_to "查看", self.send("#{@param_name}_path",message,:active_sub_tab => 10) %>
+              <%if ['draft','waitting'].include?(message.state) && (message.user == current_user || message.publisher == current_user)%>
+                | <%= link_to "修改/审核", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
+            <%end%>
+            <%if ['draft','waitting'].include?(message.state) && (message.user == current_user) %>
+              | <%= link_to "删除", message, :method => :delete, :confirm => "确定删除吗?" %>
+          <%end%>
+          <%if ['published'].include?(message.state) && check_power("edit_rule_after_publish")%>
+            <%= link_to "修改", self.send("edit_#{@param_name}_path",message,:active_sub_tab => 9)%>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="actions-bar wat-cf">
+    <div class="actions">
+      <%=will_paginate @messages %>
     </div>
+  </div>
+</div>
   </div>
 </div>
 <% content_for :sidebar, render(:partial => 'sidebar') %>

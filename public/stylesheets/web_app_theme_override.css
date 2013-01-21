@@ -295,4 +295,57 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
   float : right;
   border-left : 1px solid gray;
 }
+/*科室tab样式*/
+#dep_tab a {
+    color: #003499;
+    text-decoration: none;
+}
+
+#dep_tab a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+#dep_tab {
+    background:#d5d5d5;
+    border-bottom:1px solid #333;
+    padding-bottom:3px;
+}
+
+#dep_tab ul {
+    padding:15px 0px 5px 0px;
+    margin:5px 0px 5px 0px;
+    list-style:none;
+    background:#f1f1f1;
+    border-bottom:1px solid #999;
+}
+
+#dep_tab ul li {
+    display:inline;
+    margin-left:10px;
+}
+
+#dep_tab ul li a {
+    background:#fff;
+    padding:5px 10px 5px 10px;
+    border:1px solid #999;
+}
+
+#dep_tab ul li a:hover {
+    background:#ccc;
+}
+
+#dep_tab ul li a.here {
+    background:#d5d5d5;
+    padding:5px 10px 5px 10px;
+    border-top:1px solid #999;
+    border-left:1px solid #999;
+    border-right:1px solid #999;
+    border-bottom:1px solid #d5d5d5;
+}
+
+#dep_tab ul li a.here:hover {
+    background:#d5d5d5;
+}
+
 

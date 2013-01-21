@@ -280,4 +280,8 @@ module ApplicationHelper
     rows_per_page = cur_page.to_i if rows_per_page.kind_of?(String)
     index+1 + rows_per_page*(cur_page - 1)
   end
+  #通知公告、公共信息列表中,设置当前tab
+  def messages_active_tab(org_id)
+    params[:search].try(:[],:org_id_eq).try(:to_s).eql?(org_id.to_s) ? "here" : ""
+  end
 end

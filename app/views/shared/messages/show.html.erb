@@ -1,11 +1,11 @@
 <%= render 'shared/messages/set_variables' %>
 <div class="block">
   <div class="secondary-navigation">
-    <%= render :partial => "shared/messages/caption" %>
+    <%= render :partial => "caption" %>
   </div>
   <div class="content">
     <div class="inner">
-      <!--h2 class='text-center'><%=@message.title%></h2-->
+      <h2 class='text-center'><%=@message.try(:doc_no) %></h2>
       <p><%=@message.org.name%> | <%=@message.user.try(:username)%></p>
       <p><%=status_time_ago_in_words(@message.created_at)%> </p>
       <hr />
