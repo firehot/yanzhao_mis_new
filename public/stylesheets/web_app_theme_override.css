@@ -41,7 +41,7 @@
   -moz-border-radius-topright : 4px;
 }
 /*时间选择控件应置于所有控件之上*/
-.calendar_date_select {z-index : 10001;}
+.calendar_date_select {z-index : 99999999;}
 #user-navigation ul li.active a:link,#user-navigation ul li.active a:visited,#user-navigation ul li.active a:hover,#user-navigation ul li.active a:active { color : #262626;}
 /*表格的间隔色*/
 tr.odd {
@@ -300,7 +300,7 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
 .dropdown-menu ul {
   padding : 5px;
   border-radius : 0;
-  border : 1px solid #2F427A;
+  border : 3px solid #262626;
 }
 .dropdown-menu ul.navigation {
   border : none;

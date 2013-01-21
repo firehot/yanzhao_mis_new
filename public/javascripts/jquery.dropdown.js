@@ -9,10 +9,10 @@
  *
 */
 if(jQuery) (function($) {
-	
+
 	$.extend($.fn, {
 		dropdown: function(method, data) {
-			
+
 			switch( method ) {
 				case 'hide':
 					hideDropdowns();
@@ -28,61 +28,61 @@ if(jQuery) (function($) {
 					hideDropdowns();
 					return $(this).removeClass('dropdown-disabled');
 			}
-			
+
 		}
 	});
-	
+
 	function showMenu(event) {
-		
+
 		var trigger = $(this),
 			dropdown = $( $(this).attr('data-dropdown') ),
 			isOpen = trigger.hasClass('dropdown-open'),
 			hOffset = parseInt($(this).attr('data-horizontal-offset') || 0),
 			vOffset = parseInt($(this).attr('data-vertical-offset') || 0);
-		
+
 		if( trigger !== event.target && $(event.target).hasClass('dropdown-ignore') ) return;
-		
+
 		event.preventDefault();
 		event.stopPropagation();
-		
+
 		hideDropdowns();
-		
+
 		if( isOpen || trigger.hasClass('dropdown-disabled') ) return;
-		
+
 		// Disable window.resize handler for old IE (window.resize bug)
 		$(window).off('resize.dropdown');
-		
+
 		dropdown
 			.css({
-				left: dropdown.hasClass('anchor-right') ? 
+				left: dropdown.hasClass('anchor-right') ?
 					trigger.offset().left - (dropdown.outerWidth() - trigger.outerWidth()) + hOffset : trigger.offset().left + hOffset,
 				top: trigger.offset().top + trigger.outerHeight() + vOffset
 			})
 			.show();
-		
+
 		trigger.addClass('dropdown-open');
-		
+
 		// Re-enable window.resize handler for old IE (window.resize bug)
 		setTimeout( function() {
 			$(window).on('resize.dropdown', hideDropdowns);
 		}, 1);
-		
+
 	};
-	
+
 	function hideDropdowns(event) {
-		
+
 		var targetGroup = event ? $(event.target).parents().andSelf() : null;
 		if( targetGroup && targetGroup.is('.dropdown-menu') && !targetGroup.is('A') ) return;
-		
+
 		$('BODY')
 			.find('.dropdown-menu').hide().end()
 			.find('[data-dropdown]').removeClass('dropdown-open');
-		
+
 	};
-	
+
 	$(function() {
 		$('BODY').on('click.dropdown', '[data-dropdown]', showMenu);
-		$('HTML').on('click.dropdown', hideDropdowns);
+		//$('HTML').on('click.dropdown', hideDropdowns);
 	});
-	
+
 })(jQuery);
