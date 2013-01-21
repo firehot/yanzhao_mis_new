@@ -16,6 +16,11 @@
     <%= f.label :is_sub_company, "是否分公司" %>
     <%= f.check_box :is_sub_company %>
   </div>
+  <div class="ctrlHolder">
+    <%= f.label :order_by, "排序" %>
+    <%= f.text_field :order_by %>
+    <p class='formHint'>当前机构的显示顺序</p>
+  </div>
 
   <div class="ctrlHolder">
     <%= f.label :is_active, "有效标志" %>
@@ -26,4 +31,4 @@
 <div class="actions-bar">
   <%=f.submit '保存信息', :class => 'sexybutton sexysimple sexyblue'%>
   <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
-</div>       
+</div>
