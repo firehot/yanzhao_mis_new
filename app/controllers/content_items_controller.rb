@@ -5,12 +5,17 @@ class ContentItemsController < BaseController
   def index
     @content_items = ContentItem.content_class_code_eq(params[:content_class_code]).search(params[:search]).paginate :page => params[:page],:order => "created_at DESC"
   end
+  #GET content_items/first
+  #获取第一个条目信息
+  def first
+    @content_item = ContentItem.content_class_code_eq(params[:content_class_code]).try(:first)
+  end
   #GET content_items/new
   def new
     content_class = ContentClass.find_by_code(params[:content_class_code])
     @content_item = ContentItem.new(:content_class_id => content_class.id)
   end
-# POST /the_models
+  # POST /the_models
   # POST /the_models.xml
   def create
     @content_item = ContentItem.new(params[:content_item])

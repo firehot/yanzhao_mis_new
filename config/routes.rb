@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :org_infos,:has_many => :position_infos
 
-  map.resources :content_items
+  map.resources :content_items,:collection => {:first => :get}
 
   #所有票据出库单
   map.resources :all_invoice_shippments,:only => :index
