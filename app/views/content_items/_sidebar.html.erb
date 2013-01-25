@@ -36,4 +36,11 @@
       <li><%=link_to "新建员工手册",new_content_item_path(:content_class_code => 'worker_manual')%></li>
     </ul>
   <%end%>
+  <%if check_power("edit_#{params[:content_class_code]}")%>
+    <%if (params[:action] == 'first' or params[:action] == 'show') and @content_item%>
+      <ul class="navigation">
+        <li><%=link_to "修改",edit_content_item_path(@content_item,:content_class_code => params[:content_class_code])%></li>
+      </ul>
+    <%end%>
+  <%end%>
 </div>

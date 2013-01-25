@@ -8,15 +8,19 @@
         <%@content_items.each do |item| %>
           <tr class="<%= cycle("odd", "even") %>">
             <td>
-              <%= item.created_at.strftime("%Y-%m-%d %H:%M") %>
-            </td>
-            <td>
               <%= link_to item.title,content_item_path(item,:content_class_code => params[:content_class_code]),:class => "ellipsis'" %>
             </td>
             <td>
+              <%= item.created_at.strftime("%Y-%m-%d %H:%M") %>
+            </td>
+            <td>
               <%= link_to "查看", content_item_path(item,:content_class_code => params[:content_class_code]) %>
-              <%= link_to "修改", edit_content_item_path(item,:content_class_code => params[:content_class_code],:active_sub_tab => 9)%>
-              <%= link_to "删除", content_item_path(item,:content_class_code => params[:content_class_code]), :method => :delete, :confirm => "确定删除吗?" %>
+              <%if check_power("edit_#{params[:content_class_code]}")%>
+                <%= link_to "修改", edit_content_item_path(item,:content_class_code => params[:content_class_code],:active_sub_tab => 9)%>
+              <%end%>
+              <%if check_power("destroy_#{params[:content_class_code]}")%>
+                <%= link_to "删除", content_item_path(item,:content_class_code => params[:content_class_code]), :method => :delete, :confirm => "确定删除吗?" %>
+              <%end%>
             </td>
           </tr>
         <% end %>

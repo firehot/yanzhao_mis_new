@@ -8,10 +8,6 @@ jQuery(function($) {
 	$("#position_info_tree").jOrgChart({
 		chartElement: '#position_info_tree_wrapper'
 	});
-	//显示侧边栏
-
-	//$('#btn_sidebar').click(function(){$('#rightbar').show();$.fancybox($('#rightbar'));});
-	//$('#btn_rightbar').popover({content : $('#rightbar')});
 	/*menu_bar的点击事件*/
 	$('#menu_bar .group_name').click(function() {
 		var cur_el = $(this).next('.navigation:first')[0];
@@ -20,7 +16,14 @@ jQuery(function($) {
 			else $(el).hide();
 		});
 	});
-
+    //职位信息权限设置中,处理选择事件
+    $('.position_info_select').click(function(){
+        if($(this).attr('checked')){
+            $(this).next('.destroy_flag').val('0');
+        }
+        else
+            $(this).next('.destroy_flag').val('1');
+    });
 });
 
 //yanzhao-bill begin

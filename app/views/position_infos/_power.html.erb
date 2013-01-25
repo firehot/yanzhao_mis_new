@@ -1,0 +1,18 @@
+<table class='table'>
+  <% @position_info.grouped_position_info_powers.each do |org_info,powers| %>
+    <tr>
+      <td><em><%= org_info.name%></em></td>
+      <td>
+        <%f.fields_for :position_info_powers,powers do |p|%>
+          <%= p.hidden_field :id %>
+          <%= check_box_tag :position_info_select,0,!p.object.new_record? ,:class => "position_info_select" %>
+          <%= p.hidden_field :_destroy,:value => p.object.new_record?,:class =>"destroy_flag" %>
+          <%= p.hidden_field :has_position_info_id %>
+          <%= p.object.has_position_info.name%>
+        <%end%>
+        &nbsp;&nbsp;&nbsp;
+      </td>
+    </tr>
+
+  <%end%>
+</table>

@@ -8,10 +8,10 @@
       <div id='position_info_tree_wrapper'>
         <ul id="position_info_tree" style='display : none;'>
           <li>
-            <%unless @root_position_info.try(:position_info_items).blank?%>
+            <%if check_view_position_info_power(@root_position_info)%>
               <%= link_to @root_position_info.name,position_info_position_info_items_path(@root_position_info,:active_sub_tab => 9) %>
             <%else%>
-              <%= link_to @root_position_info.name,new_position_info_position_info_item_path(@root_position_info,:active_sub_tab => 10) %>
+              <%=link_to @root_position_info.name,"#"%>
             <%end%>
             <div class='org_chart_operate'>
               <%= link_to "修改", edit_org_info_position_info_path(@root_position_info.org_info,@root_position_info,:active_sub_tab => 6) if check_power('update_position_info') %>
