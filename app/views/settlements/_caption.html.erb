@@ -8,5 +8,7 @@
   <%if params[:active_sub_tab] == '4'%>
     <li class="active"><%= link_to "修改", self.send("edit_#{@param_name}_path",instance_variable_get("@#{@param_name}"),:active_sub_tab => 4)   %></li>
   <%end%>
+  <li class="<%=check_sub_active_tab(10)%>"><%= link_to "费用项目统计", settlement_lines_path(:active_sub_tab => 10) %></li>
   <%= render :partial => "shared/more_operate" %>
+
 </ul>
