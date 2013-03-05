@@ -12,6 +12,7 @@ class BillsController < BaseController
       :count =>@search.count,
       :sum_fee => @search.sum(:fee),
       :sum_goods_fee => @search.sum(:goods_fee),
+      :sum_insured_fee => @search.sum(:insured_fee),
       :sum_goods_num => @search.sum(:goods_num),
       :sum_k_hand_fee => @search.sum(:k_hand_fee),
       :sum_k_carrying_fee => @search.sum(:k_carrying_fee),
@@ -43,7 +44,7 @@ class BillsController < BaseController
           send_data @model_klazz.all(:conditions => ["post_info_id = ?",params[:post_info_id]]).export_csv(Bill.export_options) +
             @model_klazz.calculate_sum(:conditions => ["post_info_id = ?",params[:post_info_id]]).export_line_csv
         else
-          sum = [@sum_info[:sum_fee],@sum_info[:sum_goods_fee],@sum_info[:sum_goods_num],
+          sum = [@sum_info[:sum_fee],@sum_info[:sum_goods_fee],@sum_info[:sum_insured_fee],@sum_info[:sum_goods_num],
             @sum_info[:sum_k_hand_fee],@sum_info[:sum_k_carrying_fee],@sum_info[:sum_act_pay_fee],
             @sum_info[:sum_storage_fee],@sum_info[:sum_clear_fee]]
           empty_col = ["合计:"]

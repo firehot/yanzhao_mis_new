@@ -81,6 +81,7 @@ cn:
         pay_type_des: "运费付款方式"
         fee: "运费金额"
         goods_fee: "代收货款"
+        insured_fee: "保险费"
         goods_num: "货物件数"
         created_at: "录入日期"
         goods_info: "货物信息"

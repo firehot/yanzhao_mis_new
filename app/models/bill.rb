@@ -33,7 +33,7 @@ class Bill < ActiveRecord::Base
   def self.export_options
     {:methods => [:from_org_name,:to_org_name,:pay_type_des,:state_des,:created_date],
      :only => [:bill_no,:goods_no,:sender_name,:sender_phone,:receiver_name,:receiver_phone,
-               :bill_mth,:fee,:goods_fee,:goods_num,:k_hand_fee,:k_carrying_fee,
+               :bill_mth,:fee,:goods_fee,:insured_fee,:goods_num,:k_hand_fee,:k_carrying_fee,
                :act_pay_fee,:storage_fee,:clear_fee,:goods_info,:note]}
   end
   def self.add_validate
@@ -84,6 +84,7 @@ class Bill < ActiveRecord::Base
     sum = [
       self.sum(:fee,options),
       self.sum(:goods_fee,options),
+      self.sum(:insured_fee,options),
       self.sum(:goods_num,options),
       self.sum(:k_hand_fee,options),
       self.sum(:k_carrying_fee,options),
