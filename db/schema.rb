@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125070351) do
+ActiveRecord::Schema.define(:version => 20130319144343) do
 
   create_table "address_book_lines", :force => true do |t|
     t.string   "name",            :limit => 60,                    :null => false
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20130125070351) do
     t.date     "bill_date"
     t.string   "pay_type",       :limit => 2,                                                    :null => false
     t.boolean  "is_active",                                                    :default => true
-    t.string   "state",          :limit => 2,                                  :default => "DR", :null => false
+    t.string   "state",                                                        :default => "DR", :null => false
     t.integer  "tk_info_id"
     t.integer  "post_info_id"
     t.decimal  "k_hand_fee",                    :precision => 10, :scale => 2, :default => 0.0
@@ -173,6 +173,9 @@ ActiveRecord::Schema.define(:version => 20130125070351) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state",      :limit => 10, :default => "DR"
+    t.integer  "auditor_id"
+    t.datetime "audit_date"
   end
 
   create_table "content_classes", :force => true do |t|
@@ -448,6 +451,9 @@ ActiveRecord::Schema.define(:version => 20130125070351) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state",      :limit => 10, :default => "DR"
+    t.integer  "auditor_id"
+    t.datetime "audit_date"
   end
 
   create_table "powers", :force => true do |t|

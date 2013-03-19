@@ -31,7 +31,7 @@
             <tr class="<%= cycle("odd", "even") %>">
               <td>&nbsp;</td>
               <td>
-                <%= line.material.name %>
+                <%= line.material.try(:name) %>
               </td>
               <td>
                 <%= line.qty %>

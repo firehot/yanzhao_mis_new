@@ -359,4 +359,7 @@ input.readonly { border : none;font-size : 1.2em;font-weight : bold;color : blue
     background:#d5d5d5;
 }
 
+/*起止票号不可为空*/
+.bill_no_error{color : red;}
+
 

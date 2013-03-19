@@ -3,13 +3,27 @@
     <%=render "caption"%>
   </div>
   <div class="content">
-    <h2 class="title">确认清单</h2>
+    <h2 class="title">核销清单</h2>
     <div class="inner">
       <table class='table'>
         <tr>
           <td>核销人:<%=@post_info.user.username%></td>
-          <td>&nbsp;</td>
           <td>核销日期:<%=@post_info.created_at.to_date%></td>
+          <td>当前状态:<%=bill_operate_state_desc @post_info.state%></td>
+          <td style='text-align : right;'>
+            <%if @post_info.bills.first.type.eql?('CarryingBill') %>
+              <%if check_power(:audit_post_info_carrying_bills) and @post_info.state.eql?('DR')%>
+                <%= link_to "审核", audit_post_info_path(@post_info),:method => :put,:confirm => "确认要审核吗?",:class => 'sexybutton sexysimple sexyblue' %>
+              <%end%>
+            <%end%>
+            <%if @post_info.bills.first.type.eql?('InoutBill') %>
+              <%if check_power(:audit_post_info_inout_bills) and @post_info.state.eql?('DR')%>
+                <%= link_to "审核", audit_post_info_path(@post_info),:method => :put,:confirm => "确认要审核吗?",:class => 'sexybutton sexysimple sexyblue' %>
+              <%end%>
+            <%end%>
+
+          </td>
+
         </tr>
       </table>
       <%=render :partial => "shared/bills/bill_list",:object =>{:show_sum => false,:bills => (@post_info.bills.paginate :page => 1,:per_page => 1000)} %>

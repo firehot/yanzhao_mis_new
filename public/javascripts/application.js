@@ -24,6 +24,22 @@ jQuery(function($) {
         else
             $(this).next('.destroy_flag').val('1');
     });
+
+    //手工票领用及审核,起止票号不可为空
+    var check_hand_invoice_form = function(e){
+        var from_no = $('.from_no').val();
+        var to_no = $('.to_no').val();
+        if(from_no == '' || to_no == '')
+        {
+            $('.bill_no_error').show();
+            e.preventDefault();
+        }
+        else
+        {
+            $('.bill_no_error').hide();
+        }
+    };
+    $('#hand_invoice_form').on('submit',check_hand_invoice_form);
 });
 
 //yanzhao-bill begin
@@ -657,8 +673,8 @@ document.observe("dom:loaded", function() {
 	cal_sum();
 
 });
-//工资表打印功能
 document.observe("dom:loaded", function() {
+    //工资表打印功能
 	//打印入账联
 	var print_1 = function(evt, print_signature) {
 		var s_table = $('salary_table_show').cloneNode(true);
@@ -733,7 +749,7 @@ document.observe("dom:loaded", function() {
 	//手工票领取表单,单价不可修改,运单编号在领取时不填写
 	$$('#new_hand_invoice_shippment .material_price').invoke('writeAttribute', 'readonly', true);
 	$$('#new_computer_invoice_shippment .material_price').invoke('writeAttribute', 'readonly', true);
-	$$('#new_hand_invoice_shippment .invoice_bill_no').invoke('hide');
+	//$$('#new_hand_invoice_shippment .invoice_bill_no').invoke('hide');
 	$$('#new_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_bill_no,#edit_computer_invoice_shippment .invoice_package_qty').invoke('hide');
 	//显示手工票审核界面时,自动计算合计金额
 	//员工资料-岗位列表变化,修改响应的工资项目金额

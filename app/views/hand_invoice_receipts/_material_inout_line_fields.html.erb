@@ -22,6 +22,7 @@
       ~
       <%=f.text_field :to_no,:style => "width : 70px;",:maxlength => 12,:size => 12,:class => 'to_no'  %>
     </div>
+    <span style='display : none;' class='bill_no_error'>起止票号不可为空</span>
   </td>
   <td class='invoice_line_amt'>
     <%=f.text_field :line_amt,:value => f.object.qty* HandInvoice.default_hand_invoice.unit_price,:style => "width : 50px;",:class => 'material_total',:style => "width : 50px;",:readonly => true %>

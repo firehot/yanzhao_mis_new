@@ -57,22 +57,24 @@
       </div>
     </fieldset>
     <div id='user_power'>
-      <%@group_powers.each do |group,powers|%>
-        <fieldset>
-          <legend><%=group%></legend>
-          <%f.fields_for :powers,powers do |power|%>
-            <p>
-              <%=power.hidden_field :user_id%>
-              <%=power.hidden_field :system_function_id%>
-              <%=power.check_box :is_select %><%=power.label :is_select,power.object.system_function.func_name%>
-            </p>
+      <table class='table'>
+        <%@group_powers.each do |group,powers|%>
+          <tr>
+            <td width='50'><em><%=group%></em></td>
+            <td>
+              <%f.fields_for :powers,powers do |power|%>
+                <%=power.hidden_field :user_id%>
+                <%=power.hidden_field :system_function_id%>
+                <%=power.check_box :is_select %><%=power.label :is_select,power.object.system_function.func_name%>
+                &nbsp;&nbsp;
+              <%end%>
+            </td>
           <%end%>
-        </fieldset>
-      <%end%>
+        </table>
+      </div>
     </div>
-  </div>
-  <div class='actions-bar wat-cf'>
-    <%=f.submit '保存用户信息', :class => 'sexybutton sexysimple sexyblue'%>
-    <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
-  </div>
-<%end%>
+    <div class='actions-bar wat-cf'>
+      <%=f.submit '保存用户信息', :class => 'sexybutton sexysimple sexyblue'%>
+      <%=link_to '取消',:back,:class => 'sexybutton sexysimple sexyred' %>
+    </div>
+  <%end%>

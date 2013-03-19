@@ -10,9 +10,11 @@ class Bill < ActiveRecord::Base
 
 
   #单据状态常数,不包括提款票据与提货票据特有的状态
-  STATE_DRAFT = 'DR'  #草案
-  STATE_CONFIRM = 'CO'#已确认
-  STATE_POST='PO'     #已核销
+  STATE_DRAFT = 'DR'            #草案
+  STATE_CONFIRM = 'CO'          #已确认
+  STATE_CONFIRM_AUDIT = 'CO_AD'#已审核
+  STATE_POST='PO'               #已核销
+  STATE_POST_AUDIT='PO_AD'     #已审核
 
   #付款方式常数
   PAYTYPE_CASH = 'CA'   #现金付款

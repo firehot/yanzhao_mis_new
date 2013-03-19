@@ -63,13 +63,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :delivers,:has_many => [:bills],:except => [:update,:destroy]
 
-  map.resources :post_infos,:has_many => [:bills],:except => [:update,:destroy]
+  map.resources :post_infos,:member => {:audit => :put},:has_many => [:bills],:except => [:update,:destroy]
 
   map.resources :config_infos
 
   map.resources :tk_infos,:has_many => [:bills],:except => [:update,:destroy]
 
-  map.resources :confirms,:has_many => [:bills],:except => [:update,:destroy]
+  map.resources :confirms,:member => {:audit => :put},:has_many => [:bills],:except => [:update,:destroy]
 
   map.resources :inout_bills,:member => {:select => :get }
 

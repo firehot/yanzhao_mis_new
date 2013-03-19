@@ -8,8 +8,21 @@
       <table class='table'>
         <tr>
           <td>确认人:<%=@confirm.user.username%></td>
-          <td>&nbsp;</td>
           <td>确认日期:<%=@confirm.created_at.to_date%></td>
+          <td>当前状态:<%=bill_operate_state_desc @confirm.state%></td>
+          <td style='text-align : right;'>
+            <%if @confirm.bills.first.type.eql?('CarryingBill') %>
+              <%if check_power(:audit_confirm_carrying_bills) and @confirm.state.eql?('DR')%>
+              <%= link_to "审核", audit_confirm_path(@confirm),:method => :put,:confirm => "确认要审核吗?",:class => 'sexybutton sexysimple sexyblue' %>
+              <%end%>
+            <%end%>
+            <%if @confirm.bills.first.type.eql?('InoutBill') %>
+              <%if check_power(:audit_confirm_inout_bills) and @confirm.state.eql?('DR')%>
+              <%= link_to "审核", audit_confirm_path(@confirm),:method => :put,:confirm => "确认要审核吗?",:class => 'sexybutton sexysimple sexyblue' %>
+              <%end%>
+            <%end%>
+
+          </td>
         </tr>
       </table>
       <%=render :partial => "shared/bills/bill_list",:object =>{:show_sum => false,:bills => (@confirm.bills.paginate :page => 1,:per_page => 1000)} %>

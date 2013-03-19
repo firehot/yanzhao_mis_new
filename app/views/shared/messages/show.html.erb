@@ -5,9 +5,10 @@
   </div>
   <div class="content">
     <div class="inner">
+      <h1 class='text-center'><%=Client.first.try(:name) %></h1>
       <h2 class='text-center'><%=@message.try(:doc_no) %></h2>
       <p><%=@message.org.name%> | <%=@message.user.try(:username)%></p>
-      <p><%=status_time_ago_in_words(@message.created_at)%> </p>
+      <p><%=@message.created_at.strftime("%Y-%m-%d %H:%M")%> </p>
       <hr />
       <p>
         <%= @message.body %>

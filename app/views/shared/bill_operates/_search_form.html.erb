@@ -18,6 +18,20 @@
       <%=f.label :created_at_lte,"~"%>
       <%=f.calendar_date_select :created_at_lte,:class => "textInput" %>
     </div>
+    <div class='ctrlHolder'>
+      <%=f.label :auditor_id_is,"审核人"%>
+      <%=f.select :auditor_id_is,users_for_select,:include_blank => true %>
+    </div>
+
+    <div class='ctrlHolder'>
+      <%=f.label :audit_date_gte,"审核时间"%>
+      <%=f.calendar_date_select :audit_date_gte,:class => "textInput" %>
+    </div>
+    <div class='ctrlHolder'>
+      <%=f.label :audit_date_lte,"~"%>
+      <%=f.calendar_date_select :audit_date_lte,:class => "textInput" %>
+    </div>
+
   </fieldset>
   <div class="actions-bar">
     <%=f.submit '查询', :class => 'sexybutton sexysimple sexyblue'%>

@@ -9,8 +9,10 @@ class CarryingBill < Bill
     {
       STATE_DRAFT => "草稿",
       STATE_CONFIRM => "已确认",
+      STATE_CONFIRM_AUDIT => '确认已审核',#已审核
       STATE_TK => "已提款",
-      STATE_POST => "已核销"
+      STATE_POST => "已核销",
+      STATE_POST_AUDIT => "核销已审核"
     }
   end
   #票据性质常数
