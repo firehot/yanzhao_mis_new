@@ -25,7 +25,7 @@ class MaterialInout < ActiveRecord::Base
   def confirm(user)
     if self.state == STATE_DRAFT
       self.build_confirm(:user => user)
-      self.state = STATE_CONFIRM
+      self.update_attributes(:state => STATE_CONFIRM)
       self.save
     end
   end
