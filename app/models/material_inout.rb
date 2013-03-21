@@ -45,5 +45,4 @@ class MaterialInout < ActiveRecord::Base
       end
     end
   end
-
 end

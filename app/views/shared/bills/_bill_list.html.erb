@@ -85,12 +85,11 @@
       <tr>
         <td colspan='2'>总计:</td>
         <td colspan='50' class='text-center'>
-          <%="共有票据#{@sum_info[:count]}张,运费#{@sum_info[:sum_fee]}元,货款#{@sum_info[:sum_goods_fee]}元,货物#{@sum_info[:sum_goods_num]}件"%>
-
+          <%="共#{@sum_info[:count]}张,运费:#{@sum_info[:sum_fee]}元,货款:#{@sum_info[:sum_goods_fee]}元,货物:#{@sum_info[:sum_goods_num]}件"%>
           <%if bill_list[:bills].any?{|the_bill| the_bill.class.eql?(CarryingBill)}%>
-            <%="扣手续费#{@sum_info[:sum_k_hand_fee]}元,扣运费#{@sum_info[:sum_k_carrying_fee]}元,实付货款#{@sum_info[:sum_act_pay_fee]}元"%>,<%="扣保险费#{@sum_info[:sum_k_hand_fee]}元,扣运费#{@sum_info[:sum_k_insured_fee]}元,实付货款#{@sum_info[:sum_act_pay_fee]}元"%>
+            <%="扣手续费:#{@sum_info[:sum_k_hand_fee]}元,扣运费:#{@sum_info[:sum_k_carrying_fee]}元,实付货款:#{@sum_info[:sum_act_pay_fee]}元"%>,<%="扣保险费:#{@sum_info[:sum_k_insured_fee]}元,扣运费:#{@sum_info[:sum_k_carrying_fee]}元,实付货款:#{@sum_info[:sum_act_pay_fee]}元"%>
           <%else%>
-            <%="仓储费#{@sum_info[:sum_storage_fee]}元,清仓收入#{@sum_info[:sum_clear_fee]}元"%>
+            <%="仓储费:#{@sum_info[:sum_storage_fee]}元,清仓收入:#{@sum_info[:sum_clear_fee]}元"%>
           <%end%>
         </td>
       </tr>

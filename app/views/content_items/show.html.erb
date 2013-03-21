@@ -3,7 +3,7 @@
     <%= render "caption" %>
   </div>
   <div class="content">
-    <div class="inner">
+    <div class="inner" style='overflow-x : scroll;'>
       <h2 class='text-center'><%=@content_item.title%></h2>
       <p class='text-center'><%=@content_item.created_at.strftime('%Y-%m-%d')%> </p>
       <hr />

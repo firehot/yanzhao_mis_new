@@ -2,9 +2,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :position_info_items,:only => [:update,:create,:show]
 
-  map.resources :position_infos,:only => [:update,:create],:has_many => :position_info_items
+  map.resources :position_infos,:has_many => :position_info_items
 
-  map.resources :org_infos,:has_many => :position_infos
+  map.resources :org_infos #,:has_many => :position_infos
 
   map.resources :content_items,:collection => {:first => :get}
 

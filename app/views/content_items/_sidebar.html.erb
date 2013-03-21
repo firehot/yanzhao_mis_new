@@ -43,4 +43,17 @@
       </ul>
     <%end%>
   <%end%>
+  <!--组织机构图-->
+  <%if params[:content_class_code].eql?('org_chart') and check_power('new_org_info')%>
+    <ul class="navigation">
+      <li><%=link_to "新建组织机构图",new_content_item_path(:content_class_code => 'org_chart')%></li>
+    </ul>
+  <%end%>
+  <%if params[:content_class_code].eql?('org_chart') and check_power('update_org_info')%>
+    <%if (params[:action] == 'first' or params[:action] == 'show') and @content_item%>
+      <ul class="navigation">
+        <li><%=link_to "修改",edit_content_item_path(@content_item,:content_class_code => params[:content_class_code])%></li>
+      </ul>
+    <%end%>
+  <%end%>
 </div>

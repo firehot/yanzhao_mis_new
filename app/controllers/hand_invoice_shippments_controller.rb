@@ -9,8 +9,9 @@ class HandInvoiceShippmentsController < MaterialInoutsController
   def confirm
     @hand_invoice_shippment = HandInvoiceShippment.find(params[:id])
     @hand_invoice_shippment.update_attributes(params[:hand_invoice_shippment])
-    @hand_invoice_shippment.confirm(current_user)
+    ret = @hand_invoice_shippment.confirm(current_user)
     flash[:notice] = '单据审核成功.'
+    flash[:error] = "单据审核失败,#{@hand_invoice.errors}" unless ret
     redirect_to @hand_invoice_shippment
   end
 end

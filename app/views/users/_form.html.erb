@@ -45,7 +45,7 @@
       </div>
       <div class='ctrlHolder'>
         <%=f.label :position_info_id,"职位信息"%>
-        <%=f.select :position_info_id,group_position_infos_for_select(selected = f.object.position_info_id) %>
+        <%=f.select :position_info_id,position_infos_for_select %>
         <p class='formHint highlight'>
           <i>该字段用于设置组织机构中职位条目(工作职责、工作安排等)的查看权限</i>
         </p>

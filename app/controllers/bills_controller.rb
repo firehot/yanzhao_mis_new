@@ -6,7 +6,7 @@ class BillsController < BaseController
     #单据选择时,缓存到客户端的id数组
     @bill_ids = @search.all(:select => "bills.id")
 
-    sum_k_insured_fee = @search.all(:conditions => {:pay_type => "KP"})
+    sum_k_insured_fee = @search.pay_type_eq('KP').sum(:insured_fee)
     #以下得到合计信息
     @sum_info = {
       :count =>@search.count,
