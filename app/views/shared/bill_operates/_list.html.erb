@@ -35,7 +35,7 @@
         <td><%=operate.bills.sum(:act_pay_fee)%></td>
         <td><%=operate.bills.sum(:storage_fee)%></td>
         <td><%=operate.bills.sum(:clear_fee)%></td>
-        <td><%=bill_operate_state_desc(operate.state)%></td>
+        <td><%=confirm_state_desc(operate.state)%></td>
         <td><%=operate.try(:auditor).try(:username)%></td>
         <td><%=operate.try(:audit_date).try(:strftime,'%Y-%m-%d %H:%M')%></td>
       </tr>
