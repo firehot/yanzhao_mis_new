@@ -9,7 +9,7 @@
         <tr>
           <td>确认人:<%=@confirm.user.username%></td>
           <td>确认日期:<%=@confirm.created_at.to_date%></td>
-          <td>当前状态:<%=bill_operate_state_desc @confirm.state%></td>
+          <td>当前状态:<%=confirm_state_desc @confirm.state%></td>
           <td style='text-align : right;'>
             <%if @confirm.bills.first.type.eql?('CarryingBill') %>
               <%if check_power(:audit_confirm_carrying_bills) and @confirm.state.eql?('DR')%>
