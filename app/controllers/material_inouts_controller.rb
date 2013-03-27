@@ -11,7 +11,7 @@ class MaterialInoutsController < BaseController
     inout_bill = @model_klazz.find(params[:id])
     ret = inout_bill.confirm(current_user)
     flash[:notice] = '单据审核成功.'
-    flash[:error] = "单据审核失败,#{@hand_invoice.errors}" unless ret
+    flash[:error] = "单据审核失败,#{@hand_invoice.try(:errors)}" unless ret
     redirect_to :back
   end
   def show
