@@ -11,12 +11,12 @@
           <td>核销日期:<%=@post_info.created_at.to_date%></td>
           <td>当前状态:<%=post_info_state_desc @post_info.state%></td>
           <td style='text-align : right;'>
-            <%if @post_info.bills.first.type.eql?('CarryingBill') %>
+            <%if @post_info.bills.first.class.eql? CarryingBill %>
               <%if check_power(:audit_post_info_carrying_bills) and @post_info.state.eql?('DR')%>
                 <%= link_to "审核", audit_post_info_path(@post_info),:method => :put,:confirm => "确认要审核吗?",:class => 'sexybutton sexysimple sexyblue' %>
               <%end%>
             <%end%>
-            <%if @post_info.bills.first.type.eql?('InoutBill') %>
+            <%if @post_info.bills.first.class.eql? InoutBill %>
               <%if check_power(:audit_post_info_inout_bills) and @post_info.state.eql?('DR')%>
                 <%= link_to "审核", audit_post_info_path(@post_info),:method => :put,:confirm => "确认要审核吗?",:class => 'sexybutton sexysimple sexyblue' %>
               <%end%>
