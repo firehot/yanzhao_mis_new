@@ -252,27 +252,26 @@ ActiveRecord::Schema.define(:version => 20130321084234) do
   end
 
   create_table "employees", :force => true do |t|
-    t.string   "code",              :limit => 20
-    t.string   "name",              :limit => 10,                                                   :null => false
-    t.string   "sex",               :limit => 1
-    t.string   "id_card",           :limit => 30
-    t.string   "location",          :limit => 60
+    t.string   "code",            :limit => 20
+    t.string   "name",            :limit => 10,                                                   :null => false
+    t.string   "sex",             :limit => 1
+    t.string   "id_card",         :limit => 30
+    t.string   "location",        :limit => 60
     t.integer  "org_id"
-    t.string   "position",          :limit => 20
-    t.date     "entry_date",                                                                        :null => false
-    t.boolean  "is_active",                                                      :default => true
-    t.decimal  "salary_base",                     :precision => 10, :scale => 2, :default => 0.0
-    t.decimal  "work_year_base",                  :precision => 10, :scale => 2, :default => 0.0
-    t.decimal  "position_base",                   :precision => 10, :scale => 2, :default => 0.0
-    t.decimal  "food_base",                       :precision => 10, :scale => 2, :default => 0.0
-    t.decimal  "house_base",                      :precision => 10, :scale => 2, :default => 0.0
+    t.string   "position",        :limit => 20
+    t.date     "entry_date",                                                                      :null => false
+    t.boolean  "is_active",                                                    :default => true
+    t.decimal  "salary_base",                   :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "work_year_base",                :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "position_base",                 :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "food_base",                     :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "house_base",                    :precision => 10, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order_by",                                                       :default => 0
+    t.integer  "order_by",                                                     :default => 0
     t.integer  "position_id"
-    t.boolean  "is_probation",                                                   :default => false
-    t.decimal  "position_2_salary",               :precision => 15, :scale => 2, :default => 0.0
-    t.decimal  "position_base_2",                 :precision => 15, :scale => 2, :default => 0.0
+    t.boolean  "is_probation",                                                 :default => false
+    t.decimal  "position_base_2",               :precision => 15, :scale => 2, :default => 0.0
   end
 
   create_table "invoice_checks", :force => true do |t|
@@ -404,10 +403,10 @@ ActiveRecord::Schema.define(:version => 20130321084234) do
   end
 
   create_table "position_info_items", :force => true do |t|
-    t.integer  "position_info_id",               :null => false
-    t.string   "title",            :limit => 60, :null => false
+    t.integer  "position_info_id",                                 :null => false
+    t.string   "title",            :limit => 60,                   :null => false
     t.text     "content"
-    t.boolean  "is_active"
+    t.boolean  "is_active",                      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

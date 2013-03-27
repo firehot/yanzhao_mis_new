@@ -16,7 +16,7 @@ class AddOrgInfoFunction < ActiveRecord::Migration
     sfs.each do |k,vs|
       vs.each do |item|
         sf = SystemFunction.find_by_func_key(item[1])
-        SystemFunction.create!(:system_function_cat_id => sf_cat.id,:group_name => k,:func_name => item[0],:func_key => item[1]) unless sf
+        SystemFunction.create(:system_function_cat => sf_cat,:group_name => k,:func_name => item[0],:func_key => item[1]) unless sf
       end
     end
   end

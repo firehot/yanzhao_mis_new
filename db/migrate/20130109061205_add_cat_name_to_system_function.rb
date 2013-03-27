@@ -51,6 +51,7 @@ class AddCatNameToSystemFunction < ActiveRecord::Migration
       "computer_invoice_shippment" => ["票据领用",'all_invoice_shippments_path(:active_sub_tab => 1)'],
       "view_m_storage_invoice" => ["票据库存统计",'invoice_checks_path(:active_sub_tab => 12)']
     }
+
     SystemFunction.all.each do |sf|
       cat_name_map.keys.each do |key|
         if sf.func_key.include? key
@@ -72,7 +73,7 @@ class AddCatNameToSystemFunction < ActiveRecord::Migration
     #票据登记中的数据需要特殊处理
     sf_cats = SystemFunctionCat.cat_name_eq(['票据入库','票据领用','运单盘查','票据库存统计']).all
     sf_group = SystemFunctionGroup.group_name_eq('手工票登记').first
-    sf_group.update_attributes(:group_name => "票据登记")
+    sf_group.update_attributes(:group_name => "票据登记") if sf_group
     sf_cats.each {|sfc| sfc.update_attributes(:system_function_group_id => sf_group.id)}
 
     sf_groups = SystemFunctionGroup.group_name_eq(['机打票登记','其他票登记','库存及票据盘查']).all

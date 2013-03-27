@@ -166,7 +166,7 @@ class MessagesController < BaseController
     #判断是否传入了org_id_eq条件
     if params[:search].try(:[],:org_id_eq).blank?
       params[:search] = {} unless params[:search]
-      params[:search][:org_id_eq] = Department.first(:order => "order_by ASC").id
+      params[:search][:org_id_eq] = Department.first(:order => "order_by ASC").try(:id)
       @search = @search.search(:org_id_eq => params[:search][:org_id_eq])
     end
   end

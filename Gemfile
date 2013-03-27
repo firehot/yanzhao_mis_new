@@ -1,4 +1,5 @@
-source 'http://ruby.taobao.org/'
+source 'http://rubygems.org'
+
 gem "mysql","2.8.1"
 gem "rails","2.3.5"
 gem "will_paginate","2.3.15"

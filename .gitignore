@@ -11,7 +11,4 @@ doc/app
 .DS_Store
 config/database.yml
 db/schema.rb
-vendor/bin/*
-vendor/cache/*
-vendor/gems/*
-vendor/specifications/*
+vendor/
