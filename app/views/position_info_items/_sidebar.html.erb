@@ -1,19 +1,13 @@
-<% if defined? @position_info_item or defined? @position_info_items %>
-  <%
-      position_info_item = @position_info_item
-      if defined? @position_info_items
-        position_info_item = @position_info_items.first
-      end
-  %>
-  <div class="block">
-    <h3>新建</h3>
-    <%if check_power("new_position_info_item")%>
-      <ul class="navigation">
-        <li>
-          <%= link_to "新建职位条目", new_position_info_position_info_item_path(position_info_item.position_info,:active_sub_tab => 10)  %>
-        </li>
-      </ul>
-    <%end%>
-  </div>
+<%if params[:position_info_id].present?%>
+<%pi = PositionInfo.find(params[:position_info_id])%>
+<div class="block">
+  <h3>新建</h3>
+  <%if check_power("new_position_info_item")%>
+    <ul class="navigation">
+    <li>
+    <%= link_to "新建职位条目", new_position_info_position_info_item_path(pi,:active_sub_tab => 10)  %>
+    </li>
+  </ul>
+  <%end%>
+</div>
 <%end%>
-
